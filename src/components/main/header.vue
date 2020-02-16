@@ -80,7 +80,7 @@
 							</el-dropdown-menu>
 						</el-dropdown>
 					</li>
-					<li class="personal_list other">
+					<li class="personal_list other" @click="goGongGao">
 						<img src="../../assets/Gicimg/heder/xiaoxi-icon.png">
 					</li>
 					<li class="personal_list other">
@@ -175,7 +175,7 @@
 							</el-dropdown-menu>
 						</el-dropdown>
 					</li> -->
-					<li class="personal_list other">
+					<li class="personal_list other" @click="goGongGao">
 						<img src="../../assets/Gicimg/heder/xiaoxi-icon.png">
 					</li>
 					<li class="personal_list other">
@@ -340,7 +340,10 @@
 			// this.getGGList()
 		},
 		methods: {
-
+			// 跳转到公告列表
+			goGongGao() {
+				this.$router.push("/gonggaoList");
+			},
 			//获取个人信息
 			getUser(){
 				var _this = this;

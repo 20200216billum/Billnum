@@ -1,5 +1,4 @@
-<style lang=less>
-    @import '../../assets/public.less';
+<style lang=less scoped>
     @import './gonggaoList.less';
     @import './noticeDetails.less';
     .list_container {
@@ -21,25 +20,24 @@
   </style>
   <template lang="html">
     <div class="notice_list_wrapper">
-      <!-- <HeaDer></HeaDer> -->
-      <div class="notice_top">
+      <!-- <div class="notice_top">
           {{$t('Gic.gonggaoList[0]')}}
-      </div>
+      </div> -->
       <div class="list_container">
-  
-        <ul class="content" >
+        <div class="title">
+          系统公告
+          <span class="little">System Bulletin</span>  
+        </div> 
+        <ul class="content">
           <li v-for="(i,index) in listData" v-show="!loading" @click="$router.push({path:'/zixunDetails', query:{posts_id:i.id,type:'2'}})">
             <p> {{ i.title }}</p>	
-
             <p>{{ i.created_at }}</p>
           </li>
           <!-- 暂无数据 -->
           <p class="noData" v-show="listData.length==0 && !loading">{{$t('sell.showlist[8]')}}</p>
           <!-- 加载中 -->
           <p class="noData" v-show="loading">{{$t("bibi.loading")}}</p>
-  
         </ul>
-        
       </div>
       <el-pagination background class="zixun_fen" layout="prev, pager, next" :total="total"  @current-change="current_change1" :page-size='size' :current-page.sync="page"></el-pagination>
     </div>
