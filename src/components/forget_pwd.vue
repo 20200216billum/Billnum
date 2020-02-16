@@ -1,66 +1,66 @@
-<style lang=less >
-	@import '../assets/public.less';
+<style lang=less scoped>
 	@import './forget_pwd.less';
-	@import './mian.less';
 </style>
 <template>
 	<div>
-		<!-- <HeaDer></HeaDer> -->
 		<div id="main">
 			<div class="forget_bg">
 				<div class="forget_pwd_main">
-					<!--手机号验证-->
+					<!--账号验证-->
 					<div class="validation_mobile" v-show="whitchShow == 1">
 						<div class="header_forget">
-							<h2 class="welcome_reg">{{$t("forgetpwd.titleOne[0]")}}</h2><!-- 重置登录密码 -->
+							<h2 class="welcome_reg">忘记密码</h2>
 						</div>
 						<div class="form_warp">
 							<div class="content_warp">
-								<el-form :label-position="labelPosition" :model="userData" status-icon :rules="rules2" ref="userData" label-width="100px" class="demo-ruleForm">
-									<el-form-item :label='$t("forgetpwd.titleOne[1]")' prop="mobile"><!-- 账号 -->
-										<el-input v-model="userData.mobile" auto-complete="off"></el-input>
+								<el-form :label-position="labelPosition" :model="userData" :rules="rules2" ref="userData" label-width="100px" class="demo-ruleForm">
+									<el-form-item label="账号" prop="mobile"><!-- 账号 -->
+										<el-input v-model="userData.mobile" auto-complete="off" placeholder="请输入登录账号"></el-input>
 									</el-form-item>
 									<div class="primary_btn">
 										<el-button type="primary" @click="submitmobile()" :loading="loading">{{$t("forgetpwd.titleThree[3]")}}</el-button><!-- 提交 -->
 									</div>
 								</el-form>
 							</div>
-							<div class="prompt">
-								<div class="warp_prompt">
-									<!-- <p>重设登录密码后24小时禁止交易</p> -->
-								</div>
-							</div>
 						</div>
 					</div>
 					<!--安全验证-->
 					<div class="valdation_code" v-show="whitchShow == 2">
 						<div class="header_forget">
-							<h2 class="welcome_reg">{{$t("forgetpwd.titleOne[0]")}}</h2>
+							<h2 class="welcome_reg">重置密码</h2>
 						</div>
 						<div class="form_warp form_warp2">
 							<div class="content_warp">
-								<el-form :label-position="labelPosition" :model="userData" status-icon :rules="rules2" ref="userData" label-width="100px" class="demo-ruleForm">
-									<el-form-item :label='$t("forgetpwd.titleOne[1]")' prop="mobile"><!-- 账号 -->
-										<el-input  v-model="userData.mobile" auto-complete="" :placeholder='$t("forgetpwd.titleOne[3]")'></el-input> <!-- 请输入手机号/邮箱 -->
+								<el-form :label-position="labelPosition" :model="userData" :rules="rules2" ref="userData" label-width="100px" class="demo-ruleForm">
+									<!-- <el-form-item :label='$t("forgetpwd.titleOne[1]")' prop="mobile">
+										<el-input  v-model="userData.mobile" auto-complete="" :placeholder='$t("forgetpwd.titleOne[3]")'></el-input> 
 									</el-form-item>
-
-									
 									<div class="valdation_code_warp">
-										<el-form-item :label='$t("forgetpwd.titleTwo[2]")' prop="code"><!-- 短信/邮箱验证码 -->
-											<el-input v-model.number="userData.code" auto-complete="off" :placeholder='$t("forgetpwd.titleTwo[4]")'></el-input> <!-- 请输入验证码 -->
+										<el-form-item :label='$t("forgetpwd.titleTwo[2]")' prop="code">
+											<el-input v-model.number="userData.code" auto-complete="off" :placeholder='$t("forgetpwd.titleTwo[4]")'></el-input>
 										</el-form-item>
 										<div class="btn_code" @click="get_code()">
 											<el-input type="button" :value='btnCode.time' :disabled='btnCode.disabled'></el-input>
 										</div>
-									</div>
-									<el-form-item :label='$t("forgetpwd.titleThree[1]")' prop="opwd"><!-- 登录密码 -->
-										<el-input type="password" v-model="userData.opwd" auto-complete="off" :placeholder='$t("forgetpwd.titleTwo[5]")'></el-input> <!-- 请输入登录密码 -->
+									</div> -->
+									<el-form-item label='新密码' prop="password"><!-- 新密码 -->
+										<el-input type="password" v-model="userData.password" auto-complete="off" placeholder='请输入8-20位数字与字母组合登录密码'></el-input>
 									</el-form-item>
-									<el-form-item :label='$t("forgetpwd.titleThree[2]")' prop="opwd1"><!-- 确认密码 -->
-										<el-input type="password" v-model="userData.opwd1" auto-complete="off" :placeholder='$t("forgetpwd.titleTwo[6]")'></el-input> <!-- 请再次输入登录密码 -->
+									<el-form-item :label='$t("forgetpwd.titleThree[2]")' prop="password_confirmation"><!-- 确认密码 -->
+										<el-input type="password" v-model="userData.password_confirmation" auto-complete="off" placeholder='请输入确认密码'></el-input>
+									</el-form-item>
+									<el-form-item class="int-code">
+										请输入{{ userData.mobile }}收到的验证码
+									</el-form-item>
+									<!-- 验证码 -->
+									<el-form-item label='验证码' prop="code">
+										<el-input v-model="userData.code" auto-complete="off" placeholder='请输入验证码'></el-input>
 									</el-form-item>
 									<div class="primary_btn">
-										<el-button type="primary" @click="submitPwd()" :loading="loading">{{$t("forgetpwd.titleOne[2]")}}</el-button><!-- 提交 -->
+										<el-button type="primary" @click="submitPwd()" :loading="loading">确认</el-button>
+									</div>
+									<div class="again_code">
+										<span class="gray">没有收到？</span><el-button type="text" @click="getCode" :value='btnCode.time' :disabled='btnCode.disabled'>重新获取验证码</el-button>
 									</div>
 								</el-form>
 							</div>
@@ -69,13 +69,10 @@
 				</div>
 			</div>
 		</div>
-		<!-- <FooTer></FooTer> -->
 	</div>
 </template>
 
 <script>
-	import Header1 from "./main/header.vue";
-	import Footer1 from "./main/footer.vue";
 	import Verify from 'vue2-verify'
 	
 	export default {
@@ -90,23 +87,28 @@
 
 			};
 			var validatorcode = (rule, value, callback) => {
-				if(!_this.$public.code(_this.userData.code)) {
-					return callback(new Error(this.$t("Verification.Code[1]")));//验证码格式有误
+				if(!value) {
+					return callback(new Error("请输入验证码"));//请输入验证码
 				} else {
 					callback();
 				}
+				// if(!_this.$public.code(_this.userData.code)) {
+				// 	return callback(new Error(this.$t("Verification.Code[1]")));//验证码格式有误
+				// } else {
+				// 	callback();
+				// }
 			};
 			var validatoropwd = (rule, value, callback) => {
 				if(!_this.$public.pwd(value)) {
-					callback(new Error(this.$t("Verification.Password[0]")));//请输入有效的密码
+					callback(new Error("请输入8-20位数字与字母组合登录密码"));//请输入8-20位数字与字母组合登录密码
 				} else {
 					callback();
 				}
 			};
 			var validatoropwd1 = (rule, value, callback) => {
 				if(!_this.$public.pwd(value)) {
-					callback(new Error(this.$t("Verification.Password[0]")));//请输入有效的密码
-				} else if(value !== this.userData.opwd) {
+					callback(new Error("请输入8-20位数字与字母组合登录密码"));//请输入8-20位数字与字母组合登录密码
+				} else if(value !== this.userData.password) {
 					callback(new Error(this.$t("Verification.Password[2]")));//两次输入密码不一致
 				} else {
 					callback();
@@ -119,8 +121,8 @@
 				userData: {
 					mobile: '', //手机号
 					code: '', //短信验证码
-					opwd: '', //密码1
-					opwd1: '' //密码2
+					password: '', //密码1
+					password_confirmation: '' //密码2
 				},
 				rules2: {
 					mobile: [{
@@ -131,11 +133,11 @@
 						validator: validatorcode,
 						trigger: 'blur'
 					}],
-					opwd: [{
+					password: [{
 						validator: validatoropwd,
 						trigger: 'blur'
 					}],
-					opwd1: [{
+					password_confirmation: [{
 						validator: validatoropwd1,
 						trigger: 'blur'
 					}]
@@ -145,7 +147,7 @@
 					disabled: false
                 },
 				loading: false, //防止表单重复提交标志位
-				whitchShow: 2, //哪一步显示
+				whitchShow: 1, //哪一步显示
 				langchange: 'cn',
 				unlock: null, //是否完成滑动解锁操作
 				isDisplay: 'display:none', //控制弹框出现和消失
@@ -199,19 +201,11 @@
 			},
 			submitPwd() {
 				var _this = this;
-				// if(!_this.$public.pwd(_this.userData.opwd)) {
-				// 	_this.$public.msg(_this.$t("Verification.Password[0]"), 'warning', _this);//密码格式有误
-				// 	return false;
-
-				// } else if(_this.userData.opwd !== _this.userData.opwd) {
-				// 	_this.$public.msg(_this.$t("Verification.Password[2]"), 'warning', _this);//两次密码不一致
-				// 	return false;
-				// }
 				_this.$refs['userData'].validate((valid) => {
 					if(valid) {
 						_this.loading = true;
-						_this.userData.opwd=_this.$md5(_this.userData.opwd);
-						_this.userData.opwd1=_this.$md5(_this.userData.opwd1);
+						_this.userData.password=_this.$md5(_this.userData.password);
+						_this.userData.password_confirmation=_this.$md5(_this.userData.password_confirmation);
 						_this.$http.post(_this.$http.find_opwd, _this.userData).then(function(response) {
 							_this.loading = false;
 							if(response.data.status == "200") {
@@ -224,8 +218,8 @@
 								_this.userData = {
 									mobile: '',
 									code: '',
-									opwd: '',
-									opwd1: ''
+									password: '',
+									password_confirmation: ''
 								}
 							}
 						}).catch(function(error) {});
@@ -245,7 +239,7 @@
 					if (!_this.$public.checkMobile(_this.regData.phone)) {
 						return _this.$public.msg("手机号输入错误", 'warning', _this);
 					} else {
-						_this.btnCode.disabled = true;
+					_this.btnCode.disabled = true;
 					//获取验证码
                         _this.$http.post(_this.$http.sendSms, {
                             phone: _this.regData.phone,
@@ -279,10 +273,9 @@
                         }).catch(function(error) {});
 					}
 				}
-            },
+			},
+		},
 		components: {
-			"HeaDer":Header1,
-		    "FooTer":Footer1,
 		    "Verify": Verify,
 		},
 		mounted:function(){
@@ -303,9 +296,6 @@
 				this.langchange = 'en';
 			}
 			this.btnCode.time = this.$t("changetpwd.list[4]"); //倒计时
-		},
-		created: function() {
-			
 		},
 	}
 </script>

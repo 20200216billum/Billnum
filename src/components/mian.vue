@@ -35,7 +35,6 @@
 				}else{
 					_this.isFixed=false;
 				}
-				console.log(_this.$route)
 	  	},
 	  	watch:{
 		  $route(to,from){

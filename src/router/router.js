@@ -67,7 +67,7 @@ export const otherRouter = {
     {
       path: 'forgetpwd',
       name: 'forgetpwd',
-      component: () => import('@/components/forget.vue')
+      component: () => import('@/components/forget_pwd.vue')
     }, //忘记密码
     {
       path: 'promotion',

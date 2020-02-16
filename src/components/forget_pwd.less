@@ -1,19 +1,50 @@
+@import '../assets/public.less';
 .forget_bg {
-    background: url("../assets/image/zhuce-img.png") no-repeat;
-    background-size: 100% 100%;
-    height: 880px;
+    background: #0A1017;
+    padding:74px 0 50px 0;
 }
 .forget_pwd_main{
-    height: 650px !important;
-    .main();
+    width: 520px;
+    margin: 0 auto;
     .header_forget{
-        .cont_header();
+        .welcome_reg {
+            color: #fff;
+            font-size: 34px;
+            text-align: center;
+        }
     }
     .form_warp{
         padding-top: 20px;
         .clearfix();
         &2 {
             width: 40%;
+        }
+        .demo-ruleForm {
+            width: 520px;
+            padding: 40px;
+            box-sizing: border-box;
+            background: @common-color;
+            border-radius: 10px;
+            margin-top: 50px;
+            /deep/.el-form-item .el-form-item__label     {
+                color: #fff;
+            }
+            /deep/.el-form-item__content .el-input .el-input__inner {
+                background: @common-color2;
+                border-color: @common-color2;
+                color: #fff;
+            }
+            .int-code {
+                color: #fff;
+                font-size: 16px;
+                margin: -5px 0 10px 0;
+            }
+            .again_code {
+                text-align: center;
+                font-size: 14px;
+                color:  @common-color3;
+                margin-top: 30px;
+            }
         }
         .el-form-item__label{ 
           color:#fff;
