@@ -1,7 +1,4 @@
-# b70
-
 > A Vue.js project
-
 ## Build Setup
 
 ``` bash

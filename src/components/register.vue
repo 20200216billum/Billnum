@@ -138,17 +138,29 @@
         </div>
         <div v-show="!noVer" class="no_ver">
             <p class="title">安全验证</p>
-            <el-form :model="verForm" :rules="rulesVer" ref="verForm" label-width="80px">
+            <el-form :model="verForm" :rules="rulesVer" ref="verForm" label-width="80px" label-position="top" class="ver_form">
+                <div class="tip">
+                    <p>我们已向如下邮箱发送了一组验证码</p>
+                    <p>123****@qq.com</p>
+                </div>
                 <el-form-item label="验证码" prop="code">
-                    <el-input v-model="verForm.code"></el-input>
+                    <el-input v-model="verForm.code" placeholder="请输入验证码"></el-input>
                 </el-form-item>
-                <el-form-item>
+                <div class="ver_code">
                     重新发送验证码>50s
-                </el-form-item>
+                </div>
                 <el-form-item>
                     <el-button class="reg_btn" @click="submitForm" :loading="loading1" type="primary">完成注册</el-button>
                 </el-form-item>
+                <div class="is-login">
+                    <span class="gray">已有账号？</span><router-link to="/login">立即登录</router-link>
+                </div>
             </el-form>  
+        </div>
+
+        <!-- 尾部 -->
+        <div class="login-footer">
+            © 2017 - 2020 Billum.com. All rights reserved
         </div>
     </div>
 </template>
@@ -188,8 +200,16 @@
                 }
             };
 
+            var verCode = (rule, value, callback) => {
+                if (!value) {
+                    return callback(new Error("验证码不能为空"));
+                } else {
+                    callback();
+                }
+            };
+
             return {
-                noVer: false,
+                noVer: true,
                 tabIndex: 2,
                 reg_popup: false,
                 code_inp: '',//验证码
@@ -212,7 +232,7 @@
                 },
                 rulesVer: {
                     code: [
-                        { required: true, message: '验证码不能为空', trigger: "blur" }
+                        { validator: verCode, trigger: "blur" }
                     ],
                 },
                 loading: false, // 防止表单重复提交标志
@@ -307,7 +327,7 @@
             submit() {
                 this.$refs.regData.validate(valid => {
                     if (valid) {
-                        this.reg_popup = true;
+                        this.noVer = false;
                         this.getCode();
                     }
                 })

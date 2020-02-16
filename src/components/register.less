@@ -241,4 +241,57 @@
         text-align: center;
         font-size: 34px;
     }
+    .tip {
+        color: #fff;
+        font-size: 16px;
+        text-align: center;
+        margin-bottom: 35px;
+        p {
+            &:nth-child(2) {
+                margin-top: 6px;
+            }
+        }
+    }
+    .ver_form {
+        width: 520px;
+        padding: 40px;
+        box-sizing: border-box;
+        background: @common-color;
+        border-radius: 10px;
+        margin-top: 55px;
+        /deep/.el-form-item .el-form-item__label     {
+            color: #fff;
+        }
+        /deep/.el-form-item__content .el-input .el-input__inner {
+            background: @common-color2;
+            border-color: @common-color2;
+            color: #fff;
+        }
+        .ver_code {
+            color: @common-color3;
+            font-size: 14px;
+            margin-bottom: 36px;
+        }
+        .el-button--primary {
+            width: 100%;
+            border: 0;
+        }
+        .is-login {
+            text-align: center;
+            font-size: 12px;
+            color: @common-color3;
+            margin-top: 35px;
+            margin-bottom: 10px;
+            a {
+                color: @main;
+            }
+        }
+    }
+}
+
+.login-footer {
+    text-align: center;
+    color: #8E8E93;
+    font-size: 14px;
+    margin-top: 160px;
 }

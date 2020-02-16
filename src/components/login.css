@@ -104,6 +104,9 @@
     opacity: 1;
   }
 }
+.el-form-item__label {
+  line-height: 1;
+}
 /*1280px宽度*/
 .public_wrapper {
   min-width: 1280px;
