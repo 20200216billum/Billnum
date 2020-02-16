@@ -104,6 +104,9 @@
     opacity: 1;
   }
 }
+.el-form-item__label {
+  line-height: 1;
+}
 /*1280px宽度*/
 .public_wrapper {
   min-width: 1280px;
@@ -255,7 +258,10 @@
   color: #fff;
 }
 #app .el-form-item.is-error .el-input__inner {
-  border-color: #F56C6C;
+  border-color: #30D5D8;
+}
+.el-form-item__error {
+  color: #30D5D8;
 }
 .el-pagination {
   text-align: right;
@@ -3309,10 +3315,6 @@ a {
   color: #a8a8ad;
   text-align: center;
 }
-.mainy .main .reg_popup .popup_cen .reg_btn {
-  background: #f5d478;
-  color: #313132;
-}
 .mainy .main .reg h1 {
   color: #fff;
 }
@@ -3328,19 +3330,8 @@ a {
   color: #fff;
   border: 1px solid #1f1f2e;
 }
-.mainy .main .reg .login_btn .el-button--primary {
-  background: #f4d374;
-  color: #313132;
-  border: none;
-}
-.mainy .main .reg .wangji {
-  color: #fff;
-}
 .mainy .register {
   background: #151521;
-}
-.mainy .register .reg_popup {
-  background: rgba(0, 0, 0, 0.2);
 }
 .mainy .register .reg_popup .popup_cen {
   background: #1f1f2e;
@@ -3362,10 +3353,6 @@ a {
   color: #a8a8ad;
   text-align: center;
 }
-.mainy .register .reg_popup .popup_cen .reg_btn {
-  background: #f5d478;
-  color: #313132;
-}
 .mainy .register .reg h1 {
   color: #fff;
 }
@@ -3377,17 +3364,9 @@ a {
   color: #ffffff;
 }
 .mainy .register .reg .el-input__inner {
-  background: #1f1f2e;
+  background: #202D3C;
   color: #fff;
   border: 1px solid #1f1f2e;
-}
-.mainy .register .reg .login_btn .el-button--primary {
-  background: #f4d374;
-  color: #313132;
-  border: none;
-}
-.mainy .register .reg .wangji {
-  color: #fff;
 }
 .mainy .forget {
   background: #151521;
@@ -3406,11 +3385,6 @@ a {
   background: #1f1f2e;
   color: #fff;
   border: 1px solid #1f1f2e;
-}
-.mainy .forget .reg .login_btn .el-button--primary {
-  background: #f4d374;
-  color: #313132;
-  border: none;
 }
 .mainy .addSite .auto .ulList .for:hover {
   background: #4f4f4f;
@@ -6026,7 +6000,7 @@ input {
   height: 35px;
   display: block;
   cursor: pointer;
-  color: #a8a8ad;
+  color: #fff;
 }
 .footer .footer_mian .footerWarp .footerRight span a {
   display: inline-block;

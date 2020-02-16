@@ -79,6 +79,16 @@ export const otherRouter = {
       name: 'promotion',
       component: () => import('@/components/notice/help.vue')
     }, //帮助中心
+    {
+      path: 'aboutus',
+      name: 'aboutus',
+      component: () => import('@/components/notice/about-us.vue')
+    }, //关于我们
+    {
+      path: 'service',
+      name: 'service',
+      component: () => import('@/components/notice/service.vue')
+    }, //服务条款
     // 跑得快
     {
       path: 'guessing',

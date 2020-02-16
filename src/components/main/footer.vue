@@ -9,33 +9,47 @@
 				<div class="footerWarp">
 					<div class="footerRight">
 						<div class="one">
-							<h4>{{$t('Gic.footer[0]')}}</h4>
+							<h4>条款协议</h4>
 							<span @click="clearIndex">
-								<router-link :to="{path:'/help',query: {name_cn:'1',}}">{{$t('Gic.footer[4]')}}</router-link>
+								<router-link :to="{path:'/help',query: {name_cn:'9'}}">用户协议</router-link>
 							</span>
 							<span @click="clearIndex">
-								<router-link :to="{path:'/help',query: {name_cn:'4',}}">{{$t('Gic.footer[5]')}}</router-link>
+								<router-link :to="{path:'/help',query: {name_cn:'4',}}">隐私条款</router-link>
 							</span>
 							<span @click="clearIndex">
-								<router-link :to="{path:'/help',query: {name_cn:'9'}}">{{$t('Gic.footer[6]')}}</router-link>
+								<router-link :to="{path:'/help',query: {name_cn:'3',}}">法律声明</router-link>
 							</span>
-
 						</div>
-						<!-- <div class="one">
-							<h4>{{$t('Gic.footer[1]')}}</h4>
-							<span @click="clearIndex">
-								<router-link :to="{path:'/help',query: {name_cn:'8'}}">{{$t('Gic.footer[7]')}}</router-link> 
-							</span>
-						</div> -->
 						<div class="one">
-							<h4>{{$t('Gic.footer[2]')}}</h4>
+							<h4>工具支持</h4>
+							<span @click="clearIndex">
+								<router-link :to="{path:'/help',query: {name_cn:'8'}}">交易指南</router-link> 
+							</span>
+							<span @click="clearIndex">
+								<router-link :to="{path:'/help',query: {name_cn:'8'}}">交易规则</router-link> 
+							</span>
+						</div>
+						<div class="one">
+							<h4>关于</h4>
+							<span @click="clearIndex">
+								<router-link :to="{path:'/aboutus',query: {name_cn:'1'}}">关于我们</router-link> 
+							</span>
+							<span @click="clearIndex">
+								<router-link :to="{path:'/help',query: {name_cn:'7'}}">关于反洗钱</router-link> 
+							</span>
+						</div>
+						<div class="one">
+							<h4>联系我们</h4>
 							<span>{{email}}</span>
+							<span class="three-img">
+								<img src="../../assets/img/footer/f-img.png">
+								<img src="../../assets/img/footer/t-img.png">
+								<img src="../../assets/img/footer/h-img.png">
+							</span>
+							<span class="copy">
+								©2017 - 2020 Billum All Rights Reserved
+							</span>
 						</div>
-						<div class="one">
-								<h4>{{$t('Gic.footer[3]')}}</h4>
-								<span @click="xiazai">{{$t('Gic.footer[8]')}}</span> 
-						</div>
-						
 					</div>
 				</div>
 			</section>
@@ -84,6 +98,8 @@
 </script>
 <style lang="less">
 	.footer{
+		background: #030609;
+		border-top: 2px solid #343A3A;
 		.tankuang2{
 			text-align: center;
 			p{
@@ -93,6 +109,16 @@
 		.one{
 			float:left;
 			width:170px;
+			.three-img {
+				img {
+					width: 24px;
+					margin-right: 20px;
+				}
+			}
+			.copy {
+				white-space: nowrap;
+				font-size: 14px;
+			}
 		}
 
 		/* .footerWarp{
