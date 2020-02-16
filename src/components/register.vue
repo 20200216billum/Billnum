@@ -24,55 +24,52 @@
                     </li>
                 </ul>
                 <!-- 手机注册 -->
-                <!-- <el-form v-if="tabIndex == 1" class="login_form" :model="regData1" ref="regData1" :label-position="labelPosition" :rules="rules1">
-                    <el-form-item class="quhao">
-                        <div class="select">
-                            <div class="s-defult">
-                                <img :src="getImgByCode()" alt="" class="s-img">
-                                <span class="s-name">+{{regData.area_code}}</span>
-                            </div>
-                            <el-select v-model="regData.area_code" :placeholder="$t('regLA[4]')">
-                                <el-option v-for="item in options" :key="item.id" :label="item.id" :value="item.id">
-                                    <img :src="getImgUrl(item.name)" alt="" class="c-img">
-                                    <span class="c-name">{{item.name}}</span>
-                                </el-option>
-                            </el-select>
-                        </div>
-                        <div class="input">   
-                            <el-input class="mobile" prop="phone" v-model="regData.phone" auto-complete="off" :placeholder="$t('regLA[5]')"suffix-icon="el-icon-user">
-                            </el-input>
-                        </div>
+                <el-form v-show="tabIndex == 1" class="login_form" :model="phoneForm" ref="phoneForm" :label-position="labelPosition" :rules="rules">
+                    <!-- 手机号码 -->
+                    <el-form-item label="手机号码" prop="phone" class="phone-area">
+                        <el-select v-model="phoneForm.areaindex" :placeholder="$t('regLA[4]')">
+                            <el-option v-for="item in options" :key="item.id" :label="'+' + item.id" :value="item.id"></el-option>
+                        </el-select>
+                        <el-input class="mobile" v-model="phoneForm.phone" auto-complete="off" placeholder="请输入手机号码"></el-input>
                     </el-form-item>
-                    <el-form-item class="yanzhengma">
+                    <!-- 登录密码 -->
+                    <el-form-item :label="$t('Gic.forgetpwd[7]')" prop="password">
+                        <el-input class="mobile" v-model="phoneForm.password" auto-complete="off"
+                            :placeholder="$t('Gic.forgetpwd[8]')" type="password">
+                        </el-input>
+                    </el-form-item>
+                    <!-- 确认密码 -->
+                    <el-form-item :label="$t('Gic.forgetpwd[9]')" prop="password_confirmation">
+                        <el-input class="mobile" v-model="phoneForm.password_confirmation" auto-complete="off"
+                            :placeholder="$t('Gic.forgetpwd[10]')" type="password">
+                        </el-input>
+                    </el-form-item>
+                    <!-- 邀请码 -->
+                    <el-form-item :label="$t('Gic.Register[1]')" prop="recommend">
+                        <el-input class="mobile" v-model="phoneForm.recommend" auto-complete="off" :placeholder="$t('Gic.Register[2]')">
+                        </el-input>
+                    </el-form-item>
+                    <div class="register-agreement">
+                        <span class="gray">注册即代表同意</span><span class="agree" @click="agreement(1)">《服务条款》</span><span class="gray">和</span><span class="agree" @click="agreement(2)">《隐私条款》</span>
+                    </div>
+                    <div class="login_btn">
+                        <el-button type="primary" @click="submitPhone" :loading="loading">{{$t('Gic.Register[3]')}}</el-button>
+                    </div>
+                    <div class="now-register">
+                        <span class="no-user">已有账号？</span><router-link to="/login">立即登陆</router-link>
+                    </div>
+                </el-form>
+                    <!-- <el-form-item class="yanzhengma">
                         <div class="codeInput">
-                            <el-input class="mobile" prop="code" v-model="regData.code" auto-complete="off" :placeholder="$t('forgetpwd.titleOne[4]')">
+                            <el-input class="mobile" prop="code" v-model="phoneForm.code" auto-complete="off" :placeholder="$t('forgetpwd.titleOne[4]')">
                             </el-input>
                         </div>
                         <div class="btn_code" @click="getCode()">
                             <el-input type="button" :value="'| '+ $t(btnCode.time)" :disabled='btnCode.disabled'></el-input>
                         </div>
-                    </el-form-item>
-                    <el-form-item>
-                        <el-input class="mobile" prop="password" v-model="password" auto-complete="off" :placeholder="$t('regLA[6]')" type="password" suffix-icon="el-icon-lock">
-                        </el-input>
-                        <span class="password" style="position: relative;top:15px;padding-left: 15px;color: red;"></span> 
-                    </el-form-item>
-                    <el-form-item>
-                        <el-input class="mobile" prop="c_password" v-model="c_password" auto-complete="off" :placeholder="$t('regLA[7]')" type="password" suffix-icon="el-icon-lock">
-                        </el-input>
-                        <span class="c_password" style="position: relative;top:15px;padding-left: 15px;color: red;"></span>
-                    </el-form-item>
-                    <el-form-item>
-                        <el-input class="mobile" prop="recommend" v-model="regData.recommend" auto-complete="off" :placeholder="$t('regLA[8]')" suffix-icon="el-icon-position">
-                        </el-input>
-                    </el-form-item>
-                    <el-checkbox v-model='checked' name="type">{{$t('regLA[9]')}}</el-checkbox><a href="javascript:;" class="xieyi" @click="agreementcn">《{{$t('regLA[10]')}}》</a>
-                    <el-form-item>
-                        <el-button type="primary" @click="submit">{{$t('regLA[11]')}}</el-button>
-                    </el-form-item>
-                </el-form> -->
+                    </el-form-item> -->
                 <!-- 邮箱注册 -->
-                <el-form v-if="tabIndex == 2" class="login_form" :model="regData" ref="regData" :label-position="labelPosition" :rules="rules1">
+                <el-form v-show="tabIndex == 2" class="login_form" :model="regData" ref="regData" :label-position="labelPosition" :rules="rules">
                     <!-- 邮箱地址 -->
                     <el-form-item :label="$t('Gic.forgetpwd[3]')" prop="email">
                         <el-input class="mobile" v-model="regData.email" auto-complete="off" :placeholder="$t('Gic.forgetpwd[4]')">
@@ -96,7 +93,7 @@
                         </el-input>
                     </el-form-item>
                     <div class="register-agreement">
-                        <span class="gray">注册即代表同意</span><span class="agree" @click="agreementcn">《服务条款》</span><span class="gray">和</span><span class="agree" @click="agreementcn">《隐私条款》</span>
+                        <span class="gray">注册即代表同意</span><span class="agree" @click="agreement(1)">《服务条款》</span><span class="gray">和</span><span class="agree" @click="agreement(2)">《隐私条款》</span>
                     </div>
                     <div class="login_btn">
                         <el-button type="primary" @click="submit" :loading="loading">{{$t('Gic.Register[3]')}}</el-button>
@@ -112,8 +109,7 @@
                 <div class="el-message-box">
                     <div class="el-message-box__header">
                         <div class="el-message-box__title">
-                            <span class="el-message-box__word">{{$t('regLA[10]')}}</span>
-                            <!--用户协议-->
+                            <span class="el-message-box__word">{{ agreeType == 1 ? "服务条款" : "隐私条款" }}</span>
                         </div>
                         <button type="button" aria-label="Close" class="el-message-box__headerbtn" @click="close_moble()">
                             <i class="el-message-box__close el-icon-close"></i>
@@ -140,7 +136,7 @@
             <p class="title">安全验证</p>
             <el-form :model="verForm" :rules="rulesVer" ref="verForm" label-width="80px" label-position="top" class="ver_form">
                 <div class="tip">
-                    <p>我们已向如下邮箱发送了一组验证码</p>
+                    <p>我们已向如下{{ tabIndex == 1 ? "手机号" : "邮箱" }}发送了一组验证码</p>
                     <p>123****@qq.com</p>
                 </div>
                 <el-form-item label="验证码" prop="code">
@@ -168,6 +164,13 @@
     export default {
         data() {
             var _this = this;
+            var validatePhone = (rule, value, callback) => {
+                if (!_this.$public.checkMobile(value)) {
+                    return callback(new Error("手机号格式不正确"))     //手机
+                } else {
+                    callback()
+                }
+            }
             var email = (rule, value, callback) => {
                 if (!_this.$public.email(value)) {
                     return callback(new Error(_this.$t('Gic.forgetpwd[12]')))     //邮箱
@@ -185,10 +188,10 @@
             var validateopwd2 = (rule, value, callback) => {
                 if (value === '') {
                     callback(new Error(_this.$t('Gic.forgetpwd[15]')))// 请再次输入密码
-                } else if (value !== this.regData.password) {
-                    callback(new Error(_this.$t('Gic.forgetpwd[16]')))// 两次输入密码不一致!
-                } else {
+                } else if (value == this.regData.password ||  value == this.phoneForm.password) {
                     callback()
+                } else {
+                    callback(new Error(_this.$t('Gic.forgetpwd[16]')))// 两次输入密码不一致!
                 }
             }
 
@@ -210,11 +213,13 @@
 
             return {
                 noVer: true,
-                tabIndex: 2,
+                tabIndex: 1,
+                agreeType: 1,
                 reg_popup: false,
                 code_inp: '',//验证码
-                regData1: {
-                    email: '',
+                phoneForm: {
+                    phone: '',
+                    areaindex: "86",
                     password: '',
                     password_confirmation: '',
                     recommend: '',
@@ -227,34 +232,11 @@
                     recommend: '',
                     code: '',   //验证码
                 },
-                verForm: {
-                    code: ""
-                },
-                rulesVer: {
-                    code: [
-                        { validator: verCode, trigger: "blur" }
-                    ],
-                },
-                loading: false, // 防止表单重复提交标志
-                loading1: false, // 防止表单重复提交标志
-                labelPosition: 'top', // 插件自带
-                password: '',
-                c_password: '',
-                checked: true,
-                options: [
-                    { id: 86, name: '中国', },
-                    { id: 82, name: '韩国', },
-                    { id: 81, name: '日本', },
-                    { id: 60, name: '马来西亚', },
-                    { id: 886, name: '台湾', }
-                ],
-                value: '',
-                btnCode: {
-                    time: "getCode[0]", //倒计时
-                    disabled: false
-                },
-                dialogVisible1: 'display:none',
-                rules1: {
+                rules: {
+                    phone: [{
+                        validator: validatePhone,
+                        trigger: 'blur'
+                    }],
                     email: [{
                         validator: email,
                         trigger: 'blur'
@@ -272,11 +254,40 @@
                         trigger: 'blur'
                     }]
                 },
+                verForm: {
+                    code: ""
+                },
+                rulesVer: {
+                    code: [
+                        { validator: verCode, trigger: "blur" }
+                    ],
+                },
+                loading: false, // 防止表单重复提交标志
+                loading1: false, // 防止表单重复提交标志
+                labelPosition: 'top', // 插件自带
+                password: '',
+                c_password: '',
+                checked: true,
+                options: [
+                    { id: 86, name: '+86', },
+                    { id: 82, name: '+82', },
+                    { id: 81, name: '+81', },
+                    { id: 60, name: '+60', },
+                    { id: 886, name: '+886', }
+                ],
+                value: '',
+                btnCode: {
+                    time: "getCode[0]", //倒计时
+                    disabled: false
+                },
+                dialogVisible1: 'display:none',
             }
         },
         methods: {
             changeTabRegister(index) {
                 this.tabIndex = index;
+                this.$refs.phoneForm.resetFields();
+                this.$refs.regData.resetFields();
             },
             close_btn() {
                 var _this = this;
@@ -309,8 +320,9 @@
                 }
             },
             //获取用户协议
-            agreementcn() {
+            agreement(type) {
                 var _this = this;
+                _this.agreeType = type;
                 if (_this.$t('reg.[0]') == 'CN') {
                     var _data = 'agreementcn'
                 } else if (_this.$t('reg.[0]') == 'EN') {
@@ -323,7 +335,16 @@
                     }
                 })
             },
-            //提交注册
+            //手机注册
+            submitPhone() {
+                this.$refs.phoneForm.validate(valid => {
+                    if (valid) {
+                        this.noVer = false;
+                        this.getCodePhone();
+                    }
+                })
+            },
+            // 邮箱注册
             submit() {
                 this.$refs.regData.validate(valid => {
                     if (valid) {
@@ -332,7 +353,25 @@
                     }
                 })
             },
-            //验证码
+            //手机验证码
+            getCodePhone() {
+                var _this = this;
+                _this.loading = true;
+                _this.$http.post(_this.$http.sendSms, {
+                    phone: _this.phoneForm.phone,
+                    area_code:_this.phoneForm.areaindex,
+                    from: 'register'
+                }).then(function (response) {
+                    if (response.data.code == "200") {
+                        _this.loading = false;
+                        _this.reg_popup = true;
+                    } else {
+                        _this.loading = false;
+                        _this.$public.msg(response.data.msg, 'warning', _this);
+                    }
+                }).catch(function (error) {});
+            },
+            //邮箱验证码
             getCode() {
                 var _this = this;
                 _this.loading = true;

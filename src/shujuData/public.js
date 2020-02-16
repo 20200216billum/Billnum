@@ -219,9 +219,6 @@ Public.timestampToTimeshian1 = function (timestamp) {
 }
 // 手机正则
 Public.checkMobile = function (sMobile) {
-  //	var reg = /^1[3|4|5|7|8|6|9][0-9]{9}$/;
-  //	var phone = sMobile.toString().replace(/[ ]/g,"");  
-	
   var phone = $.trim(sMobile)
   var reg = /^1\d{10}$/
   return reg.test(phone) 

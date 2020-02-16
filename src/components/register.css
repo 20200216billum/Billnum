@@ -385,6 +385,23 @@
   background: #182330;
   border-radius: 0 0 10px 10px;
 }
+.register .reg .login_form .phone-area {
+  position: relative;
+}
+.register .reg .login_form .phone-area .el-select {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80px;
+  z-index: 9;
+}
+.register .reg .login_form .phone-area .el-select /deep/ .el-input__inner {
+  border-right: 0;
+  border-radius: 4px 0 0 4px;
+}
+.register .reg .login_form .phone-area /deep/ .mobile .el-input__inner {
+  padding-left: 90px;
+}
 .register .reg .login_form .register-agreement .gray {
   color: #828EA1;
   font-size: 14px;
