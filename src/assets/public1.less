@@ -1,0 +1,369 @@
+
+//白天模式公用颜色
+//夜间模式公用颜色
+@homeNav: #181B2C;
+@homeborder: #292B44;
+@homeColor: #B4B8B9;
+@homeBg: #181b2c; //主背景颜色
+@homeCenterBg: #171c2b; //（不用）
+@homeborderNav: #262a45; //边框颜色
+@homeColorh2: #E8E9ED; //主字体颜色
+@homeColorh3: #EDEEE6; //次字体颜色
+@homeColorh4: #A8ABBE; //次次字体颜色
+@homeBgBtn: #265FEE; //按钮颜色
+@homeinputColor: #343952; //输入框字体颜色
+@homeinputBg: #1a1f30; //输入框背景颜色
+@homeHover: #1b2134;
+@rise: #03c087; //绿色
+@fall: #e76d42; //红色
+// 公用背景颜色
+@Bluecolor: #409EFF;
+@Successcolor: #67C23A;
+@Warningcolor: #E6A23C;
+@Warningcolor2: #FBF6D9;
+@Dangercolor: #F56C6C;
+@Infocolor: #909399;
+@wrapGrayColor: #F4F3F8;
+@redColor: #F55D54;
+@main: #409EFF;
+@header_color: #1c1b29;
+@DackgroundColor: #f2f3f8;
+@baiColor: #fefefe;
+@headerline: #D2D0D1;
+// 公用字体颜色
+@zhuColor: #303133;
+@chiColor: #606266;
+@cunColor: #909399;
+@zhanColor: #C0C4CC;
+@headerColor: #c5cce8;
+@footerColor: #b5bada;
+// 公用边框颜色
+@border1: #DCDFE6;
+@border2: #E4E7ED;
+@border3: #EBEEF5;
+@border4: #f2f3f8;
+// 公用字体大小
+@hFontSize: 34px;
+@h1FontSize: 20px;
+@h2FontSize: 18px;
+@h3FontSize: 16px;
+@h4FontSize: 14px;
+@h5FontSize: 13px;
+@h6FontSize: 12px;
+@Bluecolor: #409EFF;
+@zhifubaoColor: #2D9CDA;
+@header_height: 60px;
+@index_width: 1675px;
+@MinWidth: 1280px;
+
+// 白天主题
+@cardBg: #181B2C;//背景颜色
+@DaiDackGroundColor2: #265FEE;
+@DaiDackGroundColor3: #1a1f30;
+@DaiDackGroundColor4: #1b2134;
+@DaiDackGroundColor5: #409EFF;
+@DaiDackGroundColor6: #E6A23C;
+@DaiDackGroundColor7: #F8F7FC;
+@DaiDackGroundColor8: #E6A23C;
+@DaiDackGroundColor9: #E6A23C;
+@DaiDackGroundColor10: #ffffff;
+@DaiDackGroundColor11: #f6f6f6;
+@DaiDackGroundColor12: #f8f9fc;
+@DaiDackGroundColor13: #edeef3;
+@DaiDackGroundColor14: #181b2c;
+@DaiDackGroundColor15: #909399;
+@DaiDackGroundColor16: #cbd6df;
+@DaiDackGroundColor17: #ffffff;
+
+@DaiFontSizeColor1: #B4B8B9;//字体颜色
+@DaiFontSizeColor2: #E8E9ED;
+@DaiFontSizeColor3: #EDEEE6;
+@DaiFontSizeColor4: #A8ABBE;
+@DaiFontSizeColor5: #343952;
+@DaiFontSizeColor6: #1c1b29;
+@DaiFontSizeColor7: #f2f3f8;
+@DaiFontSizeColor8: #fefefe;
+@DaiFontSizeColor9: #D2D0D1;
+@DaiFontSizeColor10: #303133;
+@DaiFontSizeColor11: #606266;
+@DaiFontSizeColor12: #909399;
+@DaiFontSizeColor13: #d1daff;
+@DaiFontSizeColor14: #d8d8d8;
+@DaiFontSizeColor15: #000000;
+@DaiFontSizeColor16: #323232;
+@DaiFontSizeColor17: #666666;
+@DaiFontSizeColor18: #6b6b6b;
+@DaiFontSizeColor19: #9a9a9a;
+@DaiFontSizeColor20: #409EFF;
+@DaiFontSizeColor21: #46C43D;
+@DaiFontSizeColor22: #fefefe;
+@DaiFontSizeColor23: #C0C4CC;
+@DaiFontSizeColor24: #878787;
+
+@DaiDorderColor1: #292B44;//边框颜色
+@DaiDorderColor2: #262a45;
+@DaiDorderColor3: #DCDFE6;
+@DaiDorderColor4: #E4E7ED;
+@DaiDorderColor5: #EBEEF5;
+@DaiDorderColor6: #f2f3f8;
+@DaiDorderColor7: #dfdfdf;
+@DaiDorderColor8: #9298B0;
+@DaiDorderColor9: #dfdfdf;
+
+@DaiOtherColor1: #03c087;//其它颜色 (绿色)
+@DaiOtherColor2: #e76d42;//（红色）
+@DaiOtherColor3: #ffffff;
+@DaiOtherColor4: #ffffff;
+@DaiOtherColor5: #ffffff;
+@DaiOtherColor6: #ffffff;
+
+/*
+ 
+//清除浮动
+ * */
+
+.main {
+    width: 100%;
+    min-width: 1280px;
+}
+
+@support-ie-version: 7;
+.clearfix() {
+    &:before,
+    &:after {
+        display: table;
+        content: "";
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+.clearfix() when (@support-ie-version < 8) {
+    *zoom: 1;
+}
+
+
+/**
+ *     
+ *  块元素居中函数
+ */
+
+.contents(@w) {
+    width: @w;
+    margin: 0 auto;
+}
+
+//页面主题部分框架
+.main() {
+    .contents(1240px);
+    padding: 80px 0 20px 40px;
+}
+
+//高和行高合并
+.ht(@h) {
+    height: @h;
+    line-height: @h;
+}
+
+//登录注册头部样式公用
+.cont_header() {
+    .welcome_reg {
+        font-size: 28px;
+        color: @zhuColor;
+        margin-bottom: 20px;
+    }
+}
+
+//表单样式
+.clform() {
+    .el-form-item__label {
+        line-height: 24px;
+        font-size: @h6FontSize;
+    }
+    .el-form--label-top .el-form-item__label {
+        padding: 0;
+    }
+    .el-input__inner {
+        .ht(44px);
+    }
+}
+
+.prompt(@h) {
+    float: left;
+    width: 50%;
+    padding: 35px 0 0 80px;
+    .warp_prompt {
+        p {
+            line-height: @h;
+            font-size: @h6FontSize;
+        }
+    }
+}
+
+// 清除浮动
+.Scavengingfloating() {
+    overflow: hidden;
+    zoom: 1;
+}
+/*1280px宽度*/
+
+.breadth() {
+    min-width: @MinWidth;
+    margin: 0 auto;
+    max-width: 1520px;
+}
+
+// 页面主体居中
+.public_wrapper {
+    .breadth();
+    padding: 20px 0;
+}
+
+//盒子公用样式
+.public_box(@h) {
+    .main_style {
+        height: @h;
+        border-radius: 10px;
+        .header_public_style {
+            .ht(60px);
+            .title {
+                font-size: @h2FontSize;
+                padding-left: 30px;
+            }
+        }
+        .cont_public_style {
+            padding: 30px 30px 20px;
+        }
+    }
+}
+
+//个人中心（安全中心公用样式） (star)
+.security_main_title(@h) {
+    .ht(@h);
+    // background: #fff;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding-left: 30px;
+    font-size: @h1FontSize;
+    color: @zhuColor;
+    margin-bottom: 4px;
+}
+
+.security_cont() {
+    padding: 0 30px;
+    // background: #fff;
+    .lis {
+        .ht(54px);
+        color: @cunColor;
+        font-size: @h3FontSize;
+        // border-bottom: 1px solid @border3 ;
+        .name,
+        .num {
+            display: inline-block;
+            text-align: left;
+            width: 250px;
+        }
+        .num {
+            width: 31%;
+        }
+    }
+}
+
+//个人中心（安全中心公用样式） (end)
+//止盈止损 css
+.sliderLimitWarp {
+    padding-top: 18px;
+    p {
+        font-size: 12px;
+    }
+    .clearfix();
+    .zhiying {
+        float: left;
+        width: 45%;
+    }
+    .zhishun {
+        float: right;
+        width: 45%;
+        padding-right: 10px;
+    }
+    .zhiying {
+        //      padding-right: 2%px;
+    }
+}
+
+.index_background_header() {
+    font-size: 38px;
+    text-align: center;
+    padding-top: 85px;
+}
+.MainArea_list:hover{
+    transition: all 0.5s;
+    transform: scale(1.1);
+    // background:#55597C;
+}
+.mainy .el-table, .el-table__expanded-cell{
+    background: transparent;
+}
+.mainy .transfer{
+    background: transparent;
+}
+.stopWarp h2{
+    margin-bottom: 10px;
+}
+.mainy .transaction{
+    border-top: 10px solid #262a45;
+}
+.el-table__row:hover{
+    transition: all 0.8s;
+    // transform: translateX(15px);
+    box-shadow: -2px 2px 8px 2px #888;
+    transform: scale(1.01);
+}
+.mainy .gg_order_wrapper .headertongji .tongji{
+    background: #1a1f30;
+    h2{
+        span{
+            color:#E8E9ED;
+        }
+    }
+}
+.mainb .exchange .exchange_mian .transaction .transaction_main{
+    border-left:10px solid #F2F3F8;
+}
+.mainy #welcome_reg{
+    color:#c5cce8;
+}
+.mainy #mobile_reg{
+    color:#c5cce8;
+}
+.mainy .el-message-box{
+    background-color: #181B2C !important;
+}
+.mainy .exchange .exchange_mian .HistoricalEntrustment .tojingtotle span{
+    color:#E8E9ED;
+}
+.mainy .el-message-box__title span{
+    color:#F4F5EF;
+}
+.index_main #home{
+    min-width:1280px;
+    margin: 0 auto; 
+}
+.footer .footer_mian{
+    width: 1280px;
+    margin: 0 auto;
+}
+.payment_cont{
+   box-shadow: 2px 2px 2px #999, -2px -2px 2px #999;
+   border-radius: 10px; 
+}
+.gg_order_wrapper{
+    min-width: 1280px;
+    max-width: 1360px;
+    margin: 0 auto;
+}
+.HistoricalEntrustment .gg_order_wrapper{
+    width: auto;
+    max-width: none;
+}

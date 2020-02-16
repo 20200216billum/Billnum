@@ -1,0 +1,85 @@
+// 提币地址管理
+.transfer {
+    .importent{
+        font-size: 12px;
+        padding: 10px 0 0 30px;
+        position: relative;
+        top: 30px;
+        width: 680px;
+        span{}
+    }
+    .money_addre_container {
+        .public_wrapper();
+        min-height: 600px;
+        .el-input,.el-input--suffix{
+            width: 95%;
+        }
+        .selectWarp,.bigWarp{
+            float: left;
+        }
+        .selectWarp{
+            width: 20%;
+        }
+        .bigWarp{
+            width: 100%;
+            .clearfix();
+            position: relative;
+            overflow: hidden;
+            .el-form-item{
+                width: 30%;
+            }
+            .canUserWall{
+                position: absolute;
+                top: -41px;
+                left: 50px;
+                // color: @cunColor;
+            }
+        }
+       
+        .title {
+            .el-breadcrumb__inner {
+                font-size: @h3FontSize;
+            }
+            .el-icon-arrow-right {
+                font-size: @h3FontSize;
+            }
+            .is-link {
+                font-weight: 100;
+            }
+        }
+        .bit_addre {
+            margin-top: 20px;
+            .el-card__body {
+                overflow: hidden;
+            }
+            .el-button {
+                float: right;
+                padding: 13px 60px;
+            }
+            .el-form {
+                display: flex;
+                justify-content: space-between;
+                .el-form-item {
+                    display: inline-block;
+                    margin-left: 2%;
+                    .bit_type {
+                        border-radius: 4px;
+                        text-align: center;
+                    }
+                    .el-form-item__label {
+                        padding: 0;
+                    }
+                }
+            }
+        }
+        .addre_list {
+            margin-top: 40px;
+            .el-table__body-wrapper {
+                min-height: 300px;
+                .el-table__empty-block {
+                    min-height: 300px;
+                }
+            }
+        }
+    }
+}

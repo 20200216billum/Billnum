@@ -1,0 +1,220 @@
+//  资产
+.zi_chan_wrapper {
+    .zi_chan_container {
+        .public_wrapper();
+        width: 1260px;
+        .top_left {
+            float: left;
+            width: 540px;
+            height: 130px;
+            padding: 0 15px;
+            box-sizing: border-box;
+            background: url("../../assets/image/JYZH-bg-img.png") no-repeat;
+            border-radius: 5px;
+        }
+        .top_right {
+            float: right;
+            width: 540px;
+            height: 130px;
+            padding: 0 15px 0 20px;
+            box-sizing: border-box;
+            background: url("../../assets/image/lczh-bg-img.png") no-repeat;
+            border-radius: 5px;
+        }
+        .left_right_on {
+            width: 722px;
+            border: 1px solid @main;
+            position: relative;
+            &:before {
+                content: "";
+                display: block;
+                height: 17px;
+                border: 1.5px solid @main;
+                position: absolute;
+                top: 20px;
+                left: 0;
+            }
+        }
+        .top_top {
+            color: #fff;
+            font-weight: 500;
+            margin-top: 22px;
+            span:first-child {
+                float: left;
+                width: 40%;
+            }
+            span:last-child {
+                float: right;
+                width: 40%;
+                margin-right: -20px;
+            }
+        }
+        .top_content {
+            width: 100%;
+            height: 65px;
+            margin-top: 26px;
+            position: relative;
+            .t_c_ul {
+                li {
+                    display: inline-block;
+                    width: 40%;
+                    color: #fff;
+                    position: absolute;
+                    .t_c_name {
+                        color: @YeFontSizeColor6;
+                    }
+                    .t_c_num {
+                        margin-top: 10px;
+                    }
+                    &:nth-child(2) {
+                        margin-left: 394px;
+                        right: -23px;
+                    }
+                }
+            }
+        }
+        .top {
+            padding: 0;
+            background: @cardBg;
+            border-radius: 4px;
+            margin-top: 10px;
+            .title {
+                float: left;
+                font-size: @h1FontSize;
+                p {
+                    &:nth-child(2) {
+                        color: @YeFontSizeColor6;
+                        font-size: @h4FontSize;
+                        margin-top: 10px;
+                    }
+                }
+            }
+            .top_header_right {
+                float: right;
+                margin-top: 5px;
+                position: relative;
+                &>div {
+                    background: @YeDackGroundColor1;
+                    width: 480px;
+                    height: 40px;
+                    line-height: 40px;
+                    padding: 0 10px;
+                    display: inline-block;
+                    box-sizing: border-box;
+                    position: absolute;
+                    .transfer_name {
+                        color: #fff;
+
+                    }
+                    .transfer_input {
+                        display: inline-block;
+                        width: 210px;
+                        .el-input__inner {
+                            border: 0;
+                        }
+                    }
+                    .el-select {
+                        width: 90px;
+                        position: absolute;
+                        right: 10px;
+                        .el-input__inner {
+                            border: 0;
+                            color: @main;
+                        }
+                    }
+                }
+                .qiehuan {
+                    margin: 0 10px;
+                    position: absolute;
+                    top: 9px;
+                    left: 404px;
+                    cursor: pointer;
+                }
+                .financial {
+                    top: 0; 
+                    left: 0;
+                }
+                .transaction {
+                    border: 0;
+                    top: 0;
+                    right: 170px;
+                }
+                .transfer {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 158px;
+                    border: 0;
+                    height: 40px;
+                    margin-left: 10px;
+                }
+            }
+        }
+        .zi_chan_content {
+            position:relative;
+            margin-top: 10px;
+            min-height:650px;
+            .el-card__body {
+                padding: 0;
+                background: transparent;
+                .right_title {
+                    height: 58px;
+                    line-height: 58px;
+                    background: @cardBg;
+                    border-radius: 4px;
+                    padding-left: 20px;
+                    color: #fff;
+                }
+            }
+            .title_link {
+                display: inline-block;
+                float: right;
+                line-height: 30px;
+                a {
+                    &:first-child {
+                        margin-right: 20px;
+                    }
+                }
+            }
+            .el-table {
+                .el-table__empty-block {
+                    min-height:500px;
+                }
+                th,
+                td {
+                    text-align: center;
+                    &:first-child {
+                        text-align: center;
+                    }
+                    img{
+                        height: 15px;
+                    }
+                }
+            }
+            .button_pages {
+                position:absolute;
+                bottom:10px;
+                right:10px;
+                text-align: right;
+                padding: 20px 0;
+                i {
+                    margin-right:20px;
+                }
+                span {
+                    padding: 0 10px;
+                    font-size: 16px;
+                    cursor: pointer;
+                    &:hover {}
+                }
+            }
+       }
+   }
+}
+.listColor{
+    color: @DaiFontSizeColor6;
+}
+.listButton{
+    color: @main;
+    border: 1px solid @main;
+    background: transparent;
+}

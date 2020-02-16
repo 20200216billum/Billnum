@@ -1,0 +1,442 @@
+.FrenchCurrency {
+    width: 100%;
+    // background-color: @DackgroundColor;
+}
+
+.frenchcurrency {
+    margin-top: 5px !important;
+    .el-radio-button__orig-radio:checked+.el-radio-button__inner{
+        background-color: @DaiFontSizeColor26;
+        border-color: @DaiFontSizeColor26;
+    }
+    box-sizing: border-box;
+    width:1320px;
+    padding: 0 20px;
+    margin:0 auto;
+    // .breadth();
+    // background-color: @baiColor;
+    .frenchcurrency_main {
+        width: 1050px;
+        margin: 0 auto;
+        padding-top: 50px;
+        .frenchcurrency_header {
+            .Scavengingfloating();
+            margin-bottom: 50px;
+            .frenchcurrency_name {
+                float: left;
+                width: 200px;
+                // border-right: solid 2px @border2;
+                // border-left: solid 2px @border2;
+                margin-left: 20px;
+                text-align: center;
+                h1 {
+                    font-size: @h2FontSize;
+                    // color: @zhuColor;
+                    line-height: 30px;
+                }
+                p {
+                    // color: @Bluecolor;
+                    font-size: @h2FontSize;
+                    line-height: 30px;
+                }
+                h2 {
+                    font-size: @h3FontSize;
+                    // color: @zhuColor;
+                    // border-bottom: solid 1px @Bluecolor;
+                    display: inline-block;
+                    line-height: 30px;
+                    span {
+                        // color: @zhanColor;
+                    }
+                }
+                h3 {}
+            }
+            .frenchcurrency_name1 {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                .btn-fabu{
+                    width:120px;
+                    height:40px;
+                    background:url("../../assets/image/fabu/fban-img.png");
+                    background-size: 100% 100%;
+                    border-radius:4px;
+                    font-size: 18px;
+                    line-height: 40px;
+                    text-align: center;
+                    cursor: pointer;
+                    color: #ffffff;
+                }
+                .tabs{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    .item{
+                        cursor: pointer;
+                        .title{
+                            
+                            font-size: 18px;
+                            margin-bottom: 20px;
+                            &.active{
+                                color: @main !important;
+                            }
+                        }
+                        p{
+                            font-size: 14px;
+                            color: #BBBBBB;
+                        }
+                    }
+                }
+                .river{
+                    width:1px;
+                    height:40px;
+                    margin: 0 50px;
+                    background:rgba(67,69,72,1);
+                }
+            }
+        }
+        .el-dialog__header{
+            background-color: @DaiFontSizeColor3;
+        }
+        .el-dialog{
+            .el-button{
+                padding: 12px 74px;
+            }
+        }
+// 弹窗
+        .modal{
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, .2);
+            .content{
+                @keyframes inView{
+                    0%{opacity: 0;transform:translate(-50%, -50%);}
+                    100%{opacity: 1;}
+                }
+                animation: inView .3s ease;
+                background: #fff;
+                position: absolute;
+                top: 40%;
+                left: 50%;
+                transform: translate(-50%, -40%);
+                padding-bottom: 10px;
+                width:437px;
+                border-radius:5px;
+                .el-input__inner{
+                    background-color: #F1F1F1;
+                    color: #171717;
+                    border: none;
+                }
+                .el-form-item__label{
+                    color: #333333;
+                }
+                .el-form-item__label::after{
+                    color: @main;
+                }
+                .head{
+                    background: #eee;
+                    display: flex;
+                    padding: 0 30px;
+                    height: 44px;
+                    align-items: center;
+                    justify-content: space-between;
+                    span{
+                        font-size: 20px;
+                        font-weight: bold;
+                        color: #333;
+                    }
+
+                }
+                .form{
+                    .placeholderColor(#BBBBBB)
+                }
+            }
+
+            .form{
+                font-size: 0;
+                margin: 20px auto 0 auto;
+                text-align: center;
+                color: #ffffffd3;
+                .el-form-item__label{
+                    padding-right: 10px;
+                }
+                .el-form-item {
+                    position: relative;
+                    padding: 0 30px;
+                    margin-right: 0;
+                    margin-bottom: 15px;
+                    .el-input{
+                        width: 310px;
+                    }
+                }
+                .iptNums{
+                    position: relative;
+                    width: 100%;
+                    box-sizing: border-box;
+                    .el-form-item__content{
+                        // width: 100%;
+                    }
+                    &.moeny{
+                        .el-form-item__label::after{
+                            content: "CNY";
+                            position: absolute;
+                            z-index: 999;
+                            right: 40px;
+                        }
+                    }
+                    &.nums{
+                        .el-form-item__label::after{
+                            content: "USDT";
+                            position: absolute;
+                            z-index: 999;
+                            right: 40px;
+                        }
+
+                    }
+                }
+
+                .iptrate{
+                    .el-form-item__content{
+                        width: 100%;
+                        .el-input__inner{
+                            border-right: none;
+                            .placeholderColor(#ffffff)
+
+                        }
+                        .el-input-group__append {
+                            background-color: @YeDackGroundColor1;
+                            border-left: none;
+                            border-color: @YeDorderColor1;
+                            color: #ffffff;
+                            font-size: 17px
+                        }
+                    }
+                }
+
+
+                .submit{
+                    width: 100%;
+                    box-sizing: border-box;
+                    margin-top: 25px;
+                    padding-left: 98px;
+                    .el-form-item__content{
+                        &::before{
+                            display: none;
+                        }
+                        &::after{
+                            display: none;
+                        }                    
+                        display: flex;
+                        justify-content: space-between;
+                    }
+                    p{
+                        width: 437px;
+                        line-height: 1.6em;
+                        text-align: left;
+                        font-size:12px;
+                        color:rgba(153,153,153,1);
+                    }
+                    .btn{
+                        font-size: 16px;
+                        cursor: pointer;
+                        width: 140px;
+                        height:40px;
+                        text-align: center;
+                        border-radius:4px;
+
+                    }
+                    .btn-close{
+                        border:1px solid @main;
+                        border-radius:5px;
+                        color: @main;
+                        background: transparent;
+                    }
+
+                    .btn-submit{
+                        border-color: @main;
+                        background-color: @main;
+                        color: #ffffff;
+                    }
+                }
+            }
+
+        }
+    }
+    .frenchcurrency_jiaoyi {
+        font-size: @h3FontSize;
+        .frenchcurrency_jiaoyi_header {
+            width: 1050px;
+            .Scavengingfloating();
+            // background: @cardBg;
+            .frenchcurrency_jiaoyi_list {
+                .TableStyle();
+                line-height: 45px;
+            }
+            .ReleaseWidth();
+            .one1{
+                padding-left: 3%;
+                box-sizing: border-box;
+                text-align: left;
+            }
+        }
+        .Blocktrade {
+            min-height: 550px;
+            .Period_box {
+                height: 250px;
+                line-height: 250px;
+                text-align: center;
+                font-size: @h4FontSize;
+                // color: @chiColor;
+            }
+            .Blocktrade_mian {
+                .el-button--primary {
+                    padding: 10px 15px;
+                }
+                transition: all .3s;
+                height: 100px;
+                
+                .Scavengingfloating();
+                .ReleaseWidth();
+//              }
+                .Blocktrade_list {
+
+                    .TableStyle();
+                    .Scavengingfloating();
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: @h3FontSize;
+                    .Blocktrade_name {
+                        position: relative;
+                        left: -9px;
+                        width: 38px;
+                        height: 38px;
+                        float: left;
+                        margin-left: 10px;
+                        span {
+                            width: 38px;
+                            height: 38px;
+                            line-height: 38px;
+                            // background-color: @Bluecolor;
+                            border-radius: 50%;
+                            display: inline-block;
+                            // color: @baiColor;
+                        }
+                        sub {
+                            position: absolute;
+                            bottom: 0px;
+                            right: 0px;
+                            // border: solid 2px @baiColor;
+                            // background-color: @Successcolor;
+                        }
+                    }
+                    &.one6{
+                        h2{
+                            background-color: @main;
+                            font-size: 14px;
+                            padding: 10px 30px;
+                            border-radius: 4px;
+                            cursor: pointer;
+                            color: #fff;
+                        }
+                    }
+                    .Blocktrade_name_ab {
+                        width: 270px;
+                        display: inline-block;
+                        line-height: 18px;
+                        text-align: left;
+                        // color: @Bluecolor;
+                        span {}
+                        .icon-zhuanshi {
+                            // color: @Warningcolor;
+                        }
+                    }
+                    .Blocktrade_num {}
+                    i.yinhangka {
+                        display: inline-block;
+                        width: 18px;
+                        height: 18px;
+                        background: url("../../assets//image/fabu/yinlian-fb-1.png")
+                    }
+
+                    i.zhifubao {
+                        display: inline-block;
+                        width: 18px;
+                        height: 18px;
+                        background: url("../../assets//image/fabu/zhifubao-fb-1.png")
+                    }
+                    i.weixin {
+                        display: inline-block;
+                        width: 18px;
+                        height: 18px;
+                        background: url("../../assets//image/fabu/weixin-fb-1.png")
+                    }
+                    .Blocktrade_sell {}
+                }
+            }
+        }
+    }
+    .Period_main {
+        padding-bottom: 10px;
+        margin: 30px 0;
+        .el-pagination {
+            text-align: right;
+            li:not(.disabled).active{
+                background-color: @main;
+
+            }
+        }
+    }
+}
+
+.TableStyle() {
+    float: left;
+    text-align: center;
+}
+
+.ReleaseWidth() {
+    .color {
+        // color: @Successcolor !important;
+    }
+    .one1 {
+        width: 26%;
+        cursor: pointer;
+    }
+
+    .contOne1 {
+        display: flex;
+        width: 23%;
+        margin-left: 3%;
+    }
+    .one2 {
+        // width: 15%;
+        width: 19%;
+    }
+    .navOne2 {
+        width: 16%;
+        padding-left: 3%;
+    }
+    .one3 {
+        width: 20%;
+    }
+    .one4 {
+        width: 10%;
+
+    }
+    .one5 {
+        width: 15%;
+        .item{
+            margin-left: 5px;
+        }
+    }
+    .one6 {
+        width: 10%;
+    }
+}
+.noenum{
+    color: @DaiFontSizeColor37;
+}

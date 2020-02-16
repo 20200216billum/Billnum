@@ -1,0 +1,153 @@
+#fund {
+    .contents(1240px);
+    margin-top: 20px;
+    margin-bottom: 10px;
+    .fundHeader {
+        height: 120px;
+        padding: 0 40px;
+        .clearfix();
+        // background: #FFFFFF;
+        .boxs {
+            float: left;
+        }
+        .title {
+            .ht(120px);
+            font-size: @h1FontSize;
+            // color: @Bluecolor;
+            font-weight: 700;
+        }
+        .dataListWarp {
+            .clearfix();
+            padding-top: 36px;
+            .list {
+                float: left;
+                width: 240px;
+                text-align: center;
+                // color: @chiColor;
+                h3 {
+                    // color: @zhuColor;
+                    font-weight: 700;
+                    .ht(34px);
+                }
+            }
+            .list.line {
+                // border-left: 1px solid @border2;
+            }
+        }
+        .btnWarp {
+            .ht(120px);
+            margin-left: 24px;
+            cursor: pointer;
+            span {
+                padding: 8px 24px;
+                border-radius: 6px;
+                // background: @Bluecolor;
+                // color: #FFFFFF;
+            }
+        }
+    }
+    .fundbody {
+        margin-top: 28px;
+        height: 560px;
+        // background: #FFFFFF;
+        padding: 20px 30px;
+    }
+    .pageWarp {
+        // background: #FFFFFF;
+        text-align: right;
+        padding-bottom: 20px;
+    }
+    //弹框
+    .tankuang {
+        .el-dialog {
+            border-radius: 10px;
+        }
+        .el-dialog__header {
+            // border-bottom: 1px solid @border2;
+            padding: 25px 20px;
+        }
+        .modelWarp {
+            .changeWarp {
+                padding-bottom: 20px;
+                .clearfix();
+                .star,
+                .changeIcon,
+                .end {
+                    float: left;
+                    width: 32%;
+                    text-align: center;
+                    font-size: @h2FontSize;
+                    h2 {
+                        font-weight: 700;
+                        line-height: 32px;
+                    }
+                    p {
+                        font-size: 16px;
+                        // color: #878787;
+                    }
+                }
+                .changeIcon {
+                    .iconWarp {
+                        width: 38px;
+                        line-height: 38px;
+                        height: 38px;
+                        border-radius: 50%;
+                        text-align: center;
+                        // background: @Bluecolor;
+                        // border: 1px solid @Bluecolor;
+                        display: inline-block;
+                        cursor: pointer;
+                        i.el-icon-sort {
+                            transform: rotate(90deg);
+                            -ms-transform: rotate(90deg);
+                            /* IE 9 */
+                            -moz-transform: rotate(90deg);
+                            /* Firefox */
+                            -webkit-transform: rotate(90deg);
+                            /* Safari 和 Chrome */
+                            -o-transform: rotate(90deg);
+                            // color: #FFFFFF;
+                        }
+                    }
+                    .iconWarp2 {
+                        // background-color: #FFFFFF;
+                        i.el-icon-sort {
+                            // color: @Bluecolor;
+                        }
+                    }
+                }
+            }
+            .changeNum {
+                position: relative;
+                padding-top: 20px;
+                width: 90%;
+                margin: 0 auto;
+                .tishi,
+                .title {
+                    // color: #878787;
+                    font-size: @h4FontSize;
+                    line-height: 28px;
+                }
+                .tishi {
+                    margin-top: 10px;
+                    // color: @Bluecolor;
+                }
+                .el-input-group__append {
+                    top: 48px;
+                    right: 0;
+                    padding: 12px 20px;
+                    cursor: pointer;
+                    position: absolute;
+                    width: 25px;
+                }
+            }
+            .dialog-footer {
+                padding-top: 25px;
+                text-align: center;
+                .el-button {
+                    width: 98px;
+                }
+            }
+        }
+    }
+}

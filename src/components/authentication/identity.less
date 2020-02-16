@@ -1,0 +1,244 @@
+.identity_main {
+    height: 760px;
+    .contents(1280px);
+    .identity_header {
+        .security_main_title(80px);
+        .tishi {
+            margin-left: 18px;
+            font-size: 12px;
+            // color: #409EFF;
+        }
+    }
+    .identity_cont {
+        margin-top: 20px;
+        .security_cont();
+        .lis_warp {
+            .lis {
+                span {
+                    display: inline-block;
+                    width: 20%;
+                }
+                .name {
+                    width: 8%;
+                }
+                .car {
+                    width: 50%;
+                }
+                .exit {
+                    text-align: right;
+                    // color: @Bluecolor;
+                    cursor: pointer;
+                }
+                .status {
+                    width: 58.4%;
+                }
+            }
+        }
+    }
+}
+
+//身份认证
+.real_name_main {
+    .contents(1280px);
+    .real_name_title {
+        .security_main_title(70px);
+        h2,
+        span {
+            display: inline-block;
+            cursor: pointer;
+            // color: @chiColor;
+//          font-size: @h2FontSize;
+        }
+        span {
+            display: inline-block;
+            padding: 0 15px;
+        }
+        .title {
+            // color: @Bluecolor;
+        }
+    }
+    .real_name_information {
+        .real_name_information_header {
+            .security_main_title(60px);
+            .clearfix();
+            h2 {
+                float: left;
+                font-size: @h2FontSize;
+            }
+            span {
+                float: right;
+                margin-right: 20px;
+                font-size: @h2FontSize;
+                // color: @Bluecolor;
+                cursor: pointer;
+            }
+        }
+    }
+    .real_name_cont {
+        // background: #FFFFFF;
+        height: 520px;
+        .form_cont {
+            padding-top: 40px;
+            .contents(50%);
+            .clform();
+            .el-button {
+                margin-top: 20px;
+                height: 44px;
+                width: 100%;
+            }
+        }
+    }
+}
+
+//高级认证
+.senior_main {
+    .contents(1280px);
+    .senior_main_title {
+        .security_main_title(60px);
+        // background: @DaiFontSizeColor3;
+        h2,
+        span {
+            display: inline-block;
+            cursor: pointer;
+            // color: @chiColor;
+//          font-size: @h2FontSize;
+        }
+        span {
+            display: inline-block;
+            padding: 0 15px;
+        }
+        .title {
+            // color: @Bluecolor;
+            font-size: 16px;
+        }
+        .indentify_notice{
+            font-size: 14px;
+            width: 600px;
+            float: right;
+            text-align: right;
+            color: @DaiFontSizeColor36;
+        }
+    }
+    .senior_info {
+        .senior_info_header {
+            .security_main_title(60px);
+            font-size: @h2FontSize;
+        }
+    }
+    .senior_cont {
+        padding: 20px 0px;
+        .lis_warp {
+            display: flex;
+            flex-direction: column;
+            .lis {
+                display: flex;
+                // align-items: center;
+                margin: 20px 0px;
+                .clearfix();
+                .carId {
+                    width: 28%;
+                    float: left;
+                }
+                .info.carId {
+                    flex: 6;
+                    padding-left: 5%;
+                    margin-top: 20px;
+                    width: 30%;
+                    font-size: @h5FontSize;
+                }
+                .title {
+                    flex: 1;
+                    margin-top: 20px;
+                    font-size: 14px;
+                }
+                .img {
+                    flex: 5;
+                    height: 99%;
+                    text-align: center;
+                    img {
+                        max-width: 100%;
+                        height: 100%;
+                    }
+                    .upload {
+                        position: relative;
+                        height: 100%;
+                        cursor: pointer;
+                        .webuploader-container {
+                            position: relative;
+                        }
+                        .webuploader-element-invisible {
+                            position: absolute !important;
+                            clip: rect(1px 1px 1px 1px);
+                            /* IE6, IE7 */
+                            clip: rect(1px, 1px, 1px, 1px);
+                        }
+                        .webuploader-pick {
+                            height: 100%;
+                            width: 100%;
+                            padding-top: 130px;
+                            box-sizing: border-box;
+                            color: #fff;
+                            position: relative;
+                            display: inline-block;
+                            cursor: pointer;                      
+                            text-align: center;
+                            border-radius: 3px;
+                            overflow: hidden;
+                            background: url('../../assets/image/zhengmian.png') no-repeat;
+                            background-position: center 20px;
+                        }
+                        &.upload2 {
+                            .webuploader-pick {
+                                background: url('../../assets/image/beimian.png') no-repeat;
+                                background-position: center 20px;
+                            }
+                            
+                        }
+                        &.upload3{
+                            .webuploader-pick {
+                                // background: url('../../assets/image/LAcoin.png') no-repeat;
+                                background-position: center 20px;
+                            }
+                        }
+                        .webuploader-pick-disable {
+                            opacity: 0.6;
+                            pointer-events: none;
+                        }
+                    }
+                    
+                }
+                .info_lis_warp {
+                    margin-top: 25px;
+                    li {
+                        text-align: left;
+                        line-height: 26px;
+                        height: 26px;
+                    }
+                    li:before {
+                        line-height: 24px;
+                        // content: '●  ';
+                        // color: @Bluecolor;
+                    }
+                }
+            }
+            // .lis.shouchiImg{
+            //     .img{
+            //         // padding-top: 10px;
+            //       img{
+            //         width: 506px;
+            //         height: 340px;
+            //       }
+            //     }
+            // }
+        }
+        .btn_warp {
+            .el-button {
+                width: 83.5%;
+                margin: 20px 0 100px 97px;
+            }
+        }
+        .el-form--label-left{
+            width: 48%;
+        }
+    }
+}

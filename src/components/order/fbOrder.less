@@ -1,0 +1,72 @@
+// 法币交易 ->订单
+.fb_order_wrapper {
+	width: 1280px;
+	margin: 0 auto;
+	.el-tabs__item.is-top {
+		color: #fff;
+	}
+	.el-table__header-wrapper {
+		border-bottom: 1px solid #2b2b2b;
+	}
+	.order_container {
+		.public_wrapper(); 
+			.deal_tables {
+				.el-tabs__nav-wrap::after{
+					display: none;
+				}
+				.el-table__body{
+					.el-table_1_column_6 {
+						color: #75a7ff;
+					}
+				}
+				.el-tabs__header{
+					padding-left: 10px;
+				}
+				.small_img {
+					width: 20px;
+					height: 20px;
+					vertical-align:middle;
+				}
+				.linkOrder {
+					cursor: pointer;
+					text-decoration: underline;
+				}
+				.el-tabs__content{
+					.has-gutter{
+						color: @DaiFontSizeColor30;
+					}
+				}
+			}
+			.right {
+				position: absolute;
+				right:20px;
+				top: 20px;
+				font-size:@h4FontSize;
+				.bitType {
+					display:inline-block;
+					padding:9px 10px;
+					padding-right: 30px;
+					border-radius:4px;
+					margin-right: 5px;
+				}
+				.el-input__inner {
+					width: 100px;
+					height:34px;
+					line-height:34px;
+					margin-left: 5px;
+				}
+				.el-button{
+					height:34px;
+					line-height:34px;
+					padding:0 20px;
+					vertical-align: middle;
+					
+				}
+			}
+
+	}
+}
+.fb_order_big_img {
+	width: 120px;
+	height: 120px;
+}

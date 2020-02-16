@@ -1,0 +1,44 @@
+@import '../../assets/public.less';
+.mortgage_lending {
+    width: 1280px;
+    margin: 20px auto;
+    .ml_box {
+        border: 1px solid @YeDorderColor1;
+        padding: 30px 20px;
+        .title {
+            color: @YeFontSizeColor24;
+            text-align: center;
+            border-bottom: 1px solid @YeDorderColor1;
+            padding-bottom: 20px;
+            font-size: 22px;
+            margin-bottom: 50px;
+        }
+        .ml_table {
+            width: 100%;
+            margin-top: -1px;
+            thead {
+                tr {
+                    height: 32px;
+                    th {
+                        text-align: center;
+                        background: #21283B;
+                    }
+                }
+            }
+            tbody {
+                tr {
+                    td {
+                        text-align: center;
+                        height: 56px;
+                        color: #dd0000;
+                        border-bottom: 1px solid @YeDorderColor1;
+                        &.rowspan {
+                            color: @YeDackGroundColor13;
+                            border-right: 1px solid @YeDorderColor1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

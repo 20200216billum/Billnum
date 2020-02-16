@@ -1,0 +1,108 @@
+@import '../../assets/public.less';
+.myAccount_wrap{
+    .left{
+        text-align: left;
+    }
+    .right{
+        text-align: right;
+    }
+    .center{
+        text-align: center;
+    }
+    padding: 100px 0 200px 0;
+    .myAccount{
+        width: 1280px;
+        box-sizing: border-box;
+        margin: 0 auto;
+        h1{
+            color: #FEFEFE;
+            font-size: 40px;
+            margin-bottom: 100px;
+        }
+        .content{
+            display: flex;
+            font-size: 16px;
+            color: #FEFEFE;
+            .tabs{
+                flex:0 0 180px;
+                .item{
+                    margin-bottom: 25px;
+                    cursor: pointer;
+                    &.active{
+                        color: @main;
+                    }
+                }
+            }
+            .table{
+                flex: 1 1 100%;
+                .head{
+                    box-sizing: border-box;
+                    display: flex;
+                    justify-content: space-between; 
+                    width:100%;
+                    line-height: 60px;
+                    padding: 0 20px;
+                    height:60px;
+                    background:@cardBg;
+                    border-radius:6px;
+                    .cnyPrice{
+                        font-size: 12px;
+                        padding-left: 10px;
+                        color: @color;
+                    }
+                    .order{
+                        color: @main;
+                        cursor: pointer;
+                    }
+                }
+                .body{
+                    min-height: 420px;
+                    padding: 10px 0;
+                    margin-top: 20px;
+                    background: @cardBg;
+                    .title,.val{
+                        display: flex;
+                        .item{
+                            flex: 1 1 25%;
+                            padding:15px 20px;
+                            line-height: 30px;
+                        }
+                    }
+                    .val:hover{
+                        // transform: scale(1.1)
+                        transition: 200ms;
+                        background: #2f2f2f;
+                        // border-color: #383F53;
+                    }
+                    .title .item{
+                        color: @color;
+                    }
+                    .action{
+                        display: flex;
+                        justify-content: flex-end;
+                    }
+                    .btn{
+                        cursor: pointer;
+                        margin-left: 10px;
+                        width:50px;
+                        padding: 0 5px;
+                        height:30px;
+                        line-height: 30px;
+                        text-align: center;
+                        background:@main;
+                        color: #fff;
+                        border-radius:4px;
+                        font-size: 14px;
+                        transition: 200ms ease;
+                        &:hover{
+                            background: #fff;
+                            color: @main;
+                        }
+                    }
+                    
+                }
+
+            }
+        }
+    }
+}

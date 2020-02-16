@@ -1,0 +1,154 @@
+#econmicMan {
+    .promotion_wrapper {
+        width: 1280px;
+        margin: 0 auto;
+        .pw_box {
+            width: 900px;
+            margin: 20px auto 0 auto;
+            .pw_top {
+                li {
+                    float: left;
+                    width: 440px;
+                    height: 110px;
+                    box-sizing: border-box;
+                    padding-left: 27px;
+                    background: @cardBg;
+                    border: 1px solid @YeDorderColor1;
+                    cursor: pointer;
+                    position: relative;
+                    &:last-child {
+                        float: right;
+                    }
+                    .pw_name_num {
+                        display: inline-block;
+                        color: #fff;
+                        margin-top: 29px;
+                        margin-left: 45px;
+                        .pw_num {
+                            font-weight: 600;
+                            font-size: 25px;
+                            margin-top: 15px;
+                        }
+                    }
+                    img {
+                        margin-top: 38px;
+                        position: absolute;
+                        &:first-child {
+                            top: 0px;
+                            left: 15px;
+                        }
+                        &:last-child {
+                            top: 0;
+                            right: 15px;
+                        }
+                    }
+                    .jiantou {
+                        margin-left: 200px;
+                    }
+                }
+            }
+            .pw_bottom {
+                margin: 25px 0;
+                height: 110px;
+                li {
+                    float: left;
+                    width: 440px;
+                    box-sizing: border-box;
+                    color: #999;
+                    &.pw_bot_left {
+                        img {
+                            width: 115px;
+                            height: 112px;
+                        }
+                        div {
+                            display: inline-block;
+                            width: 300px;
+                            margin-left: 10px;
+                            .p_b_l_name {
+                                color: #fff;
+                                margin-bottom: 10px;
+                            }
+                        }
+                    }
+                    &.pw_bot_right {
+                        float: right;
+                        .invitation {
+                            color: #fff;
+                            margin-bottom: 22px;
+                            margin-top: 20px;
+                        }
+                        .copy_invitation {
+                            color: @main;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+        .tab_table {
+            text-align: center;
+            color: @main;
+            margin-top: 65px;
+            p {
+                display: inline-block;
+                width: 148px;
+                height: 43px;
+                line-height: 45px;
+                border: 1px solid @YeDorderColor1;
+                cursor: pointer;
+            }
+            .friend {
+                border-right: 0;
+                border-radius: 5px 0 0 5px;
+            }
+            .commission {
+                border-left: 0;
+                border-radius: 0 5px 5px 0;
+                margin-left: -5px;
+            }
+            .on {
+                border-color: @main;
+                background: @main;
+                color: #fff;
+            }
+        }
+    }
+    .title {
+        margin-top: 70px !important;
+        span{
+            font-size: 16px;
+            color: @DaiFontSizeColor29;
+            position: relative;
+            left: 24%;
+        }
+    }
+}
+.friendBackImg{
+    width: 1280px;
+    background: url('../../assets/image/tuiguang-img.png') no-repeat;
+    height: 150px;
+    background-size:100% 100%;
+    margin: 10px auto;
+    position: relative;
+    .extension {
+        position: absolute;
+        color: #fff;
+        top: 45px;
+        left: 50px;
+        p {
+            &:first-child {
+                font-size: 28px;
+                font-weight: 600;
+            }
+            &:last-child {
+                font-size: 16px;
+                margin-top: 10px;
+            }
+        }
+    }
+}
+.friendBackImg1{
+    background: url('../../assets/image/promotinBanner1.jpg') no-repeat;
+    height: 400px;
+    background-size:100% 100%;
+}

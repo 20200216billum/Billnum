@@ -1,0 +1,178 @@
+.help{
+    width:100%;
+    min-height:890px;
+    overflow: hidden;
+    padding:20px 0 35px 0;
+    box-sizing:border-box;
+    .help_cen{
+        width:1200px;
+        min-height:835px;
+        margin:0 auto;
+        border-radius:10px;
+        padding:20px;
+        box-sizing:border-box;
+        display:flex;
+        flex-direction: column;
+        .title{
+            height: 110px;
+            line-height:110px;
+            box-sizing: border-box;
+            h1{font-size:36px;}
+        }
+        .help_details{
+            flex:1;
+            display:flex;
+            .router-list{
+                display: inline-block;
+                line-height:50px;
+                vertical-align: top;
+                width: 170px;
+                height:400px;
+                li{
+                    font-size:18px;
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    cursor: pointer;
+                    .right-icon{
+                        display: none;
+                    }
+                }
+                li.active{
+                    font-size:20px;
+                    .right-icon{
+                        display: initial;
+                    }
+                }
+            }
+            .details_right{
+                flex:1;
+                padding:0 30px;
+            }
+        }
+        // .tabs{
+        //     flex:1;
+        //     display:flex;
+        //     .tabs_left{
+        //         width:160px;
+        //         height:300px;
+        //         li{
+        //             line-height:50px;
+        //             cursor: pointer;
+        //             padding:0 20px;
+        //         }
+        //     }
+        //     .tabs_right{
+        //         flex:1;
+        //     }
+        // }
+
+
+
+
+
+    }
+    .tabs{
+        #div{
+            margin-left: 100px;
+        }
+        .fankui{
+            width: 600px;
+            p{
+                margin: 20px 0;
+            }
+            .el-input{
+                width: 300px;
+            }
+            h1{
+                color: #ffffff;
+                margin: 10px 0;
+            }
+            .textarea{
+                width: 100%;
+                .text{
+                    width: 600px;
+                    height: 300px;
+                    max-width: 600px;
+                    min-width: 600px;
+                    max-height: 300px;
+                    min-height: 300px;
+                    font-size: 14px;
+                    color: white;
+                    background: #2b2b2b;
+                    border: 1px solid #31364C;
+                }
+            }
+            .btn{
+                margin: 80px 0 20px 0;
+                color: #ffffff;
+                display: flex;
+                width:260px;
+                height: 40px;
+                background: @main;
+                text-align: center;
+                line-height: 40px;
+            }
+        }
+    }
+
+
+
+
+
+    .tabs{
+        .el-tabs__active-bar{
+            background-color: @mainBg;
+        }
+        .is-active{
+            color: @main !important;
+        }
+        .myNum{
+            margin-left: 70px;
+            .flex{
+                display: flex;
+                justify-content: space-evenly;
+                .div{
+                    height: 150px;
+                    img{
+                        width: 120px;
+                        height: 120px;
+                    }
+                }
+                .div_1{
+                    width: 560px;
+                    div{
+                        float: left;
+                        margin-right: 30px;
+                    }
+                    h1{
+                        font-size: 18px;
+                        margin-top: 60px;
+                        margin-bottom: 20px;
+                    }
+                }
+                .div_2{
+                    width: 400px;
+                    h1{
+                        font-size: 20px;
+                        margin-top: 23px;
+                        margin-bottom: 20px;
+                    }
+                    p{
+                        margin-bottom: 20px;
+                    }
+                }
+            }
+        }
+        .topBanner{
+            height: 150px;
+            background-image: url(../../assets/img/banner02.png);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            margin-bottom: 60px;
+        }
+        .myFrind{
+            margin-left: 70px;
+        }
+    }
+}

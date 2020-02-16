@@ -1,0 +1,142 @@
+@import "../../assets/public.less";
+.shop_order_wrap{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    .el-dialog__header span{
+        color: #606266;
+    }
+}
+.shop_orderList{
+
+    .sltGoods{
+        width: 182px;
+        float: right;
+        margin-top: -59px;
+        .el-input__inner{
+            background-color: @cardBg;
+            border:1px solid rgba(52,55,83,1);
+            color: #ffffff;
+        }
+    }
+    width: 1140px;
+    box-sizing: border-box;
+    margin:  0 auto;
+    padding: 80px 20px 360px 20px; 
+    font-size: 16px;
+    color: #ffffff;
+    .goodsBox{
+        margin-top: 10px;   
+        .goods_title{
+            width: 100%;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            padding-left: 18px;
+            background: @cardBg;
+            box-sizing: border-box;
+            .ordeNum{
+                font-size: 14px;
+                margin-left: 47px;
+            }
+        }
+        .goods_content{
+            padding: 15px 35px 15px 15px;
+            width: 100%;
+            height: 138px;
+            background:#171717;
+            border:1px solid rgba(52,55,83,1);
+            box-sizing: border-box;
+        }
+        .item{
+            display: inline-block;
+            vertical-align: top;
+            box-sizing: border-box;
+            line-height: 1.6em;
+        }
+        // 商品图片
+        .col1{
+            width: 100px;
+            height: 100px;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        // 简介
+        .col2{
+            width: 170px;
+            height: 50px;
+            margin-left: 30px;
+            font-size: 16px;
+            margin-right: 78px;
+        }
+        // 价格
+        .col3,.col5{
+            width: 120px;
+            font-size: 20px;
+            text-align: center;
+        }
+        // 数量
+        .col4{
+            width: 80px;
+            font-size: 18px;
+            margin: 0 20px;
+            text-align: center;
+        }
+        // 详情
+        .col6{
+            margin-left: 55px;
+            width: 65px;
+            font-size: 16px;
+            .state{
+                color: #ffffff;
+                margin: 0 auto;
+                text-align: center;
+            }
+            .detail{
+                cursor: pointer;
+                margin: 5px auto;
+                color: @main;
+            }
+
+        }
+        // 按钮
+        .col7{
+            width: 100px;
+            height: 100%;
+            margin-left: 50px;
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: center;
+            .btn{
+                cursor: pointer;
+                display: block;
+                border-radius:4px;
+                width:100%;
+                line-height: 40px;
+                text-align: center;
+                height:40px;
+                font-size: 18px;
+                box-sizing: border-box;
+                transition: 200ms;
+                &:hover{
+                    box-shadow:  0 0 8px 1px rgba(97,133,229,.5);
+                }
+            }
+           .get{
+                color: #fff;
+                background:rgba(97,133,229,1);
+
+           } 
+           .cancel{
+               margin-top: 10px;
+               border:1px solid @main;
+               color:@main;
+           }
+
+        }
+    }
+}
+
+

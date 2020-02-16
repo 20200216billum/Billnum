@@ -1,0 +1,82 @@
+// 公告详情
+.notice_details_wrapper {
+    overflow: hidden;
+    .details_container {
+        // .public_wrapper();
+        padding:20px;
+        box-sizing: border-box;
+        border-radius:10px;
+        margin:20px auto 30px;
+        width: 1200px;
+        .detail_title_top{
+            text-align:center;
+            padding:20px 0;
+            .name{
+                line-height:60px;
+                font-size:24px;
+            }
+            .time{
+                line-height:40px;
+                font-size:16px;
+            }
+        }
+
+        .el-breadcrumb{
+            padding-left: 20px;
+        }
+        .el-breadcrumb__inner {
+            font-size: @h1FontSize;
+        }
+        .el-icon-arrow-right {
+            font-size: @h1FontSize;
+        }
+        .is-link {
+            font-weight: 100;
+        }
+        .details_content {
+            margin-top: 40px;
+            min-height: 500px;
+            .el-card {
+                background: transparent;
+            }
+            .content {
+                line-height: 1.5em;
+                img{
+                    max-width: 100% !important;
+                }
+                p, h3 {
+                    line-height: 1.5em;
+                    span {
+                    line-height: 1.5em;
+                        color: #fff!important;
+                    }
+                }
+                min-height: 500px;
+            }
+            .videoWarp {
+                width: 80%;
+                margin: 0 auto;
+            }
+            .contents {
+                padding: 30px 0;
+                line-height: 26px;
+                width: 80%;
+                margin: 0 auto;
+                line-height: 22px;
+            }
+        }
+        .top{
+            .el-card__body{
+                display: block;
+            }
+            div{
+                margin-bottom: 35px;
+            }
+        }
+    }
+}
+.el-card.is-always-shadow{
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: none;
+}

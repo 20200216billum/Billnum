@@ -1,0 +1,302 @@
+@import '../../assets/public.less';
+.mangeMoney{
+    width: 1280px;
+    margin: 0 auto;
+    .mangeMoney_balance{
+        background: @cardBg;
+        margin-top: 10px;
+        padding: 10px 30px;
+        .title{
+            height: 60px;
+            width: 100%;
+            .item{
+                margin-right: 30px;
+                display: inline-flex;
+                box-sizing: border-box;
+                align-items: center;
+                padding-bottom: 15px;
+                padding-top: 10px;
+                cursor: pointer;
+                img{
+                    width: 26px;
+                    height: 26px;
+                }
+                span{
+                    font-size: 16px;
+                    color:#999999; 
+                    padding-left: 10px;
+                }
+                &.active{
+                        border-bottom: 3px solid @main;
+                    span{
+                        color: #ffffff;
+
+                    }
+                }
+            }
+        }
+        .river{
+            margin-top: 35px;
+            margin-bottom: 10px;
+            width: 100%;
+            height: 1px;
+            background: @YeDorderColor1;
+        }
+        .details{
+            .item{
+                margin-right: 80px;
+                display: inline-block;
+                width: 160px;
+                color: #ffffff;
+                .title{
+                    height: 45px;
+                    display: flex;
+                    align-items: center;
+                    font-size: 14px;
+                    img{
+                        margin: 0 17px 0 10px;
+                        width: 24px;
+                    }
+                }
+                .nums{
+                    font-size: 18px;
+                    padding: 0 0 15px 52px;
+                }
+            }
+
+        }
+    }
+
+    .mangeMoney_price{
+        background: @cardBg;
+        margin-top: 10px;
+        padding: 30px 30px;
+        .profit{
+            .sltGroup{
+                display: inline-block;
+                width: 170px;
+                height: 40px;
+                border: 1px solid @YeDorderColor1
+            }
+
+            .el-select{
+                display: inline-block;
+                .el-input__inner{
+                    border: none;
+                    width: 90px;
+                    color: @main;
+                }
+            }
+            .month{
+                .el-input__inner{
+                    width: 70px;
+                } 
+            }
+            span{
+                padding-left: 20px;
+                font-size: 14px;
+                color: @YeFontSizeColor3;
+                &.nums{
+                    padding-left: 15px;
+                    color: #ffffff;
+                }
+            }
+        }
+        .form{
+            font-size: 0;
+            width: 750px;
+            padding: 0 20px;
+            margin: 58px auto 0 auto;
+            text-align: center;
+            .el-input__inner{
+                background-color: @YeDackGroundColor1;
+            }
+            .el-form-item {
+                margin-right: 0;
+                margin-bottom: 10px;
+                .el-input-group__append {
+                    background-color: @YeDackGroundColor1;
+                    border-left: none;
+                    border-color: @YeDorderColor1;
+                    color: @main;
+                  }
+            }
+            .right_tips {
+                position: absolute;
+                top: 0;
+                right: 15px;
+                color: @main;
+            }
+            .right_tips2 {
+                color: #fff;
+            }
+            .iptNums{
+                position: relative;
+                width: 100%;
+                .el-form-item__content{
+                    margin-bottom: 10px;
+                    width: 100%;
+                }
+            }
+            .iptrate{
+                width: 47%;
+                margin-right: 6%;
+                .el-form-item__content{
+                    margin-bottom: 10px;
+                    width: 100%;
+                    .el-input-group__append {
+                        background-color: @YeDackGroundColor1;
+                        border-left: none;
+                        border-color: @YeDorderColor1;
+                        color: #ffffff;
+                        font-size: 17px
+                    }
+                    .el-select {
+                        width: 100%;
+                    }
+                }
+            }
+            .sltDays{
+                width: 47%;
+                .el-form-item__content{
+                    width: 100%;
+                    .el-select{
+                        width: 100%;
+                    }
+                }
+            }
+            .auto{
+                text-align: right;
+                display: block;
+                .el-checkbox__label{
+                    color: #ffffff;
+                }
+                .el-checkbox{
+                    margin-right: 10px;
+                }
+                .el-checkbox__inner{
+                    background: unset;
+                    border: 1px solid #999999;
+                }
+
+                img{
+                    vertical-align: middle;
+                }
+
+            }
+            .submit{
+                width: 100%;
+                margin-top: 25px;
+                .el-form-item__content{
+                    &::before{
+                        display: none;
+                    }
+                    &::after{
+                        display: none;
+                    }                    display: flex;
+                    justify-content: space-between;
+                }
+                p{
+                    width: 437px;
+                    line-height: 1.6em;
+                    text-align: left;
+                    font-size:12px;
+                    color:rgba(153,153,153,1);
+                }
+                .btn-submit{
+                    line-height: 42px;
+                    color: #ffffff;
+                    font-size: 16px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    width:180px;
+                    height:42px;
+                    text-align: center;
+                    background:rgba(117,167,255,1);
+                    border-radius:4px;
+                }
+            }
+        }
+ 
+    }
+    .el-table{
+        td, th{
+            text-align: center;
+        }
+    }
+
+    .mangeMoney_record{
+        background: @cardBg;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        padding: 30px 0 50px 0;
+        h2{
+            margin-bottom: 30px;
+            padding-left: 20px;
+            height: 20px;
+            font-size:18px;
+            color:rgba(255,255,255,1);
+            font-weight: bold;
+            border-left: 4px solid  @main;
+        }
+        .tabs{
+            padding-left: 10px;
+            display: flex;
+            height: 25px;
+            .item{
+                margin-right: 10px;
+                // width: 75px;
+                height: 30px;
+                color: #ffffff;
+                font-size: 14px;
+                cursor: pointer;
+                line-height: 30px;
+                text-align: center;
+            }
+            .item.active{
+                border-bottom: 3px solid #75a7ff;
+                // background:rgba(117,167,255,1);
+                // border-radius:13px;
+            }
+        }
+        .recordList{
+            width: 100%;
+            padding: 0 10px;
+            margin-top: 20px;
+            .el-table__header{
+                border: 1px solid @YeDorderColor1;
+            }
+            .el-table__header-wrapper{
+                .el-table__header{
+                    .has-gutter{
+                        tr{
+                            border: 1px solid @YeDorderColor1;
+                            th{
+                                border-bottom: none;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+        .el-pagination{
+            float: right;
+            margin: 20px 30px;
+            button{
+                background: @cardBg;
+                color: #ffffff;
+            }
+            li.active{
+                color: @main;
+            }
+            li{
+                color: #ffffff;
+                background: @cardBg;
+            }
+        }
+    }
+}
+.popperTip {
+    width: 220px;
+  }

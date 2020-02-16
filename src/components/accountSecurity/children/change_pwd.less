@@ -1,0 +1,235 @@
+ //修改登录密码
+ .mainy .change_opwd_main{
+     background-color: initial;
+     width: initial;
+     box-sizing: border-box;
+     padding-left: 20px;
+     .change_opwd_main_title{
+        background-color: initial;
+        padding-left: 0;
+     }
+     .el-input__inner{
+        background: initial;
+     }
+ }
+
+ .mainb .change_opwd_main{
+    background-color: initial;
+    width: initial;
+    box-sizing: border-box;
+    padding-left: 20px;
+    div.change_opwd_main_title{
+       background-color: initial;
+       padding-left: 0;
+       border-bottom: 2px solid #f0f2f6;
+       box-shadow:none;
+       h2{
+        color: #1f1f2e;
+        font-size: 24px;
+       }
+    }
+    .el-input__inner{
+       background: #f0f2f6;
+    }
+    .form_warp{
+        .form_cont{
+            .el-form-item__label{
+                color: #1f1f2e;
+            }
+            .el-button--primary{
+                background-color: #1f1f2e;
+                color: #ffffff;
+            }
+            .code_warp{
+                .btn_code{
+                    background: #1f1f2e;
+                    .el-input__inner{
+                        background: transparent;
+                        color: #ffffff;
+                    }
+                }
+            }
+        }
+    }
+}
+ .change_opwd_main {
+    .el-input.is-disabled .el-input__inner{
+        border-color: #31364B;
+    }
+    padding-top: 20px;
+    .change_opwd_main_title {
+        position: relative;
+        // .security_main_title(70px);
+        background-color: @DaiDackGroundColor24;
+        border-bottom: 2px solid #181825;
+        h2,
+        span {
+            display: inline-block;
+            cursor: pointer;
+        }
+        .line {
+            position: absolute;
+            top: calc(50% - 11px);
+            left: 0;
+            display: inline-block;
+            width: 4px;
+            height: 22px;
+            background: #6185e5;
+            z-index: 999;
+        }
+    }
+    .change_opwd_main_header {
+        .security_main_title(60px);
+        font-size: @h2FontSize;
+        .tishi {
+            margin-left: 18px;
+            font-size: 12px;
+        }
+    }
+    div.form_warp {
+        padding-top: 50px;
+        height: initial;
+        .clform();
+        .form_cont {
+            .contents(580px);
+            .el-button,
+            .twobtn{
+                .el-button{
+                    width: 280px;
+                }
+                .cancle{
+                    border: solid 1px #ffd760;
+                    background: transparent;
+                    color: #ffd760;
+                }
+            }
+            .el-button--primary {
+                width: 100%;
+                margin-top: 70px;
+                border: none;
+                color: black;
+            }
+            .el-form-item__label{
+                color: white;
+                // color: @DaiFontSizeColor29;
+            }
+            .code_warp {
+                .el-form-item--feedback {
+                    display: inline-block;
+                    width: 430px;
+                    margin-right: 6px;
+                }
+                .btn_code {
+                    display: inline-block;
+                    width: 130px;
+                    background: #f4d16d;
+                    border: none;
+                    border-radius: 5px;
+                    margin-top: 40px;
+                    margin-left: 12px;
+                    .el-input__inner{
+                        color: black;
+                        cursor: pointer;
+                    }
+                    .el-input.is-disabled {
+                        .el-input__inner {
+                            background: transparent;
+                            // border: 1px solid @main;
+                        }
+                    }
+                }
+            }
+        }
+        .el-button--primary {
+            padding: 16px 20px;
+        }
+    }
+    .tpwd {
+        .code_warp {
+            .clearfix();
+            .el-form-item,
+            .btn_code {
+                float: left;
+            }
+            .el-form-item {
+                width: 65%;
+            }
+            .btn_code {
+                width: 33%;
+                margin-top: 23px;
+                margin-left: 12px;
+                margin-top: 40px;
+                margin-left: 12px;
+                .el-input__inner {
+                    // border: @DaiFontSizeColor6 1px solid;
+                    color: @DaiFontSizeColor6;
+                }
+            }
+        }
+    }
+}
+.change_opwd_main{
+    .el-message-box__wrapper{
+        .el-message-box{
+            width: 660px;
+        }
+        .google{
+            padding: 20px 20px;
+            div{
+                .el-input{
+                    background: #f1f1f1ff;
+                    .el-input__inner{
+                        background: #f1f1f1ff;
+                        color: #2e2e2e;
+                    }
+                }
+            }
+            .getcode{
+                display: flex;
+                justify-content: space-between;
+                background: #f1f1f1ff;
+                border-radius: 5px;
+                div{
+                    background:#f1f1f1ff;
+                    .el-input__inner{
+                        background: #f1f1f1ff;
+                    }
+                }
+                .btn_code{
+                    .el-input__inner{
+                        color: @main;
+                    }
+                }
+                .el-input__inner{
+                    color: #2e2e2e;
+                }
+            }
+            p{
+                color: #151515FF;
+                font-size: 14px;
+                margin: 20px 0;
+            }
+            .btnList{
+                text-align: right;
+                font-size: 12px;
+                a{
+                    display: inline-block;
+                    width: 80px;
+                    height: 33px;
+                    text-align: center;
+                    margin-top: 40px;
+                    line-height: 33px;
+                    border-radius: 5px;
+                    background: @main;
+                    color: #ffffff;
+                }
+                .quxiao{
+                    margin-right: 13px;
+                    background: 0;
+                    color: @main;
+                    border: 1px solid @main;
+                }
+            }
+        }
+    }
+}

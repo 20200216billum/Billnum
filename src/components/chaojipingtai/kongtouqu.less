@@ -1,0 +1,189 @@
+.kongtou{
+    width: 1280px;
+    min-height: 690px;
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 80px;
+
+    .mangeMoney_balance{
+        height: 60px;
+        line-height: 60px;
+        padding-left: 20px;
+        font-size: 18px;
+
+    }
+    .mangeMoney_price{
+        height: 300px;
+        margin-top: 10px;
+        .flex1{
+            display: flex;
+            justify-content: space-between;
+            .flexItem{
+                width: 639px;
+                height: 300px;
+                text-align: center;
+                font-size: 16px;
+                box-sizing: border-box;
+                padding: 42px 0;
+                line-height: 43px;
+                .flexIcon{
+                    display: flex;
+                    justify-content: center;
+                    .div_2{
+                        width: 133px;
+                        text-align: left;
+                    }
+                    .div_3{
+                        width: 50px;
+                    }
+                }
+                .border1{
+                    border-left: 1px solid #313359FF;  
+                }
+            }
+            .div1{
+                img{
+                    width: 93px;
+                    height: 93px;
+                }
+            }
+            .div2{
+                p{
+                    text-align: left;
+                    padding-left: 220px;
+                }
+                .div_1{
+                    width: 8px;
+                    height: 8px;
+                    margin-top: 18px;
+                    margin-right: 10px;
+                }
+                .color1{
+                    border-radius: 50%;
+                    background: #EE6560FF;
+                }
+                .color2{
+                    border-radius: 50%;
+                    background: #62C89DFF;
+                }
+                .color3{
+                    border-radius: 50%;
+                    background: #3075EEFF;
+                }
+                .color4{
+                    border-radius: 50%;
+                    background: #7265E6FF;
+                }
+                .color5{
+                    border-radius: 50%;
+                    background: #AF6CF1FF;
+                }
+            }
+            .div2 p:nth-child(2),.div2 p:nth-child(3),.div2 p:nth-child(4){
+              border-left: 1px solid @color;  
+            }
+        }
+    }
+
+    .mangeMoney_record{
+        position: relative;
+        ul{
+            li{
+                width: 180px;
+                height: 40px;
+                float: left;
+            }
+            .btn_a{
+                a{
+                    display: inline-block;
+                    width: 50px;
+                    height: 30px;
+                    border-radius: 5px;
+                    text-align: center;
+                    line-height: 30px;
+                    font-size: 14px;
+                    background: @main;
+                    color: #ffffff;
+                }
+            }
+            .last{
+                text-align: right;
+                a{
+                    margin-right: 30px;
+                }
+            }
+        }
+        .ul_1{
+            margin: 0;
+            padding: 0;
+            li{
+                color: @color;
+                line-height: 40px;
+                margin-bottom: 20px;
+            }
+            .last{
+                text-align: right
+            }
+        }
+        .position{
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 2000;
+            .el-select{
+                font-size: 16px;
+                width: 80px;
+                border: none;
+                border: none;
+                input{
+                    border: 1px solid @cardBg;
+                }
+            }
+        }
+        // height: 357px;
+        margin-top: 40px;
+        .el-tabs__nav{
+            height: 47px;
+        }
+        .el-tabs__nav-wrap{
+            height: 50px;
+            padding-left: 24px;
+            .el-tabs__nav-scroll{
+                height: 50px;
+                el-tabs__item{
+                    height: 50px;
+                }
+            }
+        }
+        .el-table td, .el-table th.is-leaf{
+        }
+        .el-table td{
+            height: 50px;
+            border-bottom: 0;
+        }
+        .flex2{
+            display: flex;
+            justify-content: space-between;
+            .flexItem{
+                width: 320px;
+                height: 120px;
+                padding-top: 30px;
+                text-align: center;
+                font-size: 16px;
+                box-sizing: border-box;
+                p{
+                    padding-top: 30px;
+                }
+            }
+            .div2{
+                h4,p{
+                    border-right: 1px solid #313359FF;
+                }
+            }
+        }
+        .el-pagination{
+            margin-top: 30px;
+            text-align: right;
+        }
+    }
+}

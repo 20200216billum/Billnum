@@ -1,0 +1,345 @@
+@import '../../assets/public.less';
+.mortgage{
+    color: #ffffff;
+    .mortgage_opreation{
+        width: 1280px;
+        margin:  20px auto 30px auto;
+        background: @cardBg;
+        padding-top: 80px;
+        padding-bottom: 60px; 
+        text-align: center;
+        h1{
+            font-size:42px;
+            color:rgba(255,255,255,1);
+        }
+        h4{
+            margin-top: 20px;
+            font-size:12px;
+            color:rgba(153,153,153,1);
+        }
+        .opreation{
+            margin-top: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 140px;
+            .item{
+                &:hover{
+                    animation:myfirst 0.77s ;
+                }
+                @keyframes myfirst
+                {
+                    20% {transform: translateX(6.4%)}
+                    35% {transform: translateX(0)}
+                    50% {transform: translateX(5.6%)}
+                    60% {transform: translateX(0%)}
+                    75% {transform: translateX(3.2%)}
+                    85% {transform: translateX(0)}
+                    95% {transform: translateX(1.2%)}
+                    100%{transform: translateX(0)}
+                }
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                .content{
+                    width: 266px;
+                    padding: 0 40px 0 20px;
+                    text-align: left;
+
+                    .info{
+                        margin-top: 20px;
+                        font-size: 14px;
+                    }
+                }
+            }
+            .lendMoney{
+                .title{
+                    font-size:24px;
+                    color:rgba(251,84,92,1);
+                }
+            }
+            .lendCoin{
+                .title{
+                    font-size:24px;
+                    color:rgba(49,230,142,1);
+                }
+            }
+            .river{
+                width:2px;
+                height:40px;
+                background:rgba(56,63,83,1);
+            }
+        }
+
+    }
+
+    .mortgage_explain{
+        position: relative;
+        margin: 0 auto;
+        padding: 30px 30px 0 30px;
+        width:1181px;
+        min-height:302px;
+        border:2px dashed rgba(56,63,83,1);
+        .close{
+            position: absolute;
+            right: 30px;
+            top: 20px; 
+            cursor: pointer;
+        }
+        .rateImg{
+            position: absolute;
+            text-align: center;
+            right: 50px;
+            top: 60%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            p{
+                padding-top: 8px;
+                color: #FF9D20;
+                font-size: 14px;
+            }
+        }
+        h2{
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        span{
+            display: block;
+            font-style: 14px;
+            line-height: 1.6em;
+            color: #f3f3f3d0;
+        }
+    }
+    .el-table{
+        td, th{
+            text-align: center;
+        }
+    }
+    .mortgage_record{
+        width: 1280px;
+        margin: 30px auto 60px auto;
+        background: @cardBg;
+        padding: 30px 0 50px 0;
+        h2{
+            margin-bottom: 30px;
+            padding-left: 20px;
+            height: 20px;
+            font-size:18px;
+            color:rgba(255,255,255,1);
+            font-weight: bold;
+            border-left: 4px solid  @main;
+        }
+        .tabs{
+            padding-left: 10px;
+            display: flex;
+            height: 25px;
+            .item{
+                margin-right: 10px;
+                width: 75px;
+                height: 25px;
+                color: #ffffff;
+                font-size: 14px;
+                cursor: pointer;
+                line-height: 25px;
+                text-align: center;
+            }
+            .item.active{
+                background:rgba(117,167,255,1);
+                border-radius:13px;
+            }
+        }
+        .recordList{
+            width: 100%;
+            padding: 0 10px;
+            margin-top: 20px;
+            .el-table__header{
+                border: 1px solid @YeDorderColor1;
+            }
+            .el-table__header-wrapper{
+                .el-table__header{
+                    .has-gutter{
+                        tr{
+                            border: 1px solid @YeDorderColor1;
+                            th{
+                                border-bottom: none;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+        .el-pagination{
+            float: right;
+            margin: 20px 30px;
+            button{
+                background: @cardBg;
+                color: #ffffff;
+            } 
+            li.active{
+                color: @main;
+            }
+            li{
+                color: #ffffff;
+                background: @cardBg;
+            }
+        }
+    }
+
+    .modal{
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        
+        .content{
+            position: fixed;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -40%);
+            width:521px;
+            height:705px;
+            background:rgba(33,40,59,1);
+            box-shadow:0px 0px 16px 4px rgba(4,0,0,0.5);
+            padding: 30px 34px 0 30px;
+            
+            .head{
+                display: flex;
+                justify-content: space-between;
+                span{
+                    font-size: 18px;
+                }
+            }
+        }
+
+        .form{
+            font-size: 0;
+            width: 100%;
+            margin: 58px auto 0 auto;
+            text-align: center;
+            color: #ffffffd3;
+            .el-input__inner{
+                background-color: @YeDackGroundColor1;
+            }
+
+            .el-form-item {
+                position: relative;
+                text-align: left;
+                margin-right: 0;
+                margin-bottom: 0;
+                &.warning{
+                    margin-top: 20px;
+                    color: rgba(250, 46, 46, 0.788);
+                    font-size: 14px;
+                    .el-form-item__content{
+                        line-height: 1.3em;
+                    }
+                }
+                .tips{
+                    display: flex;
+                    justify-content: space-between;
+                    padding-left: 20px;
+                    font-size: 14px;
+                    color: @YeFontSizeColor3;
+                    height: 40px;
+                    .nums{
+                        color: #ffffff;
+                    }
+                    .maxNums{
+                        color: @main;
+                    }
+                }
+                .el-input-group__append {
+                    background-color: @YeDackGroundColor1;
+                    border-left: none;
+                    border-color: @YeDorderColor1;
+                    color: @main;
+                  }
+                  .el-form-item__label{
+                      position: absolute;
+                      left: 15px;
+                      z-index: 999;
+                  }
+            }
+            .iptNums{
+                position: relative;
+                width: 100%;
+                .el-form-item__content{
+                    width: 100%;
+                    .placeholderColor(#ffffff);
+
+                }
+                &.available{
+                    .placeholderColor(@YeFontSizeColor3);
+                    .el-input__inner{
+                        background: unset;
+                    }
+                }
+            }
+            .iptrate{
+                .el-form-item__content{
+                    width: 100%;
+                    .el-input__inner{
+                        border-right: none;
+                        .placeholderColor(#ffffff)
+
+                    }
+                    .el-input-group__append {
+                        background-color: @YeDackGroundColor1;
+                        border-left: none;
+                        border-color: @YeDorderColor1;
+                        color: #ffffff;
+                        font-size: 17px
+                      }
+                }
+            }
+            .slt{
+                .el-form-item__content{
+                    width: 100%;
+                    .el-select{
+                        width: 100%;
+                        .el-input__inner{
+                            padding-left: 440px;   
+                        }
+                    }
+                }
+            }
+
+            .submit{
+                width: 100%;
+                margin-top: 25px;
+                .el-form-item__content{
+                    &::before{
+                        display: none;
+                    }
+                    &::after{
+                        display: none;
+                    }                    
+                    display: flex;
+                    justify-content: space-between;
+                }
+                p{
+                    width: 437px;
+                    line-height: 1.6em;
+                    text-align: left;
+                    font-size:12px;
+                    color:rgba(153,153,153,1);
+                }
+                .btn-submit{
+                    line-height: 42px;
+                    color: #ffffff;
+                    font-size: 16px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    width:100%;
+                    height:42px;
+                    text-align: center;
+                    background:rgba(117,167,255,1);
+                    border-radius:4px;
+                }
+            }
+        }
+
+    }
+}

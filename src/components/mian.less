@@ -1,0 +1,388 @@
+@import '../assets/public.less';
+@import '../assets/reset.less';
+@import '../assets/baitian.less';
+@import '../assets/yejian.less';
+html{
+}
+.main.big{
+    min-width: 1450px !important;
+}
+//输入框加减隐藏
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none; 
+    margin: 0; 
+}
+/* 火狐 */
+input{
+    -moz-appearance:textfield;
+}
+.header {
+    width: 100%;
+    min-width: 1280px;
+    background: @common-color;
+    .header_box {
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 25px;
+        box-sizing: border-box;
+        max-width: 1870px;
+        height: 60px;
+        .logoImg {
+            position: relative;
+            top: 8px;
+        }
+        .Scavengingfloating();
+        .header_transaction {
+            float: left;
+            .Scavengingfloating();
+            .transaction_main {
+                height: 100%;
+                display:flex;
+                align-items: center;
+                .clearfix();
+                .transaction_list {
+                    position: relative;
+                    float: left;
+                    display: inline-block;
+                    line-height: @header_height;
+                    font-size: @h3FontSize;
+                    cursor: pointer;
+                    margin: 0px 28px;
+                    &:first-child {
+                        line-height: 53px;
+                    }
+                    a:hover {
+                        color: @DaiDackGroundColor5;
+                    }
+                    .blue {
+                        color: @DaiDackGroundColor5;
+                    }
+                    .header_logo {
+                        display: inline-block;
+                        vertical-align: middle;
+                        width: 95px;
+                        height: auto;
+                        img {
+                            width: 40px;
+                            height: 45px;
+                            position: relative;
+                            top: 5px;
+                        }
+                    }
+                    .el-select {
+                        background-color: @DaiDackGroundColor10;
+                        .el-input__inner {
+                            background-color: @DaiDackGroundColor10;
+                        }
+                    }
+                }
+            }
+            .transactionActive {
+                color:@main;
+                position: relative;
+                &:after {
+                    display: block;
+                    content: "";
+                    position: absolute;
+                    left: 50%;
+                    bottom: 0;
+                    width: 32px;
+                    height: 2px;
+                    margin-left: -16px;
+                    background: @main;
+                }
+            }
+            .transaction_list:hover {
+                color: @main;
+            }
+        }
+        .header_personal {
+            float: right;
+            padding-right: 20px;
+            .personal_main {
+                .Scavengingfloating();
+                .personal_list {
+                    &:hover{
+                        .el-dropdown-link,span{
+                            // color: @main;
+                        }
+                    }
+                    cursor: pointer;
+                    height:60px;
+                    padding: 0px 8px;
+                    float: left;
+                    // padding-top: 15px;
+                    line-height:60px;
+                    font-size: 14px;
+                    span{
+                        color: #828EA1;
+                    }
+                    .el-dropdown {
+                        font-size: 14px;
+                        color: @DaiFontSizeColor1;
+                    }
+                    a {
+                        color: @DaiDackGroundColor12;
+                    }
+                    .blue {
+                        color: @DaiDackGroundColor5;
+                    }
+                    .changeLange {
+                        font-size: 14px;
+                    }
+                    .changeTime {
+                        height:60px;
+                        display:flex;
+                        margin:0 10px;
+                        align-items: center;
+                    }
+                }
+                .log {
+                    a {
+                        border: none;
+                        padding: 8px 18px;
+                        border-radius: 3px;
+                    }
+                }
+                .reg {
+                    a {
+                        padding: 8px 18px;
+                        color: #fff;
+                        background: @main;
+                        border-radius:18px;
+                    }
+                }
+                .other {
+                    img {
+                        vertical-align: text-bottom;
+                    }
+                }
+
+                .notice {
+                    position: relative;
+                    width: 230px;
+                    margin-left: 16px;
+                    margin-right: 0px;
+                    top: 5px;
+                    span {
+                        position: absolute;
+                        height: 34px;
+                        width: 60px;
+                        left: 0px;
+                        top: 50%;
+                        margin-top: -19px;
+                        border-radius: 18px;
+                        background-color: @DaiFontSizeColor26;
+                        line-height: 34px;
+                        z-index: 33;
+                        text-align: center;
+                        box-shadow: 0px 1px 8px @DaiFontSizeColor26;
+                    }
+                    .notice_text {
+                        position: absolute;
+                        left: 0px;
+                        top: 50%;
+                        z-index: 22;
+                        margin-top: -20px;
+                        width: 160px;
+                        height: 36px;
+                        background: #4C45B5;
+                        border-radius: 17px;
+                        line-height: 36px;
+                        padding-left: 70px;
+                        color: #9fb9d4;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.home_hader {
+    // background-color: rgba(0, 0, 0, 0);
+}
+
+;
+.home_hader_background {
+    background-color: @cardBg;
+    box-shadow: 1px 3px 5px #342c93;
+}
+
+;
+.home_hader_background1 {
+    background-color: #2B2B2B;
+}
+
+;
+.footer {
+    background-color: #201f2f;
+    width: 100%;
+    min-width: 1280px;
+    .footer-desc {
+        width: 100%;
+        height:300px;
+    }
+    .footer_mian {
+        width:1100px;
+        height:300px;
+        color: @DaiFontSizeColor2;
+        margin:0 auto;
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+        .footerLeft{
+            display:flex;
+        }
+        .footerWarp {
+            // width: 1280px;
+            margin-left:210px;
+            flex:1;
+            .footerRight {
+                font-size: 14px;
+                color: #FFFFFF;
+                display: flex;
+                justify-content: space-between;
+                .one{
+                    width: 180px;
+                }
+                h4 {
+                    font-size:18px;
+                    color: #ffffff;
+                    margin-bottom:26px;
+                }
+                span {
+                    height: 35px;
+                    display: block;
+                    cursor: pointer;
+                    color: #a8a8ad;
+                    a {
+                        display: inline-block;
+                        line-height: 18px;
+                        font-size:14px;
+                        // font-size: @h6FontSize;
+                    }
+                }
+                .icons {
+                    height: 50px;
+                    line-height: 50px;
+                    overflow: hidden;
+                    vertical-align: middle;
+                    img {
+                        float: left;
+                        margin-right: 20px;
+                        width: 20px;
+                        height: 20px;
+                        cursor: pointer;
+                    }
+                }
+                .two {
+                    margin-top: 20px;
+                }
+                .last {
+                    border: none;
+                }
+            }
+        }
+    }
+}
+.el-dropdown-link{
+    cursor: pointer;
+    color: #fff;
+    display:flex;
+    align-items: center;
+    height:60px;
+    .el-icon--right{
+        color:#fff;
+    }
+}
+.el-dropdown-menu{
+    border: none;
+    background:#40404c;
+    box-shadow:0px 5px 10px 0px rgba(24,27,44,0.53);
+    margin: 0;
+    padding: 0;
+    border-radius:8px;
+    .el-dropdown-menu__item--divided{
+        color: #eee;
+        border-top-color: #373741;
+        overflow: hidden;
+        &:hover{
+            color:#eeeeee;
+            background-color: #52525e;
+        }
+        &::before{
+            display: none;
+        }
+        margin-top: 0;
+    }
+    .el-dropdown-menu__item--divided:first-child{
+        border:none;
+    }
+}
+.el-popper[x-placement^=bottom] .popper__arrow{
+    display: none;
+}
+.el-dropdown-menu__item {
+    line-height:40px;
+    white-space: nowrap;
+    a {
+        display: block;
+        width: 120px;
+        text-align: center;
+        position: relative;
+        i {
+            float: left;
+            line-height: 46px;
+            font-size: @h2FontSize;
+            // color: @Bluecolor;
+        }
+    }
+}
+.el-dropdown-menu__item:focus, .el-dropdown-menu__item:not(.is-disabled):hover {
+    background: #202D3C;
+    color: #A0A1B3;
+}
+.el-menu {
+    background: #1A2332;
+    .el-dropdown-menu__item {
+        color: #A0A1B3;;
+    }
+    .head-info {
+        width: 100%;
+        height: 120px;
+        padding-top: 10px;
+        text-align: center;
+        background: url("../assets/img/grzx-bg-img.png") no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        img {
+            width: 50px;
+        }
+        .tel {
+            color: #fff;
+            font-size: 16px;
+            margin-top: -20px;
+        }
+        .uid {
+            color: #828EA1;
+            margin-top: -18px;
+        }
+    }
+}
+.el-menu-mine {
+    min-width: 150px;
+    .el-dropdown-menu__item {
+        color: #A0A1B3;
+        &:first-child {
+            padding: 0;
+            &:hover {
+                background: none;
+            }
+        }
+        img {
+            vertical-align: text-bottom;
+        }
+    }
+}

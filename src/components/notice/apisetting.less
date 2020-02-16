@@ -1,0 +1,151 @@
+  // API设置
+.api_setting_wrapper {
+    width: 1260px;
+    padding-top: 20px;
+    min-height: 715px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    div {
+        box-sizing: border-box;
+    }
+    .api_header {
+        background: @cardBg;
+        border-radius: 4px;
+        color: #fff;
+        height: 60px;
+        line-height: 60px;
+        padding: 0 20px;
+        a {
+            float: right;
+            width: 100px;
+            text-align: right;
+            font-size: @h4FontSize;
+            color: @main;
+        }
+    }
+    .api_notices {
+        height: 260px;
+        border: 1px solid @YeDorderColor1;
+        padding: 20px 0 20px 50px;
+        margin-top: 10px;
+        color: #fff;
+        h3 {
+            color: red;
+            margin-bottom: 20px;
+            margin-top: 15px;
+        }
+        p {
+            margin-bottom: 12px;
+        }
+    }
+    .api_box {
+        margin-top: 20px;
+        .api_header {
+            background: @cardBg;
+            border-radius: 0;
+            color: #fff;
+            height: 50px;
+            line-height: 50px;
+            padding: 0 20px;
+        }
+        .api_border {
+            border: 1px solid @YeDorderColor1;
+            border-top: 0;
+            padding: 20px 50px 20px 50px;
+        }
+        .api_content {
+            .api_c_title {
+                margin-bottom: 30px;
+                margin-top: 20px;
+            }
+            .api_c_left, .api_c_right{
+                float: left;
+                color: #fff;
+                width: 50%;
+            }
+            .api_c_left {
+                width: 40%;
+                margin-right: 10%;
+            }
+            .api_c_right {
+                .el-form-item {
+                    margin-bottom: 5px;
+                }
+                .el-checkbox__inner {
+                    background: transparent;
+                    border-color: @main;
+                }
+                .el-checkbox__label {
+                    color: #fff;
+                }
+                .el-form-item__error {
+                    top: 75%;
+                }
+            }
+            .api_button {
+                float: left;
+                width: 100%;
+                text-align: center;
+                padding-top: 20px;
+                border-top: 1px solid @YeDorderColor1;
+                margin-top: 20px;
+                .el-button.el-button--primary {
+                    width: 400px;
+                    height: 40px;
+                }
+            }
+            .api_border2 {
+                padding: 0;
+            }
+        }
+    }
+    .secret_title_tip {
+        color: @YeOtherColor2;
+        font-size: 12px;
+        margin-top: 10px;
+    }
+    .secret_info {
+        padding: 10px 0;
+        border-bottom: 1px solid @YeDorderColor1;
+        p.name {
+            color: #999;
+            margin-bottom: 10px;
+        }
+        #accessKey, #secretCopy {
+            background: transparent;
+            color: #fff;
+            border: 0;
+            outline: 0;
+            width: 91%;
+        }
+        .copy_btn {
+            color: @main;
+            cursor: pointer;
+        }
+    }
+    .secret_tip {
+        color: @YeOtherColor2;
+        line-height: 1.5;
+        margin-top: 30px;
+    }
+    .modify_checkbox {
+        padding-left: 50px;
+        .el-checkbox__inner {
+            background: transparent;
+            border-color: @main;
+        }
+        .el-checkbox__label {
+            color: #fff;
+        }
+    }
+    .modify_box {
+        .api_c_title {
+            color: #fff;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+        .el-form-item {
+            margin-bottom: 0;
+        }
+    }
+}

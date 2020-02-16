@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	 <script type="text/javascript src="./lib/sockjs.js"></script>
+    <script type="text/javascript src="./lib/stomp.js"></script>
+    <script type="text/javascript src="./lib/jquery.js"></script>
+    <script type="text/javascript src="./lib/jquery.mousewheel.js"></script>
+    <!-- <script type="text/javascript src="./dist/kline.js"></script> -->
+    <script type="text/javascript" src="./dist/compressed.js"></script>
+</head>
+<body>
+<div id="kline_container"></div>
+</body>
+<script type="text/javascript">
+    var hrefurl,MainData,StateofTime,CodeData,dataurl,CountDown,curprices;
+    var wsurldata = 'ws://www.3iex.com/app/webSocketServer?account=account';
+    dataurl = 'http://www.3iex.com/app/KLine/history?type=2&pageSize=50&page=1';
+    // dataurl = 'http://192.168.1.222:8080/app/KLine/history?type=2&pageSize=50&pageNo=1';
+    CodeData = GetQueryString('code');
+
+
+    // console.log(JSON.parse(getCookie("chartSettings")).charts.period);
+    if(getCookie("chartSettings")){
+        switch (JSON.parse(getCookie("chartSettings")).charts.period) {
+            case 'line':
+                StateofTime = 'minute';
+                CountDown = 20000;
+                break;
+            case '1m':
+                StateofTime = 'minute';
+                CountDown = 20000;
+                break;
+            case '5m':
+                StateofTime = 'minute5';
+                CountDown = 200000;
+                break;
+            case '15m':
+                StateofTime = 'minute15';
+                CountDown = 800000;
+                break;
+            case '30m':
+                StateofTime = 'minute30';
+                CountDown = 1500000;
+                break;
+            case '1h':
+                StateofTime = 'minute60';
+                CountDown = 3000000;
+                break;
+            case '1d':
+                StateofTime = 'day';
+                CountDown = 300000000;
+                break;
+            default:
+                StateofTime = 'minute15';
+                CountDown = 800000;
+                break;
+        };   
+    }else {
+        StateofTime = 'minute15';
+        CountDown = 800000;
+    };
+    
+    hrefurl = "index.html?code="+CodeData;
+	var kline = new Kline({
+        element: "#kline_container",
+        width: document.body.offsetWidth,
+        height: document.body.offsetHeight,
+        ranges: [ "1d", "1h", "30m", "15m", "5m", "line"],
+        symbol: CodeData,
+        symbolName: CodeData,
+        type: "poll", // poll/socket
+        url: dataurl+'&timeCycle='+StateofTime+'&code='+CodeData,
+        limit: 0,
+        debug: false,
+        showTrade: false,
+        sendPath:wsurldata,
+    });
+    window.setInterval(function(){
+        kline.resend(); //重新请求数据
+        kline.pause(); //停止刷新
+    },CountDown);
+
+    kline.draw();  //绘制
+    kline.pause(); //停止刷新
+
+
+    kline.setTheme('dark'); //设置图表背景为黑色      
+
+    if (getCookie("language") == 'Chinese') {
+        kline.setLanguage('zh-cn'); //设置中文      
+    }else {
+        kline.setLanguage('en-us');; //设置英文 
+    };
+
+
+    window.onresize = function(){  //视口大小变化时改变K线图大小
+        kline.resize(document.body.offsetWidth, document.body.offsetHeight);
+    };
+    function GetQueryString(name){ //截取url
+        var reg = new RegExp("(^|&|)" + name + "=([^&?]*)(&|$|)", "i");  
+        var r = window.location.search.substr(1).match(reg);  //获取url中"?"符后的字符串并正则匹配
+        var context = "";  
+        if (r != null)  
+            context = r[2];  
+            reg = null;  
+            r = null;  
+            return context == null || context == "" || context == "undefined" ? "" : context;   
+    };
+    function getCookie(name){  //读取cookie
+            var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+            if(arr=document.cookie.match(reg))
+                return unescape(arr[2]);
+            else
+                return null;
+        }
+</script>
+</html>

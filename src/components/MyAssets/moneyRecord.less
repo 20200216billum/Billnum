@@ -1,0 +1,84 @@
+//  财务记录
+.money_record_wrapper {
+    .money_record_container {
+        .public_wrapper();
+        .el-pagination span:not([class*=suffix]){
+            padding: 0 8px;
+        }
+        min-height: 700px;
+        .title {
+            .el-breadcrumb__inner {
+                font-size: @h1FontSize;
+            }
+            .el-icon-arrow-right {
+                font-size: @h1FontSize;
+            }
+            .is-link {
+                font-weight: 100;
+            }
+        }
+        .record_zuixin {
+            margin-top: 20px;
+            .el-pagination {
+                text-align: right;
+                margin-top: 20px;
+            }
+        }
+        .record_list {
+            margin-top: 40px;
+            .table{
+                width: 100%;
+                min-height:300px;
+                margin-top:10px;
+                tr {
+                    display: flex;
+                    justify-content:space-between;
+                    padding:0 10px;
+                    &:first-child {
+                        padding-top:0;
+                    }
+                    th,td {
+                        width: 20%;
+                        font-size:@h4FontSize;
+                        padding:12px 0;
+                        line-height:23px;
+                        &:last-child {
+                            width:150px;
+                            padding-left:10px;
+                        }
+                    }
+                    .tb_url{
+                        width: 35%;
+                    }
+                    th {}
+                    td {}
+                }
+            }
+            .notData {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                text-align: center;
+                line-height: 300px;
+                font-size:@h4FontSize;
+            }
+            .button_pages {
+                text-align: right;
+                padding: 20px 0;
+                i {
+                    margin-right:20px;
+                }
+                span {
+                    color: #909399;
+                    padding: 0 10px;
+                    font-size: 16px;
+                    cursor: pointer;
+                    &:hover {
+                        color:#409EFF;
+                    }
+                }
+            }
+        }
+    }
+}

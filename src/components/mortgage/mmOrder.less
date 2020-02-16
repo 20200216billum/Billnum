@@ -1,0 +1,72 @@
+@import '../../assets/public.less';
+.mmOrder{
+    min-height: 750px;
+    .mortgage_record{
+        // background: @cardBg;
+        margin-top: 30px;
+        margin-bottom: 60px;
+        padding: 30px 0 50px 0;
+        .head{
+            box-sizing: border-box;
+            width: 1280px;
+            margin: 0 auto;
+            background: @cardBg;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+            padding-right: 26px;
+            .el-select{
+                background-color: @YeDackGroundColor1;
+            }
+
+        } 
+
+        h2{
+            padding-left: 20px;
+            height: 20px;
+            font-size:18px;
+            color:rgba(255,255,255,1);
+            font-weight: bold;
+            border-left: 4px solid  @main;
+        }
+
+        .recordList{
+            margin: 0 auto;
+            width: 1280px;
+            background: @cardBg;
+            margin-top: 20px;
+            .el-table__header{
+                border: 1px solid @YeDorderColor1;
+            }
+            .el-table__header-wrapper{
+                .el-table__header{
+                    .has-gutter{
+                        tr{
+                            border: 1px solid @YeDorderColor1;
+                            th{
+                                border-bottom: none;
+                            }
+                        }
+                    }
+                }
+            }
+    
+        }
+        .el-pagination{
+            float: right;
+            margin: 20px 30px;
+            button{
+                background: @cardBg;
+                color: #ffffff;
+            }
+            li.active{
+                color: @main;
+            }
+            li{
+                color: #ffffff;
+                background: @cardBg;
+            }
+        }
+    }
+}

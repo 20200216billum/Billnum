@@ -1,0 +1,183 @@
+.shopList{
+    .dialog{
+        text-align: left;
+    }
+    .auto{
+        width: 1100px;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        .flex{
+            width: 100%;
+            height: 383px;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 20px;
+            box-sizing: border-box;
+            background: #2b2b2b;
+            .div_1{
+                width: 320px;
+                height: 320px;
+                .banner{
+                    width: 100%;
+                    height: 100%;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+            .div_2{
+                width: 638px;
+                height: 343px;
+                padding-top: 19px;
+                .p_1{
+                    color: #ffffff;
+                    font-size: 18px;
+                    line-height: 1.5;
+                }
+                .p_2{
+                    font-size: 14px;
+                    color: @main;
+                    margin: 20px 0;
+                }
+                .p_3{
+                    color: #ffffff;
+                    font-size: 24px;
+                    span{
+                        font-size: 16px;
+                        color: #eeeeee;
+                        margin-right: 24px;
+                    }
+                }
+                .p_4{
+                    display: flex;
+                    justify-content: space-between;
+                    margin: 26px 0;
+                    .floatLeft{
+                        width: 54px;
+                        height: 50px;
+                        color: #eeeeee;
+                        padding-top: 10px;
+                    }
+                    .floatRight{
+                        width: 567px;
+                        .block{
+                            width: 280px;
+                            display: inline-block;
+                            .el-cascader{
+                                background: #1D213A;
+                                .el-input{
+                                    width: 252px;
+                                    height: 32px;
+                                    margin-right: 20px;
+                                    .el-input__inner{
+                                        width: 252px;
+                                        height: 32px;
+                                        background: 0;
+                                        border:1px solid rgba(52,55,83,1);
+                                    }
+                                }
+                            }
+                        }
+                        .select{
+                            display: inline-block;
+                            
+                            .span{
+                                color: #eeeeee;
+                                margin-right: 40px;
+                            }
+                        }
+                        .text{
+                            color: #8E94A3;
+                            font-size: 13px;
+                            margin-top: 10px;
+                        }
+                    }
+                }
+                .btnNum{
+                    display: flex;
+                    justify-content: left;
+                    .div1{
+                        width: 102px;
+                        height: 59px;
+                        display: flex;
+                        justify-content: space-between;
+                        color: #FEFEFF;
+                        border:1px solid rgba(52,55,83,1);
+                        .numLeft{
+                            width: 74px;
+                            text-align: center;
+                            line-height: 59px;
+                            background: #2b2b2b;
+                            border:1px solid #505050;
+                            font-size: 18px;
+                            color: #ffffff;
+                        }
+                        .numRight{
+                            width: 28px;
+                            div{
+                                height: 28px;
+                                text-align: center;
+                                line-height: 30px;
+                                background: #3c3c3c;
+                                border: solid 1px #505050;
+                            }
+                            div:last-child {
+                                border-top: none;
+                            }
+                        }
+                    }
+                    .div3{
+                        width: 150px;
+                        height: 59px;
+                        text-align: center;
+                        line-height: 59px;
+                        background: @main;
+                        color: #ffffff;
+                        margin-left: 20px;
+                        cursor:pointer;
+                        border-radius: 5px;
+                    }
+                    .div2{
+                        width: 150px;
+                        height: 59px;
+                        text-align: center;
+                        line-height: 59px;
+                        background: #919191 !important;
+                        color: #ffffff;
+                        margin-left: 20px;
+                    }
+                }
+            }
+        }
+        .title{
+            height: 50px;
+            background: #2b2b2b;
+            margin-top: 20px;
+            line-height: 50px;
+            p{
+                span{
+                    border-left: 3px solid @main;
+                    padding-left: 20px;
+                    color: #FEFEFF;
+                }
+            }
+        }
+        .bottom{
+            min-height: 500px;
+            text-align: center;
+            padding-top: 90px;
+            div{
+                width: 720px;
+                min-height: 800px;
+                margin: 0 auto;
+                margin-bottom: 80px;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+}

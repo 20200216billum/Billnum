@@ -1,0 +1,379 @@
+.apply_main {
+    padding-top: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 60px;
+    text-align: left;
+    width: 1280px;
+    min-width: 1320px; 
+    margin: 0 auto;
+
+    
+    .applyIng {
+        .apply_header { 
+            // text-align: center;
+            h2 {
+                font-size: 51px;
+                letter-spacing: 1px;
+                color: @main;
+            }
+            p {
+                font-size: 20px;
+                line-height: 60px;
+                letter-spacing: 2px;
+            }
+        }
+        .apply_cont {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            .sell{
+                margin-right: 70px;
+            }
+            .sell,
+            .buy {
+                padding: 0 54px;
+                box-sizing: border-box;
+                transition: all 250ms ease;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                background:#2b2b2b;
+                border:1px solid rgba(0,0,0,1);
+                border-radius:10px;
+                width:330px;
+                height:400px;
+                border-radius:5px;
+                text-align: center;
+                cursor: pointer;
+
+                h2 {
+                    font-size: 32px;
+                    color: #ffffff;
+                    margin: 45px 0 24px 0;
+                }
+                p{
+                    color: @color;
+                    font-size: 16px;
+                    line-height: 30px;
+                }
+                .tishi {
+                    // color: @cunColor;
+                    line-height: 22px;
+                }
+                img {
+                    height: 84px;
+                    width: 84px;
+                    transition: all .3s;
+                }
+            }
+            .buy:hover, .sell:hover{
+                transform: scale(1.15);
+            }
+        }
+        .prompt {
+            .contents(1200px);
+            padding-top: 70px;
+            text-align: left;
+            p{
+                font-size: 16px;
+                color: #BBBBBB;
+                line-height: 1.7em;
+            }
+        }
+        .addApply{
+            text-align: center;
+            margin: 0 auto 0 auto;
+            padding:  80px 0;
+
+            font-size: 20px;
+            color: @main;
+            cursor: pointer;
+        }
+        .removeApply{
+                // border-top: 1px solid @border3;
+                margin-top: 36px;
+                text-align: center;  
+                // color: @Bluecolor;
+                position: relative;
+                left: -10px;  top: 18px;
+                padding-top: 15px;
+                cursor: pointer;    
+            }
+    }
+    //弹框
+    .el-message-box__wrapper {
+        .el-message-box {
+            width: 550px;
+            .el-message-box__btns {
+                text-align: left;
+                .ck {
+                    padding-left: 15px;
+                    margin-top: 10px;
+                    .el-checkbox__label {
+                        font-size: 12px;
+                    }
+                }
+            }
+            .btn-group{
+                display: flex;
+                justify-content: space-between;
+                padding: 20px 30px;
+                .btn{
+                    width:192px;
+                    height:40px;
+                    background: @main;
+                    border-radius:5px;
+                }
+                .btn-close{
+                    line-height: 40px;
+                    text-align: center;
+                    background: unset;
+                    color: @main;
+                    border: 1px solid @main;
+                    cursor: pointer;
+                }
+            }
+            .el-message-box__header {
+                display: flex;
+                align-items: center;
+                box-sizing: border-box;
+                justify-content: space-between;
+                width: 100%;
+                padding: 17px 30px;
+                background: #eee;
+                img{
+                    color: #999999;
+                    cursor: pointer;
+                }
+            }
+        }
+        .el-message-box__title {
+
+        }
+        .el-message-box__content {
+            padding-left: 30px;
+            h2 {
+                // color: @zhuColor;
+                font-size: @h3FontSize;
+                line-height: 34px;
+                margin-bottom: 8px;
+                font-weight: 700;
+            }
+            .info {
+                line-height: 24px;
+                // color: @chiColor;
+                font-size: @h6FontSize;
+            }
+            .second {
+                margin-top: 20px;
+                padding-bottom: 10px;
+                // border-bottom: 1px solid @border2;
+            }
+        }
+    }
+}
+
+//sell 页面
+.sell_main {
+    .el-input__inner{
+        .inputStyle();
+    }
+    width: 1280px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 80px 20px 40px 20px;
+    .el-checkbox__inner {
+        // border: 1px solid @Bluecolor;
+    }
+    .el-input__inner{
+        border-width:1px;
+    }
+    .tishi {
+        margin-left: 18px;
+        font-size: 12px;
+        // color: #409EFF;
+    }
+    //loading 样式
+    .el-loading-spinner .circular {
+        width: 22px;
+        height: 22px;
+    }
+    .no_list {
+        // color: @cunColor;
+        font-size: @h6FontSize;
+        margin-top: 30px;
+        text-align: center;
+    }
+    // .sellBuy_title,
+    .form_warp {
+        .contents(870px);
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button{
+            -webkit-appearance: none !important;
+            margin: 0;
+        
+            } 
+    }
+    .sellBuy_title {
+        text-align: center;
+        h2 {
+            font-size: 48px;
+            // color: @zhuColor;
+            letter-spacing: 1px;
+            text-align: left;
+        }
+        p {
+            text-align: left;
+            // color: @cunColor;
+            font-size: @h4FontSize;
+            line-height: 42px;
+        }
+    }
+    .form_warp {
+        margin-top: 50px;
+        .clform();
+        .el-form-item {
+            margin-bottom: 10px;
+        }
+        .limit {
+            // .clearfix();
+            display: flex;
+            justify-content: space-between;
+            .el-form-item {
+                // position: relative;
+                // float: left;
+                width: 48%;
+                // margin-right: 5%;
+                .cny {
+                    position: absolute;
+                    top: 2px;
+                    right: 10px;
+                }
+                .el-input__suffix {
+                    right: 40px;
+                }
+            }
+        }
+        .lis_warp {
+            margin-bottom: 10px;
+            li {
+                // border-bottom: 1px solid @border4;
+                .el-checkbox {
+                    float: right;
+                }
+            }
+        }
+        .add_pay {
+            cursor: pointer;
+            // margin-top: 15px;
+            // border: 1px solid @border3;
+            .ht(44px);
+            text-align: center;
+        }
+        .el-button--primary {
+            margin-top: 20px;
+            height: 44px;
+            width: 100%;
+        }
+        .icon{
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+            vertical-align: sub;
+            &::before{
+                content: "";
+            }
+        }
+        .wx {
+            background: url("../../assets/image/fabu/weixin-fb-1.png")
+        }
+        .car {
+
+            background: url("../../assets/image/fabu/yinlian-fb-1.png")
+        }
+        .alipay {
+            background: url("../../assets/image/fabu/zhifubao-fb-1.png")
+        }
+    }
+    .sellBuy_list {
+        // border-top: 1px solid @border2;
+        padding-top: 50px;
+        .contents(90%);
+        margin-top: 50px;
+        .sellBuy_title {
+            width: 100%;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            h2{
+                display: flex;
+                justify-content: space-between;
+                font-size: 24px;
+                span{
+                    color: @main;
+                    font-size: 14px;
+                }
+            }
+            p{
+                color: @main;
+                font-size: 16px;
+            }
+        }
+        .sellBuy_title_warp {
+            span {
+                // color: @cunColor;
+                font-size: @h4FontSize;
+                width: 13%;
+                text-align: center;
+                display: inline-block;
+            }
+            .dingdan {
+                padding-left: 20px;
+                text-align: left;
+            }
+            .todo {
+            }
+            .sellBuy_nav {
+                display: flex;
+                padding: 15px 0;
+                background: #f1f1f1;
+                span{
+                    flex: 1;
+                }
+            }
+            .sellBuy_lis_warp {
+                padding-bottom: 50px;
+                .sellBuy_lis {
+                    .ht(44px);
+                    display: flex;
+                    // border-top: 1px solid @border3;
+                    span {
+                        flex: 1;
+                        color: #ffffff;
+                    }
+                    .dingdan,
+                    .todo {
+                        // color: @Bluecolor;
+                        .chedan{
+                            width:58px;
+                            height:27px;
+                            border-radius:4px;
+                            text-align: center;
+                            line-height: 27px;
+                            cursor: pointer;
+                            background:@main;
+                            color: #fff;
+                        }
+                    }
+                    .todo {
+                    }
+                }
+            }
+            .el-pagination {
+                text-align: right;
+            }
+        }
+    }
+}

@@ -1,0 +1,108 @@
+.security_main {
+    .contain{
+        margin: 40px auto;
+        padding: 0 20px;
+        width: 1200px;
+        height: 771px;
+        background-color: #1f1f2e;
+        border-radius: 10px;
+        overflow: hidden;
+        .toptitle{
+            font-size: 36px;
+            color: #ffffff;
+            margin-top: 40px;
+        }
+        .securitytabs{
+            margin-top: 33px;
+            .tabslabel{
+                color: #999999;
+                font-size: 20px;
+            }
+            .container{
+                // background: red;
+                height: 642px;
+                overflow-y: scroll;
+                padding-left: 40px;
+                padding-right: 20px;
+                border-left: 2px solid #181825;
+                font-size: 14px;
+                color: #999999;
+                margin-top: -20px;
+                li{
+                    line-height: 80px;
+                    border-bottom: 2px solid #181825;
+                    span{
+                        display: inline-block;
+                        vertical-align: middle;
+                        line-height: 80px;
+                    }
+                    .left{
+                        font-size: 16px;
+                        color: #ffffff;
+                        margin-right: 52px;
+                    }
+                    .icon{
+                        margin-right: 40px;
+                        vertical-align: middle;
+                        font-size: 24px;
+                        color: #357ce1;
+                        .right{
+                            display: initial;
+                        }
+                        .error{
+                            display: none;
+                        }
+                    }
+                    .icon.error{
+                        color: #ff2d55;
+                        .right{
+                            display: none;
+                        }
+                        .error{
+                            display: initial;
+                        }
+                    }
+                    .describe{
+                        margin-left: 52px;
+                    }
+                    .result{
+                        margin-left: 52px;
+                        color: #ffffff;
+                    }
+                    .detail{
+                        color: #ffffff;
+                        float: right;
+                    }
+                    .operation{
+                        font-size: 18px;
+                        color: #ffffff;
+                        float: right;
+                        margin-left: 190px;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .right-icon{
+                display: none;
+            }
+            .el-tabs__item.is-left{
+                border: none !important;
+            }
+            .el-tabs__item.is-left.is-active{
+                .right-icon{
+                    display: initial;
+                }
+                .tabslabel{
+                    color: #ffffff;
+                    font-size: 24px;
+                }
+            }
+            .el-tabs__nav{
+                border: none !important;
+            }
+            .el-tabs__header{
+                border: none !important;
+            }
+        }
+    }
+}

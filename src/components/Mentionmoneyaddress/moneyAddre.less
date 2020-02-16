@@ -1,0 +1,147 @@
+// 提币地址管理
+.money_addre_wrapper {
+    .money_addre_container {
+
+        padding:20px 0;
+        width: 1200px;
+        margin: 0 auto;
+        min-height: 600px;
+        .el-input,.el-input--suffix{
+            width: 95%;
+        }
+        .selectWarp,.bigWarp{
+            float: left;
+        }
+        .selectWarp{
+            width: 20%;
+        }
+        .bigWarp{
+            width: 580px;
+            .el-form-item{
+                // width: 45%;
+            }
+            .bigWarpSelect{
+                .el-select{
+                    width: 100%;
+                }
+            }
+        }
+       
+        .title {
+            background-color: @cardBg;
+            color: #fff;
+            .el-card__body {
+                padding: 20px;
+            }
+            .el-breadcrumb__inner {
+                font-size: @h3FontSize;
+            }
+            .el-icon-arrow-right {
+                font-size: @h3FontSize;
+            }
+            .is-link {
+                font-weight: 100;
+            }
+        }
+        .bit_addre {
+            // margin-top: 20px;
+            // margin-bottom: 40px;
+            // width: 85%;
+            // margin: 20px  auto;
+            background:transparent;
+            border:none;
+            box-shadow:none;
+            .el-card__body {
+                overflow: hidden;
+                padding:0;
+                h5{
+                    line-height:60px;
+                    border-radius:8px;
+                    margin-bottom:2px;
+                    padding-left:20px;
+                    font-size:15px;
+                }
+                .el-form{
+                    border-radius:8px;
+                    padding:20px 0 30px 0;
+                }
+            }
+            .el-button {
+                margin-left: 142px;
+                width: 425px;
+                border: 0;
+            }
+            .el-form {
+                display: flex;
+                justify-content: center;
+                .el-form-item {
+                    // display: inline-block;
+                    // display: flex;
+                    margin-left: 2%;
+                    .bit_type {
+                        border: 1px solid #dcdfe6;
+                        border-radius: 4px;
+                        text-align: center;
+                    }
+                    .el-form-item__label {
+                        color: @DaiFontSizeColor29;
+                    }
+                    .el-form-item__label:before{
+                        content: '';
+                    }
+                }
+            }
+        }
+        .addre_list {   
+            border:none;
+            box-shadow:none;
+            margin-top:10px;
+
+            .zixun_fen{
+                margin:20px 0;
+                text-align:center;
+            }
+
+            .el-card__body{
+                padding:0 20px;
+                h5{
+                    line-height:55px;
+                    span{font-size:15px;padding-left:10px;}
+                }
+                .el-table__body-wrapper{
+                    td{
+                        .el-button{
+                            background:transparent;
+                        }
+                    }
+                }
+            }
+            .el-table__body-wrapper {
+                min-height: 300px;
+                .el-table__empty-block {
+                    min-height: 300px;
+                }
+            }
+        }
+        .addtitle{
+            background-color: transparent;
+            position: relative;
+            .el-card__body {
+                padding: 20px;
+            }
+            &:before {
+                content: "";
+                display: block;
+                height: 15px;
+                border: 1px solid @main;
+                position: absolute;
+                top: 20px;
+                left: 0;
+            }
+            .addre_private {
+
+            }
+        }
+
+    }
+}

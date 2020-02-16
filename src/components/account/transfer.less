@@ -1,0 +1,59 @@
+@import '../../assets/public.less';
+.transfer_wrap{
+    .el-form-item.is-required:not(.is-no-asterisk) .el-form-item__label-wrap>.el-form-item__label:before, .el-form-item.is-required:not(.is-no-asterisk)>.el-form-item__label:before{
+        display: none;
+    }
+    .el-input__inner{
+        .inputStyle();
+    }
+    width: 1280px;
+    box-sizing: border-box;
+    padding:40px 20px 300px 20px;
+    margin: 0 auto;
+    .nav{
+        height:60px;
+        background: @cardBg;
+        border-radius:4px;
+        font-size: 16px;
+        color: #fff;
+        line-height: 60px;
+        padding-left: 20px;
+        span{
+            cursor: pointer;
+        }
+    }
+    .ruleForm{
+        width: 900px;
+        margin: 0 auto;
+        .el-input.is-disabled .el-input__inner{
+            background-color: #2b2f4c;
+            border: 1px solid #31364B;
+        }
+        .el-form-item{
+            width: 48%;
+            position: relative;
+            .canUse{
+                width: 400px;
+                color: @color;
+                position: absolute;
+                top: 0%;
+                right: -101%;
+            }
+        }
+        .el-button--primary{
+            width: 470px;
+            border: none;
+            transform:translate(206px,80px);
+        }
+        .item_transfer{
+            display: flex;
+            justify-content: space-between;
+            .el-form-item{
+                .el-select{
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+}

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>错误页</title>
+    <style>
+        #error {
+		/* height: 980px; */
+		width: 100%;
+		/* background-image: url(./static/img/error/background.png) */
+	}
+	h3, h4{
+		transform: scale(.8);
+		text-align: center;
+		color: #968f8f;
+	}
+	ul li {
+		list-style: none;
+	}
+	
+	#error .errorBanner {
+		width: 1200px;
+		margin: 0 auto;
+		overflow: hidden;
+		/* background-image: url(./static/img/error/bg.png); */
+		/* height: 1000px; */
+		background-repeat: no-repeat;
+		background-position: 50% 40%
+	}
+	
+	#error .errorBanner h2 {
+		color: #333333;
+		font-size: 30px;
+		padding-top: 80px;
+		text-align: center;
+		height: 58px;
+		line-height: 58px
+	}
+	
+	#error .errorBanner .canuser .canHeader {
+		padding-top: 130px;
+		padding-bottom: 30px;
+	}
+	
+	#error .errorBanner .canuser .canHeader h3 {
+		font-size: 32px;
+		color: #333333;
+		text-align: center
+	}
+	
+	#error .errorBanner .canuser .browserWarp {
+		zoom: 1;
+		padding-top: 32px
+	}
+	
+	#error .errorBanner .canuser .browserWarp .list {
+		width: 20%;
+		height: 280px;
+		text-align: center;
+		float: left;
+		cursor: pointer
+	}
+	
+	#error .errorBanner .canuser .browserWarp .list p {
+		color: #333333;
+		padding-top: 8px
+	}
+	
+	#error .errorBanner .canuser .browserWarp .list .upload {
+		margin-top: 30px;
+		display: none
+	}
+	
+	#error .errorBanner .canuser .browserWarp .list .upload span {
+		display: inline-block;
+		color: #fff;
+		width: 114px;
+		height: 36px;
+		line-height: 36px;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		background: #4479c5;
+		border: 1px solid #84aede
+	}
+	
+	#error .errorBanner .canuser .browserWarp .list .moren {
+		display: block
+	}
+	
+	#error .errorBanner .canuser .browserWarp .list img {
+		height: auto;
+		width: auto;
+		display: inline-block;
+		text-align: center
+	}
+    </style>
+</head>
+
+<body>
+    <div id="error">
+        <div class="errorBanner">
+            <h2>当前浏览器暂不支持访该站点 ！！</h2>
+            <h3>Current browsers do not support accessing web pages!!</h3>
+            <div class="canuser">
+                <div class="canHeader">
+                    <h3>推荐使用以下浏览器访问</h3>
+                    <h4>The following browsers are recommended for access</h4>
+                </div>
+                <ul class="browserWarp">
+                    <li class="list">
+                        <a href="https://browser.360.cn/ee/">
+                            <img src="./static/img/error/img-browser-logo2.43ea27ba.png" >
+                            <p>360极速版</p>
+                            <div class="upload">
+                                <span>下载</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="https://www.liebao.cn/download.html">
+                            <img src="./static/img/error/img-browser-logo3.fcf83e3f.png" >
+                            <p>猎豹</p>
+                            <div class="upload">
+                                <span>下载</span>
+
+                            </div>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="https://www.google.cn/chrome/">
+                            <img src="./static/img/error/img-browser-logo1.b467761b.png" >
+                            <p>谷歌</p>
+                            <div class="upload moren">
+                                <span>下载</span>
+
+                            </div>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="https://ie.sogou.com/">
+                            <img src="./static/img/error/img-browser-logo4.0eb517b1.png" >
+                            <p>搜狗浏览器</p>
+                            <div class="upload">
+                                <span>下载</span>
+
+                            </div>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="https://www.maxthon.cn/">
+                            <img src="./static/img/error/img-browser-logo5.8b76596a.png" >
+                            <p>遨游</p>
+                            <div class="upload">
+                                <span>下载</span>
+
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,532 @@
+.runWrap{
+    background: @mainBg;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    position: relative;
+    padding:55px 44px;
+    box-sizing: border-box;
+    .conTent{
+        width: 1000px;
+        margin: 0 auto;
+    }
+    .headerTab{
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        background: @cardBg;
+        border-radius: 10px;
+    }
+    .codeUl{
+        display: flex;
+        align-items: center;
+        height: 100%;
+        justify-content: center;
+    }
+    .codeLi{
+        width: 70px;
+        height: 32px;
+        line-height: 32px;
+        border-radius: 6px;
+        text-align: center;
+        font-size: 18px;
+        box-sizing: border-box;
+        color: #bbb;
+        margin-right: 30px;
+        cursor: pointer;
+        padding: 0 10px;
+        &:last-child{
+            margin-right: 0;
+        }
+    }
+    .codeLi.on{
+        color: #fff;
+        background: @main;
+    }
+    .zuozhuang{
+        width: 100%;
+        height: 730px;
+        background: @cardBg;
+        margin-top: 16px;
+        .signimg{
+            width: 69px;
+            height: 17px;
+            margin:0 auto;
+            transform: translateY(-4px);
+            cursor: pointer;
+            img{
+                display: block;
+            }
+        }
+        .touzhu{
+            width: 350px;
+            height: 54px;
+            border: none;
+            outline: none;
+            font-size: 22px;
+            color: #fff;
+            font-weight: bold;
+            border-radius: 6px;
+            background: url(../../assets/img/touzhu-btn.png) no-repeat center center;
+            margin: 30px auto 35px;
+            display: block;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+        .touzhu.disbtn{
+            background:#d2d5e2;
+            cursor: default;
+        }
+        .inpW{
+            width: 90%;
+            margin: 0 auto;
+        }
+        .inputWrap{
+            .el-input__inner{
+                background: transparent;
+                border: 1px solid rgba(52, 55, 83, 1);
+                color: #d6d7db;
+            }
+            .el-form-item__label{
+                color:#d6d7db;
+                font-size:12px;
+            }
+            .el_form_item{
+                width: 50%;
+            }
+            .el-form-item{
+                width: 100%;
+            }
+        }
+        .el_form{
+            display: flex;
+        }
+        .tz{
+            margin-right: 30px;
+        }
+        .beishu{
+            display: flex;
+            padding-left: 80px;
+            justify-content: space-between;
+            span{
+                background: @main;
+                width: 77px;
+                height: 28px;
+                box-sizing: border-box;
+                line-height: 28px;
+                text-align: center;
+                border-radius: 2px;
+                color: #d6d7db;
+                font-size: 12px;
+                cursor: pointer;
+            }
+            span.on{
+                background: #363741;
+            }
+        }
+        .shouyi{
+            display: flex;
+            padding-left: 80px;
+            line-height: 28px;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #d6d7db;
+        }
+        .jiangchi{
+            font-size: 12px;
+            color: @main;
+            text-align: center;
+            padding: 16px 0;
+        }
+        
+    }
+    .userListWrap{
+        margin-top: 20px;
+    }
+    .imggif{
+        width: 500px;
+        position: absolute;
+        top:-10%;
+        left:0;
+    }
+    .el_tab{
+        .el-tabs__nav-wrap::after{
+            display: none;
+        }
+        .el-tabs__item{
+            text-align: center;
+            font-size: 16px;
+            color: #bbb;
+            padding: 0;
+            width: 130px;
+            border-bottom: 2px solid @cardBg;
+        }
+        .el-tabs__item.is-active{
+            color: @main;
+            border-bottom: 2px solid @main;
+        }
+        .el-tabs__active-bar{
+            background: @main;
+            display: none;
+        }
+        .el-tabs__nav{
+            width: 39%;
+            float: none;
+            margin: 0 auto;
+        }
+        .el-tabs__header{
+            margin-bottom: 30px;
+        }
+        .title{
+            color: #bbb;
+        }
+        
+        .conmmon{
+            display: flex;
+            text-align: center;
+            font-size: 14px;
+            line-height: 40px;
+            i{
+                font-style: normal;
+                margin-left: 10px;
+                color: @main;
+                cursor: pointer;
+            }
+            span{
+                width: 25%;
+            }
+            .rise{
+                color: @fall;
+            }
+            .fall{
+                color: @rise;
+            }
+        }
+        .listLi{
+            background: @cardBg;
+            color: #d6d7db;
+            margin-bottom: 10px;
+            border-radius: 6px;
+        }
+        .nodata{
+            text-align: center;
+            color: #888;
+            font-size: 14px;
+            line-height:100px;
+        }
+        .conmmon3{
+            .w3{
+                width:60%
+            }
+        }
+    }
+    .el-tabs__content{
+        min-height: 540px;
+    }
+    .el-dialog__body{
+        background: @mainBg;
+    }
+    .el-dialog__header{
+        background: #1D213A;
+        font-size: 18px;
+        padding: 20px 30px;
+        .el-dialog__close{
+            font-size: 22px;
+        }
+        span{
+            color: @main;
+        }
+    }
+    .el-dialog{
+        min-width: 890px;
+        background: @cardBg;
+        .el-tabs__item{
+            width: 266px;
+            border-color: #4c4f58;
+        }
+        .el-tabs__nav{
+            width: 94%;
+        }
+    }
+    .percentageDivWrap{
+        width: 308px;
+        position: relative;
+        margin:0 auto;
+        .b0{
+            position: absolute;
+            bottom:0;
+            color: @main;
+            font-size: 16px;
+        }
+        .span1{
+            left: -30px;
+        }
+        .span2{
+            right: -48px;
+        }
+    }
+    .percentageDiv{
+        width: 308px;
+        height: 154px;
+        overflow: hidden;
+        position: relative;
+        margin:44px auto 114px;
+        .gufen{
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .el-progress__text{
+            color: @main;
+            font-size: 36px;
+            bottom:18%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-left: 0;
+        }
+    }
+    .zhuangjia{
+        .el-input__inner{
+            width: 60%;
+            height: 50px;
+            
+        }
+    }
+    .percentage{
+        .el-progress-circle{
+            transform: rotate(-90deg);
+        }
+    }
+    .jc{
+        padding: 0 150px;
+        margin-bottom: 70px;
+    }
+    .info{
+        margin: 70px auto 0;
+        color: @main;
+        font-size: 16px;
+        text-align: center;
+        width: 250px;
+        line-height: 34px;
+        border-bottom: 1px solid @main;
+        cursor: pointer;
+        img{
+            vertical-align: middle;
+            margin-right: 4px;
+        }
+    }
+    .flex{
+        display: flex;
+    }
+    .jcli{
+        margin-bottom: 34px;
+        justify-content: space-between;
+        .jcliitem{
+            align-items: center;
+        }
+        .jcliitem1{
+            width: 50%;
+            border-right: 1px solid #434b58;
+        }
+        .p1{
+            font-size: 18px;
+            color: #d6d7db;
+            margin-bottom: 18px;
+        }
+        .p2{
+            font-size: 16px;
+            color: #bbb;
+        }
+    }
+    .yuan{
+        width: 12px;
+        height: 12px;
+        display: block;
+        background: #d6d7db;
+        border-radius: 50%;
+        margin-right: 20px;
+    }
+    .p_1{
+        margin-bottom: 20px;
+        .spans{
+            line-height: 22px;
+            text-align: left;
+        }
+    }
+    .con_p{
+        color: #d6d7db;
+        font-size: 16px;
+    }
+    .con_pye{
+        text-align: left;
+        padding-top: 10px;
+    }
+    .flexss{
+        position: relative;
+        margin-top: 25px;
+        padding-bottom: 35px;
+        border-bottom: 1px solid #4c4f58;
+        margin-bottom: 50px;
+        .cspan{
+            position: absolute;
+            line-height: 50px;
+            left: 50%;
+            color: #d6d7db;
+            font-size: 18px;
+        }
+        .el-input{
+            display: flex;
+        }
+    }
+    .el-input__inner{
+        background: transparent;
+        color: #d6d7db;
+        border:2px solid #434b58;
+        &::-webkit-input-placeholder{
+            color: #bbb;
+            font-size: 14px;
+        }
+        &::-moz-placeholder{
+            color: #bbb;
+            font-size: 14px;
+        }
+        &::placeholder{
+            color: #bbb;
+            font-size: 14px;
+        }
+    }
+    .el-button--primary{
+        font-size: 16px;
+        background: @main;
+        color: #fff;
+        border: none;
+        width: 220px;
+        height: 50px;
+    }
+    .plr3{
+        padding: 10px 30px 50px;
+    }
+    .zzUL{
+        .jcli{
+            justify-content: flex-start;
+        }
+        .jcliitem{
+            width: 30%;
+            border-right: 1px solid #434b58;
+            margin-right: 5%;
+            &:last-child{
+                margin-right: 0;
+                border: none;
+            }
+        }
+    }
+    .el-pagination{
+        margin: 30px auto;
+        text-align: center;
+    }  
+    .zhuan{
+        .conmmon {
+            span{
+            font-size: 14px;
+            color: #bbb;
+            width: 33.33%;
+            }
+            span.rise{
+                color: @fall;
+            }
+            span.fall{
+                color: @rise;
+            }
+        }
+        .listLi{
+            background: #2a2d3b;
+            margin-bottom: 6px;
+        }
+    }
+    //游戏
+    .canDiv{
+        height: 400px;
+        position: relative;
+        .p_{
+            color: #bbb;
+            font-size: 12px;
+            bottom:15%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .Countdown{
+            color: #e94256;
+        }
+    }
+    .Jackpot{
+        font-size: 36px;
+        color: @main;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+    }
+}
+// 校验
+.jiaoyanWrap{
+    padding: 120px 50px;
+    .conTent{
+        h1{
+            font-size: 58px;
+            color: @main;
+            line-height: 80px;
+        }
+        h4{
+            color: #8e94a3;
+            font-size: 36px;
+            margin-top: 36px;
+            margin-bottom: 80px;
+        }
+        .inpu{
+            input{
+                background: transparent;
+                border-width: 1px;
+                height: 60px;
+                padding-left: 74px;
+                box-sizing: border-box;
+            }
+            width: 600px;
+            height: 60px;
+            margin-bottom: 20px;
+            display: block;
+        }
+        .btn_s{
+            display: block;
+            margin-top: 40px;
+            margin-bottom: 65px;
+        }
+    }
+    .flex1{
+        position: relative;
+        img{
+            left: 27px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+    .flex{
+        display: flex;
+        justify-content: space-between;
+        color: #8e94a3;
+        line-height: 40px;
+        padding: 0 30px;
+    }
+    li.flex{
+        background: @cardBg;
+        border-radius: 6px;
+        margin-bottom: 5px;
+    }
+    .nodata{
+        text-align: center;
+        color: #bbb;
+        line-height: 50px;
+        font-size: 14px;
+    }
+}

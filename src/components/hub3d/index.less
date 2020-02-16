@@ -1,0 +1,1105 @@
+// // 加载所有模块
+// @import "src/all";
+// @import "./header.less";
+
+/* chrome */
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none!important;
+    margin: 0;
+}
+
+
+/* Firefox */
+
+input[type=number] {
+    -moz-appearance: textfield;
+    border-width:0px;
+}
+
+
+.icon_eth0 {
+    .icon-eth0();
+}
+
+.icon_eth1 {
+    .icon-eth1();
+    position: relative;
+    top: 5px;
+    width: 38px;
+}
+
+.icon_eth2 {
+    .icon-eth2();
+    position: relative;
+    top: 8px;
+}
+
+.icon_eth3 {
+    .icon-eth3();
+}
+
+.icon_round0 {
+    .icon-round0();
+}
+
+.icon_round1 {
+    .icon-round1();
+}
+
+.icon_round2 {
+    .icon-round2();
+}
+
+.icon_round3 {
+    .icon-round3();
+}
+
+.icon_round4 {
+    .icon-round4();
+}
+
+.icon_Nut0 {
+    .icon-Nut0();
+}
+
+.icon_Nut1 {
+    .icon-Nut1();
+}
+
+.icon_Nut2 {
+    .icon-Nut2();
+    position: relative;
+    top: 8px;
+}
+
+.icon_Nut3 {
+    .icon-Nut3();
+}
+
+.icon_bannerheader1 {
+    .icon-bannerheader1();
+    position: relative;
+    top: 11px;
+}
+
+.icon_bannerheader2 {
+    .icon-bannerheader2();
+    position: relative;
+    top: 11px;
+}
+
+.icon_bannerheader3 {
+    .icon-bannerheader3();
+    position: relative;
+    top: 11px;
+}
+[class*="icon_"],
+[class^=icon_] {
+    display: inline-block;
+}
+
+#tpot {
+    position: relative;
+    top: 6px;
+}
+
+#downTime2,
+#downTime4 {
+    text-shadow: -1px 0 5px #f09200, 0 1px 5px #f09200;
+    font-size: 20px;
+    position: relative;
+    top: 2px;
+    left: 2px;
+}
+
+.layui-layer-title {
+    background-color: #FFFFFF !important;
+    border: none !important;
+    .layui-this {
+        border: none !important;
+    }
+}
+
+.main_content {
+    background-color: #06041e;
+	background-image: url(./../../assets/image/hub3d/bg-img.jpg);
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center -75px;
+    min-width: 900px;
+}
+
+.loadingWarp {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    .loading {
+        width: 28%;
+        position: fixed;
+        top: 30%;
+        left: 50%;
+        margin-left: -14%;
+        height: 80px;
+        border-radius: 5px;
+        min-width: 400px;
+        .info {
+            line-height: 80px;
+            padding-left: 20px;
+            font-size: 16px;
+        }
+        .loadingJif {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 0.6s linear infinite;
+            position: absolute;
+            top: -0.8rem;
+            position: absolute;
+            top: 18px;
+            right: 20px;
+        }
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    }
+}
+.main_content_header{
+    .team_box_list();
+    .banner_header_box{
+        .Scavengingfloating();
+        .banner_header_list{
+            float: left;
+            height: 45px;
+            line-height: 45px;
+            span{
+                color: @YeFontSizeColor1;
+                height: 45px;
+                line-height: 45px;
+                padding-right: 15px;
+                display: inline-block;
+            }
+            .icon_round4{
+                position: relative;
+                top: 11px;
+                cursor: pointer;
+            }
+        }
+    }
+}
+.banner {
+    .banner_one,
+    .banner_two {
+        padding-top: 60px;
+        text-align: center;
+        .banner_header {
+            font-size: 60px;
+            line-height: 84px;
+        }
+        .banner_Jackpot {
+            #tinvested {
+                position: relative;
+                top: 2px;
+            }
+            height: 113px;
+            line-height: 113px;
+            font-size: 70px;
+            font-weight: 500;
+            span {
+                position: relative;
+                top: -33px;
+                left: 25px;
+                .text-shadow();
+            }
+        }
+        .banner_tishi {
+            font-size: 30px;
+            padding-bottom: 5px;
+        }
+        .banner_footer {
+            cursor: pointer;
+            font-size: @h3FontSize;
+            height: 50px;
+            line-height: 50px;
+            .team_box_list();
+            margin: 60px auto 0px auto;
+            border-radius: 5px;
+            text-align: left;
+            animation: pulse 1s infinite;
+            i {
+                position: relative;
+                top: 5px;
+                margin-left: 10px;
+            }
+            span {
+                
+            }
+            p {
+                width: 85%;
+                display: inline-block;
+                text-align: center;
+            }
+        }
+    }
+}
+
+.content {
+    .content_main {
+        .team_box_list();
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 800px;
+    }
+    // 左侧的显示内容
+    .information_content {
+        width: 48.6%;
+        margin-top: 49px;
+        .information_header {
+            ul {
+                .Leftlayout();
+                .header_list {
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    font-size: @h5FontSize;
+                    height: 40px;
+                    line-height: 40px;
+                    cursor: pointer;
+                }
+                .list_dianji {
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                }
+            }
+        }
+        .information_box {
+            min-width: 390px;
+            .information_one {
+                .team_box_list1();
+                .one_main {
+                    .one_header {
+                        font-size: @h3FontSize;
+                        height: 60px;
+                        line-height: 60px;
+                        &:last-of-type {}
+                    }
+                    .one_header_one {
+                        font-size: @h6FontSize;
+                        text-align: center;
+                        height: 22px;
+                        line-height: 22px;
+                        padding: 24px 0;
+                    }
+                    .footWarp {
+                        position: relative;
+                        .icon_round4 {
+                            position: absolute;
+                            right: 5px;
+                            top: 18px;
+                            cursor: pointer;
+                        }
+                    }
+                    .input {
+                        border-radius: 5px;
+                        overflow: hidden;
+                        .Leftlayout();
+                        height: 40px;
+                        .input_inp {
+                            width: 50%;
+                            text-align: center;
+                        }
+                        .input_heaer {
+                            width: 52px;
+                            text-align: center;
+                        }
+                        .input_footer {
+                            line-height: 40px;
+                            text-align: center;
+                            padding-left: 5px;
+                            font-size: @h5FontSize;
+                        }
+                    }
+                    .purchase {
+                        margin: 10px 0px;
+                        overflow: hidden;
+                        zoom: 1;
+                        li:first-of-type {
+                            border-top-left-radius: 5px;
+                            border-bottom-left-radius: 5px;
+                        }
+                        li:last-of-type {
+                            border-top-right-radius: 5px;
+                            border-bottom-right-radius: 5px;
+                        }
+                        li {
+                            float: left;
+                            width: 13.9%;
+                            height: 40px;
+                            line-height: 40px;
+                            text-align: center;
+                            cursor: pointer;
+                        }
+                        .item {
+                            width: 21.4%;
+                        }
+                    }
+                    .button_box {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        .button_guo,
+                        .button_jin {
+                            width: 47.4%;
+                            height: 40px;
+                            i {}
+                            span {
+                                position: relative;
+                                top: -5px;
+                            }
+                        }
+                        .dian {}
+                        .button_guo {}
+                        .button_jin {}
+                    }
+                    .team_box {
+                        .Leftlayout();
+                        .list_one {
+                            border: 1px solid transparent;
+                            transition: all .3s;
+                            cursor: pointer;
+                            text-align: center;
+                            width: 25%;
+                            height: 215px;
+                            margin-bottom: 30px;
+                            img {
+                                width: 80px;
+                                height: 76px;
+                                margin: 20px 0px;
+                            }
+                            .name {
+                                font-size: @h4FontSize;
+                                height: 24px;
+                                line-height: 20px;
+                            }
+                            .type {
+                                font-size: @h6FontSize;
+                                line-height: 16px;
+                            }
+                            .conner {
+                                font-size: @h6FontSize;
+                                line-height: 14px;
+                            }
+                        }
+                        .list_one_dian {}
+                    }
+                }
+            }
+            .information_two {
+                .team_box_list1();
+                .two_main {
+                    padding-bottom: 20px;
+                    position: relative;
+                    .icon_round4 {
+                        position: absolute;
+                        top: 20px;
+                        right: 10px;
+                        cursor: pointer;
+                    }
+                    .two_header {
+                        font-size: @h3FontSize;
+                        height: 60px;
+                        line-height: 60px;
+                    }
+                    .two_box {
+                        padding-bottom: 20px;
+                        .two_list {
+                            font-size: @h3FontSize;
+                            display: flex;
+                            height: 60px;
+                            line-height: 60px;
+                            flex-direction: row;
+                            justify-content: space-between;
+                            .two_text {
+                                text-indent: 10px;
+                                font-size: 18px;
+                            }
+                            .two_text_conner {
+                                margin-right: 10px;
+                            }
+                        }
+                        .two_list1 {
+                            font-size: @h3FontSize;
+                            padding-top: 30px;
+                            padding-bottom: 10px;
+                            h2 {
+                                line-height: 45px;
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: space-between;
+                            }
+                            .team_box_list1();
+                            .two_text_conner {
+                                .text-shadow();
+                            }
+                            .two_list1_footer {
+                                font-size: @h6FontSize;
+                                text-align: right;
+                            }
+                        }
+                        .two_list2 {
+                            button {
+                                display: inline-block;
+                                width: 93.3%;
+                                margin-left: 3.3%;
+                                span {
+                                    font-size: @h6FontSize;
+                                    position: relative;
+                                    top: -5px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .information_three {
+                .team_box_list1();
+                .three_main {
+                    padding-bottom: 20px;
+                    position: relative;
+                    .icon_round4 {
+                        position: absolute;
+                        top: 18px;
+                        right: 8px;
+                        cursor: pointer;
+                    }
+                    .three_header {
+                        font-size: @h3FontSize;
+                        height: 60px;
+                        line-height: 60px;
+                    }
+                    .three_box {
+                        padding-bottom: 20px;
+                        text-align: center;
+                        .three_box_header {
+                            font-size: @h5FontSize;
+                            line-height: 45px;
+                        }
+                        .three_list {
+                            .list_header {
+                                font-size: @h6FontSize;
+                                line-height: 20px;
+                                padding: 15px 5px 10px;
+                            }
+                            .list_text {
+                                font-size: @h6FontSize;
+                                line-height: 24px;
+                            }
+                            .three_button {
+                                font-size: @h5FontSize;
+                                width: 140px;
+                                height: 35px;
+                                line-height: 35px;
+                                margin-top: 20px;
+                                span {
+                                    position: relative;
+                                    top: -3px;
+                                }
+                            }
+                        }
+                        .footer_button {
+                            margin-top: 30px;
+                            font-size: @h5FontSize;
+                            width: 93.3%;
+                            line-height: 35px;
+                            height: 35px;
+                            margin-left: 3.3%;
+                            span {
+                                position: relative;
+                                top: -3px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // 右侧显示内容
+    .team {
+        width: 49%;
+        margin-top: 49px;
+        min-width: 390px;
+        .team_header {
+            ul {
+                .Leftlayout();
+                position: relative;
+                .header_list ,a{
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    font-size: @h5FontSize;
+                    height: 40px;
+                    line-height: 40px;
+                    cursor: pointer;
+                }
+                .list_dianji {
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                }
+                .right{
+                    position: absolute;
+                    right: 0;
+                }
+            }
+        }
+        .team_box {}
+        .team_box {
+            .iteam_one {
+                .team_box_list1();
+                .one_main {
+                    padding-bottom: 20px;
+                    .one_header {
+                        font-size: @h3FontSize;
+                        height: 60px;
+                        line-height: 60px;
+                    }
+                    .hander_team {
+                        font-size: 20px;
+                        padding-top: 18px;
+                    }
+                    .one_header_one {
+                        font-size: @h6FontSize;
+                        text-align: center;
+                        height: 60px;
+                        line-height: 60px;
+                    }
+                    .one_box {
+                        padding-bottom: 20px;
+                        .one_list {
+                            .list_header {
+                                overflow: hidden;
+                                zoom: 1;
+                                font-size: @h3FontSize;
+                                line-height: 67px;
+                                text-indent: 20px;
+                                .one_text {
+                                    float: left;
+                                }
+                                .one_conner {
+                                    float: right;
+                                    margin-right: 10px;
+                                    .number {
+                                        position: relative;
+                                        top: -12px;
+                                        .text-shadow();
+                                    }
+                                }
+                            }
+                            h3 {
+                                text-align: right;
+                                font-size: @h6FontSize;
+                                margin-right: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+            .iteam_two {
+                .team_box_list1();
+                .two_main {
+                    padding-bottom: 20px;
+                    .two_header {
+                        font-size: @h3FontSize;
+                        height: 60px;
+                        line-height: 60px;
+                    }
+                    .two_box {
+                        padding-bottom: 20px;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        flex-wrap: wrap;
+                        .two_list {
+                                width: 46%;
+                                text-align: center;
+                                padding-top: 40px;
+                                padding-bottom: 40px;
+                                margin: 10px;
+                            .text {
+                                height: 40px;
+                                font-size: @h5FontSize;
+                                line-height: 40px;
+                            }
+                            .number {
+                                .text-shadow();
+                                font-size: @h6FontSize;
+                            }
+                        }
+                    }
+                }
+            }
+            .iteam_three {
+                .team_box_list1();
+                .three_main {
+                    .iteam_three_header {
+                        font-size: 22px;
+                        padding-top: 18px;
+                    }
+                    padding-bottom: 20px;
+                    .three_header {
+                        font-size: @h3FontSize;
+                        height: 60px;
+                        line-height: 60px;
+                    }
+                    .three_header_three {
+                        font-size: @h6FontSize;
+                        text-align: center;
+                        height: 60px;
+                        line-height: 60px;
+                    }
+                    .three_box {
+                        padding-bottom: 20px;
+                        .three_list {
+                            .list_header {
+                                overflow: hidden;
+                                zoom: 1;
+                                font-size: @h3FontSize;
+                                line-height: 67px;
+                                text-indent: 20px;
+                                .three_text {
+                                    float: left;
+                                }
+                                .three_conner {
+                                    float: right;
+                                    margin-right: 10px;
+                                    .number {
+                                        position: relative;
+                                        top: -12px;
+                                        .text-shadow();
+                                    }
+                                }
+                            }
+                            h3 {
+                                text-align: right;
+                                font-size: @h6FontSize;
+                                margin-right: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.Leftlayout() {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.text-shadow() {
+    text-shadow: -1px 0 5px @cardBg, 0 1px 5px @cardBg, 1px 0 5px @cardBg, 0 -1px 5px @cardBg, 0 0 0.5em @cardBg, -0 -0 0.5em @cardBg;
+}
+
+.team_box_list() {
+    width: 1240px;
+    margin: 0 auto;
+}
+.team_box_list1() {
+    width: 93.3%;
+    margin: 0 auto;
+}
+
+.Projectile {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    .Projectile_box {
+        width: 50%;
+        min-width: 430px;
+        margin: 0 auto;
+        border-radius: 5px;
+        padding-bottom: 10px;
+    }
+    .Apply,
+    .team,
+    .notloggedon,
+    .notinstalled {
+        position: absolute;
+        width: 60%;
+        left: 50%;
+        margin-left: -30%;
+        top: 30%;
+        min-width: 390px;
+        font-size: @h5FontSize;
+        .header {
+            padding-left: 20px;
+        }
+    }
+    // 团队
+    .team {
+        .team_header {
+            height: 43px;
+            line-height: 43px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            p {
+                text-indent: 10px;
+            }
+            .icon_guanbi {
+                margin-right: 20px;
+                cursor: pointer;
+            }
+        }
+        .team_box {
+            height: 200px;
+            overflow-y: auto;
+            .team_list {
+                padding-top: 20px;
+                .team_box_list1();
+                p {
+                    font-size: @h5FontSize;
+                    line-height: 24px;
+                }
+            }
+        }
+    }
+}
+
+button {
+    /* 按钮美化 */
+    border-width: 1px;
+    /* 边框宽度 */
+    border-color: @YeDorderColor3;
+    border-style: solid;
+    border-radius: 3px;
+    /* 边框半径 */
+    background: @YeDackGroundColor2;
+    /* 背景颜色 */
+    cursor: pointer;
+    /* 鼠标移入按钮范围时出现手势 */
+    outline: none;
+    /* 不显示轮廓线 */
+    font-family: Microsoft YaHei;
+    /* 设置字体 */
+    color: white;
+    /* 字体颜色 */
+    font-size: @h4FontSize;
+    /* 字体大小 */
+}
+
+button:hover {
+    /* 鼠标移入按钮范围时改变颜色 */
+    background: @cardBg;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 5px 0 rgba(46, 198, 209, 0.5);
+    }
+    20% {
+        box-shadow: 0 0 7px 2px rgba(46, 198, 209, 0.6);
+    }
+    40% {
+        box-shadow: 0 0 10px 5px rgba(46, 198, 209, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 18px 8px rgba(46, 198, 209, 0.8);
+    }
+    60% {
+        box-shadow: 0 0 10px 5px rgba(46, 198, 209, 0.7);
+    }
+    80% {
+        box-shadow: 0 0 7px 2px rgba(46, 198, 209, 0.6);
+    }
+    100% {
+        box-shadow: 0 0 5px 0px rgba(46, 198, 209, 0.5);
+    }
+}
+
+@media (min-width: 768px) {
+    .banner {}
+    .content {}
+}
+
+@media (min-width: 992px) {}
+
+@media (min-width: 1200px) {}
+
+
+
+
+
+// 英雄联盟
+.loadingWarp {
+    background-color: rgba(0, 0, 0, 0.5);
+    .loading {
+        background: @YeDackGroundColor1;
+        .info {
+            color: @YeFontSizeColor1;
+        }
+        .loadingJif {
+            border-top: 2px solid @YeDackGroundColor8;
+        }
+    }
+}
+.banner {
+    color: @YeFontSizeColor1;
+    .banner_one,
+    .banner_two {
+        .banner_header {}
+        .banner_Jackpot {
+            #tinvested {}
+            span {}
+        }
+        .banner_tishi {}
+        .banner_footer {
+            background-color: rgba(46, 198, 209, 0.8);
+            box-shadow: 2px 2px 5px @cardBg;
+            i {}
+            span {}
+            p {}
+        }
+    }
+}
+.content {
+    color: @YeFontSizeColor1;
+    .content_main {}
+    // 左侧的显示内容
+    .information_content {
+        .information_header {
+            ul {
+                .header_list {}
+                .list_dianji {
+                    background-color: @YeDackGroundColor2;
+                }
+            }
+        }
+        .information_box {
+            background-color: @YeDackGroundColor2;
+            .information_one {
+                .one_main {
+                    .one_header {
+                        border-bottom: solid 1px @YeDackGroundColor1;
+                        &:last-of-type {
+                            border-bottom: solid 0px @YeDackGroundColor1;
+                            border-top: solid 1px @YeDackGroundColor1;
+                        }
+                    }
+                    .one_header_one {}
+                    .footWarp {
+                        .icon_round4 {}
+                    }
+                    .input {
+                        background-color: @YeDackGroundColor5;
+                        .input_inp {
+                            background-color: @YeDackGroundColor13;
+                        }
+                        .input_heaer {}
+                        .input_footer {
+                            color: @YeFontSizeColor1;
+                        }
+                    }
+                    .purchase {
+                        li:first-of-type {
+                            border-left: solid 1px @cardBg;
+                        }
+                        li:last-of-type {}
+                        li {
+                            border-top: solid 1px @cardBg;
+                            border-bottom: solid 1px @cardBg;
+                            border-right: solid 1px @cardBg;
+                            color: @cardBg;
+                        }
+                        .item {}
+                    }
+                    .button_box {
+                        .button_guo,
+                        .button_jin {
+                            i {}
+                            span {}
+                        }
+                        .dian {
+                            background-color: @cardBg;
+                        }
+                        .button_guo {}
+                        .button_jin {}
+                    }
+                    .team_box {
+                        .list_one {
+                            border: 1px solid transparent;
+                            img {}
+                            .name {}
+                            .type {}
+                            .conner {
+                                color: @YeDackGroundColor10;
+                            }
+                        }
+                        .list_one_dian {
+                            border: solid 1px @YeDorderColor3;
+                        }
+                    }
+                }
+            }
+            .information_two {
+                .two_main {
+                    .icon_round4 {}
+                    .two_header {
+                        border-bottom: solid 1px @YeDackGroundColor1;
+                    }
+                    .two_box {
+                        background-color: @YeDackGroundColor1;
+                        .two_list {
+                            .two_text {}
+                            .two_text_conner {}
+                        }
+                        .two_list1 {
+                            border-top: solid 1px @YeDackGroundColor2;
+                            h2 {}
+                            .two_text_conner {}
+                            .two_list1_footer {}
+                        }
+                        .two_list2 {
+                            button {
+                                height: 45px;
+                                line-height: 45px;
+                                span {}
+                            }
+                        }
+                    }
+                }
+            }
+            .information_three {
+                .three_main {
+                    .icon_round4 {}
+                    .three_header {
+                        border-bottom: solid 1px @YeDackGroundColor1;
+                    }
+                    .three_box {
+                        background-color: @YeDackGroundColor1;
+                        .three_box_header {}
+                        .three_list {
+                            .list_header {}
+                            .list_text {}
+                            .three_button {
+                                span {}
+                            }
+                        }
+                        .footer_button {
+                            span {}
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // 右侧显示内容
+    .team {
+        .team_header {
+            ul {
+                .header_list {}
+                .list_dianji {
+                    background-color: @YeDackGroundColor2;}
+            }
+        }
+        .team_box {}
+        .team_box {
+            background-color: @YeDackGroundColor2;
+            .iteam_one {
+                .one_main {
+                    .one_header {
+                        border-bottom: solid 1px @YeDackGroundColor1;
+                    }
+                    .hander_team {}
+                    .one_header_one {}
+                    .one_box {
+                        background-color: @YeDackGroundColor1;
+                        .one_list {
+                            .list_header {
+                                .one_text {}
+                                .one_conner {
+                                    .number {}
+                                }
+                            }
+                            h3 {}
+                        }
+                    }
+                }
+            }
+            .iteam_two {
+                .two_main {
+                    .two_header {
+                        border-bottom: solid 1px @YeDackGroundColor1;
+                    }
+                    .two_box {
+                        .two_list {
+                            background-color: @YeDackGroundColor1;
+                            .text {}
+                            .number {}
+                        }
+                    }
+                }
+            }
+            .iteam_three {
+                .three_main {
+                    .iteam_three_header {}
+                    .three_header {
+                        border-bottom: solid 1px @YeDackGroundColor1;
+                    }
+                    .three_header_three {}
+                    .three_box {
+                        background-color: @YeDackGroundColor1;
+                        .three_list {
+                            .list_header {
+                                .three_text {}
+                                .three_conner {
+                                    .number {}
+                                }
+                            }
+                            h3 {}
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.Projectile {
+    background-color: rgba(0, 0, 0, 0.2);
+    .Projectile_box {
+        box-shadow: 0px 0px 5px @YeDackGroundColor1;
+        background-color: @YeDackGroundColor13;
+    }
+    .Apply,
+    .team,
+    .notloggedon,
+    .notinstalled {
+        color: @YeFontSizeColor1;
+    }
+    // 团队
+    .team {
+        .team_header {
+            background-color: @YeDackGroundColor2;
+            p {}
+            .icon_guanbi {}
+        }
+        .team_box {
+            .team_list {
+                p {
+                    color: @YeFontSizeColor5;
+                }
+            }
+        }
+    }
+}

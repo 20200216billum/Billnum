@@ -1,0 +1,393 @@
+@import '../../assets/public.less';
+.coincoin {
+    width: 100%;
+    min-width: @MinWidth;
+    overflow-y: hidden;
+    .coincoin_nav {
+        float: left;
+        border-radius: 10px;
+        width: 300px;
+        overflow: hidden;
+        .el-tabs__nav {
+            margin-left: 15px;
+        }
+        .nav_list {
+            .el-tabs__header {
+                margin: 0px;
+            }
+            .Assets_type_box{
+                // border-bottom:5px solid #ebeef5;
+                border-radius:5px;
+            }
+            .Assets_type_box .img {
+                width: 300px;
+                height: 90px;
+                background-size: 300px 90px;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+            .Assets_type_box .img2 {
+                width: 300px;
+                height: 90px;
+                background-size: 300px 90px;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+            .currency_header {
+                line-height: 45px;
+                p {
+                    margin-left: 30px;
+                    text-align: center;
+                    width: 85px;
+                }
+            }
+            .currency_surface_header {
+                .currency_surface_list {
+                    display: inline-block;
+                    width: 32%;
+                    text-align: left;
+                    line-height: 35px;
+                    font-size: 14px;
+                    box-sizing: border-box;
+                    padding-right:7px;
+                }
+                .currency_surface_list:first-of-type {
+                    text-indent: 10px;
+                }
+                .currency_surface_list:last-of-type {
+                    text-align: right;
+                }
+            }
+            .MainArea_box {
+                // padding-bottom: 20px;
+                .MainArea_main,
+                .Innovate_main {
+                    .MainArea_list,
+                    .Innovate_list {
+                        cursor: pointer;
+                        font-size: 13px;
+                        p:first-of-type {
+                            text-indent: 10px;
+                        }
+                        p:last-of-type {
+                            text-align: right;
+                        }
+                        p {
+                            display: inline-block;
+                            width: 32%;
+                            text-align: left;
+                            line-height: 37px;
+                        }
+                    }
+                }
+            }
+            .Innovate_box {}
+            .announcementWarp {
+                .tradingNotice {
+                    h2 {
+                        height: 30px;
+                        line-height: 30px;
+                        font-weight: 700;
+                        padding: 0 15px;
+                        font-size: 14px;
+                    }
+                    .announcementList {
+                        padding-bottom:80px;
+                        .list {
+                            height: 42px;
+                            padding: 6px 15px;
+                            cursor: pointer;
+                            .title {
+                                height: 28px;
+                                line-height: 28px;
+                                font-size: 14px;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                display: -webkit-box;
+                                -webkit-line-clamp: 1;
+                            }
+                            .time {
+                                font-size: 12px;
+                                float: right;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .coincoin_mian {
+        overflow: hidden;
+        height: 100%;
+        .exchange_box {
+            .Placeanorder_header_box {
+                height: 50px;
+                line-height: 50px;
+                overflow: hidden;
+                zoom: 1;
+                padding-left: 15px;
+                overflow: hidden;
+                zoom: 1;
+                .Placeanorder_list_header {
+                    font-size: 20px;
+                }
+                .Placeanorder_list_conent {
+                    font-size: 16px;
+                    p {
+                        margin-left: 5px;
+                        margin-right: 5px;
+                    }
+                }
+                li,
+                p {
+                    float: left;
+                }
+                .Placeanorder_code {
+                    font-size: 16px;
+                }
+                .Placeanorder_price,
+                .Placeanorder_changeRate,
+                .Placeanorder_high,
+                .Placeanorder_low,
+                .Placeanorder_volume {
+                    font-size: 14px;
+                    span {
+                        margin-left: 3px;
+                    }
+                    .rise,
+                    .fall {
+                        font-size: 16px;
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+        .kine {
+            width: 100%;
+            height: 500px;
+            margin-bottom: 10px;
+        }
+        .transaction {
+            width: 100%;
+            display: flex;
+            .transaction_box {
+                flex: 1;
+                margin: 0 10px 0 20px;
+                overflow: hidden;
+                height: 100%;
+                .el-tab-pane {
+                    overflow: hidden;
+                    zoom: 1;
+                }
+                .el-button {
+                    width: 100%;
+                }
+                .number {
+                    width: 100%;
+                    position: relative;
+                    margin: 0 auto;
+                }
+                .el-tabs__nav {
+                    width: 100%
+                }
+                .Purchase,
+                .Sellout {
+                    width: 48%;
+                    display: inline-block;
+                    .jiaoyi,
+                    .keyong {
+                        font-size: 12px;
+                        line-height: 18px;
+                        width: 100%;
+                        float: left;
+                        width: 50%;
+                    }
+                    .keyong{
+                        text-align: right;
+                    }
+                    .number{
+                        position: relative;
+                        .numberSmall,.numberLarge{
+                            position: absolute;
+                            top: 25px;
+                            font-size: 12px;
+                        }
+                        .numberSmall{
+
+                        }
+                        .numberLarge{
+                            right: 0px;
+                        }
+                    }
+                    .stoploss,
+                    .stopwin {
+                        width: 50%;
+                        float: left;
+                        display: inline-block;
+                        h2 {
+                            font-size: 14px;
+                            text-align: center;
+                        }
+                        .stoploss_box,
+                        .stopwin_box {
+                            width: 80%;
+                            margin: 0 auto;
+                        }
+                    }
+                }
+                .Sellout{
+                    float: right;
+                }
+                .el-select {
+                    .el-input__suffix {
+                        display: none;
+                    }
+                    .el-input__inner {
+                        padding-right: 0px;
+                        padding-left: 0px;
+                        text-align: center;
+                    }
+                }
+            }
+            .transaction_main {
+                width: 300px;
+                margin: 0 auto;
+                overflow: hidden;
+                .transaction_header {
+                    line-height: 40px;
+                    padding-left: 15px;
+                    font-size: 16px;
+                }
+                .transaction_nav,
+                .PurchaseData_list,
+                .SelloutData_list {
+                    overflow: hidden;
+                    zoom: 1;
+                }
+                .transaction_nav {
+                    line-height: 30px;
+                    p:first-of-type {
+                        text-indent: 10px;
+                    }
+                    p {
+                        width: 32%;
+                        display: inline-block;
+                        text-align: center;
+                        float: left;
+                        font-size: 14px;
+                        text-align: left;
+                    }
+                    p:last-of-type {
+                        text-align: right;
+                    }
+                }
+                .PurchaseData{
+                    border-bottom: solid 2px #ebeef5;
+                }
+                .PurchaseData,
+                .SelloutData {
+                    font-size: 13px;
+                    line-height: 24px;
+                    margin: 0 auto;
+                    .PurchaseData_list,
+                    .SelloutData_list {
+                        cursor: pointer;
+                        p:first-of-type {
+                            text-indent: 10px;
+                        }
+                        p {
+                            width: 32%;
+                            display: inline-block;
+                            text-align: center;
+                            float: left;
+                            text-align: left;
+                        }
+                        p:last-of-type {
+                            text-align: right;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .Commission {
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-bottom: 10px;
+        position: relative;
+        .Commission_header {
+            height: 40px;
+            line-height: 40px; 
+            position: absolute;
+            top: 0px;
+        }
+        .Commission_mian {
+            position: relative;
+            .el-tabs{
+
+            }
+            .el-tabs__item {
+                padding: 0px 35px;
+            }
+            .el-tabs__nav{
+                float: right;
+            }
+            .el-tabs--top .el-tabs__item.is-top:last-child {
+                padding-right: 25px;
+            }
+        }
+    }
+    .personal{
+        margin-top: 10px;
+        min-width: 950px;
+        .personal_header{
+            height: 50px;
+            line-height: 50px;
+            font-size: 24px;
+            text-indent: 10px;
+        }
+        .personal_box{
+            display: flex;
+            margin-top: 15px;
+            border-bottom: 15px;
+            margin-bottom: 10px;
+            .personal_left,.personal_right{
+                width: 45%;
+                margin-left:20px;
+            }
+            .personal_right{
+                margin-left:5%;
+            }
+            .personal_left{
+                .left_header{
+                    font-size: 24px;
+                }
+                .left_text,.left_main{
+                    font-size: @h4FontSize;  
+                }
+                .left_text{
+                    line-height: 36px;
+                }
+                .left_main{
+                    line-height: 24px;
+                }
+            }
+            .personal_right{
+                .right_list{
+                    font-size: @h4FontSize;
+                    height: 36px;
+                    line-height: 36px;
+                    display: flex;
+                    .right_name{
+                        width: 115px;
+                    }
+                    .right_text{}
+                }
+            }
+        }
+    }
+    .el-table td{
+        // background-color: #ebeef5;
+        // border-color: #ebeef5;
+    }
+}

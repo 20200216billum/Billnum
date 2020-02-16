@@ -1,0 +1,42 @@
+.rankingWrap{ 
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    position: relative;
+    padding:50px 44px;
+    box-sizing: border-box;
+    .conTent{
+        width: 1000px;
+        margin: 0 auto;
+        .rankheader {
+            zoom: 1;
+            &:after {
+                visibility: hidden;
+                display: block;
+                content: "";
+                clear: both;
+                height: 0;
+            }
+            .rankheadL {
+                float: left;
+                .rankTitle {
+                    font-size: 30px;
+                }
+                .rankTitleSub {
+                    font-size: @h1FontSize;
+                    margin-top: 18px;
+                }
+            }
+            .rankheadR {
+                float: right;
+            }
+        }
+        .rankTable {
+            margin-top: 40px;
+            min-height: 600px;
+        }
+    }
+    .el-table tr {
+        background-color: #171717;
+    }
+}

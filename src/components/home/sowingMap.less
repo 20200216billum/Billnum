@@ -1,0 +1,109 @@
+.banners {
+    min-width: 1240px;
+    position: relative;
+    padding: 210px 0 150px 0;
+    background-color: @YeDackGroundColor5;
+    background-size: 100% 100%;
+    color: #ededef;
+    .inner {
+        width: 1240px;
+        margin: 0 auto;
+        overflow: hidden;
+        .left {
+            float: right;
+            width: 52%;
+        }
+        .right {
+            float: left;
+            width: 48%;
+            .pos { 
+                height: 550px;
+                position: relative;
+                img {
+                    position: absolute;
+                }
+                img:nth-child(1) {
+                    top: 57px;
+                    animation: moveleft 1s linear;
+                    -webkit-animation: moveleft 1s linear;
+                    -moz-animation: moveleft 1s linear;
+                    -o-animation: moveleft 1s linear;
+                }
+                img:nth-child(2) {
+                    top: -18px;
+                    left: 195px;
+                    animation: moveright1 1s linear;
+                    -webkit-animation: moveright1 1s linear;
+                    -moz-animation: moveright1 1s linear;
+                    -o-animation: moveright1 1s linear;
+                }
+            }
+        }
+        .left {
+            .leftWarp {
+                padding-top: 64px;
+                h2 {
+                    font-size: 36px;
+                    letter-spacing: 2px;
+                }
+                .info {
+                    padding-top: 28px;
+                }
+                .uploadPhone {
+                    img {
+                        width: 150px;
+                    }
+                    .rwm {
+                        position: absolute;
+                        top: 18px;
+                        left: 15px;
+                        border-radius: 2px;
+                        width: 120px;
+                    }
+                    padding-top: 100px;
+                    .uploadWarp {
+                        width: 60%;
+                        .clearfix();
+                        .uploadAndroad {
+                            position: relative;
+                            float: left;
+                            text-align: center;
+                        }
+                        .uploadIos {
+                            position: relative;
+                            float: right;
+                            text-align: center;
+                        }
+                        .wenzhi {
+                            font-size: 14px;
+                            padding-top: 22px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes moveleft {
+    from {
+        top: 0px;
+    }
+    to {
+        top: 57px;
+    }
+}
+
+@keyframes moveright1 {
+    from {
+        top: 0px;
+    }
+    to {
+        top: -18px;
+    }
+}
+
+.ios:hover {
+    transition: all 3s;
+    background-color: #099AA4;
+}

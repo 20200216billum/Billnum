@@ -1,0 +1,244 @@
+@import '../assets/public.less';
+.register{
+    padding:74px 0 50px 0;
+    box-sizing: border-box;
+    .reg_popup{
+        width:100%;
+        height:100%;
+        position: fixed;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        .popup_cen{
+            width:580px;
+            padding:25px 70px 60px;
+            box-sizing:border-box;
+            position: fixed;
+            top:50%;
+            left:50%;
+            transform: translate(-50%, -50%);
+            border-radius:8px;
+            .close_btn{
+                position: absolute;
+                top: 15px;
+                right: 20px;
+                cursor: pointer;
+            }
+            h6{
+                text-align:center;
+                line-height:50px;
+                font-size:18px;
+            }
+            p{
+                text-align:center;
+                line-height:60px;
+                font-size:16px;
+            }
+            .el-input__inner{
+                border-radius:0;
+                border:none;
+                background:#1f1f2e;
+            }
+            .code_inp{
+                text-align:center;
+                margin-top:60px;
+            }
+            .reg_btn{
+                width:100%;
+                margin-top:60px;
+                border:none;
+            }
+        }
+    }
+
+
+
+    .el-message-box__wrapper{
+        .el-message-box{
+            min-width: 900px;
+            min-height: 400px;
+        }
+    }
+    
+    .reg{
+        width: 520px;
+        margin: 0 auto;
+        h1{
+            width: 100%;
+            font-size:34px;
+            line-height:60px;
+            text-align: center;
+        }
+        .tab-register {
+            display: flex;
+            height: 70px;
+            line-height: 70px;
+            background: @common-color2;
+            border-radius:10px 10px 0px 0px;
+            margin-top: 55px;
+            li {
+                width: 50%;
+                color: #828EA1;
+                font-size: 16px;
+                text-align: center;
+                img {
+                    position: relative;
+                    top: 5px;
+                }
+                &:hover {
+                    cursor: pointer;
+                }
+                &.active {
+                    color: @main;
+                    border-bottom: 2px solid @main;
+                }
+            }
+        }
+        .go_zhubtn{
+            display:flex;
+            justify-content:space-between;
+            font-size:14px;
+            line-height:40px;
+            p{flex:1;}
+            a{width:60px;}
+        }
+        .login_form{
+            width: 440px;
+            min-height: 390px;
+            padding: 40px;
+            background: @common-color;
+            border-radius: 0 0 10px 10px;
+            .register-agreement {
+                .gray {
+                    color: @common-color3;
+                    font-size: 14px;
+                }
+                .agree {
+                    color: @main;
+                }
+            }
+            .login_btn{
+                margin-top: 50px;
+                .el-button--primary{
+                    width:100%;
+                    border-color:none !important;
+                }
+                .el-button{
+                    border-color:none !important;
+                }
+                .wangji{
+                    line-height:50px;
+                    font-size:15px;
+                }
+            }    
+            .now-register {
+                margin-top: 40px;
+                font-size: 14px;
+                text-align: center;
+                .no-user {
+                    color: #8e8e93;
+                }
+                a {
+                    color: @main;
+                }
+            }        
+        }
+
+        // display: flex;
+        // justify-content: space-between;
+        .left{
+            width: 380px;
+            height: 648px;
+            color: #ffffff;
+            text-align: center;
+            padding: 155px 54px;
+            box-sizing: border-box;
+            background-image: url(../assets/img/login/img_bg02.png);
+            h1{
+                font-size: 24px;
+                span{
+                    font-size: 48px;
+                    margin-right: 10px;
+                }
+            }
+            h2{
+                font-size: 18px;
+            }
+            p{
+                font-size: 14px;
+                margin-top: 112px;
+                line-height: 31px;
+            }
+        }
+        .right{
+            width: 590px;
+            height: 648px;
+            padding: 40px 55px;
+            box-sizing: border-box;
+            background: #ffffff;
+            .quhao,.yanzhengma{
+                .el-form-item__content{
+                    width: 480px;
+                    .select{
+                        width: 100px;
+                        float: left;
+                        border: 0;
+                    }
+                    .input{
+                        width: 380px;
+                        border: 0;
+                        float: right;
+                    }
+                    .codeInput{
+                        width: 380px;
+                        float: left;
+                    }
+                    .btn_code{
+                        width: 100px;
+                        float: right;
+                    }
+                }
+            }
+            .el-button {
+                width: 200px;
+                height: 50px;
+                margin-top: 45px;
+            }
+            .el-select{
+                width: 100%;
+            }
+            .el-checkbox{
+                margin-right: 10px;
+            }
+            .xieyi{
+                font-size: 14px;
+                color: @main;
+            }
+            h1{
+                color: #CDCDCDFF;
+                font-size: 14px;
+                text-align: right;
+                a{
+                    
+                    color: @main;
+                }
+            }
+            p{
+                font-size: 22px;
+                color: @main;
+                margin-top: 38px;
+                margin-bottom: 50px;
+            }
+        }
+    }
+}
+.no_ver {
+    width: 520px;
+    margin: 50px auto 0 auto;
+    .title {
+        color: #fff;
+        text-align: center;
+        font-size: 34px;
+    }
+}

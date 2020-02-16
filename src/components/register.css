@@ -1,0 +1,514 @@
+/*
+ 
+//清除浮动
+ * */
+.noData {
+  color: #8E94A3;
+  text-align: center;
+  padding: 80px 0;
+}
+.loveMagicRoundAndRound {
+  text-align: center;
+  box-sizing: border-box;
+  padding-top: 60px;
+}
+.loveMagicRoundAndRound img {
+  animation: yoyo 2s linear ;
+  animation-iteration-count: infinite;
+}
+@keyframes yoyo {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.clearfix:after {
+  visibility: hidden;
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+}
+.clearfix {
+  *zoom: 1;
+}
+.overLoading {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.01);
+}
+/**
+ *     
+ *  块元素居中函数
+ */
+.el-message-box {
+  animation: hehe 0.3s ease;
+}
+.el-message-box .el-message-box__header {
+  background: #eeeeee;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
+  padding: 17px 30px;
+}
+.el-message-box .el-message-box__header .el-message-box__title span {
+  color: #222222;
+  font-weight: bold;
+}
+.el-message-box .el-message-box__header .el-message-box__title .el-message-box__word {
+  color: #222222;
+}
+.el-message-box .btn-group {
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.el-message-box .btn-group .btn-close {
+  line-height: 40px;
+  text-align: center;
+  background: unset;
+  color: #6185E5;
+  border: 1px solid #6185E5;
+  cursor: pointer;
+}
+.el-message-box .el-message-box__content {
+  padding: 10px 30px;
+}
+.el-message-box .el-message-box__content .label {
+  margin-top: 27px;
+  margin-bottom: 18px;
+}
+.el-message-box .el-message-box__content .label.m5 {
+  margin-top: 5px;
+}
+.el-message-box .btn_code {
+  color: #30D5D8;
+}
+.el-message-box .el-message-box__btns button.confirm {
+  background: #30D5D8;
+  color: #fff;
+}
+.el-message-box .el-message-box__btns button.close {
+  color: #30D5D8;
+  border-color: #30D5D8;
+  background-color: #fff;
+}
+@keyframes hehe {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.el-form-item__label {
+  line-height: 1;
+}
+/*1280px宽度*/
+.public_wrapper {
+  min-width: 1280px;
+  margin: 0 auto;
+  max-width: 1420px;
+  padding: 20px 0;
+}
+.sliderLimitWarp {
+  padding-top: 18px;
+  *zoom: 1;
+}
+.sliderLimitWarp p {
+  font-size: 12px;
+}
+.sliderLimitWarp:before,
+.sliderLimitWarp:after {
+  display: table;
+  content: "";
+}
+.sliderLimitWarp:after {
+  clear: both;
+}
+.sliderLimitWarp:after {
+  visibility: hidden;
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+}
+.sliderLimitWarp .zhiying {
+  float: left;
+  width: 45%;
+}
+.sliderLimitWarp .zhishun {
+  float: right;
+  width: 45%;
+  padding-right: 10px;
+}
+.MainArea_list:hover {
+  transition: all 0.5s;
+  transform: scale(1.1);
+}
+.mainy .el-table,
+.el-table__expanded-cell {
+  background: transparent;
+}
+.mainy .transfer {
+  background: transparent;
+}
+.stopWarp h2 {
+  margin-bottom: 10px;
+}
+.mainy .gg_order_wrapper .headertongji .tongji {
+  background: #1a1f30;
+}
+.mainy .gg_order_wrapper .headertongji .tongji h2 span {
+  color: #E8E9ED;
+}
+.mainb .exchange .exchange_mian .transaction .transaction_main {
+  border-left: 10px solid #F2F3F8;
+}
+.mainy .exchange .exchange_mian .HistoricalEntrustment .tojingtotle span {
+  color: #E8E9ED;
+}
+.mainy .el-message-box__title span {
+  color: #F4F5EF;
+}
+.index_main #home {
+  min-width: 1280px;
+  margin: 0 auto;
+  background: #171717;
+}
+.gg_order_wrapper {
+  min-width: 1280px;
+  max-width: 1360px;
+  margin: 0 auto;
+}
+.HistoricalEntrustment .gg_order_wrapper {
+  width: auto;
+  max-width: none;
+}
+.bbMessageBox {
+  width: 362px;
+  background: #fff;
+  border-radius: 6px;
+  border: none;
+}
+.bbMessageBox .el-message-box__title {
+  background: #eee;
+}
+.bbMessageBox .el-message-box__title.Night {
+  background: #fff;
+}
+.bbMessageBox .el-message-box__title span {
+  color: #ffffff;
+}
+.bbMessageBox span {
+  color: #BBBBBB;
+}
+.bbMessageBox .el-button {
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+.bbMessageBox .el-message-box__btns {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 30px 0;
+}
+.bbMessageBox .bbMessageBox-cancel {
+  width: 130px;
+  height: 40px;
+  border: 1px solid #30D5D8;
+  border-radius: 4px;
+  background: unset;
+}
+.bbMessageBox .bbMessageBox-cancel span {
+  color: #30D5D8;
+  font-size: 16px;
+}
+.bbMessageBox .bbMessageBox-confirm {
+  width: 130px;
+  height: 40px;
+  background: #30D5D8;
+  border-radius: 6px;
+}
+.bbMessageBox .bbMessageBox-confirm span {
+  color: #ffffff;
+  font-size: 16px;
+}
+.bbMessageBox.Night {
+  background: #3c3c3c;
+}
+.bbMessageBox.Night .el-button--primary {
+  border-color: #30D5D8;
+}
+.bbMessageBox.Night .el-message-box__header {
+  background: #3c3c3c;
+}
+.bbMessageBox.Night .el-message-box__title {
+  background: #3c3c3c;
+}
+.bbMessageBox.Night .el-message-box__title span {
+  color: #ffffff;
+}
+.el-breadcrumb__item:last-child .el-breadcrumb__inner,
+.el-breadcrumb__item:last-child .el-breadcrumb__inner a,
+.el-breadcrumb__item:last-child .el-breadcrumb__inner a:hover,
+.el-breadcrumb__item:last-child .el-breadcrumb__inner:hover {
+  color: #fff;
+}
+#app .el-form-item.is-error .el-input__inner {
+  border-color: #30D5D8;
+}
+.el-form-item__error {
+  color: #30D5D8;
+}
+.el-pagination {
+  text-align: right;
+}
+.el-pagination.is-background .btn-next,
+.el-pagination.is-background .btn-prev,
+.el-pagination.is-background .el-pager li {
+  background-color: transparent;
+}
+.el-pagination.is-background .el-pager li:not(.disabled).active {
+  background-color: #30D5D8;
+}
+.register {
+  padding: 74px 0 50px 0;
+  box-sizing: border-box;
+}
+.register .reg_popup {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.register .reg_popup .popup_cen {
+  width: 580px;
+  padding: 25px 70px 60px;
+  box-sizing: border-box;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 8px;
+}
+.register .reg_popup .popup_cen .close_btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  cursor: pointer;
+}
+.register .reg_popup .popup_cen h6 {
+  text-align: center;
+  line-height: 50px;
+  font-size: 18px;
+}
+.register .reg_popup .popup_cen p {
+  text-align: center;
+  line-height: 60px;
+  font-size: 16px;
+}
+.register .reg_popup .popup_cen .el-input__inner {
+  border-radius: 0;
+  border: none;
+  background: #1f1f2e;
+}
+.register .reg_popup .popup_cen .code_inp {
+  text-align: center;
+  margin-top: 60px;
+}
+.register .reg_popup .popup_cen .reg_btn {
+  width: 100%;
+  margin-top: 60px;
+  border: none;
+}
+.register .el-message-box__wrapper .el-message-box {
+  min-width: 900px;
+  min-height: 400px;
+}
+.register .reg {
+  width: 520px;
+  margin: 0 auto;
+}
+.register .reg h1 {
+  width: 100%;
+  font-size: 34px;
+  line-height: 60px;
+  text-align: center;
+}
+.register .reg .tab-register {
+  display: flex;
+  height: 70px;
+  line-height: 70px;
+  background: #202D3C;
+  border-radius: 10px 10px 0px 0px;
+  margin-top: 55px;
+}
+.register .reg .tab-register li {
+  width: 50%;
+  color: #828EA1;
+  font-size: 16px;
+  text-align: center;
+}
+.register .reg .tab-register li img {
+  position: relative;
+  top: 5px;
+}
+.register .reg .tab-register li:hover {
+  cursor: pointer;
+}
+.register .reg .tab-register li.active {
+  color: #30D5D8;
+  border-bottom: 2px solid #30D5D8;
+}
+.register .reg .go_zhubtn {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  line-height: 40px;
+}
+.register .reg .go_zhubtn p {
+  flex: 1;
+}
+.register .reg .go_zhubtn a {
+  width: 60px;
+}
+.register .reg .login_form {
+  width: 440px;
+  min-height: 390px;
+  padding: 40px;
+  background: #182330;
+  border-radius: 0 0 10px 10px;
+}
+.register .reg .login_form .register-agreement .gray {
+  color: #828EA1;
+  font-size: 14px;
+}
+.register .reg .login_form .register-agreement .agree {
+  color: #30D5D8;
+}
+.register .reg .login_form .login_btn {
+  margin-top: 50px;
+}
+.register .reg .login_form .login_btn .el-button--primary {
+  width: 100%;
+  border-color: none !important;
+}
+.register .reg .login_form .login_btn .el-button {
+  border-color: none !important;
+}
+.register .reg .login_form .login_btn .wangji {
+  line-height: 50px;
+  font-size: 15px;
+}
+.register .reg .login_form .now-register {
+  margin-top: 40px;
+  font-size: 14px;
+  text-align: center;
+}
+.register .reg .login_form .now-register .no-user {
+  color: #8e8e93;
+}
+.register .reg .login_form .now-register a {
+  color: #30D5D8;
+}
+.register .reg .left {
+  width: 380px;
+  height: 648px;
+  color: #ffffff;
+  text-align: center;
+  padding: 155px 54px;
+  box-sizing: border-box;
+  background-image: url(../assets/img/login/img_bg02.png);
+}
+.register .reg .left h1 {
+  font-size: 24px;
+}
+.register .reg .left h1 span {
+  font-size: 48px;
+  margin-right: 10px;
+}
+.register .reg .left h2 {
+  font-size: 18px;
+}
+.register .reg .left p {
+  font-size: 14px;
+  margin-top: 112px;
+  line-height: 31px;
+}
+.register .reg .right {
+  width: 590px;
+  height: 648px;
+  padding: 40px 55px;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+.register .reg .right .quhao .el-form-item__content,
+.register .reg .right .yanzhengma .el-form-item__content {
+  width: 480px;
+}
+.register .reg .right .quhao .el-form-item__content .select,
+.register .reg .right .yanzhengma .el-form-item__content .select {
+  width: 100px;
+  float: left;
+  border: 0;
+}
+.register .reg .right .quhao .el-form-item__content .input,
+.register .reg .right .yanzhengma .el-form-item__content .input {
+  width: 380px;
+  border: 0;
+  float: right;
+}
+.register .reg .right .quhao .el-form-item__content .codeInput,
+.register .reg .right .yanzhengma .el-form-item__content .codeInput {
+  width: 380px;
+  float: left;
+}
+.register .reg .right .quhao .el-form-item__content .btn_code,
+.register .reg .right .yanzhengma .el-form-item__content .btn_code {
+  width: 100px;
+  float: right;
+}
+.register .reg .right .el-button {
+  width: 200px;
+  height: 50px;
+  margin-top: 45px;
+}
+.register .reg .right .el-select {
+  width: 100%;
+}
+.register .reg .right .el-checkbox {
+  margin-right: 10px;
+}
+.register .reg .right .xieyi {
+  font-size: 14px;
+  color: #30D5D8;
+}
+.register .reg .right h1 {
+  color: #CDCDCDFF;
+  font-size: 14px;
+  text-align: right;
+}
+.register .reg .right h1 a {
+  color: #30D5D8;
+}
+.register .reg .right p {
+  font-size: 22px;
+  color: #30D5D8;
+  margin-top: 38px;
+  margin-bottom: 50px;
+}
+.no_ver {
+  width: 520px;
+  margin: 50px auto 0 auto;
+}
+.no_ver .title {
+  color: #fff;
+  text-align: center;
+  font-size: 34px;
+}

@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用户注册</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+	<link rel="stylesheet" type="text/css" href="css/weui.min.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery-weui.min.css">
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <!-- <script charset="UTF-8" type="text/javascript" src="js/jquery-weui.min.js"></script> -->
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	
+	
+    <script type="text/javascript" src="js/layer_mobile/layer.js"></script>
+    <script type="text/javascript" src="js/MD5.js"></script>
+	<!--[if lte IE 8]> 
+	    <script src="html5shiv.min.js"></script> 
+	    <script src="respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+	<div id="logo">
+		<h1>Gic Gold</h1>
+	</div>
+	<div class="tab">
+		<!-- <div data-type="mobile" id="mobile" class="item">
+			手机注册
+		</div> -->
+		<div data-type="email" id="email" class="item">
+			邮箱注册
+		</div>
+		<!-- <div class="block"></div> -->
+	</div>
+	<form id="myform" >
+
+		<div class="mcode-box">
+			<span class="mcode-text">+86</span>
+			<!-- <img src="./img/xuanze.png" alt=""> -->
+
+		</div>
+		<input class="mobile" type="text"  name="phone" required="required" >
+		<div class="code">
+		    <input type="text" placeholder="请输入验证码" name="code" required="required" class="fl">
+			<span class="fr" id="code">发送验证码</span>
+		</div>
+		<input type="password" placeholder="8-12位字符，不能为纯数字" required="required" name="pwd">
+		<input type="password" placeholder="确定输入密码" required="required" name="paw2">
+		<input type="text" placeholder="邀请码" required="required" name="tjuser" id="tjuser" disabled="disabled">
+		<!-- <div id="yinsi">
+		 	<input name="agree" type="checkbox" value="1" class="text"  id="check" checked/>&nbsp;
+		 	<span>我已阅读和同意<span id='btnBook'>《服务协议及隐私条款》</span></span>
+		</div> -->
+		<div type="submit" id="submit">注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;册</div>
+	</form>
+</body>
+<script type="text/javascript" src="js/reg.js"></script>
+</html>

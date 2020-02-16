@@ -1,0 +1,246 @@
+<!DOCTYPE HTML>
+<html> 
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="icon" href="https://static.jianshukeji.com/hcode/images/favicon.ico">
+    <style>
+        #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script src="./jquery.js"></script>
+    <script src="https://img.highcharts.com.cn/highcharts/highcharts.js"></script>
+    <script src="https://img.highcharts.com.cn/highcharts/modules/exporting.js"></script>
+    <script src="https://img.highcharts.com.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+    <script src="https://img.highcharts.com.cn/highcharts/modules/oldie.js"></script>
+    <script src="./zhuti.js"></script>
+
+</head>
+
+<body style="margin: 0;padding:0;height: 570px;">
+    <div id="container"></div>
+    <span id="loading"></span>
+    <script>
+        // 检查cookie
+    function get_cookie(Name) {
+    var search = Name + "="//查询检索的值
+    var returnvalue = "";//返回值
+    if (document.cookie.length > 0) {
+        sd = document.cookie.indexOf(search);
+        if (sd!= -1) {
+            sd += search.length;
+            end = document.cookie.indexOf(";", sd);
+            if (end == -1)
+            end = document.cookie.length;
+            //unescape() 函数可对通过 escape() 编码的字符串进行解码。
+            returnvalue=unescape(document.cookie.substring(sd, end))
+        }
+    } 
+    return returnvalue;
+    }
+        var currency1 = 'USDT', currency2 = 'BTC', saved_chart = null, chart = null, feed = null, timer = 30000, pushtimer = null, last_price = null, bars = [], chart = null, MainData = null, CodeName = '', timers = null, status = 1, timer_kline = null, asks = [], bids = [];
+        var loading = document.getElementById('loading');
+        // var dataurl = 'http://' + '113.52.135.113' + "/Home/Ajax/get_shendu?pageSize=2000&page=1&goodsType=";
+        var dataurl = 'http://' + window.location.host + "/Home/Ajax/get_shendu?pageSize=2000&page=1&goodsType=";
+        // var wsurl = "ws://47.244.186.201:7274";
+        // var wsurl = "ws://113.52.135.113"+":7274";
+        var wsurl = "ws://"+window.location.host+":7274";
+        function GetQueryString(name) { //截取url
+            var reg = new RegExp("(^|&|)" + name + "=([^&?]*)(&|$|)", "i");
+            var r = window.location.search.substr(1).match(reg);  //获取url中"?"符后的字符串并正则匹配
+            var context = "";
+            if (r != null)
+                context = r[2];
+            reg = null;
+            r = null;
+            return context == null || context == "" || context == "undefined" ? "" : context;
+        };
+        CodeName = GetQueryString('code');
+        timers = GetQueryString('timers');
+        // console.log(CodeName,timers)
+        // CodeName = "ltc_usdt";
+        // timers = '30';
+        
+        last_price = GetQueryString('last_price');
+        if (timers == '4h') {
+            getChartData(dataurl + 'minute240&code=' + CodeName);
+        }
+        if (timers == '1') {
+            getChartData(dataurl + 'minute&code=' + CodeName);
+        } if (timers != '1' && timers != '1D' && timers != '4h') {
+            getChartData(dataurl + 'minute' + timers + '&code=' + CodeName);
+        } if (timers == '1D') {
+            getChartData(dataurl + 'day&code=' + CodeName);
+        }
+        var _this = this;
+         // 首先判断是否 支持 WebSocket
+
+        if ('WebSocket' in window) {
+            MainData = new WebSocket(wsurl);
+        } else if ('MozWebSocket' in window) {
+            MainData = new MozWebSocket(wsurl);
+        } else {
+            MainData = new SockJS(wsurl);
+        };
+        // 打开时
+        MainData.onopen = function (evnt) {
+            var msg = {
+                code: CodeName,
+            };
+            MainData.send(JSON.stringify(msg)); // 发送消息
+        };
+        // 处理消息时
+        MainData.onmessage = function (evnt) {
+            var datanum = JSON.parse(evnt.data);
+            // console.log(datanum)
+            asks = [];//卖出
+            bids = [];//买入
+            for (var i = 0; i < datanum.asks.length; i++) {
+                asks[i]=[];
+                asks[i].push(datanum.asks[i].price*1.5);
+                asks[i].push(datanum.asks[i].totalSize*1.5);
+            }
+            for (var i = 0; i < datanum.bids.length; i++) {
+                bids[i]=[];
+                bids[i].push(datanum.bids[i].price*1.2);
+                bids[i].push(datanum.bids[i].totalSize*1.2);
+            };
+            // console.log(chart.series[0].data);
+            chart.series[0].data = bids;
+            chart.series[1].data = bids;
+            // chart.addSeries({
+            //         name: '累计',
+            //         data: bids,
+            //         color: 'rgba(83,142,122,.3)'
+            //     }, {
+            //         name: '累计',
+            //         data: asks,
+            //         color: 'rgba(173,111,111,0.3)'
+            //     });
+            chart.hideLoading(); 
+        };
+        // console.log(chart.series)
+        MainData.onerror = function (evnt) {
+            console.log("  websocket.onerror");
+            MainData.onopen();
+        };
+        MainData.onclose = function (evnt) {
+            console.log("  websocket.onclose");
+        };
+        getChartData(dataurl + 'minute&code=' + CodeName);
+        function getChartData(url) {
+            $.ajax({
+                url: url,
+                method: 'GET',
+                dataType: 'json',
+                async: true,
+                success: function (response) {
+                    if (response.status == 200) {
+                        asks = [];//卖出
+                        bids = [];//买入
+                        for (var i = 0; i < response.data[0].asks.length; i++) {
+                            asks[i]=[];
+                            asks[i].push(response.data[0].asks[i].price);
+                            asks[i].push(response.data[0].asks[i].totalSize);
+                        }
+                        for (var i = 0; i < response.data[0].bids.length; i++) {
+                            bids[i]=[];
+                            bids[i].push(response.data[0].bids[i].price);
+                            bids[i].push(response.data[0].bids[i].totalSize);
+                        }
+                        getData();
+                        status = 0;
+                    }
+                }
+            })
+        };
+        function getData() {
+            var night = get_cookie("changeBg") == 'night' || !get_cookie("changeBg")
+            chart = Highcharts.chart('container', {
+                chart: {
+                    type: 'area',
+                    zoomType: 'xy',
+                    backgroundColor: night?"#21283B":"#ffffff",
+                    plotBackgroundColor: night?"#121729":"",
+                    plotBorderColor: "red",
+                },
+                title: {
+                    text: '市场深度图',
+                    style:{
+                        color:'#eeeeee'
+                    }
+                },
+                xAxis: {
+                    gridLineColor:night?"#4a4a4a":"#d8d1d1",
+                    minPadding: 0,
+                    maxPadding: 0,
+                    gridLineWidth: 1,//x轴水平线
+                },
+                yAxis: [{
+                    gridLineColor:night?"#4a4a4a":"#d8d1d1",
+                    lineWidth: 1,
+                    gridLineWidth: 1,//y轴水平线
+                    title: null,
+                    tickWidth: 1,
+                    tickLength: 5,
+                    tickPosition: 'outside',
+                    labels: {
+                        align: 'left',
+                        x: 8,
+                        position: 'outside'
+                    }
+                }, {
+                    opposite: true,
+                    linkedTo: 0,
+                    lineWidth: 1,
+                    gridLineWidth: 0,//y轴水平线
+                    title: null,
+                    tickWidth: 1,
+                    tickLength: 5,
+                    tickPosition: 'outside',
+                    labels: {
+                        align: 'right',
+                        x: -8,
+                        position: 'outside'
+                    }
+                }],
+                credits: {
+                    enabled: false     //不显示LOGO 
+                },
+                legend: {
+                    enabled: false
+                },
+                plotOptions: {
+                    area: {
+                        fillOpacity: 0.5,
+                        lineWidth: 1,
+                        step: 'center'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size=10px;">委托价: {point.key}</span><br/>',
+                    valueDecimals: 2
+                },
+                series: [{
+                    name: '累计',
+                    data: bids,
+                    color: 'rgba(83,142,122,.3)'
+                }, {
+                    name: '累计',
+                    data: asks,
+                    color: 'rgba(173,111,111,0.3)'
+                }]
+            });
+        };
+
+
+    </script>
+</body>
+
+</html>

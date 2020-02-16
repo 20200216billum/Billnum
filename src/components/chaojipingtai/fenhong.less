@@ -1,0 +1,39 @@
+.mangeMoney{
+    width: 1280px;
+    min-height: 550px;
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 80px;
+    .mangeMoney_balance{
+        height: 60px;
+        line-height: 60px;
+        padding-left: 20px;
+        background: @cardBg;
+        font-size: 18px;
+    }
+    .mangeMoney_record{
+        height: 357px;
+        margin-top: 40px;
+        .el-tabs__nav-wrap{
+            height: 50px;
+            padding-left: 24px;
+            background: @cardBg;
+            .el-tabs__nav-scroll{
+                height: 50px;
+                el-tabs__item{
+                    height: 50px;
+                }
+            }
+        }
+        .el-table td, .el-table th.is-leaf{
+            background: @mainBg;
+        }
+        .el-table td{
+            height: 50px;
+            border-bottom: 0;
+        }
+        .el-pagination{
+            text-align: right;
+        }
+    }
+}

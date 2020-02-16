@@ -1,0 +1,74 @@
+.agreement_text_wrapper {
+	// background: #F4F3F8;
+	.agreement_text_container {
+		width: 1280px;
+        margin: 0 auto;
+        padding:20px 0;
+		.box-card {
+			padding: 0;
+			.title {
+				font-size: 30px;
+				color: #fff;
+			}
+			.titleContent{
+				font-size: 16px;
+				color: @DaiFontSizeColor29;
+				margin-top: 26px;
+			}
+		}
+		.agreement_text_content {
+			min-height:500px;
+			.el-card__body{
+				display: flex;
+				.content_title{
+					color: @DaiFontSizeColor29;
+					flex: 1;
+					min-width: 125px;
+					div{
+						margin-bottom: 25px;
+					    cursor: pointer;
+					    display: inline-block;
+					    padding-bottom: 10px;
+					    color:#999;
+					}
+				}
+				.content{
+					flex: 10;
+					color:#999;
+				}
+			}
+		}
+		.img{
+		    margin-top: 25px;
+		    background: #FFFFFF;
+		    text-align: center;
+		    img{
+		        width: 100%;
+		    }
+		    
+		}
+	}
+	.fxq,.jygz{
+	    width: 90%;
+	    margin: 0 auto;
+	    line-height: 30px;
+	    h2{
+	        font-size: 18px;
+	        line-height: 28px;
+	        margin-bottom: 20px;
+	        text-align: center;
+	    }
+	    
+	    
+	}
+}
+.el-card.is-always-shadow{
+    -webkit-box-shadow: none;
+    box-shadow: none;
+	border: none;
+	background: transparent;
+}
+.agreement_text_wrapper .agreement_text_container .agreement_text_content .el-card__body .content_title .selectTitle{
+	color: @main;
+	font-weight:600;
+}

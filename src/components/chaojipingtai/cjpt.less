@@ -1,0 +1,126 @@
+.mangeMoney{
+    width: 1280px;
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 80px;
+    .el-message-box__wrapper{
+        .el-message-box{
+            width: 600px;
+            .google{
+                padding: 20px;
+                .btnList{
+                    width: 80px;
+                    height: 33px;
+                    text-align: center;
+                    line-height: 33px;
+                    background: @main;
+                    margin-top: 20px;
+                    float: right;
+                    border-radius: 5px;
+                    a{
+                        color: #ffffff;
+                    }
+                }
+            }
+            p{
+                margin: 20px 0;
+            }
+        }
+    }
+    .mangeMoney_balance{
+        height: 60px;
+        line-height: 60px;
+        padding-left: 20px;
+        font-size: 18px;
+    }
+    .mangeMoney_price{
+        height: 300px;
+        margin-top: 10px;
+        .flex1{
+            display: flex;
+            justify-content: space-between;
+            // border-bottom: 1px solid #313359;
+            .flexItem{
+                width: 320px;
+                height: 148px;
+                text-align: center;
+                padding-top: 50px;
+                font-size: 16px;
+                box-sizing: border-box;
+                p{
+                    margin-top: 28px;
+                }
+            }
+        }
+        .flex2{
+            display: flex;
+            justify-content:space-between;
+            .flexItem{
+                width: 213px;
+                height: 151px;
+                text-align: center;
+                padding-top: 50px;
+                font-size: 16px;
+                box-sizing: border-box;
+                p{
+                    margin-top: 28px;
+                }
+            }
+            .solid{
+                width: 1px;
+                height: 60px;
+                // background: #313359;
+                margin-top: 45px;
+            }
+        }
+    }
+    .mangeMoney_record{
+        // height: 357px;
+        margin-top: 40px;
+        td{
+            background: @cardBg;
+        }
+        .el-tabs__nav-scroll{
+            height: 50px;
+            .el-tabs__item{
+                height: 50px;
+            }
+        }
+        .el-tabs__nav-wrap{
+            height: 500px;
+            padding-left: 24px;
+            background: @cardBg;
+            .el-tabs__nav-scroll{
+                height: 50px;
+                .el-tabs__item{
+                    height: 50px;
+                }
+            }
+        }
+        .el-table td,.el-table th.is-leaf{
+            background: @mainBg;
+        }
+        .el-table td{
+            height: 50px;
+            border-bottom: 0;
+        }
+        .btn_a{
+            text-align: center;
+            a{
+                display: inline-block;
+                width: 470px;
+                height: 50px;
+                text-align: center;
+                line-height: 50px;
+                font-size: 20px;
+                color: white;
+                background: @main;
+                margin: 20px 0;
+                border-radius: 5px;
+            }
+        }
+        .el-pagination{
+            text-align: right;
+        }
+    }
+}
