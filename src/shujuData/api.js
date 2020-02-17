@@ -16,18 +16,22 @@ Axios.interceptors.request.use((config) => {
   let locale = ''
   // let locale = VueCookies.get('language') =='Chinese' ? 'zh-CN' : 'en'
   if(VueCookies.get('language') == 'Chinese'){
-    locale = 'zh-CN'
+    locale = 'zh'
   }else if(VueCookies.get('language') == 'English'){
     locale = 'en'
   }else{
     locale = 'ft'
   }
   
-	config.headers['token'] = token;
+  if (token) {
+    config.headers['token'] = token;
+    config.headers['Authorization'] = 'Bearer' + ' ' + token;
+  }
+	
   config.headers['Accept'] =  'application/json';
-  config.headers['locale'] =  locale;
-  config.headers['from'] =  'pc';
-  config.headers['Authorization'] = 'Bearer' + ' ' + token;
+  config.headers['Lang'] =  locale;
+  config.headers['From'] =  'pc';
+  
 
   //在发送请求之前做某件事
   // 判断是否登录
@@ -91,6 +95,7 @@ Axios.onLine = secondlogin;
 Axios.basess = `${basess}/`;
 Axios.bases = `${second}/`;
 // Axios.getNewInfo = `${second}/sexp/stock/getNewInfo`; 
+Axios.get_area = `${second}/api/user/areacode`;  //获取区号
 Axios.send_sms = `${second}/api/user/sendSms`;  //短信验证码  1注册 2 重置 3 安全验证 4 支付密码设置 5 提币 mobile ,type
 Axios.send_email = `${second}/api/user/sendEmail`;  //邮箱验证码  1注册 2 重置 3 安全验证 4 支付密码设置 5 提币 mobile ,type
 Axios.register = `${second}/Home/Qbw/register`;  //注册

@@ -269,7 +269,10 @@
 .el-pagination.is-background .btn-next,
 .el-pagination.is-background .btn-prev,
 .el-pagination.is-background .el-pager li {
-  background-color: transparent;
+  background: #202D3C;
+  border-radius: 4px;
+  color: #fff;
+  padding: 0 15px;
 }
 .el-pagination.is-background .el-pager li:not(.disabled).active {
   background-color: #30D5D8;
@@ -392,7 +395,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 80px;
+  width: 90px;
   z-index: 9;
 }
 .register .reg .login_form .phone-area .el-select /deep/ .el-input__inner {

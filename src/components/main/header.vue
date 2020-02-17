@@ -67,7 +67,7 @@
 									<div class="head-info">
 										<img src="../../assets/img/ure-img.png" />
 										<p class="tel">
-											Hi, 150****2020
+											Hi, {{ transPhone }}
 										</p>
 										<p class="uid">
 											UID: 2235439890
@@ -549,7 +549,6 @@
 
 			}
 		},
-
 		created: function () {
 			var _this = this;
 			this.checkLogin()
@@ -598,10 +597,7 @@
 				},
 			];
 			this.viewCtrl(this.$route.path)
-
-
 		},
-
 	}
 </script>
 

@@ -74,8 +74,7 @@
                     <div>
                         <p>{{$t('loginLA[9]')}}</p>
                         <div class="getcode">
-                            <el-input v-model="googleCode" auto-complete="off" :placeholder="$t('loginLA[10]')">
-                            </el-input>
+                            <el-input v-model="googleCode" auto-complete="off" :placeholder="$t('loginLA[10]')"></el-input>
                         </div>
                         <div class="btnList">
                             <a href="javascript:;" @click="googleSubmit"
@@ -118,8 +117,8 @@
         data() {
             var _this = this;
             var username = (rule, value, callback) => {
-                if (!_this.$public.email(value)) {
-                    return callback(new Error("请输入登录账号"))   
+                if (!_this.$public.email(value) && !_this.$public.checkMobile(value)) {
+                    return callback(new Error("请输入正确格式的登录账号"))   
                 } else {
                     callback()
                 }
@@ -138,8 +137,8 @@
                 userData: {
                     username: '',
                     password: '',
-                    google_code: '',
-                    code: '',
+                    // google_code: '',
+                    // code: '',
                 },
                 password: '',
                 checked: true,
@@ -173,87 +172,94 @@
                 var _this = this;
                 _this.reg_popup = false;
             },
+            // 登陆前验证
             submit() {
                 var _this = this;
                 _this.$refs.userData.validate(valid => {
                     if (valid) {
                         _this.loading = true;
-                        this.userData.password = this.$public.$md5(this.userData.password)
-                        _this.$http.post(_this.$http.loginPre, _this.userData).then(function (res) {
-                            if (res.data.code == '200') {
-                                _this.loading = false;
-                                if (res.data.data.sta == '1') {
-                                    _this.getCode();
-                                } else {
-                                    _this.gool_popup = true;
-                                }
-                            } else {
-                                _this.loading = false;
-                                _this.$public.msg(res.data.msg, 'warning', _this);
+                        if (this.$public.email(_this.userData.username)) {
+                            let _data = {
+                                username: _this.userData.username,
+                                password: this.$public.$md5(this.userData.password)
                             }
-                        })
-
-
-
-                        // _this.getCode();
+                            this.specialLogin(_data);
+                        } else {
+                            let _data = {
+                                username: _this.userData.username,
+                                password: this.$public.$md5(this.userData.password)
+                            }
+                            
+                            _this.$http.post(_this.$http.loginPre, _data).then(function (res) {
+                                if (res.data.code == '200') {
+                                    _this.loading = false;
+                                    if (res.data.data.sta == '1') {
+                                        // _this.getCode();
+                                        _this.dialogVisible1 = "display: block;"
+                                    } else {
+                                        // _this.gool_popup = true;
+                                        _this.submitForm();
+                                    }
+                                } else {
+                                    _this.loading = false;
+                                    _this.$public.msg(res.data.msg, 'warning', _this);
+                                }
+                            })
+                            // _this.getCode();
+                        }
                     }
                 })
-
-
-
             },
             googleSubmit() {
                 var _this = this;
-                var _data = {
-                    phone: _this.userData.password,
-                    password: _this.userData.phone,
-                    google_code: _this.googleCode,
-                    secret: _this.googlesecret
+                if (!this.googleCode) {
+                    this.$public.msg("请输入谷歌验证码", "warning", this);
+                    return
                 }
-                _this.$http.post(_this.$http.login, _data).then(function (res) {
-                    if (res.data.code == '200') {
-                        sessionStorage.token = res.data.data.token;
-                        //获取个人信息
-                        _this.$http.get(_this.$http.details, { params: {} }).then(function (res) {
-                            if (res.data.code == '200') {
-                                sessionStorage.userData = JSON.stringify(res.data.data);
-                                _this.$router.push({ path: '/home' });
-                                _this.$public.msg(_this.$t('loginLA[14]'), 'success', _this);
-                            }
-                        })
-                    } else {
-                        _this.$public.msg(res.data.msg, 'warning', _this);
-                    }
-                })
+                var _data = {
+                    username: this.userData.username,
+                    password: this.$public.$md5(this.userData.password),
+                    google_code: this.googleCode,
+                    // secret: _this.googlesecret
+                }
+                this.specialLogin(_data);
+                // _this.$http.post(_this.$http.login, _data).then(function (res) {
+                //     if (res.data.code == '200') {
+                //         sessionStorage.token = res.data.data.token;
+                //         //获取个人信息
+                //         _this.$http.get(_this.$http.details, { params: {} }).then(function (res) {
+                //             if (res.data.code == '200') {
+                //                 sessionStorage.userData = JSON.stringify(res.data.data);
+                //                 _this.$router.push({ path: '/home' });
+                //                 _this.$public.msg(_this.$t('loginLA[14]'), 'success', _this);
+                //             }
+                //         })
+                //     } else {
+                //         _this.$public.msg(res.data.msg, 'warning', _this);
+                //     }
+                // })
             },
-            //登录
+            // 手机账户登录
             submitForm() {
-                var _this = this;
-                _this.loading = true;
-                // this.userData.password = this.$public.$md5(this.userData.password)
-                _this.$http.post(_this.$http.login, _this.userData).then(function (res) {
+                this.loading = true;
+                let _data = {
+                    username: this.userData.username,
+                    password: this.$public.$md5(this.userData.password)
+                }
+                this.specialLogin(_data);
+            },
+            // 通用登录函数
+            specialLogin(_data) {
+                this.$http.post(this.$http.login, _data).then((res) => {
                     if (res.data.code == '200') {
-                        _this.loading = false;
+                        this.loading = false;
                         sessionStorage.token = res.data.data.token;
-                        sessionStorage.userData = _this.userData.username;
-                        _this.$router.push({ path: '/home' });
-                        _this.$public.msg(_this.$t('Gic.login[19]'), 'success', _this);
-
-                        // _this.$http.get(_this.$http.details, { params: {} }).then(function (res) {
-                        //     if (res.data.code == '200') {
-                        //         sessionStorage.userData = _this.userData.username;
-                        //         if (res.data.data.authentication == 0) {
-                        //             _this.$public.msg(_this.$t('securityLa.shangjia[4]'), 'success', _this);
-                        //             _this.$router.push({ path: '/changePerson2' });
-                        //             return
-                        //         }
-                        //         _this.$router.push({ path: '/home' });
-                        //         _this.$public.msg(_this.$t('loginLA[14]'), 'success', _this);
-                        //     }
-                        // })
+                        sessionStorage.userData = this.userData.username;
+                        this.$router.push({ path: '/home' });
+                        this.$public.msg("登录成功", 'success', this);
                     } else {
-                        _this.loading = false;
-                        _this.$public.msg(res.data.msg, 'warning', _this);
+                        this.loading = false;
+                        this.$public.msg(res.data.msg, 'warning', this);
                     }
                 })
             },
@@ -305,7 +311,5 @@
                 }
             },
         },
-        mounted() {
-        }
     };
 </script>

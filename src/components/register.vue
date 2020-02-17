@@ -27,8 +27,8 @@
                 <el-form v-show="tabIndex == 1" class="login_form" :model="phoneForm" ref="phoneForm" :label-position="labelPosition" :rules="rules">
                     <!-- 手机号码 -->
                     <el-form-item label="手机号码" prop="phone" class="phone-area">
-                        <el-select v-model="phoneForm.areaindex" :placeholder="$t('regLA[4]')">
-                            <el-option v-for="item in options" :key="item.id" :label="'+' + item.id" :value="item.id"></el-option>
+                        <el-select v-model="phoneForm.area_code" :placeholder="$t('regLA[4]')" filterable>
+                            <el-option v-for="item in options" :key="item.id" :label="'+' + item.phone_code" :value="item.phone_code"></el-option>
                         </el-select>
                         <el-input class="mobile" v-model="phoneForm.phone" auto-complete="off" placeholder="请输入手机号码"></el-input>
                     </el-form-item>
@@ -50,7 +50,7 @@
                         </el-input>
                     </el-form-item>
                     <div class="register-agreement">
-                        <span class="gray">注册即代表同意</span><span class="agree" @click="agreement(1)">《服务条款》</span><span class="gray">和</span><span class="agree" @click="agreement(2)">《隐私条款》</span>
+                        <span class="gray">注册即代表同意</span><span class="agree" @click="agreement(9)">《服务条款》</span><span class="gray">和</span><span class="agree" @click="agreement(4)">《隐私条款》</span>
                     </div>
                     <div class="login_btn">
                         <el-button type="primary" @click="submitPhone" :loading="loading">{{$t('Gic.Register[3]')}}</el-button>
@@ -93,7 +93,7 @@
                         </el-input>
                     </el-form-item>
                     <div class="register-agreement">
-                        <span class="gray">注册即代表同意</span><span class="agree" @click="agreement(1)">《服务条款》</span><span class="gray">和</span><span class="agree" @click="agreement(2)">《隐私条款》</span>
+                        <span class="gray">注册即代表同意</span><span class="agree" @click="agreement(9)">《服务条款》</span><span class="gray">和</span><span class="agree" @click="agreement(4)">《隐私条款》</span>
                     </div>
                     <div class="login_btn">
                         <el-button type="primary" @click="submit" :loading="loading">{{$t('Gic.Register[3]')}}</el-button>
@@ -115,9 +115,10 @@
                             <i class="el-message-box__close el-icon-close"></i>
                         </button>
                     </div>
-                    <div class="pre">
+                    <!-- <div class="pre">
                         <pre></pre>
-                    </div>
+                    </div> -->
+                    <div v-html="agreeCont" style="padding: 20px;"></div>
                 </div>
             </div>
 
@@ -137,13 +138,13 @@
             <el-form :model="verForm" :rules="rulesVer" ref="verForm" label-width="80px" label-position="top" class="ver_form">
                 <div class="tip">
                     <p>我们已向如下{{ tabIndex == 1 ? "手机号" : "邮箱" }}发送了一组验证码</p>
-                    <p>123****@qq.com</p>
+                    <p>{{ tabIndex == 1 ? $public.phoneEncryption(phoneForm.phone) : $public.phoneEncryption(regData.email) }}</p>
                 </div>
                 <el-form-item label="验证码" prop="code">
                     <el-input v-model="verForm.code" placeholder="请输入验证码"></el-input>
                 </el-form-item>
                 <div class="ver_code">
-                    重新发送验证码>50s
+                    <el-button type="text" :disabled="btnCode.disabled" @click="obtainCode">重新发送验证码</el-button><span v-if="btnCode.disabled">>{{ btnCode.time }}s</span>
                 </div>
                 <el-form-item>
                     <el-button class="reg_btn" @click="submitForm" :loading="loading1" type="primary">完成注册</el-button>
@@ -219,7 +220,7 @@
                 code_inp: '',//验证码
                 phoneForm: {
                     phone: '',
-                    areaindex: "86",
+                    area_code: "86",
                     password: '',
                     password_confirmation: '',
                     recommend: '',
@@ -269,21 +270,31 @@
                 c_password: '',
                 checked: true,
                 options: [
-                    { id: 86, name: '+86', },
-                    { id: 82, name: '+82', },
-                    { id: 81, name: '+81', },
-                    { id: 60, name: '+60', },
-                    { id: 886, name: '+886', }
+                    // { id: 86, name: '+86', },
+                    // { id: 82, name: '+82', },
+                    // { id: 81, name: '+81', },
+                    // { id: 60, name: '+60', },
+                    // { id: 886, name: '+886', }
                 ],
                 value: '',
                 btnCode: {
-                    time: "getCode[0]", //倒计时
+                    time: 60, //倒计时
                     disabled: false
                 },
                 dialogVisible1: 'display:none',
+                timer: null,
+                agreeCont: ""
             }
         },
         methods: {
+            // 获取区号
+            obtainAreaCode() {
+                this.$http.get(this.$http.get_area, {params: {}}).then(res => {
+                    if (res.data.code == "200") {
+                        this.options = res.data.data;
+                    }
+                })
+            },
             changeTabRegister(index) {
                 this.tabIndex = index;
                 this.$refs.phoneForm.resetFields();
@@ -323,15 +334,17 @@
             agreement(type) {
                 var _this = this;
                 _this.agreeType = type;
-                if (_this.$t('reg.[0]') == 'CN') {
-                    var _data = 'agreementcn'
-                } else if (_this.$t('reg.[0]') == 'EN') {
-                    var _data = 'agreementen '
-                }
-                _this.dialogVisible1 = 'display:block'
-                _this.$http.get(_this.$http.agreementcn, { params: { key: _data } }).then(function (res) {
+                // if (_this.$t('reg.[0]') == 'CN') {
+                //     var _data = 'agreementcn'
+                // } else if (_this.$t('reg.[0]') == 'EN') {
+                //     var _data = 'agreementen '
+                // }
+                _this.dialogVisible1 = 'display:block';
+                _this.agreeCont = "暂无内容";
+                _this.$http.get(_this.$http.systemAgree, { params: { type: type } }).then(function (res) {
                     if (res.data.code == '200') {
-                        $('.pre pre').html(res.data.data.content);
+                        // $('.pre pre').html(res.data.data.content);
+                        _this.agreeCont = res.data.data.content;
                     }
                 })
             },
@@ -359,12 +372,22 @@
                 _this.loading = true;
                 _this.$http.post(_this.$http.sendSms, {
                     phone: _this.phoneForm.phone,
-                    area_code:_this.phoneForm.areaindex,
+                    area_code:_this.phoneForm.area_code,
                     from: 'register'
                 }).then(function (response) {
                     if (response.data.code == "200") {
                         _this.loading = false;
                         _this.reg_popup = true;
+                        clearInterval(_this.timer);
+                        _this.btnCode.disabled = true;
+                        _this.timer = setInterval(() => {
+                            if (_this.btnCode.time <= 0) {
+                                _this.btnCode.time = 60;
+                                _this.btnCode.disabled = false;
+                                clearInterval(_this.timer);
+                            }
+                            _this.btnCode.time--
+                        }, 1000)
                     } else {
                         _this.loading = false;
                         _this.$public.msg(response.data.msg, 'warning', _this);
@@ -383,42 +406,96 @@
                     if (response.data.code == "200") {
                         _this.loading = false;
                         _this.reg_popup = true;
+                        clearInterval(_this.timer);
+                        _this.btnCode.disabled = true;
+                        _this.timer = setInterval(() => {
+                            if (_this.btnCode.time <= 0) {
+                                _this.btnCode.time = 60;
+                                _this.btnCode.disabled = false;
+                                clearInterval(_this.timer);
+                            }
+                            _this.btnCode.time--
+                        }, 1000)
                     } else {
                         _this.loading = false;
                         _this.$public.msg(response.data.msg, 'warning', _this);
                     }
                 }).catch(function (error) {});
             },
-
+            // 重新获取验证码
+            obtainCode() {
+                this.btnCode.disabled = true;
+                if (this.tabIndex == 1) {
+                    this.getCodePhone();
+                } else {
+                    this.getCode();
+                }
+            },
             // 完成注册
             submitForm() {
-                var _this = this;
-                _this.loading1 = true;
-                this.regData.password = this.$public.$md5(this.regData.password);
-                this.regData.password_confirmation = this.$public.$md5(this.regData.password_confirmation);
-                $.ajax({
-                    url: _this.$http.gicregister,
-                    type: "post",
-                    data: _this.regData,
-                    headers: {
-                        'locale': _this.$cookies.get('language') == 'Chinese' ? 'zh-CN' : 'en',
-                        'from': 'pc'
-                    },
-                    dataType: "json",
-                    success: function (response) {
-                        _this.loading1 = false;
-                        if (response.code == '200') {
-                            _this.$public.msg(response.msg, 'success', _this)
-                            _this.$public.go('login', 10, _this)
-                            _this.loading1 = false;
+                this.$refs.verForm.validate(valid => {
+                    if (valid) {
+                        let _data = {};
+                        if (this.tabIndex == 1) {
+                            _data = {
+                                phone: this.phoneForm.phone,
+                                area_code: this.phoneForm.area_code,
+                                code: this.verForm.code,
+                                recommend: this.phoneForm.recommend,
+                                password: this.$public.$md5(this.phoneForm.password),
+                                password_confirmation: this.$public.$md5(this.phoneForm.password_confirmation)
+                            }
                         } else {
-                            _this.$public.msg(response.msg, 'warning', _this)
+                            _data = {
+                                email: this.regData.email,
+                                area_code: this.regData.area_code,
+                                code: this.verForm.code,
+                                recommend: this.regData.recommend,
+                                password: this.$public.$md5(this.regData.password),
+                                password_confirmation: this.$public.$md5(this.regData.password_confirmation)
+                            }
                         }
-                    },
-                    error: err => {
-                        _this.loading1 = false;
+
+                        this.loading1 = true;
+                        // this.regData.password = this.$public.$md5(this.regData.password);
+                        // this.regData.password_confirmation = this.$public.$md5(this.regData.password_confirmation);
+                        this.$http.post(this.$http.register, _data).then(res => {
+                            if (res.data.code == 200) {
+                                this.$public.msg(res.data.msg, "success", this);
+                                this.$public.go('login', 10, this)
+                            } else {
+                                this.$public.msg(res.data.msg, "warning", this);
+                            }
+                            this.loading1 = false;
+                        }).catch(err => {
+                            this.loading1 = false;
+                        })
                     }
-                });
+                })
+                
+                // $.ajax({
+                //     url: this.$http.gicregister,
+                //     type: "post",
+                //     data: this.regData,
+                //     headers: {
+                //         'locale': this.$cookies.get('language') == 'Chinese' ? 'zh-CN' : 'en',
+                //         'from': 'pc'
+                //     },
+                //     dataType: "json",
+                //     success: function (response) {
+                //         this.loading1 = false;
+                //         if (response.code == '200') {
+                //             this.$public.msg(response.msg, 'success', this)
+                //             this.$public.go('login', 10, this)
+                //             this.loading1 = false;
+                //         } else {
+                //             this.$public.msg(response.msg, 'warning', this)
+                //         }
+                //     },
+                //     error: err => {
+                //         this.loading1 = false;
+                //     }
+                // });
             },
 
             close_moble() {
@@ -464,6 +541,10 @@
             }
         },
         mounted() {
+            this.obtainAreaCode();
+        },
+        beforeDestroy() {
+            clearInterval(this.timer);
         }
     };
 </script>
