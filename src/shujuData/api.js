@@ -63,7 +63,7 @@ Axios.interceptors.response.use(function (response) {
   if(response.data.code =='401'){
     sessionStorage.clear()
     // alert('请登录')
-    window.location.href = "/#/login";
+    // window.location.href = "/#/login";
     return ;
   }
     if(response.data.code =='505' || response.data.code =='404'){
@@ -71,8 +71,7 @@ Axios.interceptors.response.use(function (response) {
     		return false;
     	}
       sessionStorage.clear();
-//    alert(response.data.msg);
-    	window.location.href = "/login";
+    	// window.location.href = "/login";
     };
     return response;
   }, function (error) {
@@ -320,10 +319,6 @@ Axios.rotation= `${second}/api/asset/rotation`; // 立即划转
 
 Axios.getRechargeType= `${second}/api/recharge/getRechargeType`; // 充币类型
 // Axios.checkBalance= `${second}/api/applyWithdraw/checkBalance`; // 余额
-
-
-
-
 //登录注册
 
 Axios.register = `${second}/api/user/register`  //注册
