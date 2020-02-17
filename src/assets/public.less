@@ -767,8 +767,19 @@
     text-align: right;
 }
 .el-pagination.is-background .btn-next, .el-pagination.is-background .btn-prev, .el-pagination.is-background .el-pager li{
-    background-color: transparent;
+    background: @common-color2;
+    border-radius: 4px;
+    color: #fff;
+    padding: 0 15px;
 }
 .el-pagination.is-background .el-pager li:not(.disabled).active{
     background-color: @main;
 }
+
+// .common-pagination {
+//     .btn-prev, .btn-next, button:disabled {
+//         background: @common-color2;
+//         border-radius: 4px;
+//         padding: 0 5px;
+//     }
+// }

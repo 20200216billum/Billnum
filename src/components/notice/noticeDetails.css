@@ -277,3 +277,87 @@
 .el-pagination.is-background .el-pager li:not(.disabled).active {
   background-color: #30D5D8;
 }
+.notice_details_wrapper {
+  background: #0A1017;
+  overflow: hidden;
+}
+.notice_details_wrapper .details_container {
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  background: #182330;
+  margin: 50px auto 30px;
+  width: 1200px;
+}
+.notice_details_wrapper .details_container .detail_title_top {
+  text-align: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #383F53;
+}
+.notice_details_wrapper .details_container .detail_title_top .name {
+  line-height: 60px;
+  font-size: 24px;
+}
+.notice_details_wrapper .details_container .detail_title_top .time {
+  line-height: 40px;
+  font-size: 16px;
+  color: #bbb;
+  margin-top: -13px;
+}
+.notice_details_wrapper .details_container .el-breadcrumb {
+  padding-left: 20px;
+}
+.notice_details_wrapper .details_container .el-breadcrumb__inner {
+  font-size: 20px;
+}
+.notice_details_wrapper .details_container .el-icon-arrow-right {
+  font-size: 20px;
+}
+.notice_details_wrapper .details_container .is-link {
+  font-weight: 100;
+}
+.notice_details_wrapper .details_container .details_content {
+  margin-top: 40px;
+  min-height: 500px;
+}
+.notice_details_wrapper .details_container .details_content .el-card {
+  background: transparent;
+}
+.notice_details_wrapper .details_container .details_content .content {
+  line-height: 1.5em;
+  min-height: 500px;
+}
+.notice_details_wrapper .details_container .details_content .content img {
+  max-width: 100% !important;
+}
+.notice_details_wrapper .details_container .details_content .content p,
+.notice_details_wrapper .details_container .details_content .content h3 {
+  line-height: 1.5em;
+}
+.notice_details_wrapper .details_container .details_content .content p span,
+.notice_details_wrapper .details_container .details_content .content h3 span {
+  line-height: 1.5em;
+  color: #fff !important;
+}
+.notice_details_wrapper .details_container .details_content .videoWarp {
+  width: 80%;
+  margin: 0 auto;
+}
+.notice_details_wrapper .details_container .details_content .contents {
+  padding: 30px 0;
+  line-height: 26px;
+  width: 80%;
+  margin: 0 auto;
+  line-height: 22px;
+}
+.notice_details_wrapper .details_container .top .el-card__body {
+  display: block;
+}
+.notice_details_wrapper .details_container .top div {
+  margin-bottom: 35px;
+}
+.el-card.is-always-shadow {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: none;
+}

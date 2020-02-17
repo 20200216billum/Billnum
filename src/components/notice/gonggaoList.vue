@@ -31,7 +31,7 @@
         <ul class="content">
           <li v-for="(i,index) in listData" v-show="!loading" @click="$router.push({path:'/zixunDetails', query:{posts_id:i.id,type:'2'}})">
             <p> {{ i.title }}</p>	
-            <p>{{ i.created_at }}</p>
+            <p class="time">{{ i.created_at }}</p>
           </li>
           <!-- 暂无数据 -->
           <p class="noData" v-show="listData.length==0 && !loading">{{$t('sell.showlist[8]')}}</p>
@@ -39,10 +39,19 @@
           <p class="noData" v-show="loading">{{$t("bibi.loading")}}</p>
         </ul>
       </div>
-      <el-pagination background class="zixun_fen" layout="prev, pager, next" :total="total"  @current-change="current_change1" :page-size='size' :current-page.sync="page"></el-pagination>
+      <el-pagination 
+        background 
+        class="zixun_fen common-pagination" 
+        layout="prev, pager, next" 
+        prev-text="上一页"
+        next-text="下一页"
+        :total="total" 
+        @current-change="current_change1" 
+        :page-size='size' 
+        :current-page.sync="page"
+      ></el-pagination>
     </div>
   </template>
-  
   
   <script>
     export default {

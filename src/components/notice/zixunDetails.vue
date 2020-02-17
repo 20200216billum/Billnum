@@ -1,5 +1,4 @@
-<style lang=less>
-	@import '../../assets/public.less';
+<style lang="less" scoped>
 	@import './noticeList.less';
 	@import './noticeDetails.less';
 </style>

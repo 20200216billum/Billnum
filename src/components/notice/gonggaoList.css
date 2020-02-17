@@ -311,7 +311,7 @@
 }
 .notice_list_wrapper .list_container .content {
   flex-shrink: 0;
-  padding: 0 20px;
+  padding: 10px 20px 20px 20px;
   background: #182330;
   border-radius: 10px;
   margin-top: 40px;
@@ -323,7 +323,7 @@
   line-height: 70px;
   color: #eee;
   box-sizing: border-box;
-  border-top: 1px solid #181825;
+  border-top: 1px solid #383F53;
   display: flex;
   justify-content: space-between;
   cursor: pointer;
@@ -333,6 +333,10 @@
   overflow: hidden;
   white-space: nowrap;
   font-size: 16px;
+}
+.notice_list_wrapper .list_container .content li p.time {
+  color: #bbb;
+  font-size: 15px;
 }
 .notice_list_wrapper .list_container .content li span {
   cursor: pointer;

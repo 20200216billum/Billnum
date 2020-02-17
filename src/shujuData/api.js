@@ -78,7 +78,7 @@ Axios.interceptors.response.use(function (response) {
 let secondlogin = "https://www.00886gf.com/"; 
 let basess = 'http://lacoin.oss-cn-hongkong.aliyuncs.com';
 // let second = "http://www.mobidiex.com";
-let second = process.env.NODE_ENV === 'production' ? 'https://' + window.location.host : 'https://www.billumpro.com';
+let second = process.env.NODE_ENV === 'production' ? 'https://' + window.location.host : '/apid';
 
 // let second = "http://"+ 'api.gicgold.in';
 
