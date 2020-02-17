@@ -1,4 +1,4 @@
-<style lang=less>
+<style lang="less">
   @import "./home.less";
 
   .el-dialog__body {
@@ -70,9 +70,20 @@
     background: rgba(0, 0, 0, 0.1);
   }
 
-  .el-carousel__indicators {
-    display: none;
+.el-carousel__indicators--outside {
+    position: relative;
+    left: 0;
+    bottom: 90px;
+    z-index: 9999;
+  .el-carousel__indicator {
+    .el-carousel__button {
+      width: 80px;
+    }
+    &.is-active .el-carousel__button {
+      background: @main;
+    }
   }
+}
 
   .notice {
     text-align: center;
@@ -116,25 +127,36 @@
 
     <section class="sowingmap">
         <!-- 轮播图 -->
-				<el-carousel :height="height" indicator-position="none">
+				<el-carousel :height="height" indicator-position="outside">
 				    <el-carousel-item id="carouselWarp" v-for="(item,index) in bannerList" :key="index">
 				        <img @load="imgload" ref="bannerImg" class="bannerImg" :src='item.image' style="width: 100%;">
 				    </el-carousel-item>
+				    <!-- <el-carousel-item>
+				        <img class="bannerImg" src='../../assets/img/home/banner-1.png' style="width: 100%;">
+				    </el-carousel-item> -->
 				</el-carousel>
+
+        <!-- 未登录时 -->
+        <div class="no_login" v-if="noLogin">
+          <router-link to="/Login" class="go-login">登录</router-link>
+          <router-link to="/Register" class="go-register">注册</router-link>
+        </div>
       </section>
 
     <!-- 公告3 -->
     <section class="Notice_3">
-      <div class="left">
-        <img src="../../assets/img/gonggao-icon.png">
-        <ul class="Notice_3_cen">
-          <li class="cen_list" v-for="(item,index) in SystemPosts" :key="index" v-if="index<3">
-            <p @click="$router.push({path:'/zixunDetails', query:{posts_id:item.id,type:'2'}})">{{item.title}}</p>
-            <span>|</span>
-          </li>
-        </ul>
+      <div>
+        <div class="left">
+          <img src="../../assets/img/gonggao-icon.png">
+          <ul class="Notice_3_cen">
+            <li class="cen_list" v-for="(item,index) in SystemPosts" :key="index" v-if="index<3">
+              <p @click="$router.push({path:'/zixunDetails', query:{posts_id:item.id,type:'2'}})">{{item.title}}</p>
+              <span>|</span>
+            </li>
+          </ul>
+        </div>
+        <router-link class="more" to="/gonggaoList">更多公告></router-link>
       </div>
-      <router-link class="more" to="/gonggaoList">更多公告></router-link>
     </section>
 
     <section class="bannerCenter wow slideInUp">
@@ -143,65 +165,89 @@
       </div>
     </section>
 
-    <section class="download_app">
+    <!-- <section class="download_app">
         <h5>{{$t('Gic.home[8]')}}</h5>
         <p>{{$t('Gic.home[9]')}}</p>
         <div class="zhuce_btn" @click="xiazai">{{$t('Gic.home[10]')}}</div>
         <img class="home_pc" :src="pc_img" alt="">
-    </section>
+    </section> -->
 
     <section class="jieshao">
       <div class="jieshao_cen">
-        <h5>{{$t('Gic.home[11]')}}</h5>
-        <p>{{$t('Gic.home[12]')}}</p>
+        <h5>千万人的选择，可信赖的平台</h5>
+        <p>数万用户选择再Billum上开启数字交易之旅</p>
         <ul class="jieshao_list">
           <li>
             <div class="img_div">
-              <img src="../../assets/Gicimg/home/img_1.png" alt="">
+              <img src="../../assets/img/home/img-1.png">
             </div>
-            <h6>{{$t('Gic.home[13]')}}</h6>
-            <p>{{$t('Gic.home[19]')}}</p>
-            <p>{{$t('Gic.home[20]')}}</p>
-            <p>{{$t('Gic.home[21]')}}</p>
+            <h6>安全保障</h6>
+            <p>全方位多维度的系统化数字资产安全保障机制</p>
           </li>
           <li>
             <div class="img_div">
-              <img src="../../assets/Gicimg/home/img_2.png" alt="">
+              <img src="../../assets/img/home/img-2.png">
             </div>
-            <h6>{{$t('Gic.home[14]')}}</h6>
-            <p>{{$t('Gic.home[22]')}}</p>
-            <p>{{$t('Gic.home[23]')}}</p>
-            <p>{{$t('Gic.home[24]')}}</p>
+            <h6>极速交易</h6>
+            <p>自主研发极速撮合引擎，交易一触即达</p>
           </li>
           <li>
             <div class="img_div">
-              <img src="../../assets/Gicimg/home/img_3.png" alt="">
+              <img src="../../assets/img/home/img-3.png">
             </div>
-            <h6>{{$t('Gic.home[15]')}}</h6>
-            <p>{{$t('Gic.home[25]')}}</p>
-            <p>{{$t('Gic.home[26]')}}</p>
-            <p>{{$t('Gic.home[27]')}}</p>
+            <h6>优质体验</h6>
+            <p>便捷易用的交易服务，卓越团队带来极致体验</p>
           </li>
           <li>
             <div class="img_div">
-              <img src="../../assets/Gicimg/home/img_4.png" alt="">
+              <img src="../../assets/img/home/img-4.png">
             </div>
-            <h6>{{$t('Gic.home[16]')}}</h6>
-            <p>{{$t('Gic.home[28]')}}</p>
-            <p>{{$t('Gic.home[29]')}}</p>
-            <p>{{$t('Gic.home[30]')}}</p>
+            <h6>服务专业</h6>
+            <p>全天候服务，第一时间为您服务</p>
           </li>
         </ul>
       </div>
     </section>
 
-    <section class="immediate_registration">
-      <h5>{{$t('Gic.home[11]')}}</h5>
-      <p>{{$t('Gic.home[17]')}}</p>
-      <router-link to="/Register" class="zhuce_btn">{{$t('Gic.home[18]')}}</router-link>
-    </section>
+    <!-- 下载 -->
+    <div class="download_box">
+      <div class="download_content">
+        <img src="../../assets/img/home/xiazai-jx-img.png">
+        <div class="link_box">
+          <p class="one">急速交易，安全可靠</p>
+          <p class="two">BILLUM平台APP</p>
+          <div class="three">
+            <span>
+              <img src="../../assets/img/home/jyjl-img-sy.png">
+              掌上交易
+            </span>
+            <span>
+              <img src="../../assets/img/home/sshq-img-sy.png">
+              实时行情
+            </span>
+            <span>
+              <img src="../../assets/img/home/yzty-img-sy.png">
+              优质体验
+            </span>
+            <span>
+              <img src="../../assets/img/home/jstk-img-sy.png">
+              极速充提
+            </span>
+          </div>
+          <div class="four">
+            <div class="phone">
+              <img src="../../assets/img/home/android.png"><br/>
+              <img src="../../assets/img/home/iphone.png" class="iphone">
+            </div>
+            <div class="qr_code">
+              <img>
+              <p>扫码下载BILLUM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <!-- <p class="fenge"></p> -->
     <section class="platform" style="display: none;">
       <div class="platformWarp">
         <div class="platformHeader">
@@ -289,6 +335,7 @@
         bannerList:[], // 轮播
         SystemPosts:[],  //公告
         language:'zh-CN',
+        noLogin: false
       };
     },
     methods: {
@@ -344,11 +391,6 @@
              console.log(error)
           }
       });
-    },
-    //公告详情
-    getNotice_details(id){
-      // console.log(id);
-
     },
       goDeal() {
         if (sessionStorage.token) {
@@ -466,6 +508,11 @@
       // c.src = "//kefu.ziyun.com.cn/vclient/?webid=140650";
       // s.parentNode.insertBefore(c, s);
       var _this = this;
+      if (sessionStorage.token) {
+        this.noLogin = false;
+      } else {
+        this.noLogin = true
+      }
       $(".home_hader_background1").css("background", "#0A125EFF");
       _this.account = JSON.parse(sessionStorage.getItem("account"));
       new WOW().init();

@@ -63,15 +63,59 @@
 			</p>
 		</div> -->
 		<!-- <div class="hangqingWarp" v-if="list.length != 0 "> -->
+
+    <!-- 新手教程 -->
+    <div class="novice_tutorial">
+      <div class="left">
+        <p class="title">新手教程</p>
+        <p class="tip">欢迎进入Billum，请登录/注册体验交易</p>
+      </div>
+      <ul class="right">
+        <li>
+          <img class="duihao" src="../../assets/img/home/weijinxing-img.png">
+          登录/注册
+          <img class="jiantou" src="../../assets/img/home/jiantou-img.png">
+        </li>
+        <li>
+          <img class="duihao" src="../../assets/img/home/weijinxing-img.png">
+          设置交易密码
+          <img class="jiantou" src="../../assets/img/home/jiantou-img.png">
+        </li>
+        <li>
+          <img class="duihao" src="../../assets/img/home/weijinxing-img.png">
+          实名认证
+          <img class="jiantou" src="../../assets/img/home/jiantou-img.png">
+        </li>
+        <li>
+          <img class="duihao" src="../../assets/img/home/weijinxing-img.png">
+          充值
+          <img class="jiantou" src="../../assets/img/home/jiantou-img.png">
+        </li>
+        <li>
+          <img class="duihao" src="../../assets/img/home/weijinxing-img.png">
+          开始交易
+        </li>
+      </ul>
+    </div>
+
+    <!-- 行情列表 -->
+    <div class="hangqing_top">
+      <p class="name">
+        随时随地 流畅交易
+      </p>
+      <p class="tip">
+        在这里开启数字化进程
+      </p>
+    </div>
 		<div class="hangqingWarp" v-if="list.length != 0 ">
 			<ul class="hangq_top wow animate fadeInDown" >
-				<li>{{$t('Gic.home[2]')}}</li>
-				<li>{{$t('Gic.home[3]')}}</li>
-				<li>{{$t('Gic.home[4]')}}</li>
-				<li>{{$t('Gic.home[5]')}}</li>
-				<li>{{$t('Gic.home[6]')}}</li>
-				<li>{{$t('Gic.home[1]')}}</li>
-				<li>{{$t('Gic.home[7]')}}</li>
+				<li>币种</li>
+				<li>最新价</li>
+				<li>24h涨幅</li>
+				<li>24h最高</li>
+				<li>24h最低</li>
+				<li>24h成交量</li>
+				<li>操作</li>
 			</ul>
 			<ul class="hangqwingul wow animate bounceInUp" data-wow-delay="1s" v-if='listt'>
 				<!-- // <router-link v-for="(item,index) in list" :to="{path:'/exchange',query:{account:item.code}}" :key="index"> -->
@@ -80,8 +124,9 @@
 					<li >
             <!-- 1 -->
 						<div class="hang_1">
-							<!-- <img :src="item.icon" alt="" /> -->
-							<p>{{$public.changeInterceptingAdd(item.name)}}</p>
+							<img :src="item.icon"/>
+							<!-- <p>{{$public.changeInterceptingAdd(item.name)}}</p> -->
+							<p>{{ item.code }}</p>
 						</div>
 						<!--2-->
 						<div class="hang_2">
@@ -91,17 +136,17 @@
                 <!-- {{$public.SavePoint(item.price,item.code)}} -->
               </p>
             </div>
-            <!-- 3 -->
+            <!-- 3 涨跌幅 -->
 						<aside>
 							<p class="title">
 								<!-- {{$public.InterceptingAdd(item.name)}} / USDT -->
 								<span v-if="item.change > 0" class="changeRate">
-									<span class="fall" style="color: #00bc80 !important;" :class="'changeRate_'+item.code">{{item.changeRate}}</span>
-									<i class="el-icon-caret-top fall"></i>
+									<span class="fall" style="color: #00bc80 !important;" :class="'changeRate_'+item.code">{{"+" + item.changeRate + "%"}}</span>
+									<!-- <i class="el-icon-caret-top fall"></i> -->
 								</span>
 								<span v-else class="changeRate">
-									<span class="rise" style="color: #fe5955 !important;" :class="'changeRate_'+item.code">{{item.changeRate}}</span>
-									<i class="el-icon-caret-bottom rise"></i>
+									<span class="rise" style="color: #fe5955 !important;" :class="'changeRate_'+item.code">{{"-" + item.changeRate + "%"}}</span>
+									<!-- <i class="el-icon-caret-bottom rise"></i> -->
 								</span>
 							</p>
 						</aside>
@@ -123,13 +168,13 @@
 							<!--</span>-->
 							<!--<span class="yuedeng">  ≈{{item.cnyPrice}}  CNY</span>-->
 						</div>
-						<!--6-->
+						<!--6 成交量-->
 						<aside class="hang_6">
 							<p class="allNum">
 								<!-- <span class="numWarp" :class="'volume_'+item.code">{{$public.toLowFixed(item.volume,6)}}</span> -->
                 <span class="numWarp" :class="'volume_'+item.code">
                   <!-- {{$public.toLowFixed(item.volume,$public.SavePoint(item.code),0)}} -->
-                  {{$public.toDecimal2(item.volume)}}
+                  {{$public.toDecimal2(item.volume) +" USDT"}}
                 </span>
 							</p>
 						</aside>
