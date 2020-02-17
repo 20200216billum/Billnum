@@ -123,16 +123,18 @@
 				</el-carousel>
       </section>
 
-
     <!-- 公告3 -->
     <section class="Notice_3">
-      <ul class="Notice_3_cen">
-        <li class="cen_list" v-for="(item,index) in SystemPosts" :key="index" v-if="index<3">
-          <p @click="$router.push({path:'/zixunDetails', query:{posts_id:item.id,type:'2'}})">{{item.title}}</p>
-          <span>/</span>
-        </li>
-      </ul>
-      <router-link class="more" to="/gonggaoList">{{$t('Gic.home[0]')}}</router-link>
+      <div class="left">
+        <img src="../../assets/img/gonggao-icon.png">
+        <ul class="Notice_3_cen">
+          <li class="cen_list" v-for="(item,index) in SystemPosts" :key="index" v-if="index<3">
+            <p @click="$router.push({path:'/zixunDetails', query:{posts_id:item.id,type:'2'}})">{{item.title}}</p>
+            <span>|</span>
+          </li>
+        </ul>
+      </div>
+      <router-link class="more" to="/gonggaoList">更多公告></router-link>
     </section>
 
     <section class="bannerCenter wow slideInUp">

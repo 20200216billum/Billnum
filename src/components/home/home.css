@@ -84,15 +84,15 @@
   margin-top: 5px;
 }
 .el-message-box .btn_code {
-  color: #f4d16d;
+  color: #30D5D8;
 }
 .el-message-box .el-message-box__btns button.confirm {
-  background: #f4d16d;
+  background: #30D5D8;
   color: #fff;
 }
 .el-message-box .el-message-box__btns button.close {
-  color: #f4d16d;
-  border-color: #f4d16d;
+  color: #30D5D8;
+  border-color: #30D5D8;
   background-color: #fff;
 }
 @keyframes hehe {
@@ -103,6 +103,9 @@
   100% {
     opacity: 1;
   }
+}
+.el-form-item__label {
+  line-height: 1;
 }
 /*1280px宽度*/
 .public_wrapper {
@@ -215,18 +218,18 @@
 .bbMessageBox .bbMessageBox-cancel {
   width: 130px;
   height: 40px;
-  border: 1px solid #f4d16d;
+  border: 1px solid #30D5D8;
   border-radius: 4px;
   background: unset;
 }
 .bbMessageBox .bbMessageBox-cancel span {
-  color: #f4d16d;
+  color: #30D5D8;
   font-size: 16px;
 }
 .bbMessageBox .bbMessageBox-confirm {
   width: 130px;
   height: 40px;
-  background: #f4d16d;
+  background: #30D5D8;
   border-radius: 6px;
 }
 .bbMessageBox .bbMessageBox-confirm span {
@@ -237,7 +240,7 @@
   background: #3c3c3c;
 }
 .bbMessageBox.Night .el-button--primary {
-  border-color: #f4d16d;
+  border-color: #30D5D8;
 }
 .bbMessageBox.Night .el-message-box__header {
   background: #3c3c3c;
@@ -255,7 +258,10 @@
   color: #fff;
 }
 #app .el-form-item.is-error .el-input__inner {
-  border-color: #F56C6C;
+  border-color: #30D5D8;
+}
+.el-form-item__error {
+  color: #30D5D8;
 }
 .el-pagination {
   text-align: right;
@@ -263,10 +269,13 @@
 .el-pagination.is-background .btn-next,
 .el-pagination.is-background .btn-prev,
 .el-pagination.is-background .el-pager li {
-  background-color: transparent;
+  background: #202D3C;
+  border-radius: 4px;
+  color: #fff;
+  padding: 0 15px;
 }
 .el-pagination.is-background .el-pager li:not(.disabled).active {
-  background-color: #f4d16d;
+  background-color: #30D5D8;
 }
 .index_main {
   width: 100%;
@@ -320,8 +329,8 @@
   border-bottom: 3px solid #4c4c4c;
 }
 .index_main .quotationList li.tabGroup div.active {
-  border-bottom: 3px solid #f4d16d;
-  color: #f4d16d;
+  border-bottom: 3px solid #30D5D8;
+  color: #30D5D8;
 }
 .index_main .quotationList li.head {
   height: 36px;
@@ -379,13 +388,26 @@
   height: 100%;
 }
 .index_main .Notice_3 {
-  background: #1c1c29;
+  width: 1200px;
   position: relative;
+  border-top: 1px solid #383F53;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+.index_main .Notice_3 .left {
+  flex: 1;
+  display: flex;
+}
+.index_main .Notice_3 .left img {
+  width: 20px;
+  height: 20px;
+  margin-top: 20px;
+  margin-right: 20px;
 }
 .index_main .Notice_3 .Notice_3_cen {
-  width: 1200px;
+  flex: 1;
   height: 60px;
-  margin: 0 auto;
   display: flex;
   align-items: center;
   color: #fff;
@@ -406,19 +428,18 @@
 .index_main .Notice_3 .Notice_3_cen .cen_list span {
   width: 40px;
   text-align: center;
+  color: #717C7C;
 }
 .index_main .Notice_3 .Notice_3_cen .cen_list:last-child span {
   display: none;
 }
 .index_main .Notice_3 .more {
-  color: #30D5D8;
-  font-size: 18px;
-  position: absolute;
-  top: 50%;
-  transform: translate(0, -50%);
-  right: 80px;
-  width: 40px;
+  color: #717C7C;
+  font-size: 14px;
   line-height: 60px;
+  white-space: nowrap;
+  width: 80px;
+  text-align: right;
 }
 .index_main .indexcommodity_main {
   min-width: 1280px;
@@ -542,7 +563,7 @@
 }
 .index_main .bannerCenter .bannerheader {
   text-align: center;
-  background: #1f1f2e;
+  background: #0A1017;
 }
 .index_main .bannerCenter .bannerheader .two_hang {
   padding: 60px 0 80px 0;
@@ -728,47 +749,54 @@
   height: 150px;
 }
 .index_main .btclist ul .btclist_box {
-  width: 280px;
-  height: 150px;
-  background-size: 100%;
-  background-position: bottom;
-  padding: 10px;
-  background: #262637;
+  width: 225px;
+  height: 130px;
   box-sizing: border-box;
   position: relative;
   text-align: left;
   border-radius: 6px;
 }
-.index_main .btclist ul .btclist_box img {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  right: 0;
+.index_main .btclist ul .btclist_box .trend {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 20px 10px;
+}
+.index_main .btclist ul .btclist_box .trend-lv {
+  background: url("../../assets/img/home/lv-bgimg.png") no-repeat;
+  background-size: 100% 100%;
+}
+.index_main .btclist ul .btclist_box .trend-red {
+  background: url("../../assets/img/home/red-bgimg.png") no-repeat;
+  background-size: 100% 100%;
 }
 .index_main .btclist ul .btclist_box .name {
   font-size: 20px;
   color: #ffffff;
   line-height: 24px;
 }
+.index_main .btclist ul .btclist_box .price {
+  font-size: 22px;
+  margin-top: 16px;
+}
+.index_main .btclist ul .btclist_box .price-lv {
+  color: #03C087;
+}
+.index_main .btclist ul .btclist_box .price-red {
+  color: #E23637;
+}
 .index_main .btclist ul .btclist_box .col {
   width: 74px;
   height: 24px;
   line-height: 24px;
-  font-size: 16px;
+  font-size: 14px;
   text-align: center;
   position: absolute;
-  right: 0px;
-  top: 10px;
-  font-weight: bold;
-  color: #2B2B2B;
-}
-.index_main .btclist ul .btclist_box .col.col_one {
-  padding: 0;
-  color: #ff5755;
-}
-.index_main .btclist ul .btclist_box .col.col_two {
-  padding: 0;
-  color: #03c087;
+  right: 10px;
+  background: #03C087;
+  top: 19px;
+  color: #fff;
+  border-radius: 20px;
 }
 .index_main .btclist ul .btclist_box .money {
   font-size: 24px;
@@ -800,7 +828,7 @@
 .index_main .Magiccube .river {
   width: 90px;
   height: 4px;
-  background: #f4d16d;
+  background: #30D5D8;
   border-radius: 2px;
   margin-top: 39px;
   margin-bottom: 45px;

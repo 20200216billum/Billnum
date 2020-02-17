@@ -4,38 +4,49 @@
 	<section class="two_hang">
 		<div class="btclist">
 			<ul class="mainList">
-				<li  v-for="(item,index) in listt" :key="index" v-if="index < 4"
+				<li v-for="(item,index) in listt" :key="index" v-if="index < 5"
 					:data_code='item.code' class="btclist_box wow animate fadeInDown " :data-wow-delay="(index)*(0.25)+'s'">
-					<div class="name">{{$public.changeInterceptingAdd(item.name)}}</div>
-					<div v-if="item.change < 0">
-						<div class="money one" :class="'price_'+item.code">
+          <div class="trend trend-red" v-if="item.change < 0">
+					  <div class="name">{{ item.code }}</div>
+					  <!-- <div class="name">{{$public.changeInterceptingAdd(item.name)}}</div> -->
+						<!-- <div class="money one" :class="'price_'+item.code">
                 {{Number(item.price).toFixed($public.SavePoint(item.code))}}
-              <!-- <span v-if="language == 'zh-CN'">≈{{$public.toDecimal2(item.cnyPrice)}} CNY</span> -->
+              <span v-if="language == 'zh-CN'">≈{{$public.toDecimal2(item.cnyPrice)}} CNY</span>
               <span>
                 ≈ {{$public.Division(Number(item.cnyPrice),Number(7)).toFixed($public.SavePoint(item.code))}} USD
               </span>
+            </div> -->
+            <div class="col col_one" :class="'changeRate_'+item.code">{{ "-" + item.changeRate + "%" }}</div>
+            <!-- 价格 -->
+            <div class="price price-red">
+              {{ item.price }}
             </div>
-            <div class="col col_one" :class="'changeRate_'+item.code">{{item.changeRate}}</div>
             <!-- 成交量 -->
-            <div class="chengjiao">
+            <!-- <div class="chengjiao">
                 {{$t('Gic.home[1]')}}：{{item.volume}}
-            </div>
-						<img src="../../assets/Gicimg/home/red.png" alt="">
+            </div> -->
+						<!-- <div class="trend trend-red"></div> -->
 					</div>
-					<div v-else>
-						<div class="money two" :class="'price_'+item.code">
+					<div class="trend trend-lv" v-else>
+            <div class="name">{{ item.code }}</div>
+            <!-- <div class="name">{{$public.changeInterceptingAdd(item.name)}}</div> -->
+						<!-- <div class="money two" :class="'price_'+item.code">
                 {{Number(item.price).toFixed($public.SavePoint(item.code))}}
-                <!-- <span v-if="language == 'zh-CN'">≈{{$public.toDecimal2(item.cnyPrice)}} CNY</span> -->
+                <span v-if="language == 'zh-CN'">≈{{$public.toDecimal2(item.cnyPrice)}} CNY</span>
                 <span>
                     ≈ {{$public.Division(Number(item.cnyPrice),Number(7)).toFixed($public.SavePoint(item.code))}} USD
                 </span>
+            </div> -->
+            <div class="col col_two" :class="'changeRate_'+item.code">{{ "+" + item.changeRate + "%" }}</div>
+            <!-- 价格 -->
+            <div class="price price-lv">
+              {{ item.price }}
             </div>
-            <div class="col col_two" :class="'changeRate_'+item.code">{{item.changeRate}}</div>
             <!-- 成交量 -->
-            <div class="chengjiao">
+            <!-- <div class="chengjiao">
                 {{$t('Gic.home[1]')}}：{{$public.toDecimal2(item.volume)}}
-            </div>
-						<img src="../../assets/Gicimg/home/green.png" alt="">
+            </div> -->
+						<!-- <div class="trend trend-lv"></div> -->
 					</div>
 				</li>
 			</ul>
