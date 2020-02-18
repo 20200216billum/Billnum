@@ -1,15 +1,12 @@
-<style lang=less>
-	@import '../../../assets/public.less';
+<style lang="less" scoped>
 	@import './tiBit.less';
 </style>
 <template>
 	<div class="ti_bit_wrapper">
 		<div class="ti_bit_container">
-			<h4>{{$t('Gic.tibit[0]')}}</h4>
+			<h4>{{ $route.query.code }}{{$t('Gic.tibit[0]')}}</h4>
 			<div class="ti_bit_body">
-
-				<el-form :model="formData" ref="formData" :label-position="labelPosition" :rules="rules1" status-icon
-					class="formData">
+				<el-form :model="formData" ref="formData" :label-position="labelPosition" :rules="rules1" class="formData">
 					<!-- 提币地址 -->
 					<div class="across">
 						<el-form-item :label="$t('Gic.tibit[1]')" prop="address">
@@ -25,10 +22,14 @@
 					</div>
 					<!-- 提币数量 -->
 					<div class="across">
-						<el-form-item :label="$t('Gic.tibit[2]')" prop="money">
+						<el-form-item label="数量" prop="money">
 							<el-input v-model="formData.money" :placeholder="$t('Gic.tibit[13]')"></el-input>
 						</el-form-item>
 						<p>{{$t('Gic.tibit[10]')}}：{{ Number(BalanceData.balance).toFixed($public.SavePoint('else'))}} {{code}}</p>
+					</div>
+					<div class="service">
+						<span>手续费</span>
+						<span>5 USDT/次</span>
 					</div>
 					<!-- 资金密码 -->
 					<div class="across">
@@ -51,9 +52,6 @@
 								<el-input type="button" :value='$public.integerDecimal(btnCode.time) ? btnCode.time +" s" : btnCode.time' :disabled='btnCode.disabled'></el-input>
 							</div>
 						</el-form-item>
-
-
-
 					</div>
 
 				</el-form>
@@ -65,7 +63,7 @@
 					<p>{{$t('Gic.tibit[7]')}}</p>
 					<li>{{$t('Gic.tibit[8]')}}</li>
 					<li>{{$t('Gic.tibit[9]')}}</li>
-					<li>{{$t('Gic.tibit[20]')}} {{BalanceData.withdraw_min}} {{code}} {{$t('Gic.tibit[21]')}} {{BalanceData.handling_fee}} {{code}}</li>
+					<!-- <li>{{$t('Gic.tibit[20]')}} {{BalanceData.withdraw_min}} {{code}} {{$t('Gic.tibit[21]')}} {{BalanceData.handling_fee}} {{code}}</li> -->
 				</ul>
 			</div>
 		</div>

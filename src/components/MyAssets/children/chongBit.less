@@ -1,3 +1,4 @@
+@import '../../../assets/public.less';
 // 充币
 .cbCodeDiv {
     width: 200px;
@@ -10,6 +11,7 @@
 }
 .chong_bit_wrapper {
     padding:20px 0 50px 0;
+    background: @common-color4;
     .chong_bit_container {
         width:1200px;
         margin:0 auto;
@@ -18,11 +20,13 @@
             padding:0 20px;
             font-size:16px;
             border-radius:6px;
+            background: @common-color;
         }
         .chong_bit_body{
-            padding:20px 20px 130px 20px;
+            padding:20px 20px 60px 20px;
             margin-top:10px;
             border-radius:6px;
+            background: @common-color;
             .body_code{
                 display:flex;
                 p{width:100px;font-size:16px;}
@@ -40,7 +44,8 @@
                     margin:0;
                     padding:0 16px;
                     height:50px;
-                    // padding:;
+                    color: #fff;
+                    background: @common-color2;
                 }
                 .right{
                     display: inline-block;
@@ -56,6 +61,8 @@
             .seeRecord{
                 line-height:60px;
                 font-size:16px;
+                color: @common-color3;
+                margin-bottom: 20px;
             }
             .Tips{
                 .public_font{

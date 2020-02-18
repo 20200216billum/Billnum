@@ -30,11 +30,11 @@
                             <p>{{ Number(item.balance).toFixed($public.SavePoint('else'))}}</p>
                             <p>{{ Number(item.frost).toFixed($public.SavePoint('else'))}}</p>
                             <div class="btn">
-                                <el-button class="btn_1" v-if="item.code == 'USDT'" @click="changeUrl('/chongbit',1)"
+                                <el-button class="btn_1" v-if="item.code == 'USDT'" @click="changeUrl('/chongbit',1, 'USDT')"
                                     type="primary">{{$t('Gic.addCoin[6]')}}</el-button>
-                                <el-button class="btn_1" v-if="item.code == 'BTC'" @click="changeUrl('/chongbit',1)"
+                                <el-button class="btn_1" v-if="item.code == 'BTC'" @click="changeUrl('/chongbit',1, 'BTC')"
                                     type="primary">{{$t('Gic.addCoin[6]')}}</el-button>
-                                <el-button class="btn_1" v-if="item.code == 'ETH'" @click="changeUrl('/chongbit',2)"
+                                <el-button class="btn_1" v-if="item.code == 'ETH'" @click="changeUrl('/chongbit',2, 'ETH')"
                                     type="primary">{{$t('Gic.addCoin[6]')}}</el-button>
 
                                 <el-button class="btn_2" v-if="item.code == 'USDT'"
@@ -171,7 +171,7 @@
                     this.$router.push({ path, query: { id: query, code: code, pid: pid } })
 
                 } else {
-                    this.$router.push({ path, query: { id: query } })
+                    this.$router.push({ path, query: { id: query, code: code } })
                 }
 
             },

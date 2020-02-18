@@ -1,5 +1,4 @@
-<style lang=less>
-	@import '../../../assets/public.less';
+<style lang="less" scoped>
 	@import './chongBit.less';
 
 	.EOSTIT {
@@ -25,15 +24,14 @@
 <template>
 	<div class="chong_bit_wrapper">
 		<div class="chong_bit_container">
-			<h4>{{$t('Gic.addCoin[6]')}}</h4>
+			<h4>{{ $route.query.code }}&nbsp;{{$t('Gic.addCoin[6]')}}</h4>
 			<div class="chong_bit_body">
 				<!-- 二维码 -->
 				<div class="body_code">
 					<p>{{$t('Gic.chongbit[0]')}}</p>
-					<img :src="requestData.qrcode" alt="">
+					<img :src="requestData.qrcode">
 				</div>
 				<!-- 充币地址 -->
-
 				<div class="address">
 					<p>{{$t('Gic.chongbit[1]')}}</p>
 					<input class="left" :value="requestData.address" id="addInput" readonly
@@ -45,31 +43,23 @@
 					</p> -->
 				</div>
 				<p class="public_font seeRecord">
-					{{$t('Gic.chongbit[2]')}}
-					<a @click="seeRecord" style="cursor: pointer;">{{$t('Gic.chongbit[3]')}}</a>
-					{{$t('Gic.chongbit[4]')}}
+					{{$t('Gic.chongbit[2]')}}<a @click="seeRecord" style="cursor: pointer;">{{$t('Gic.chongbit[3]')}}</a>{{$t('Gic.chongbit[4]')}}
 				</p>
 				<!-- 温馨提示 -->
 				<div class="Tips">
 					<p class="public_font1">{{$t('Gic.chongbit[5]')}}:</p>
 					<ul class="list">
-						<li>{{$t('Gic.chongbit[6]')}}</li>
+						<li>1.请勿向上述地址充值任何非{{pname}}资产，否则资产将不可找回!</li>
 						<!-- 请勿向上述地址充值任何非{{pname}}资产，否则资产将不可找回! -->
-						<li>{{$t('Gic.chongbit[7]')}}</li>
+						<!-- <li>{{$t('Gic.chongbit[7]')}}</li> -->
 						<!-- 您充值至上述地址后，需要整个网络节点的确认，1次网络确认后到账，6次网络确认后可提币。 -->
-						<li>{{$t('Gic.chongbit[8]')}}</li>
+						<li>2.您的充值地址不会经常改变，可以重复充值,如有更改，我们会尽量通过网站公告或邮件通知您。</li>
 						<!-- 您的充值地址不会经常改变，可以重复充值,如有更改，我们会尽量通过网站公告或邮件通知您。 -->
-						<li>{{$t('Gic.chongbit[9]')}}</li>
+						<li>3.请务必确认电脑及浏览器安全，防止信息被篡改或泄露。</li>
 						<!-- 请务必确认电脑及浏览器安全，防止信息被篡改或泄露。 -->
 					</ul>
 				</div>
-
-
-
-
-
 			</div>
-
 		</div>
 	</div>
 </template>

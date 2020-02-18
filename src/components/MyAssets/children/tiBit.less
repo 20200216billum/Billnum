@@ -1,49 +1,77 @@
+@import '../../../assets/public.less';
 .ti_bit_wrapper{
     width:100%;
     padding:20px 0 45px 0;
+    background: @common-color4;
     .ti_bit_container{
         width:1200px;
         margin:0 auto;
-        h4{line-height:60px;padding:0 20px;border-radius:6px;font-size: 16px;}
+        h4{
+            line-height:60px;
+            padding:0 20px;
+            border-radius:6px;
+            font-size: 16px;
+            color: #fff;
+            background: @common-color;
+        }
         .ti_bit_body{
             padding:30px 120px 80px;
             margin-top:10px;
             border-radius:6px;
+            background: @common-color;
             .formData{
                 .across{
                     display:flex;
                     margin-bottom:15px;
                     justify-content:space-between;
-                    p{color:#999;}
                     .el-form-item__label{font-size:14px;}
                     .el-form-item{
                         width:49%;
                         margin:0;
                         .el-select{
                             width:100%;
-                            margin-top:50px;
+                            margin-top:25px;
                         }
                     }
-                    p{height:40px;width:49%;margin-top:40px;font-size:14px;line-height:40px;}
+                    p{ 
+                        height:40px;
+                        width:49%;
+                        color:@common-color3;
+                        margin-top:25px;
+                        font-size:14px;
+                        line-height:40px;
+                    }
                     .yanzhengma{
                         width:100%;
                         .el-form-item__content{
-                            // display:flex;
                             .codeInput{float: left;width:49%;}
-                            .btn_code{float: left;margin:50px 0 0 20px;width: 100px;
-                                .el-input__inner{cursor: pointer;}
+                            .btn_code{
+                                float: left;
+                                margin: 40px 0 0 20px;
+                                /deep/.el-input .el-input__inner{
+                                    background: @main!important;
+                                    cursor: pointer;
                                 }
+                            }
                         }
                     }
                 }
-                
+                .service {
+                    width: 49%;
+                    color: @common-color3;
+                    font-size: 16px;
+                    display: flex;
+                    justify-content: space-between;
+                    margin: -3px 0 22px 0;
+                }
             }
             .body_btn{
-                margin:110px auto 15px;
-                text-align:center;
+                margin: 30px 0 20px;
                 .el-button{
                     border:none;
-                    width:460px;
+                    width:470px;
+                    background: @main;
+                    color: #fff;
                 }
             }
             .body_info{
