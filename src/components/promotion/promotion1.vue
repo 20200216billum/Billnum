@@ -1,6 +1,6 @@
 <style lang="less">
 	@import '../../assets/public.less';
-	@import './promotion.less';
+	@import './promotion1.less';
 	.pageWarp{
 		width:950px;
 		margin:0 auto;

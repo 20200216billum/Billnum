@@ -102,11 +102,9 @@
 				},
 
 				addressList: [],
-				page: null,
-				total: null,
+				page: 1,
+				total: 0,
 				size: 10,
-
-
 				rules: { // 验证规则
 					type: [
 						{

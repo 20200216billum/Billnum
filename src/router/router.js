@@ -72,8 +72,18 @@ export const otherRouter = {
     {
       path: 'promotion',
       name: 'promotion',
-      component: () => import('@/components/promotion/promotion.vue')
+      component: () => import('@/components/promotion/promotion1.vue')
     }, //我的推广
+    {
+      path: 'my-reward',
+      name: 'my-reward',
+      component: () => import('@/components/promotion/my-reward.vue')
+    }, //我的奖励
+    {
+      path: 'reward-record',
+      name: 'reward-record',
+      component: () => import('@/components/promotion/reward-record.vue')
+    }, //我的奖励明细
     {
       path: 'help',
       name: 'promotion',

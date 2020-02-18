@@ -1,0 +1,42 @@
+@import "../../assets/public";
+.reward_record {
+    background: @common-color4;
+    padding: 20px 0 60px 0;
+    .record_container {
+        width: 1200px;
+        margin: 0 auto 30px;
+        .nav {
+            color: @common-color3;
+            font-size: 14px;
+            .active {
+                color: @main;
+            }
+        }
+        .cont {
+            background: @common-color;
+            border-radius: 10px;
+            padding: 30px 20px;
+            margin-top: 20px;
+            .title {
+                color: #fff;
+                font-size: 24px;
+            }
+            /deep/.reward_table {
+                margin-top: 20px;
+                .el-table__header {
+                    border: 0;
+                }
+                th.is-leaf {
+                    background: @common-color;
+                    border-color: @YeDorderColor1;
+                }
+                .el-table__body-wrapper {
+                    tr td {
+                        background: @common-color;
+                        border-color: @YeDorderColor1;
+                    }
+                }
+            }
+        }
+    }
+}

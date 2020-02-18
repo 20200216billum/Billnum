@@ -284,3 +284,42 @@
 .el-pagination.is-background .el-pager li:not(.disabled).active {
   background-color: #30D5D8;
 }
+.reward_record {
+  background: #0A1017;
+  padding: 20px 0 60px 0;
+}
+.reward_record .record_container {
+  width: 1200px;
+  margin: 0 auto 30px;
+}
+.reward_record .record_container .nav {
+  color: #828EA1;
+  font-size: 14px;
+}
+.reward_record .record_container .nav .active {
+  color: #30D5D8;
+}
+.reward_record .record_container .cont {
+  background: #182330;
+  border-radius: 10px;
+  padding: 30px 20px;
+  margin-top: 20px;
+}
+.reward_record .record_container .cont .title {
+  color: #fff;
+  font-size: 24px;
+}
+.reward_record .record_container .cont /deep/ .reward_table {
+  margin-top: 20px;
+}
+.reward_record .record_container .cont /deep/ .reward_table .el-table__header {
+  border: 0;
+}
+.reward_record .record_container .cont /deep/ .reward_table th.is-leaf {
+  background: #182330;
+  border-color: #383F53;
+}
+.reward_record .record_container .cont /deep/ .reward_table .el-table__body-wrapper tr td {
+  background: #182330;
+  border-color: #383F53;
+}

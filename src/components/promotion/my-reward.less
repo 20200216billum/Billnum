@@ -1,0 +1,90 @@
+@import "../../assets/public";
+.my_reward {
+    background: @common-color4;
+    padding: 40px 0 60px 0;
+    .my_reward_container {
+        width: 1200px;
+        margin: 0 auto;
+        .top_title {
+            display: flex;
+            justify-content: space-between;
+            .name {
+                color: #fff;
+                font-size: 24px;
+            }
+            .more {
+                color: @main;
+                font-size: 18px;
+                cursor: pointer;
+            }
+        }
+        .reward_box {
+            height: 100px;
+            padding: 25px 20px 20px 20px;
+            background: @common-color;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            .left {
+                color: #fff;
+                >div {
+                    display: inline-block;
+                }
+                .one {
+                    margin-left: 10px;
+                }
+                .two {
+                    margin-left: 60px;
+                }
+                .title {
+                    font-size: 16px;
+                }
+                .num {
+                    font-size: 20px;
+                    margin-top: 15px;
+                }
+            }
+            .right {
+                >div {
+                    display: inline-block;
+                }
+                .name {
+                    color: @common-color3;
+                    font-size: 16px;
+                }
+                .num {
+                    font-size: 16px;
+                    color: #fff;
+                    margin-top: 15px;
+                }
+                .yesterday {
+                    border-right: 1px solid #30374B;
+                    padding-right: 20px;
+                    margin-right: 15px;
+                }
+            }
+        }
+        .reward_bg {
+            height: 115px;
+            background: url("../../assets/img/jl-phb-img.png") no-repeat;
+            background-size: 100% 100%;
+            margin-top: 15px;
+        }
+        /deep/.reward_table {
+            .el-table__header {
+                border: 0;
+            }
+            th.is-leaf {
+                background: @common-color4;
+                border: 0;
+            }
+            .el-table__body-wrapper {
+                tr td {
+                    background: @common-color2;
+                    border-color: @YeDorderColor1;
+                }
+            }
+        }
+    }
+}
