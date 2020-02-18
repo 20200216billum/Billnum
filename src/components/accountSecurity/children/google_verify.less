@@ -1,13 +1,10 @@
+@import "../../../assets/public.less";
     .mainb{
         .google_verify .form_warp .inner .tips .step2 .step2_copy{
             color: #1f1f2e;
         }
         .google_verify .form_warp .inner .tips .btn_code .el-input__inner{
             background: #1f1f2e;
-            color: #ffffff;
-        }
-        .google_verify .form_warp .inner .tips .el-button{
-            background-color: #1f1f2e;
             color: #ffffff;
         }
         .google_verify .change_opwd_main_title{
@@ -24,6 +21,24 @@
 
     .google_verify {
         width: initial;
+        background: @common-color;
+        border-radius: 10px;
+        .top-tips {
+            padding: 30px 20px 10px 20px;
+            border-bottom: 1px solid #2B3445;
+            display: flex;
+            .title {
+                color: #fff;
+                font-size: 22px;
+                white-space: nowrap;
+                margin-right: 25px;
+            }
+            .tips_content {
+                color: @common-color3;
+                font-size: 14px;
+                line-height: 1.3;
+            }
+        }
         .change_opwd_main_title {
             // background-color: @cardBg;
             position: relative;
@@ -56,14 +71,12 @@
             }
         }
         .form_warp {
-            padding:40px 30px 0px;
+            padding: 0px 180px 0px;
             .inner{
                 .tips{
-                    padding: 0px 40px 0px;
-                    font-size: 15px;
-                    color: @DaiFontSizeColor30;
-                    border-bottom: 2px solid #181825;
-                    padding-bottom: 20px;
+                    /deep/.el-form--label-top .el-form-item__label {
+                        color: #fff;
+                    }
                     .btn_code{
                         float: right;
                         width: 110px;
@@ -83,8 +96,8 @@
                         padding-bottom: 25px;
                         margin-top: 30px;
                         span:nth-child(1){
-                            background-color: @DaiFontSizeColor1;
-                            color: @DaiDackGroundColor2;
+                            background-color: @main;
+                            color: #fff;
                             float: left;
                             width: 20px;
                             height: 20px;
@@ -123,12 +136,12 @@
                             // background-color: @cardBg;
                         }
                         .btn{
-                            background: @cardBg url('../../../assets/image/index/ios1.png') 15px 13px no-repeat;
+                            background: @common-color2 url('../../../assets/image/index/ios1.png') 15px 13px no-repeat;
                             margin-left: 0;
                         }
                         .btn2{
                             padding-left: 15px;
-                            background: @cardBg url('../../../assets/image/googlePay.png') 15px 13px no-repeat;
+                            background: @common-color2 url('../../../assets/image/googlePay.png') 15px 13px no-repeat;
                         }
                     }
                     .step2{
@@ -204,10 +217,13 @@
                         padding: 12px 47%;
                         border: 0;
                         margin: 50px 0 30px 0;
-                        color: black;
+                        color: #fff;
                     }
                 }
             }
            
         }
+    }
+    /deep/.btn_code .el-input .el-input__inner {
+        color: @main;
     }

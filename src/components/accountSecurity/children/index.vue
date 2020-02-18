@@ -67,9 +67,9 @@
 					<!-- 未绑定 -->
 					<span class="operation" v-if="userData.config && userData.config.google_bind==0" @click="routerGo('/security/index/googleverify')">{{$t('Gic.securityIndex[12]')}}</span>
 					<!-- 开启 -->
-					<span class="operation" v-else-if="userData.config && userData.config.google_bind==1 && userData.config.google_verify==0" @click="routerGo('/security/index/googleverifyonoff','start')">{{$t('Gic.securityIndex[13]')}}</span>
+					<span class="operation" v-else-if="userData.config && userData.config.google_bind==1 && userData.config.google_verify==0" @click="showGuge('start')">{{$t('Gic.securityIndex[13]')}}</span>
 					<!-- 关闭 -->
-					<span class="operation" v-else-if="userData.config && userData.config.google_bind==1 && userData.config.google_verify==1" @click="routerGo('/security/index/googleverifyonoff','stop')">{{$t('Gic.securityIndex[14]')}}</span>
+					<span class="operation" v-else-if="userData.config && userData.config.google_bind==1 && userData.config.google_verify==1" @click="showGuge('stop')">{{$t('Gic.securityIndex[14]')}}</span>
 				</li>
 			</ul>
 		</div>
@@ -114,6 +114,27 @@
 				<el-button type="primary" @click="settingConver">确定</el-button>
 			</span>
 		</el-dialog>
+		<!-- 开启/关闭谷歌验证 -->
+		<el-dialog
+			title="开启/关闭谷歌验证"
+			:visible.sync="modal2"
+			width="490px"
+			custom-class="custom-dialog"
+		> 
+			<el-form ref="gugeForm" :model="gugeForm" label-width="150px" :rules="rules2" label-position="top">
+				<el-form-item label="谷歌验证码" prop="google_code">
+					<el-input v-model="gugeForm.google_code" placeholder="请输入6位数谷歌验证码"></el-input>
+				</el-form-item>
+				<el-form-item label="资金密码" prop="code">
+					<el-input v-model="gugeForm.code" placeholder="请输入资金密码"></el-input>
+				</el-form-item>
+			</el-form>
+
+			<span slot="footer" class="dialog-footer">
+				<el-button @click="modal2 = false">取消</el-button>
+				<el-button type="primary" @click="settingGuge">确定</el-button>
+			</span>
+		</el-dialog>
 	</div>
 </template>
 <script>
@@ -122,6 +143,20 @@
 			var validateZhesuan = (rule, value, callback) => {
 				if (!value) {
 					callback(new Error('设置折算货币'));
+				} else {
+					callback();
+				}
+			};
+			var validateGugeCode = (rule, value, callback) => {
+				if (!value) {
+					callback(new Error('请输入6位数谷歌验证码'));
+				} else {
+					callback();
+				}
+			};
+			let validatePwd = (rule, value, callback) => {
+				if(!this.$public.pwd(value)) {
+					callback(new Error(this.$t("Gic.securityChangeopwd[3]")));//请输入8-20位数字+字母组合资金密码
 				} else {
 					callback();
 				}
@@ -142,6 +177,20 @@
 					{ name: "美元", code: "USD" }
 				],
 				tableData: [],
+				modal2: false,
+				gugeForm: {
+					key: "",
+					google_code: "",
+					code: ""
+				},
+				rules2: {
+					google_code: [
+						{ validator: validateGugeCode, trigger: "blur" }
+					],
+					code: [
+						{ validator: validatePwd, trigger: "blur" }
+					]
+				},
 			}
 		},
 		methods: {
@@ -176,6 +225,20 @@
 			// 设置折算货币
 			settingConver() {
 				this.$refs.conversionForm.validate(valid => {
+					if (valid) {
+
+					}
+				})
+			},
+			// 开启/关闭谷歌验证
+			showGuge(key) {
+				this.gugeForm.key = key;
+				this.gugeForm.google_code = "";
+				this.gugeForm.code = "";
+				this.model2 = true;
+			},
+			settingGuge() {
+				this.$refs.gugeForm.validate(valid => {
 					if (valid) {
 
 					}

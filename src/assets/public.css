@@ -264,6 +264,9 @@
 #app .el-form-item.is-error .el-input__inner {
   border: 1px solid #30D5D8;
 }
+#app .custom-dialog .el-form-item .el-input__inner {
+  background: #EFEFF4;
+}
 .el-form-item__error {
   color: #30D5D8;
 }

@@ -1,19 +1,15 @@
-<style lang=less>
-@import "../../../assets/public.less";
+<style lang="less" scoped>
 @import "./google_verify.less";
 </style>
 <template>
   <div class="google_verify">
-    <div class="change_opwd_main_title">
-      <!-- 谷歌验证 -->
-      <h2>{{$t('Gic.securityGoogleverify[0]')}}</h2>
-    </div>
-    <div class="form_warp">
-      <div class="inner">
-        <div class="tips">
+    <div class="top-tips">
+          <p class="title">绑定谷歌验证</p>
           <!-- 谷歌验证器是一款动态口令工具，工作原理类似短信动态验证。绑定后每30s生成一个动态验证码，验证码可用于登录、提现、修改安全设置等操作的安全验证。 -->
           <p class="tips_content tips_top1">{{$t('Gic.securityGoogleverify[1]')}}</p>
         </div>
+    <div class="form_warp">
+      <div class="inner">
         <div class="tips">
           <p class="info">
             <span>1</span>
@@ -70,6 +66,7 @@
             ref="userData"
             label-width="100px"
             class="demo-ruleForm tips_google"
+            label-position="top"
             style="width:450px;"
           >
             <!-- 谷歌验证码 -->
@@ -95,6 +92,7 @@
             ref="userData"
             label-width="100px"
             class="demo-ruleForm tips_google"
+            label-position="top"
             style="width:450px;"
           >
             <!-- 邮箱验证码 -->
