@@ -1,13 +1,10 @@
-<style lang=less>
-	@import '../../../assets/public.less';
+<style lang="less" scoped>
 	@import './change_pwd.less';
 </style>
 <template>
 	<div class="change_opwd_main">
 		<div class="change_opwd_main_title">
-			<!-- 设置资金密码 -->
-			<!-- 法币交易、提币使用，请先设置资金密码 -->
-			<h2 class="title" style="font-size: 24px;">{{$t('Gic.securitySetTpwd[0]')}}<span style="font-size: 14px;color: #999999;margin-left: 20px;">{{$t('Gic.securitySetTpwd[1]')}}</span></h2>
+			<h2 class="title" style="font-size: 24px;">{{$t('Gic.securitySetTpwd[0]')}}<span style="font-size: 14px;color: #999999;margin-left: 20px;">提币使用，请先设置资金密码</span></h2>
 		</div>
 		<div class="form_warp tpwd">
 			<div class="form_cont">
@@ -16,17 +13,17 @@
 					<el-form-item :label="$t('Gic.securitySetTpwd[2]')" prop="password">
 						<el-input type="password" v-model="userData.password" :placeholder="$t('Gic.securityChangeopwd[3]')" auto-complete="off"></el-input>
 					</el-form-item>
-					<!-- 确认资金密码 -->
-					<el-form-item :label="$t('Gic.securitySetTpwd[3]')" prop="password_confirmation">
-						<el-input type="password" v-model="userData.password_confirmation" :placeholder="$t('Gic.securityChangeopwd[3]')"  auto-complete="off"></el-input>
+					<!-- 确认密码 -->
+					<el-form-item label="确认密码" prop="password_confirmation">
+						<el-input type="password" v-model="userData.password_confirmation" placeholder="请再次输入资金密码"  auto-complete="off"></el-input>
 					</el-form-item>
 					<!-- 邮箱地址 -->
-					<el-form-item :label="$t('Gic.securitySetTpwd[4]')">
+					<!-- <el-form-item :label="$t('Gic.securitySetTpwd[4]')">
 						<el-input disabled type="text" v-model="userData.email" auto-complete="off"></el-input>
-					</el-form-item>
+					</el-form-item> -->
 					<!-- 获取验证码 -->
 					<div class="code_warp">
-						<el-form-item :label="$t('Gic.securitySetTpwd[5]')" prop="code">
+						<el-form-item label="验证码" prop="code">
 							<el-input v-model.number="userData.code" :placeholder="$t('Gic.securitySetTpwd[6]')" auto-complete="off"></el-input>
 						</el-form-item>
 						<div class="btn_code" @click="getCode()">

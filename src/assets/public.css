@@ -257,8 +257,12 @@
 .el-breadcrumb__item:last-child .el-breadcrumb__inner:hover {
   color: #fff;
 }
+#app .el-form-item .el-input__inner {
+  border: 0;
+  background: #202D3C;
+}
 #app .el-form-item.is-error .el-input__inner {
-  border-color: #30D5D8;
+  border: 1px solid #30D5D8;
 }
 .el-form-item__error {
   color: #30D5D8;
