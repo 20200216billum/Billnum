@@ -1,10 +1,24 @@
+@import '../../assets/public.less';
+.promotion {
+    background: @common-color4;
+    padding-bottom: 60px;
+    .top_img {
+        height: 200px;
+        background: url("../../assets/img/tg-top-img.png") no-repeat center center;
+        background-size: auto 100%;
+        &2 {
+            background: url("../../assets/img/tg-top-img-en.png") no-repeat center center;
+            background-size: auto 100%;
+        }
+    }
+}
 #econmicMan {
     .promotion_wrapper {
         width: 1280px;
         margin: 0 auto;
         .pw_box {
             width: 900px;
-            margin: 20px auto 0 auto;
+            margin: 0 auto;
             .pw_top {
                 li {
                     float: left;
@@ -85,6 +99,79 @@
                 }
             }
         }
+        .cont {
+            height: 160px;
+            box-sizing: border-box;
+            background: @common-color;
+            border-radius: 20px;
+            display: flex;
+            margin-top: -50px;
+            .left {
+                width: 40%;
+                display: flex;
+                text-align: center;
+                padding: 40px 0;
+                >div {
+                    width: 50%;
+                }
+                .team {
+                    border-right: 1px solid @YeDorderColor1;
+                }
+                .num {
+                    color: #fff;
+                    font-size: 34px;
+                }
+                .name {
+                    color: @common-color3;
+                    font-size: 16px;
+                    margin-top: 25px;
+                }
+            }
+            .right {
+                flex: 1;
+                background: @common-color2;
+                border-radius: 0 20px 20px 0;
+                padding: 19px 30px;
+                >img {
+                    width: 125px;
+                    height: 125px;
+                }
+                .extension {
+                    display: inline-block;
+                    vertical-align: top;
+                    margin-left: 20px;
+                    .name {
+                        color: @common-color3;
+                        font-size: 16px;
+                        margin-top: 5px;
+                    }
+                    .tips {
+                        color: #fff;
+                        font-size: 14px;
+                        margin: 18px 0 32px 0;
+                    }
+                }
+                .invitation {
+                    display: inline-block;
+                    vertical-align: top;
+                    margin-left: 100px;
+                    .link_text {
+                        color: @common-color3;
+                        font-size: 20px;
+                        margin-top: 15px;
+                        margin-bottom: 35px;
+                    }
+                    #link {
+                        color: #fff;
+                        font-size: 14px;
+                    }
+                    .copy_invitation {
+                        color: @main;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
         .tab_table {
             text-align: center;
             color: @main;
@@ -98,18 +185,53 @@
                 cursor: pointer;
             }
             .friend {
-                border-right: 0;
+                border: 0;
                 border-radius: 5px 0 0 5px;
+                color: @common-color3;
+                background: @common-color; 
             }
             .commission {
-                border-left: 0;
+                border: 0;
                 border-radius: 0 5px 5px 0;
+                background: @common-color; 
                 margin-left: -5px;
+                color: @common-color3;
             }
             .on {
-                border-color: @main;
-                background: @main;
-                color: #fff;
+                border: 0;
+                background: @common-color2;
+                color: @main;
+            }
+        }
+        .table_custom {
+            margin-top: 20px;
+            /deep/.el-table {
+                .el-table__header {
+                    border: 0;
+                }
+                .header_custom {
+                    th.is-leaf {
+                        background: @common-color;
+                        border: 0;
+                        .cell {
+                            color: @common-color3;
+                        }
+                    }
+                }
+                tbody {
+                    .cell_custom {
+                        color: #fff;
+                        background: @YeFontSizeColor4;
+                    }
+                    tr td {
+                        background: @common-color4;
+                        border-bottom: 1px solid @YeDorderColor1;
+                        color: #fff;
+                    }
+                }
+                .el-table__body-wrapper.is-scrolling-none {
+                    background: transparent;
+                }
             }
         }
     }

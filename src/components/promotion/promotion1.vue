@@ -1,32 +1,28 @@
-<style lang="less">
-	@import '../../assets/public.less';
+<style lang="less" scoped>
 	@import './promotion1.less';
 	.pageWarp{
 		width:950px;
 		margin:0 auto;
 	}
-	.el-pagination{
-		    text-align: center;
-	}
 </style>
 <template>
 	<div class="promotion">
-		<div class="friendBackImg"> 
+		<!-- <div class="friendBackImg"> 
 			<div class="extension"> 
-				<p>{{ $t("promotion.list1[0]") }}</p> <!-- 推广拿好礼 -->
-				<p>{{ $t("promotion.list1[1]") }}</p> <!-- 扩大团队更有惊喜连连 -->
+				<p>推广拿好礼</p>
+				<p>扩大团队更有惊喜连连</p> 
 			</div>
-		</div>
-		<!-- <div class="friendBackImg" v-if="!isshow"></div>
-		<div class="friendBackImg1" v-if="isshow"></div> -->
+		</div> -->
+		<div v-if="isShow" class="top_img"></div>
+		<div v-else class="top_img top_img2"></div>
 		<div id="econmicMan">
 			<div class="promotion_wrapper">
-				<div class="pw_box">
+				<!-- <div class="pw_box">
 					<ul class="pw_top clearfix">
 						<li @click="changeTab(0)">
 							<img src="../../assets/image/wdhy-icon.png">
 							<div class="pw_name_num">
-								<p>{{ $t("promotion.list1[2]") }}</p> <!-- 我的好友 -->
+								<p>我的好友{{ $t("promotion.list1[2]") }}</p>
 								<p class="pw_num">{{ userData.ttl }}</p>
 							</div>
 							<img src="../../assets/image/jiantou-2.png" class="jiantou">
@@ -34,7 +30,7 @@
 						<li  @click="changeTab(1)">
 							<img src="../../assets/image/hdyj-icon.png">
 							<div class="pw_name_num">
-								<p>{{ $t("promotion.list1[3]") }}</p> <!-- 获得的佣金 -->
+								<p>获得的佣金</p>
 								<p class="pw_num">{{ $public.toLowFixed(userData.total_sum,4,0)}}</p>
 							</div>
 							<img src="../../assets/image/jiantou-2.png" class="jiantou">
@@ -44,17 +40,42 @@
 						<li class="pw_bot_left">
 							<img :src="linkObj.qrc">
 							<div>
-								<p class="p_b_l_name">{{ $t("promotion.list1[4]") }}</p> <!-- 推广二维码 -->
-								<p>{{ $t("promotion.list1[5]") }}</p> <!-- 复制二维码邀请好友获得更多奖励 -->
+								<p class="p_b_l_name">推广二维码</p>
+								<p>复制二维码邀请好友获得更多奖励</p>
 							</div>
 						</li>
 						<li class="pw_bot_right">
-							<p class="invitation">{{ $t("promotion.list1[6]") }}</p> <!-- 邀请链接 -->
-							<!-- <p>jkhdsvcsadnips</p> -->
+							<p class="invitation">邀请链接</p>
 							<el-input id="link" v-model="linkObj.url"/>
-							<p class="copy_invitation" @click="copy('link')">{{ $t("promotion.list1[7]") }}</p> <!-- 复制链接 -->
+							<p class="copy_invitation" @click="copy('link')">复制链接</p> 
 						</li>
 					</ul>
+				</div> -->
+
+				<div class="cont">
+					<div class="left">
+						<div class="team">
+							<p class="num">12</p>
+							<p class="name">我的团队</p>
+						</div>
+						<div class="commission">
+							<p class="num">256426</p>
+							<p class="name">累计佣金</p>
+						</div>
+					</div>
+					<div class="right">
+						<img :src="linkObj.qrc">
+						<div class="extension">
+							<p class="name">推广二维码</p>
+							<p class="tips">复制二维码邀请好友获得更多奖励</p>
+							<el-button type="primary">保存专属海报</el-button>
+						</div>
+						<div class="invitation">
+							<p class="link_text">邀请链接</p>
+							<el-input id="link" v-model="linkObj.url"/>
+							<p class="copy_invitation" @click="copy('link')">复制链接</p> 
+						</div>
+					</div>
 				</div>
 
 				<div class="tab_table">
@@ -64,15 +85,15 @@
 
 				<!-- 我的好友 -->
 				<div class="table_custom" v-if="isLeft">
-					<el-table :data="tableData" cell-class-name="cell_custom" header-row-class-name="header_custom" style="width: 100%">
+					<el-table :data="tableData" empty-text="暂无数据" cell-class-name="cell_custom" header-row-class-name="header_custom" style="width: 100%">
 						<el-table-column prop="realname" :label='$t("promotion.list[4]")' width="300"></el-table-column> <!-- 姓名 -->
-						<el-table-column prop="mobile" :label='$t("promotion.list[5]")' width="300">
+						<el-table-column prop="mobile" label='手机号/邮箱' width="300">
 							<template slot-scope="scope">
 								<span v-if="scope.row.mobile">{{ scope.row.mobile }}</span>
 								<span v-else>{{ scope.row.mail }}</span>
 							</template>
 						</el-table-column>
-						<el-table-column prop="reg_time" :label='$t("promotion.list[6]")'  align="right"> <!-- 注册时间 -->
+						<el-table-column prop="reg_time" label='时间'  align="right"> <!-- 注册时间 -->
 							<template slot-scope="scope">
 								<span>{{ $public.timestampToTime(scope.row.reg_time) }}</span>
 							</template>
@@ -81,7 +102,7 @@
 				</div>
 				<!-- 获得佣金 -->
 				<div class="table_custom" v-else>
-					<el-table :data="tableData2" cell-class-name="cell_custom" header-row-class-name="header_custom" style="width: 100%">
+					<el-table :data="tableData2" empty-text="暂无数据" cell-class-name="cell_custom" header-row-class-name="header_custom" style="width: 100%">
 						<el-table-column prop="realname" :label='$t("promotion.list[4]")' width="300"></el-table-column>
 						<el-table-column prop="price" :label='$t("promotion.list[7]")' width="300"> <!-- 数量 -->
 							<template slot-scope="scope">
@@ -97,8 +118,16 @@
 				</div>
 			</div>
 
-			<div class="pagination" v-if="pageObj.total != 0" style="margin:40px; 0">
-				<el-pagination background layout="prev, pager, next" :prev-text="$t('ziChan.page[2]')" :next-text="$t('ziChan.page[3]')" :total="pageObj.total" :current-page.sync="pageObj.current" :page-count="5" @current-change="changePage2"></el-pagination>
+			<div class="pagination" v-if="pageObj.total != 0">
+				<el-pagination 
+					background layout="prev, pager, next" 
+					:prev-text="$t('ziChan.page[2]')" 
+					:next-text="$t('ziChan.page[3]')" 
+					:total="pageObj.total" 
+					:current-page.sync="pageObj.current" 
+					:page-count="5" 
+					@current-change="changePage2"
+				></el-pagination>
 			</div>
 
 			<!-- <div class="title">
@@ -117,6 +146,7 @@
 	export default {
 		data() {
 			return {
+				isShow: true,
 				page:{
 					p:8,  //每页显示条数
 					count:0 //总条数

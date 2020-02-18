@@ -563,17 +563,9 @@
                     color: @main;
                 }
             }
-            .btn-next, .btn-prev {
-                color: @main;
-                background: @cardBg;
-            }
         }
         .el-pagination button, .el-pagination span:not([class*=suffix]) {
             padding: 0 10px;
-        }
-        .el-pagination.is-background .el-pager li:not(.disabled).active {
-            background: transparent;
-            color: @main;
         }
     }
     //模态框
@@ -3121,10 +3113,6 @@
             background-color: @cardBg;
         }
     }
-    .payment_cont {
-        // box-shadow: 2px 2px 2px @mainBg, -2px -2px 2px @mainBg;
-        // border-radius: 10px;
-    }
     .tankuang2 {
         color: @YeFontSizeColor3;
     }
@@ -3136,57 +3124,17 @@
     }
 }
 
-// 我的推广
-.promotion {
-    #econmicMan {
-        .table_custom {
-            margin-top: 20px;
-            .el-table {
-                .header_custom {
-                    background: @cardBg;
-                    th.is-leaf {
-                        background: @cardBg;
-                        border: 0;
-                        &:first-child {
-                            border-radius: 5px 0 0 5px;
-                        }
-                        &:nth-child(3) {
-                            border-radius: 0 5px 5px 0;
-                        }
-                        .cell {
-                            color: #fff;
-                        }
-                    }
-                }
-                tbody {
-                    .cell_custom {
-                        color: #fff;
-                        background: @YeFontSizeColor4;
-                    }
-                }
-                
-                .el-table__body-wrapper.is-scrolling-none {
-                    background: transparent;
-                }
-            }
-        }
-    }
-}
-
 .header {
-    // background-color: @YeFontSizeColor6;
     .header_box {
         .header_transaction {
             .transaction_list {
                 color: @YeFontSizeColor1;
-                &:first-child {}
                 a:hover {
                     color: @YeDackGroundColor5;
                 }
                 .blue {
                     color: @YeDackGroundColor5;
                 }
-                .header_logo {}
                 .el-select {
                     background-color: @YeFontSizeColor6;
                     .el-input__inner {
