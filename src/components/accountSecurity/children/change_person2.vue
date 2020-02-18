@@ -55,9 +55,11 @@
 						</div>
 					</div>
 				</div>
-				<!-- 请确保上传图片无水印无污渍，身份信息清晰，请勿进行PS处理 -->
-				<h3 class="buttontoptips">{{$t('Gic.securityChangePerson2[8]')}}</h3>
 				<el-button type="primary" @click="submit">{{$t('Gic.securityChangeopwd[7]')}}</el-button>
+				<div class="tips">
+					<p class="title">提醒：</p>
+					<p class="buttontoptips">请确保上传图片无水印无污渍，身份信息清晰，请勿进行PS处理需要您本人单手持您的证件，另一只手持一张有您手写的ID和当天日期的白纸，确保身份证和白纸在您胸前，不遮挡您的胸部，并且身份证和白纸上的信息清晰可见</p>
+				</div>
 			</el-form>
 		</div>
 	</div>
