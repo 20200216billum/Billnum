@@ -1,0 +1,354 @@
+/*
+ 
+//清除浮动
+ * */
+.noData {
+  color: #8E94A3;
+  text-align: center;
+  padding: 80px 0;
+}
+.loveMagicRoundAndRound {
+  text-align: center;
+  box-sizing: border-box;
+  padding-top: 60px;
+}
+.loveMagicRoundAndRound img {
+  animation: yoyo 2s linear ;
+  animation-iteration-count: infinite;
+}
+@keyframes yoyo {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.clearfix:after {
+  visibility: hidden;
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+}
+.clearfix {
+  *zoom: 1;
+}
+.overLoading {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.01);
+}
+/**
+ *     
+ *  块元素居中函数
+ */
+.el-message-box {
+  animation: hehe 0.3s ease;
+}
+.el-message-box .el-message-box__header {
+  background: #eeeeee;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
+  padding: 17px 30px;
+}
+.el-message-box .el-message-box__header .el-message-box__title span {
+  color: #222222;
+  font-weight: bold;
+}
+.el-message-box .el-message-box__header .el-message-box__title .el-message-box__word {
+  color: #222222;
+}
+.el-message-box .btn-group {
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.el-message-box .btn-group .btn-close {
+  line-height: 40px;
+  text-align: center;
+  background: unset;
+  color: #6185E5;
+  border: 1px solid #6185E5;
+  cursor: pointer;
+}
+.el-message-box .el-message-box__content {
+  padding: 10px 30px;
+}
+.el-message-box .el-message-box__content .label {
+  margin-top: 27px;
+  margin-bottom: 18px;
+}
+.el-message-box .el-message-box__content .label.m5 {
+  margin-top: 5px;
+}
+.el-message-box .btn_code {
+  color: #30D5D8;
+}
+.el-message-box .el-message-box__btns button.confirm {
+  background: #30D5D8;
+  color: #fff;
+}
+.el-message-box .el-message-box__btns button.close {
+  color: #30D5D8;
+  border-color: #30D5D8;
+  background-color: #fff;
+}
+@keyframes hehe {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.el-form-item__label {
+  line-height: 1;
+}
+/*1280px宽度*/
+.public_wrapper {
+  min-width: 1280px;
+  margin: 0 auto;
+  max-width: 1420px;
+  padding: 20px 0;
+}
+.sliderLimitWarp {
+  padding-top: 18px;
+  *zoom: 1;
+}
+.sliderLimitWarp p {
+  font-size: 12px;
+}
+.sliderLimitWarp:before,
+.sliderLimitWarp:after {
+  display: table;
+  content: "";
+}
+.sliderLimitWarp:after {
+  clear: both;
+}
+.sliderLimitWarp:after {
+  visibility: hidden;
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+}
+.sliderLimitWarp .zhiying {
+  float: left;
+  width: 45%;
+}
+.sliderLimitWarp .zhishun {
+  float: right;
+  width: 45%;
+  padding-right: 10px;
+}
+.MainArea_list:hover {
+  transition: all 0.5s;
+  transform: scale(1.1);
+}
+.mainy .el-table,
+.el-table__expanded-cell {
+  background: transparent;
+}
+.mainy .transfer {
+  background: transparent;
+}
+.stopWarp h2 {
+  margin-bottom: 10px;
+}
+.mainy .gg_order_wrapper .headertongji .tongji {
+  background: #1a1f30;
+}
+.mainy .gg_order_wrapper .headertongji .tongji h2 span {
+  color: #E8E9ED;
+}
+.mainb .exchange .exchange_mian .transaction .transaction_main {
+  border-left: 10px solid #F2F3F8;
+}
+.mainy .exchange .exchange_mian .HistoricalEntrustment .tojingtotle span {
+  color: #E8E9ED;
+}
+.mainy .el-message-box__title span {
+  color: #F4F5EF;
+}
+.index_main #home {
+  min-width: 1280px;
+  margin: 0 auto;
+  background: #171717;
+}
+.gg_order_wrapper {
+  min-width: 1280px;
+  max-width: 1360px;
+  margin: 0 auto;
+}
+.HistoricalEntrustment .gg_order_wrapper {
+  width: auto;
+  max-width: none;
+}
+.bbMessageBox {
+  width: 362px;
+  background: #fff;
+  border-radius: 6px;
+  border: none;
+}
+.bbMessageBox .el-message-box__title {
+  background: #eee;
+}
+.bbMessageBox .el-message-box__title.Night {
+  background: #fff;
+}
+.bbMessageBox .el-message-box__title span {
+  color: #ffffff;
+}
+.bbMessageBox span {
+  color: #BBBBBB;
+}
+.bbMessageBox .el-button {
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+.bbMessageBox .el-message-box__btns {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 30px 0;
+}
+.bbMessageBox .bbMessageBox-cancel {
+  width: 130px;
+  height: 40px;
+  border: 1px solid #30D5D8;
+  border-radius: 4px;
+  background: unset;
+}
+.bbMessageBox .bbMessageBox-cancel span {
+  color: #30D5D8;
+  font-size: 16px;
+}
+.bbMessageBox .bbMessageBox-confirm {
+  width: 130px;
+  height: 40px;
+  background: #30D5D8;
+  border-radius: 6px;
+}
+.bbMessageBox .bbMessageBox-confirm span {
+  color: #ffffff;
+  font-size: 16px;
+}
+.bbMessageBox.Night {
+  background: #3c3c3c;
+}
+.bbMessageBox.Night .el-button--primary {
+  border-color: #30D5D8;
+}
+.bbMessageBox.Night .el-message-box__header {
+  background: #3c3c3c;
+}
+.bbMessageBox.Night .el-message-box__title {
+  background: #3c3c3c;
+}
+.bbMessageBox.Night .el-message-box__title span {
+  color: #ffffff;
+}
+.el-breadcrumb__item:last-child .el-breadcrumb__inner,
+.el-breadcrumb__item:last-child .el-breadcrumb__inner a,
+.el-breadcrumb__item:last-child .el-breadcrumb__inner a:hover,
+.el-breadcrumb__item:last-child .el-breadcrumb__inner:hover {
+  color: #fff;
+}
+#app .el-form-item .el-input__inner {
+  border: 0;
+  background: #202D3C;
+}
+#app .el-form-item.is-error .el-input__inner {
+  border: 1px solid #30D5D8;
+}
+#app .custom-dialog .el-form-item .el-input__inner {
+  background: #EFEFF4;
+}
+.el-form-item__error {
+  color: #30D5D8;
+}
+.el-pagination {
+  text-align: right;
+}
+.el-pagination.is-background .btn-next,
+.el-pagination.is-background .btn-prev,
+.el-pagination.is-background .el-pager li {
+  background: #202D3C;
+  border-radius: 4px;
+  color: #fff;
+  padding: 0 15px;
+}
+.el-pagination.is-background .el-pager li:not(.disabled).active {
+  background-color: #30D5D8;
+}
+.mainy .change_opwd_main.change_person1 {
+  width: initial;
+}
+.mainy .change_opwd_main.change_person1 .change_opwd_main_title {
+  box-shadow: none;
+}
+.mainy .change_opwd_main.change_person1 .change_opwd_main_title .title {
+  color: #ffffff;
+  font-size: 24px;
+  border-bottom: 2px solid #383F53;
+}
+.mainy .change_opwd_main.change_person1 .change_opwd_main_title .title span {
+  font-size: 14px;
+  color: #999999;
+  margin-left: 34px;
+}
+.mainy .change_opwd_main.change_person1 button.el-button.el-button--primary.largeBtn {
+  background: #30D5D8;
+  color: #fff;
+  font-size: 18px;
+  border: 0;
+  margin-bottom: 200px;
+}
+.mainy .change_opwd_main.change_person1 /deep/ .el-form--label-top .el-form-item__label {
+  color: #fff;
+}
+.change_opwd_main {
+  background: #182330;
+  border-radius: 10px;
+}
+.mainb .change_opwd_main.change_person1 {
+  background-color: initial;
+  width: initial;
+}
+.mainb .change_opwd_main.change_person1 .change_opwd_main_title {
+  background-color: initial;
+  box-shadow: none;
+  border-bottom: 2px solid #f0f2f6;
+}
+.mainb .change_opwd_main.change_person1 .change_opwd_main_title .title {
+  color: #1f1f2e;
+  font-size: 24px;
+}
+.mainb .change_opwd_main.change_person1 .change_opwd_main_title .title span {
+  font-size: 14px;
+  color: #999999;
+  margin-left: 34px;
+}
+.mainb .change_opwd_main.change_person1 .el-input__inner {
+  background-color: #f0f2f6;
+}
+.mainb .change_opwd_main.change_person1 button.el-button.el-button--primary {
+  background-color: #1f1f2e;
+}
+.mainb .change_opwd_main.change_person1 button.el-button.el-button--primary.largeBtn {
+  color: #ffffff;
+  font-size: 18px;
+}
+.mainb .change_opwd_main.change_person1 .form_warp .form_cont .el-form--label-top .el-form-item__label {
+  color: #1f1f2e;
+}
+.comEmail.change_person1 .form_warp .form_cont {
+  height: initial;
+}
+.comEmail.change_person1 .form_warp .form_cont .el-form--label-top .el-form-item__label {
+  color: #ffffff;
+  font-size: 16px;
+}

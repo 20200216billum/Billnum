@@ -1,4 +1,5 @@
 
+@import '../../../assets/public.less';
 .mainb{
     .identitymain {
         .contain{
@@ -26,35 +27,44 @@
 }
 
 .identitymain {
+    background: @common-color;
+    border-radius: 10px;
+    padding: 40px 20px;
+    .top-title {
+        color: @common-color3;
+        font-size: 14px;
+        padding: 0 0 10px 20px;
+        border-bottom: 2px solid @YeDorderColor1;
+    }
     .contain{
-        // margin: 40px auto;
-        padding: 0 20px;
-        // width: 1200px;
-        height: 771px;
-        background-color: transparent;
-        border-radius: 10px;
         overflow: hidden;
-        margin-top: -6px;
+        margin-top: 100px;
         width: 100%;
-        padding-right: 9px;
         box-sizing: border-box;
         .container{
-            height: 642px;
-            overflow-y: scroll;
-            padding-right: 20px;
+            width: 1120px;
             font-size: 14px;
             color: #999999;
-            margin-top: -20px;
+            display: flex;
+            justify-content: space-between;
+            margin: 0 auto;
             li{
-                line-height: 80px;
-                border-bottom: 2px solid #181825;
+                width: 525px;
+                height: 168px;
                 font-size: 16px;
                 color: #999999;
-                height: 125px;
+                background: @common-color2;
+                border-radius: 10px;
+                box-sizing: border-box;
+                padding: 25px;
+                &:first-child {
+                    margin-right: 70px;
+                }
                 img{
                     display: inline-block;
                     margin-top: 20px;
                     vertical-align: top;
+                    max-width: 70px;
                 }
                 .img{
                     display: inline-block;

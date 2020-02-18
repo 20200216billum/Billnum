@@ -1,13 +1,12 @@
+@import '../../../assets/public.less';
 .mainy .change_opwd_main.change_person1{
-    background-color: initial;
     width: initial;
     .change_opwd_main_title{
-        background-color: initial;
         box-shadow:none;
         .title{
             color: #ffffff;
             font-size: 24px;
-            border-bottom: 2px solid #181825;
+            border-bottom: 2px solid @YeDorderColor1;
             span{
                 font-size: 14px;
                 color: #999999;
@@ -15,20 +14,20 @@
             }
         }
     }
-    .el-input__inner{
-        background-color: #181825;
-    }
     button.el-button.el-button--primary.largeBtn{
-        background-image: linear-gradient(180deg, 
-            #f5d781 0%, 
-            #f4d16d 100%), 
-        linear-gradient(
-            #1f1f2e, 
-            #1f1f2e);
-        background-blend-mode: normal, normal;
-        color: #181825;
+        background: @main;
+        color: #fff;
         font-size: 18px;
+        border: 0;
+        margin-bottom: 200px;
     }
+    /deep/.el-form--label-top .el-form-item__label {
+        color: #fff;
+    }
+}
+.change_opwd_main {
+    background: @common-color;
+    border-radius: 10px;
 }
 .mainb .change_opwd_main.change_person1{
     background-color: initial;

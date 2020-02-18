@@ -11,45 +11,47 @@
 		</div>
 		<div class="form">
 			<el-form label-position="left">
-				<div class="imgUP">
-					<div class="imgUP1">
-						<div class="left">
-							<!-- 正面照片 -->
-							{{$t('Gic.securityChangePerson2[2]')}}
-						</div>
-						<div class="zhengmian right">
-							<input type="file" name="" id="chooseImage1" accept=".jpg,.jpeg,.png">
-							<img v-if="userForm.front_img" :src="userForm.front_img" class="avatar" style="position: relative">
-							<!-- 请上传身份证正面照片 -->
-							<p>{{$t('Gic.securityChangePerson2[3]')}}</p>
-						</div>
-					</div>
-				</div>
-				<div class="imgUP">
-					<div class="imgUP1">
-						<div class="left">
-							<!-- 背面照片 -->
-							{{$t('Gic.securityChangePerson2[4]')}}
-						</div>
-						<div class="beimian right">
-							<input type="file" name="" id="chooseImage2" accept=".jpg,.jpeg,.png">
-							<img v-if="userForm.back_img" :src="userForm.back_img" class="avatar">
-							<!-- 请上传身份证背面照片 -->
-							<p>{{$t('Gic.securityChangePerson2[5]')}}</p>
+				<div class="imgs_box">
+					<div class="imgUP">
+						<div class="imgUP1">
+							<div class="left">
+								<!-- 正面照片 -->
+								{{$t('Gic.securityChangePerson2[2]')}}
+							</div>
+							<div class="zhengmian right">
+								<input type="file" name="" id="chooseImage1" accept=".jpg,.jpeg,.png">
+								<img v-if="userForm.front_img" :src="userForm.front_img" class="avatar" style="position: relative">
+								<!-- 请上传身份证正面照片 -->
+								<p>{{$t('Gic.securityChangePerson2[3]')}}</p>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="imgUP">
-					<div class="imgUP1">
-						<div class="left">
-							<!-- 手持证件照 -->
-							{{$t('Gic.securityChangePerson2[6]')}}
+					<div class="imgUP">
+						<div class="imgUP1">
+							<div class="left">
+								<!-- 背面照片 -->
+								{{$t('Gic.securityChangePerson2[4]')}}
+							</div>
+							<div class="beimian right">
+								<input type="file" name="" id="chooseImage2" accept=".jpg,.jpeg,.png">
+								<img v-if="userForm.back_img" :src="userForm.back_img" class="avatar">
+								<!-- 请上传身份证背面照片 -->
+								<p>{{$t('Gic.securityChangePerson2[5]')}}</p>
+							</div>
 						</div>
-						<div class="shouchi right">
-							<input type="file" name="" id="chooseImage3" accept=".jpg,.jpeg,.png">
-							<img v-if="userForm.handheld_img" :src="userForm.handheld_img" class="avatar">
-							<!-- 请上传手持身份证件照片 -->
-							<p>{{$t('Gic.securityChangePerson2[7]')}}</p>
+					</div>
+					<div class="imgUP">
+						<div class="imgUP1">
+							<div class="left">
+								<!-- 手持证件照 -->
+								{{$t('Gic.securityChangePerson2[6]')}}
+							</div>
+							<div class="shouchi right">
+								<input type="file" name="" id="chooseImage3" accept=".jpg,.jpeg,.png">
+								<img v-if="userForm.handheld_img" :src="userForm.handheld_img" class="avatar">
+								<!-- 请上传手持身份证件照片 -->
+								<p>{{$t('Gic.securityChangePerson2[7]')}}</p>
+							</div>
 						</div>
 					</div>
 				</div>

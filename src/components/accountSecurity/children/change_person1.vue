@@ -1,5 +1,4 @@
-<style lang=less>
-	@import '../../../assets/public.less';
+<style lang="less" scoped>
 	@import '../security.less';
 	@import './change_email.less';
 	@import './change_person1.less';
@@ -13,7 +12,7 @@
 		</div>
 		<div class="form_warp tpwd">
 			<div class="form_cont">
-				<el-form :label-position="labelPosition" :model="userData" status-icon :rules="rules2" ref="userData" label-width="120px" class="demo-ruleForm">
+				<el-form :label-position="labelPosition" :model="userData" :rules="rules2" ref="userData" label-width="120px" class="demo-ruleForm">
 					<!-- 用户姓名 -->
 					<el-form-item :label="$t('Gic.securityChangePerson1[2]')" prop="name">
 						<el-input type="text" v-model="userData.name" auto-complete="off" :placeholder='$t("Gic.securityChangePerson1[3]")'></el-input>

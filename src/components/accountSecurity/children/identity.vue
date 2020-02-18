@@ -1,13 +1,12 @@
-<style lang=less>
-	@import '../../../assets/public.less';
+<style lang="less" scoped>
 	@import './identity.less';
 </style>
 <template>
 	<div class="identitymain" style="overflow:hidden;height: 600px;">
+		<!-- 请务必填写您本人的真实姓名与证件信息 -->
+		<p class="top-title">{{$t('Gic.securityIdentity[0]')}}</p>
 		<div class="contain">
 			<ul class="container" style="overflow:hidden;">
-				<!-- 请务必填写您本人的真实姓名与证件信息 -->
-				<li>{{$t('Gic.securityIdentity[0]')}}</li>
 				<!-- 初级认证 -->
 				<li>
 					<img class="img" src="../../../assets/image/GIC/img_1.png" alt="">
