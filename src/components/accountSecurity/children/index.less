@@ -177,6 +177,28 @@
     }
 }
 
+.login_record {
+    /deep/.login_table.el-table {
+        width: 100%;
+        margin-top: 25px;
+        .el-table__header {
+            border: 0;
+        }
+        th.is-leaf {
+            background: @common-color2;
+            color: #fff;
+            border: 0;
+        }
+        tbody {
+            .el-table__row td {
+                color: @common-color3;
+                border: 0;
+                background: @common-color;
+            }
+        }
+    }
+}
+
 .custom-dialog {
     border-radius: 6px;
     .dialog-footer {

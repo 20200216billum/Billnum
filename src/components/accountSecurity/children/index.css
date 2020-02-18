@@ -443,6 +443,23 @@
   top: 0;
   right: 0;
 }
+.login_record /deep/ .login_table.el-table {
+  width: 100%;
+  margin-top: 25px;
+}
+.login_record /deep/ .login_table.el-table .el-table__header {
+  border: 0;
+}
+.login_record /deep/ .login_table.el-table th.is-leaf {
+  background: #202D3C;
+  color: #fff;
+  border: 0;
+}
+.login_record /deep/ .login_table.el-table tbody .el-table__row td {
+  color: #828EA1;
+  border: 0;
+  background: #182330;
+}
 .custom-dialog {
   border-radius: 6px;
 }

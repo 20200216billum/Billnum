@@ -83,6 +83,16 @@
 				<span class="button" @click="converted">设置</span>
 			</div>
 		</div>
+		<!-- 登录记录 -->
+		<div class="personal_settings login_record">
+			<p class="title">登录记录</p>
+			<el-table :data="tableData" empty-text="暂无数据" class="login_table">
+				<el-table-column prop="created_at" label="登录时间" min-width="150"></el-table-column>
+				<el-table-column prop="log_ip" label="登录IP" min-width="150"></el-table-column>
+				<el-table-column prop="date" label="登录地区" min-width="150"></el-table-column>
+				<el-table-column prop="agent_info" label="登录设备" min-width="150"></el-table-column>
+			</el-table>
+		</div>
 		<!-- 设置折算货币 -->
 		<el-dialog
 			title="设置折算货币"
@@ -130,7 +140,8 @@
 				},
 				conversionArr: [
 					{ name: "美元", code: "USD" }
-				]
+				],
+				tableData: [],
 			}
 		},
 		methods: {
@@ -170,9 +181,20 @@
 					}
 				})
 			},
+			// 获取登录日志
+			loginRecord() {
+				this.$http.get(this.$http.login_record, {params: {}}).then(res => {
+					if (res.data.code == 200) {
+						this.tableData = res.data.data.data;
+					} else {
+						this.tableData = [];
+					}
+				}).catch(err => {})
+			}
 		},
 		mounted() {
-			this.getUserInfo()
+			this.getUserInfo();
+			this.loginRecord();
 		},
 	};
 </script>

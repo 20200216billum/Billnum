@@ -95,6 +95,7 @@ Axios.basess = `${basess}/`;
 Axios.bases = `${second}/`;
 // Axios.getNewInfo = `${second}/sexp/stock/getNewInfo`; 
 Axios.get_area = `${second}/api/user/areacode`;  //获取区号
+Axios.login_record = `${second}/api/user/loginHistory`;  //登录日志
 Axios.send_sms = `${second}/api/user/sendSms`;  //短信验证码  1注册 2 重置 3 安全验证 4 支付密码设置 5 提币 mobile ,type
 Axios.send_email = `${second}/api/user/sendEmail`;  //邮箱验证码  1注册 2 重置 3 安全验证 4 支付密码设置 5 提币 mobile ,type
 Axios.register = `${second}/Home/Qbw/register`;  //注册
