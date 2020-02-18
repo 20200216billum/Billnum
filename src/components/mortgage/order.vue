@@ -86,8 +86,10 @@
 
     <div class="pagination" style="margin-bottom:20px" v-if="page.total != 0">
       <el-pagination
+        class="common-pagination"
         layout="prev, pager, next"
-        :prev-text="$t('managemoney.other[1]')" :next-text="$t('managemoney.other[2]')"
+        :prev-text="$t('managemoney.other[1]')" 
+        :next-text="$t('managemoney.other[2]')"
         :total="page.total"
         :current-page.sync="page.current"
         :page-count="5"

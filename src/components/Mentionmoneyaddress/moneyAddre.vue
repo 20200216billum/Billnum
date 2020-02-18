@@ -1,5 +1,4 @@
-<style lang=less>
-	@import '../../assets/public.less';
+<style lang="less" scoped>
 	@import './moneyAddre.less';
 </style>
 <template>
@@ -12,8 +11,7 @@
 			</el-card> -->
 			<el-card class="box-card bit_addre">
 				<h5>{{$t("moneyAddre.name")}}</h5>
-				<el-form :label-position="labelPosition" label-width="130px" :model="ruleForm" :rules="rules" ref="ruleForm">
-
+				<el-form :label-position="labelPosition" label-width="140px" :model="ruleForm" :rules="rules" ref="ruleForm">
 					<div class="bigWarp">
 						<el-form-item class="bigWarpSelect" :label='$t("moneyAddre.list[0]")' prop="type">
 							<!--钱包提币地址类型-->
@@ -39,7 +37,6 @@
 						</el-button>
 					</div>
 				</el-form>
-
 			</el-card>
 
 
@@ -47,10 +44,9 @@
 				<h5>
 					<span>{{$t("moneyAddre.list[7]")}}</span>
 				</h5>
-				<el-table :data="addressList" style="width: 100%;">
+				<el-table :data="addressList" empty-text="暂无数据" style="width: 100%;">
 					<!-- 地址 -->
-					<el-table-column prop="address" :label='$t("moneyAddre.list[8]")'>
-					</el-table-column>
+					<el-table-column prop="address" :label='$t("moneyAddre.list[8]")'></el-table-column>
 					<!-- 类型 -->
 					<el-table-column prop="type" :label='$t("moneyAddre.list[9]")'>
 						<template slot-scope="scope">
@@ -59,9 +55,7 @@
 						</template>
 					</el-table-column>
 					<!--备注-->
-					<el-table-column prop="notes" :label='$t("moneyAddre.list[3]")' align="center">
-
-					</el-table-column>
+					<el-table-column prop="notes" :label='$t("moneyAddre.list[3]")' align="center"></el-table-column>
 					<el-table-column prop="id" :label='$t("moneyAddre.list[5]")' align="right">
 						<!--操作-->
 						<template slot-scope="scope">
@@ -72,10 +66,17 @@
 					</el-table-column>
 				</el-table>
 
-				<el-pagination background class="zixun_fen" layout="prev, pager, next" :total="total"
-					@current-change="current_change1" :page-size='size' :current-page.sync="page"></el-pagination>
-
-
+				<el-pagination 
+					background 
+					class="zixun_fen common-pagination" 
+					layout="prev, pager, next" 
+					prev-text="上一页"
+        			next-text="下一页"
+					:total="total"
+					@current-change="current_change1" 
+					:page-size='size' 
+					:current-page.sync="page"
+				></el-pagination>
 			</el-card>
 		</div>
 	</div>
