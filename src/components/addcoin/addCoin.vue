@@ -3,15 +3,18 @@
         <div class="Assets_gic_top">
             <div class="Assets_gic_top_cen">
                 <div class="cen_top">
-                    <h5>{{$t('Gic.addCoin[0]')}}</h5>
+                    <img src="../../assets/img/zc-img.png">
                     <div class="cen_top_right">
-                        <p class="p_1">{{$t('Gic.addCoin[1]')}}：<span>
+                        <p class="title">总资产折合:</p>
+                        <div class="p_1">
+                            <span>
                                 {{ Number(ttl_usdt).toFixed($public.SavePoint('else'))}} USDT
-                            </span></p>
-                        <!-- <p class="p_2" v-if="language == 'zh-CN'"> ≈ {{$public.toDecimal2(ttl_rmb)}} CNY </p>     -->
-                        <p class="p_2"> ≈ 
-                            {{ $public.toDecimal2($public.Division(Number(ttl_rmb),Number(7))) }} USD
-                        </p>
+                                <span class="p_2">  
+                                    ≈ {{ $public.toDecimal2($public.Division(Number(ttl_rmb),Number(7))) }} USD
+                                </span>
+                            </span>
+                        </div>
+                        <p class="tip">注：资金总估是由市场行情估算值，仅为用户提供一个参考，请以单项资金为准</p>
                     </div>
                 </div>
                 <div class="bi_list">
@@ -23,7 +26,7 @@
                     </ul>
                     <ul class="list_list">
                         <li v-for="(item,index) in assetsList" :key="index">
-                            <p>{{item.code}}</p>
+                            <p><img :src="coinImg(item.code)">{{item.code}}</p>
                             <p>{{ Number(item.balance).toFixed($public.SavePoint('else'))}}</p>
                             <p>{{ Number(item.frost).toFixed($public.SavePoint('else'))}}</p>
                             <div class="btn">
@@ -70,23 +73,32 @@
             <div class="Assets_gic_bot_cen">
                 <div class="cen_top">
                     <h5>{{$t('Gic.addCoin[9]')}}</h5>
-                    <!-- <span>更多</span> -->
+                    <span class="more">更多</span>
                 </div>
-                <el-table :data="MoneyLogData" class="Record_list">
-                    <el-table-column prop="ptype" :label="$t('Gic.addCoin[2]')">
-                    </el-table-column>
-                    <el-table-column prop="mark" :label="$t('Gic.addCoin[10]')">
-                    </el-table-column>
-                    <el-table-column prop="money" :label="$t('Gic.addCoin[11]')">
-                        <template slot-scope="scope">
-                            <span>{{Number(scope.row.money).toFixed($public.SavePoint('else'))}}</span>
-                        </template>
-                    </el-table-column>
-                    <el-table-column prop="created_at" :label="$t('Gic.addCoin[12]')">
-                    </el-table-column>
-                </el-table>
-                <el-pagination background class="fenye" layout="prev, pager, next" :total="total"
-                    @current-change="current_change1" :page-size='size' :current-page.sync="page"></el-pagination>
+                <div class="Record_list">
+                    <el-table :data="MoneyLogData">
+                        <el-table-column prop="ptype" label="资产">
+                        </el-table-column>
+                        <el-table-column prop="mark" :label="$t('Gic.addCoin[10]')">
+                        </el-table-column>
+                        <el-table-column prop="money" :label="$t('Gic.addCoin[11]')">
+                            <template slot-scope="scope">
+                                <span>{{Number(scope.row.money).toFixed($public.SavePoint('else'))}}</span>
+                            </template>
+                        </el-table-column>
+                        <el-table-column prop="created_at" label="时间" align="right">
+                        </el-table-column>
+                    </el-table>
+                </div>
+                <!-- <el-pagination 
+                    background 
+                    class="fenye" 
+                    layout="prev, pager, next" 
+                    :total="total"
+                    @current-change="current_change1" 
+                    :page-size='size' 
+                    :current-page.sync="page"
+                ></el-pagination> -->
             </div>
 
         </div>
@@ -116,9 +128,24 @@
             }
         },
         methods: {
+            // 币种img
+            coinImg(code) {
+                let url = "";
+                switch (code) {
+                    case "USDT": 
+                        url = require("../../assets/img/USDT.png");
+                        break;
+                    case "BTC": 
+                        url = require("../../assets/img/btc.png");
+                        break;
+                    case "ETH": 
+                        url = require("../../assets/img/eth.png");
+                        break;
+                }
+                return url
+            },
             changeUrl(path, query, code, pid) {
                 if (path == "/tibit") {
-
                     if (sessionStorage.payment_password_set != 1) {
                         this.$public.confirm(this.$t('Gic.addCoin[13]'), "/security/index", this);
                         return false;
@@ -191,7 +218,6 @@
     }
 </script>
 
-<style lang=less>
-    @import '../../assets/public.less';
+<style lang="less" scoped>
     @import './addCoin.less';
 </style>

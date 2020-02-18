@@ -1,21 +1,43 @@
+@import '../../assets/public.less';
 .Assets_gic{
+    background: #0A1017;
+    padding-top: 20px;
+    padding-bottom: 60px;
     .Assets_gic_top{
         .Assets_gic_top_cen{
             width:1200px;
             margin:0 auto;
             padding-bottom:50px;
             .cen_top{
-                line-height:110px;
-                display:flex;
-                justify-content: space-between;
-                h5{
-                    font-size:24px;
+                height: 130px;
+                background: @common-color;
+                border-radius: 10px;
+                padding: 0 20px;
+                display: flex;
+                img {
+                    width: 127px;
+                    height: 130px;
+                    margin-right: 15px;
                 }
                 .cen_top_right{
-                    display:flex;
-                    justify-content: space-between;
-                    .p_1{font-size:18px;}
-                    .p_2{font-size:16px;}
+                    .title {
+                        color: #fff;
+                        font-size: 18px;
+                        margin: 30px 0 20px 0;
+                    }
+                    .p_1{
+                        font-size: 20px;
+                    }
+                    .p_2{
+                        font-size: 16px;
+                        color: #fff;
+                        margin-left: 10px;
+                    }
+                    .tip {
+                        color: @common-color3;
+                        font-size: 12px;
+                        margin-top: 10px;
+                    }
                 }
             }
             .bi_list{
@@ -27,12 +49,18 @@
                     padding:0 15px;
                     li{
                         font-size:16px;
-                        width:25%;
+                        width:28%;
                         color:#999999;
-                        
+                        text-align: right;
+                        &:first-child {
+                            text-align: left;
+                            width: 15%;
+                        }
                     }
                 }
                 .list_list{
+                    background: @common-color;
+                    border-radius: 10px;
                     li{
                         padding:0 15px;
                         display:flex;
@@ -42,15 +70,34 @@
                         font-size:18px;
                         margin-bottom:10px;
                         p{
-                            width:25%;
+                            width:28%;
+                            text-align: right;
+                            &:first-child {
+                                text-align: left;
+                                width: 15%;
+                            }
+                            img {
+                                width: 37px;
+                                height: 37px;
+                                position: relative;
+                                top: 10px;
+                                margin-right: 10px;
+                            }
                         }
                         .btn{
-                            width:25%;
+                            width: 28%;
+                            text-align: right;
                             .el-button{
                                 width:70px;
                                 height:30px;
                                 padding:0;
                                 border:none;
+                            }
+                            &_1 {
+                                background: #7883FF;
+                            }
+                            &_2 {
+                                background: #FF7979;
                             }
                         }   
                     }
@@ -59,25 +106,41 @@
             }
         }
     }
-    .Assets_gic_bot{
-        padding-bottom:60px;
-    }
     .Assets_gic_bot_cen{
         width:1200px;
         margin:0 auto;
         .cen_top{
-            line-height:90px;
+            line-height:60px;
             display:flex;
             justify-content: space-between;
-            h5{font-size:24px;}
-            span{font-size:16px;cursor: pointer;}
+            h5{ 
+                font-size:24px;
+            }
+            span{
+                color: #fff;
+                font-size:16px;
+            }
+            .more {
+                color: @main;
+                cursor: pointer;
+            }
         }
-        .Record_list{
+        /deep/.Record_list{
+            background: @common-color;
+            border-radius: 10px;
+            padding: 0 20px;
             .el-table__header-wrapper{
-                th{font-size:15px;}
+                th{
+                    font-size: 15px;
+                    background: @common-color;
+                    color: @common-color3;
+                }
             }
             .el-table__body-wrapper{
-                td{font-size:15px;}
+                td{ 
+                    font-size:15px; 
+                    color: #fff;
+                }
             }
         }
         .fenye{
