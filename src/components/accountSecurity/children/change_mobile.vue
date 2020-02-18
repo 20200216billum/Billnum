@@ -1,16 +1,17 @@
 <style lang=less>
 	@import '../../../assets/public.less';
 	@import '../security.less';
+	@import './change_pwd.less';
 	@import './change_email.less';
 </style>
 <template>
 	<div class="change_opwd_main comEmail">
 		<div class="change_opwd_main_title">
-			<h2 class="nameLeft">绑定手机号</h2>
+			<h2 class="title" style="font-size: 24px;">绑定手机<span style="font-size: 14px;color: #999999;margin-left: 20px;">{{$t('Gic.securityChangeopwd[1]')}}</span></h2>
 		</div>
 		<div class="form_warp tpwd">
 			<div class="form_cont">
-				<el-form :label-position="labelPosition" :model="userData" status-icon :rules="rules2" ref="userData" label-width="100px" class="demo-ruleForm">
+				<el-form :label-position="labelPosition" :model="userData" :rules="rules2" ref="userData" label-width="100px" class="demo-ruleForm">
 					<el-form-item :label='$t("changemobile.list[2]")' prop="mobile">
 						<el-input type="text" v-model="userData.mobile" auto-complete="off" placeholder="请输入手机号码"></el-input>
 					</el-form-item>

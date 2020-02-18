@@ -384,6 +384,7 @@
 }
 .change_opwd_main div.form_warp .form_cont /deep/ .el-form--label-top .el-form-item__label {
   color: #fff;
+  margin-bottom: 10px;
 }
 .change_opwd_main div.form_warp .form_cont .el-button .el-button,
 .change_opwd_main div.form_warp .form_cont .twobtn .el-button {
@@ -404,6 +405,14 @@
 }
 .change_opwd_main div.form_warp .form_cont .el-form-item__label {
   color: white;
+}
+.change_opwd_main div.form_warp .form_cont .tips {
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+.change_opwd_main div.form_warp .form_cont .tips .name {
+  margin-bottom: 3px;
 }
 .change_opwd_main div.form_warp .form_cont .code_warp .el-form-item--feedback {
   display: inline-block;

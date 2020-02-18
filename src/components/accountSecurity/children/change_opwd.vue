@@ -5,8 +5,6 @@
 	<template>
 		<div class="change_opwd_main">
 			<div class="change_opwd_main_title">
-				<!-- 修改登录密码 -->
-				<!-- 账户登录 -->
 				<h2 class="title" style="font-size: 24px;">{{$t('Gic.securityChangeopwd[0]')}}<span style="font-size: 14px;color: #999999;margin-left: 20px;">{{$t('Gic.securityChangeopwd[1]')}}</span></h2>
 			</div>
 			<div class="form_warp">
@@ -15,7 +13,7 @@
 						<!-- 原登录密码 -->
 						<el-form-item :label="$t('Gic.securityChangeopwd[2]')" prop="old_password">
 							<!-- 请输入8-20位数字+字母组合资金密码 -->
-							<el-input type="password" v-model="userPwd.old_password" auto-complete="off" :placeholder="$t('Gic.securityChangeopwd[3]')"></el-input>
+							<el-input type="password" v-model="userPwd.old_password" auto-complete="off" placeholder="请输入原登录密码"></el-input>
 						</el-form-item>
 						<!-- 新登录密码 -->
 						<el-form-item :label="$t('Gic.securityChangeopwd[4]')" prop="password">
@@ -25,7 +23,7 @@
 						<!-- 确认密码 -->
 						<el-form-item :label="$t('Gic.securityChangeopwd[5]')" prop="password_confirmation">
 								<!-- 确认新密码 -->
-								<el-input type="password" v-model="userPwd.password_confirmation" auto-complete="off" :placeholder="$t('Gic.securityChangeopwd[6]')"></el-input>
+								<el-input type="password" v-model="userPwd.password_confirmation" auto-complete="off" placeholder="请再次输入新登录密码"></el-input>
 							</el-form-item>
 						<el-form-item>
 							<!-- 提交 -->

@@ -1,18 +1,20 @@
 <style lang=less>
 	@import '../../../assets/public.less';
 	@import '../security.less';
+	@import './change_pwd.less';
 	@import './change_email.less';
 </style>
 <template>
 	<div class="change_opwd_main comEmail">
 		<div class="change_opwd_main_title">
-			<h2 class="nameLeft">{{$t("changeemail.list[0]")}}</h2>
+			<!-- <h2 class="nameLeft">{{$t("changeemail.list[0]")}}</h2> -->
+			<h2 class="title" style="font-size: 24px;">绑定邮箱<span style="font-size: 14px;color: #999999;margin-left: 20px;">{{$t('Gic.securityChangeopwd[1]')}}</span></h2>
 		</div>
 		<div class="form_warp tpwd">
 			<div class="form_cont">
-				<el-form :label-position="labelPosition" :model="userData" status-icon :rules="rules2" ref="userData" label-width="120px" class="demo-ruleForm">
-					<el-form-item :label='$t("changeemail.list[0]")' prop="email">
-						<el-input type="email" v-model="userData.email" auto-complete="off" ></el-input>
+				<el-form :label-position="labelPosition" :model="userData" :rules="rules2" ref="userData" label-width="120px" class="demo-ruleForm">
+					<el-form-item label='邮箱地址' prop="email">
+						<el-input type="email" v-model="userData.email" auto-complete="off" placeholder="请输入邮箱地址"></el-input>
 					</el-form-item>
 					<div class="binding_email_code">
 						<el-form-item :label='$t("changeemail.tip[1]")' prop="code">
@@ -23,7 +25,7 @@
 						</div>
 					</div>
 					<el-form-item :label='$t("changeemail.tip[6]")' prop="tpwd">
-						<el-input type="text" v-model="userData.tpwd" auto-complete="off" :placeholder='$t("changeemail.tip[3]")'></el-input>
+						<el-input type="text" v-model="userData.tpwd" auto-complete="off" placeholder='请输入资金密码'></el-input>
 					</el-form-item>
 
 					<el-form-item>

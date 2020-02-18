@@ -21,6 +21,10 @@
 					<!-- <el-form-item :label="$t('Gic.securitySetTpwd[4]')">
 						<el-input disabled type="text" v-model="userData.email" auto-complete="off"></el-input>
 					</el-form-item> -->
+					<div class="tips">
+						<p class="name">我们将向如下账号发送一组验证码</p>
+						<p>{{ userData.email }}</p>
+					</div>
 					<!-- 获取验证码 -->
 					<div class="code_warp">
 						<el-form-item label="验证码" prop="code">
@@ -98,7 +102,6 @@
 			};
 		},
 		methods: {
-			//注册执行函数
 			submitForm() {
 				var _this = this;
 				_this.$refs.setTpwdForm.validate((valid) => {
@@ -165,15 +168,10 @@
 			}
 
 		},
-		created: function() {
-			var _this = this;
-			_this.userData.email = this.$public.phoneEncryption(sessionStorage.userData);
-			_this.$public.scrollTop(); //返回但最顶部函数
+		created() {
+			this.userData.email = this.$public.phoneEncryption(sessionStorage.userData);
+			this.$public.scrollTop(); //返回但最顶部函数
 		}
 
 	}
 </script>
-
-<style>
-
-</style>
