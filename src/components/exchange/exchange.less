@@ -8,11 +8,6 @@
         display: flex;
         margin-bottom:10px;
     }
-    .HistoricalEntrustment{
-        // margin-top:10px;
-    }
-
-
     .down {
         color: @DaiOtherColor2;
     }
@@ -74,16 +69,25 @@
                 height:100%;
                 box-sizing: border-box;
                 background: @common-color;
+                .nav_list_title {
+                    background: @common-color2;
+                    color: @main;
+                    font-size: 18px;
+                    padding: 10px 0;
+                    span {
+                        padding-left: 20px;
+                        border-left: 3px solid @main;
+                    }
+                }
                 .currency_header {
                     display:flex;
                     justify-content:space-between;
-                    background: @common-color2;
                     line-height: 42px;
                     padding:0 14px;
                     >span{
                         width:33%;
                         box-sizing: border-box;
-                        color: #ffffff;
+                        color: @common-color3;
                         &.actives{
                             color:@main;
                         }
@@ -138,6 +142,10 @@
                             color:#fff;
                             height:55px;
                             box-sizing:border-box;
+                            &:hover {
+                                transform: none;
+                                background: @common-color2;
+                            }
                             .MainArea_one{
                                 display:flex;
                                 align-items:center;
@@ -402,11 +410,33 @@
             display: flex;
             overflow: hidden;
             position: relative;
+            .change_tab {
+                .top_nav {
+                    width: 290px;
+                    height: 40px;
+                    line-height: 40px;
+                    background: @common-color;
+                    color: @common-color3;
+                    font-size: 14px;
+                    margin-left: 10px;
+                    span {
+                        padding: 0 10px;
+                        cursor: pointer;
+                        display: inline-block;
+                    }
+                    span.active {
+                        color: @main;
+                        background: @common-color2;
+                    }
+                }
+            }
             .vloumeData{
-                // margin-top: 10px;
+                margin-left: 10px;
                 width: 290px;
+                height: 992px;
                 display:flex;
                 flex-direction: column;
+                background: @common-color;
                 .head{
                     height:40px;
                     line-height:40px;
@@ -422,14 +452,14 @@
                 }
 
                 .title{
-                    // background:#323243;
+                    background:@common-color2;
                     border-bottom: none;
-                    // color: #BBBBBB;
                     font-size: 12px;
                     height: 40px;
                     line-height:40px;
                     padding: 0 10px;
                     display: flex;
+                    color: @common-color3;
                     span{
                         flex: 1;
                         text-align: left;
@@ -444,10 +474,8 @@
                 }
                 ul{
                     overflow-y: hidden;
-                    // background:#262637;
-
+                    background:@common-color;
                     flex:1;
-                    
                     li{
                         span.false{
                             color: #00bd82;
@@ -478,11 +506,10 @@
                 }
             }
             .exchange_box {
-                background:#323243;
+                background:@common-color;
                 .Placeanorder_header_box {
                     height: 50px;
                     line-height: 50px;
-                    border-bottom: 1px solid @DaiDackGroundColor15;
                     overflow: hidden;
                     zoom: 1;
                     padding-left: 20px;
@@ -529,37 +556,46 @@
                 display: flex;
                 float: left;
                 width: 100%;
-                
                 .el-tabs__nav-wrap::after{
                     display: none;
                 }
                 .transaction_box {
-                    background:#262637;
+                    background: @common-color;
                     .el-tabs__header {
-                        background:#323243;
                         margin:0;
+                        .el-tabs__active-bar {
+                            display: none;
+                        }
                     }   
+                    .el-tabs__item{
+                        width: 145px;
+                        color: #ffffff;
+                        height: 40px;
+                        line-height: 40px;
+                        text-align: center;
+                        background: @common-color2;
+                        &.is-active {
+                            background: @main;
+                            color: #fff;
+                        }
+                    }
                     .el-form-item{
                         display: flex;
                         .el-form-item__label{
                             width: 100px;
-                            // padding-left: 10px;
+                            color: #fff;
                         }
                         .el-form-item__content{
                             width: 100%;
                             .el-input__inner{
-                                background:#181825;
-                                border:none;
+                                background: @common-color!important;
                                 color: #ffffff;
+                                border: 1px solid #2D3346!important;
                                 border-radius: 0;
                             }
                             .el-input__suffix{
                                 display:flex;
                                 align-items:center;
-                            }
-                            .el-input.is-disabled{
-                                // .el-input__inner{
-                                //     border-color: @YeDorderColor1;                                }
                             }
                         }
                     }
@@ -621,15 +657,14 @@
                     .jiaoyiSell {
                         p {
                             color: #ffffff;
-                            // color: @DaiOtherColor2;                            color: #ffffff;
                         }
                     }
                     .el-tabs__content {
                         overflow: auto;
                         padding: 0 20px;
+                        margin-top: 20px;
                     }
                     flex: 1;
-                    //              overflow: hidden;
                     height: 100%;
                     .el-tab-pane {
                         overflow: hidden;
@@ -654,10 +689,6 @@
                             line-height:55px;
                             font-size:16px;
                         }
-                        
-                        .el-form{
-                            // height: 360px;
-                        }
                         & .el-form-item:nth-of-type(2){
                             margin-bottom:0;
                         }
@@ -670,11 +701,6 @@
                                 color: @main;
                                 border-radius: 0;
                                 height: 40px;
-                            }
-                            .jynums{
-                                .el-input__inner{
-                                    // border-right: none;
-                                }
                             }
                             .jump{
                                 width: 100%;
@@ -852,8 +878,6 @@
             .tabs_tab{
                 height:40px;
                 line-height:40px;
-                // background:#323243;
-                // border-bottom:1px solid #181825;
                 padding-left:12px;
                 color: #ffffff;
                 font-size: 14px;
@@ -862,6 +886,7 @@
                 display:flex;
                 justify-content:space-between;
                 padding-right:10px;
+                background: @common-color2;
                 .transaction_deep{
                     // padding: 24px 18px;
                     display:flex;
@@ -913,11 +938,9 @@
                 height: 100%;
                 float: right;
                 overflow: hidden;
-                background:#262637;
-
+                background:@common-color;
                 .tabs{
-                    // background: @YeDackGroundColor3;
-                    background:#262637;
+                    background: @common-color2;
                     height: 40px;
                     .item{
                         display: inline-block;
@@ -927,7 +950,7 @@
                         text-align: center;
                         line-height: 40px;
                         &.active{
-                            background:#181825;
+                            // background:@common-color;
                         }
                     }
                 }
@@ -962,7 +985,7 @@
 
                 .transaction_nav {
                     line-height: 35px;
-                    background:#181825;
+                    background:@common-color;
                     p {
                         width: 33%;
                         display: inline-block;
@@ -972,17 +995,10 @@
                         font-size: 16px;
                     }
                 }
-                .PurchaseData {
-                    // padding-bottom: 10px;
-                }
-                .SelloutData {
-                    // padding-top: 10px;
-                }
                 .Purchase_wrap{
                     height:410px;
                     overflow:auto;
-                    background:#262637;
-
+                    background:@common-color;
                     &.red{
                         height: 814px;
                     }
@@ -1018,7 +1034,7 @@
                     height: 66px;
                     line-height: 66px;
                     padding-left: 20px;
-                    background:#181825;
+                    background:@common-color2;
                     .newPrice {
                         font-size: 18px;
                         font-weight: bold;
@@ -1049,19 +1065,4 @@
         }
         }
     }
-    // .el-tabs__item.is-active {
-    //     color: #ffffff;
-    //     background: @main;
-    // }
-    .el-tabs__item{
-        width: 145px;
-        color: #ffffff;
-        height: 40px;
-        line-height: 40px;
-        text-align: center;
-        // background: #282F42;
-    }
-    .el-tabs__item:hover {
-    }
-
 }

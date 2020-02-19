@@ -314,8 +314,8 @@
 					{ name: this.$t('Gic.header[10]'), path: '/Mentionmoneyaddress', class: '', img: require("../../assets/img/tbdz-icon.png") },
 					// 我的奖励
 					{name:"我的奖励",path:'/my-reward',class:'',img:require("../../assets/img/wdjl-icon.png")},
-					// 邀请返佣
-					{name:this.$t('header.navlist2[2]'),path:'/promotion',class:'',img:require("../../assets/img/yq.png")},
+					// 我的推广
+					{name:"我的推广",path:'/promotion',class:'',img:require("../../assets/image/bibi/wdtg.png")},
 					// 退出登录
 					{ name: this.$t('Gic.header[11]'), path: '/logout', class: '', img: require("../../assets/img/tc-icon.png") },
 				]

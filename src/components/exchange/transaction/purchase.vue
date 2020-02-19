@@ -1,8 +1,8 @@
 <template lang="html">
 	<div class="Sellout buyWarp">
-		<el-form ref="form" :model="form" size="small">
-			<h4 style="color:#24d985;">{{$t('Gic.Placeorder[2]')}}</h4>
-			<el-form-item>
+		<el-form ref="form" :model="form" size="small" label-position="left">
+			<!-- <h4 style="color:#24d985;">{{$t('Gic.Placeorder[2]')}}</h4> -->
+			<el-form-item label="买入价格">
 				<!-- 市价交易 -->
 				<el-input v-if="ModifyState" :value="$t('Gic.Placeorder[4]')" :disabled="ModifyState">
 				</el-input>
@@ -21,7 +21,7 @@
 				<div v-else class="toCny">≈{{$public.toLowFixed($public.Multiplication($public.Division(nowCny,nowPrice), sendData.newprice),2,0) }} CNY</div> -->
 			</el-form-item>
 			<!-- 交易数量 -->
-			<el-form-item>
+			<el-form-item label="交易额">
 				<el-input @change="transValue('nums')" class="jynums" v-model="sendData.buynum" placeholder="0">
 					<!-- <template slot="append" v-if="ModifyState">{{Data.code | normal1}}</template>
 					<template slot="append" v-else>{{Data.code | normal }}</template> -->

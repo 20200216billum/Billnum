@@ -178,10 +178,10 @@ Axios.SecondwsUrl = `${Secondwsurl}:7272/`;   //创新区长链接
 // Axios.SecondSalewsUrl = "ws://"+"113.52.135.113"+":7273";   //买卖价格推送(hub)http://www.bituneex.com
 // Axios.RealTime = "ws://"+"113.52.135.113"+":7275";   //买卖价格推送(hub)
 // 7272实时价格  7273盘口  7274深度图  7275实时成交
-Axios.MainwsUrl = process.env.NODE_ENV === 'production' ? "wss://"+ 'gicgold.in/' + 'wss': "wss://"+"gicgold.in/wss";
+Axios.MainwsUrl = process.env.NODE_ENV === 'production' ? "wss://"+ 'gicgold.in/' + 'wss': "wss://"+"www.billumpro.com/wss";
 
-Axios.SecondSalewsUrl = process.env.NODE_ENV === 'production' ? "ws://"+window.location.host+":7273" : "ws://"+"47.244.162.215"+":7273";
-Axios.RealTime = process.env.NODE_ENV === 'production' ? "ws://"+window.location.host+":7275" : "ws://"+"47.244.162.215"+":7275";
+Axios.SecondSalewsUrl = process.env.NODE_ENV === 'production' ? "ws://"+window.location.host+":7273" : "ws://"+"www.billumpro.com"+":7273";
+Axios.RealTime = process.env.NODE_ENV === 'production' ? "ws://"+window.location.host+":7275" : "ws://"+"www.billumpro.com"+":7275";
 
 
 // Axios.MainwsUrl = "ws://"+window.location.host+":7272";  //主要数据推送

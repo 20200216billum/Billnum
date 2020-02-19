@@ -24,12 +24,6 @@
   }
   .currency_header {
     overflow: hidden;
-
-    .actives {
-      > span {
-        /* border-bottom:4px solid @main; */
-      }
-    }
   }
 }
 </style>
@@ -41,12 +35,14 @@
         <div class="topWarp">
           <!-- 行情列表 -->
           <section class="nav_list">
+            <p class="nav_list_title">
+              <span>资产行情</span>
+            </p>
             <h2 class="currency_header">
               <!-- // 行情 -->
               <span class="header_1">币种</span>
               <span class="header_2">最新价</span>
               <span class="header_3">涨幅</span>
-
             </h2>
             <Quotation :Marketmain="Marketdatamain" :SS="active" @modifyfun="modifyshuju"></Quotation>
             <!-- <Quotation :Marketmain='Marketdatamain1' @modifyfun="modifyshuju" v-show="active==2"></Quotation>
@@ -127,12 +123,19 @@
               </section>
             </div>
           </div>
+
+          <div class="change_tab">
+            <div class="top_nav">
+              <span :class="{active: isPankou}" @click="isPankou = true">盘口</span>
+              <span :class="{active: !isPankou}" @click="isPankou = false">实时成交</span>
+            </div>
+          
           <!-- 盘口 -->
-          <div class="exchange_mouth">
+          <div class="exchange_mouth" v-show="isPankou">
             <section class="transaction_main">
-              <div class="tabs_tab">
-                  {{$t("Gic.coincoin[3]")}}
-              </div>
+              <!-- <div class="tabs_tab">
+                  盘口
+              </div> -->
               <div class="tabs_fen">
                   <div class="tabs">
                       <div @click="mouthType='all'" :class="['item', {active:mouthType=='all'}]">
@@ -267,10 +270,10 @@
             </section>
           </div>
           <!-- 实时成交 -->
-          <div class="vloumeData">
-              <div class="head">
-                <h2>{{$t("Gic.coincoin[8]")}}</h2>
-              </div>
+          <div class="vloumeData" v-show="!isPankou">
+              <!-- <div class="head">
+                <h2>实时成交</h2>
+              </div> -->
               <div class="title">
                 <span>{{$t("Gic.coincoin[5]")}}</span>
                 <span class="num">{{$t("Gic.coincoin[6]")}}</span>
@@ -298,6 +301,7 @@
                 <p style="color:#999;font-size: 12px; text-align: center;">{{$t("Gic.coincoin[11]")}}</p>
               </div>
             </div>
+          </div>
         </div>
   
       </div>
@@ -320,6 +324,7 @@ import tradingNotice from "./tradingNotice.vue"; //公告
 export default {
   data() {
     return {
+      isPankou: true,
       // klinetab:"K线图",
       // 深度合并
       DeepMerger: "",

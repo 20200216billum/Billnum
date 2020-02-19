@@ -1,9 +1,9 @@
 <template lang="html">
   <div class="Sellout">
     <el-form ref="form" :model="form" size="small">
-      <h4 style="color:#f33939;">{{$t('Gic.Placeorder[3]')}}</h4>
+      <!-- <h4 style="color:#f33939;">{{$t('Gic.Placeorder[3]')}}</h4> -->
       <!--卖出价-->
-      <el-form-item>
+      <el-form-item label="卖出价格">
         <!--以当前最优价格交易-->
         <!-- ModifyState为true时为市价交易 -->
         <el-input v-if="ModifyState" :value="$t('Gic.Placeorder[4]')" :disabled="ModifyState"></el-input>
@@ -23,8 +23,7 @@
 
       </el-form-item>
       <!--交易数量-->
-      <el-form-item>
-
+      <el-form-item label="卖出数量">
         <el-input class="jynums" @change="transValue('num')" v-model="sendData.buynum" placeholder="0">
           <!-- <template slot="append">{{ Data.code | normal }}</template> -->
           <span slot="suffix">{{Data.code | normal}}</span>
