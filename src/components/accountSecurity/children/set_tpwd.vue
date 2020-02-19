@@ -4,7 +4,7 @@
 <template>
 	<div class="change_opwd_main">
 		<div class="change_opwd_main_title">
-			<h2 class="title" style="font-size: 24px;">{{$t('Gic.securitySetTpwd[0]')}}<span style="font-size: 14px;color: #999999;margin-left: 20px;">提币使用，请先设置资金密码</span></h2>
+			<h2 class="title" style="font-size: 24px;">{{ $route.query.type == "set" ? "设置资金密码" : "修改资金密码" }}<span style="font-size: 14px;color: #999999;margin-left: 20px;">提币使用，请先设置资金密码</span></h2>
 		</div>
 		<div class="form_warp tpwd">
 			<div class="form_cont">
@@ -113,7 +113,15 @@
 							_this.$public.msg(_this.$t('header.tips[0]'), 'warning', _this);
 							return false;
 						}
-						_this.$http.post(_this.$http.createPaymentPassword, _this.userData).then(function(response) {
+
+						let url = "";
+						if (this.$route.query.type == "set") { // 设置资金密码
+							url = _this.$http.createPaymentPassword
+						} else { // 修改资金密码
+							url = _this.$http.resetPaymentPassword;
+						}
+
+						_this.$http.post(url, _this.userData).then(function(response) {
 							_this.loading = false; //防止表单重复提交标志
 							if(response.data.code == "200") {
 								// 操作成功！
@@ -134,7 +142,6 @@
 							_this.userData.password=''; //资金密码
 							_this.userData.password_confirmation=''; //确认资金密码
 						});
-
 					} else {
 						return false
 					}
@@ -142,13 +149,13 @@
 			},
 			getCode() {
 				var _this = this;
-				var email = sessionStorage.userData
+				var email = sessionStorage.userData;
+				if(!_this.$public.pwd(_this.userData.password_confirmation)) {
+					_this.$public.msg(_this.$t('Gic.securitySetTpwd[10]'), 'warning', _this);//请输入有效的密码
+					return false;
+				}
+				_this.btnCode.disabled = true;
 				if(_this.$public.email(email)){//邮箱登录
-					if(!_this.$public.pwd(_this.userData.password_confirmation)) {
-						_this.$public.msg(_this.$t('Gic.securitySetTpwd[10]'), 'warning', _this);//请输入有效的密码
-						return false;
-					}
-					_this.btnCode.disabled = true;
 					_this.$http.post(_this.$http.send_email, {
 						email: email
 					}).then(function(response) {
@@ -160,7 +167,17 @@
 							_this.$public.msg(response.data.msg, 'warning', _this);
 						}
 					}).catch(function(error) {});
-
+				} else {
+					this.$http.post(this.$http.send_sms, {
+						phone: email
+					}).then(res => {
+						if (res.data.code == 200) {
+							this.$public.setTime(this)
+						} else {
+							this.btnCode.disabled = false;
+							this.$public.msg(res.data.msg, 'warning', this);
+						}
+					}).catch(err => {})
 				}
 			},
 			go_back() {

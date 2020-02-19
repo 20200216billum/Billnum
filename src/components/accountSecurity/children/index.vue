@@ -43,9 +43,9 @@
 					<!-- 交易，提现时使用设置资金密码前请先绑定手机或邮箱 -->
 					<span class="describe">{{$t('Gic.securityIndex[5]')}}</span>
 					<!-- 设置 -->
-					<span class="operation" v-if="userData.config && userData.config.payment_password_set==0" @click="routerGo('/security/index/set_tpwd')">{{$t('Gic.securityIndex[6]')}}</span>
+					<span class="operation" v-if="userData.config && userData.config.payment_password_set==0" @click="routerGo('/security/index/set_tpwd', 'set')">{{$t('Gic.securityIndex[6]')}}</span>
 					<!-- 修改 -->
-					<span class="operation" v-else @click="routerGo('/security/index/change_tpwd')">{{$t('Gic.securityIndex[7]')}}</span>
+					<span class="operation" v-else @click="routerGo('/security/index/set_tpwd', 'noset')">{{$t('Gic.securityIndex[7]')}}</span>
 				</li>
 				<!-- 邮箱验证 -->
 				<li>

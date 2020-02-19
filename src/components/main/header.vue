@@ -439,7 +439,7 @@
 			},
 			signOut() { // 登出
 				var _this = this;
-				_this.$confirm(_this.$t("Gic.header[15]"), _this.$t("Gic.header[14]"), { //您确定退出HUB网吗
+				_this.$confirm("您确定退出Billum吗?", _this.$t("Gic.header[14]"), { //您确定退出HUB网吗
 					confirmButtonText: _this.$t("Gic.header[16]"), //确定
 					cancelButtonText: _this.$t("Gic.header[17]"),
 					type: 'warning'

@@ -63,7 +63,7 @@ Axios.interceptors.response.use(function (response) {
   if(response.data.code =='401'){
     sessionStorage.clear()
     // alert('请登录')
-    // window.location.href = "/#/login";
+    window.location.href = "/#/login";
     return ;
   }
     if(response.data.code =='505' || response.data.code =='404'){
@@ -71,7 +71,7 @@ Axios.interceptors.response.use(function (response) {
     		return false;
     	}
       sessionStorage.clear();
-    	// window.location.href = "/login";
+    	window.location.href = "/login";
     };
     return response;
   }, function (error) {

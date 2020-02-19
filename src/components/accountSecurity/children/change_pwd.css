@@ -264,11 +264,14 @@
 #app .el-form-item.is-error .el-input__inner {
   border: 1px solid #30D5D8;
 }
+#app .custom-dialog .el-form-item .el-input__inner {
+  background: #EFEFF4;
+}
 .el-form-item__error {
   color: #30D5D8;
 }
 .el-pagination {
-  text-align: right;
+  text-align: center;
 }
 .el-pagination.is-background .btn-next,
 .el-pagination.is-background .btn-prev,
@@ -425,6 +428,7 @@
   border: none;
   border-radius: 5px;
   margin-left: 12px;
+  margin-top: 34px;
 }
 .change_opwd_main div.form_warp .form_cont .code_warp .btn_code /deep/ .el-input__inner {
   color: #fff;
