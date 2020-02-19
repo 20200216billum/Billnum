@@ -27,38 +27,8 @@
 					<template slot="append" v-else>{{Data.code | normal }}</template> -->
 					<span slot="suffix" v-if="ModifyState">{{Data.code | normal1}}</span>
 						<span slot="suffix" v-else>{{Data.code | normal }}</span>
-
-
 				</el-input>
 
-				<!-- <div class="number" v-if="isLogin && form.maximum>=0">
-					<div class="jump">
-						<div @click="fill('0.25')" class="item">25%</div>
-						<div @click="fill('0.5')" class="item">50%</div>
-						<div @click="fill('0.75')" class="item">75%</div>
-						<div @click="fill('1')" class="item">100%</div>
-					</div>
-				</div>
-				<div class="number" v-else>
-					<div class="jump">
-						<div @click="fill('0.25')" class="item">25%</div>
-						<div @click="fill('0.5')" class="item">50%</div>
-						<div @click="fill('0.75')" class="item">75%</div>
-						<div @click="fill('1')" class="item">100%</div>
-					</div>
-				</div> -->
-			</el-form-item>
-			<div class="jiaoyiAll">
-				<p v-if="isLogin">
-					<!-- <span>{{$t('bibi.other[0]')}}： {{$public.toLowFixed(form.turnover,6,'',false)}}{{Data.code | normal1}}</span> -->
-					<span>{{$t('Gic.Placeorder[5]')}}</span>
-					<span>{{$public.toLowFixed(Data.wallone,6,'',false)}} {{Data.code | normal1}}</span>
-					<p v-else>
-						<!-- <span>{{$t('bibi.other[0]')}}：{{$public.toLowFixed(form.turnover,6,'',false)}}{{Data.code | normal1}}</span> -->
-						<span>{{$t('Gic.Placeorder[5]')}}</span>
-						<span>{{$public.toLowFixed(Data.wallone,6,'',false)}} {{Data.code | normal1}}</span>
-					</p>
-			</div>
 				<div class="number" v-if="isLogin && form.maximum>=0">
 					<div class="jump">
 						<div @click="fill('0.25')" class="item">25%</div>
@@ -75,6 +45,34 @@
 						<div @click="fill('1')" class="item">100%</div>
 					</div>
 				</div>
+			</el-form-item>
+			<div class="jiaoyiAll">
+				<p v-if="isLogin">
+					<!-- <span>{{$t('bibi.other[0]')}}： {{$public.toLowFixed(form.turnover,6,'',false)}}{{Data.code | normal1}}</span> -->
+					<span>{{$t('Gic.Placeorder[5]')}}</span>
+					<span>{{$public.toLowFixed(Data.wallone,6,'',false)}} {{Data.code | normal1}}</span>
+					<p v-else>
+						<!-- <span>{{$t('bibi.other[0]')}}：{{$public.toLowFixed(form.turnover,6,'',false)}}{{Data.code | normal1}}</span> -->
+						<span>{{$t('Gic.Placeorder[5]')}}</span>
+						<span>{{$public.toLowFixed(Data.wallone,6,'',false)}} {{Data.code | normal1}}</span>
+					</p>
+			</div>
+				<!-- <div class="number" v-if="isLogin && form.maximum>=0">
+					<div class="jump">
+						<div @click="fill('0.25')" class="item">25%</div>
+						<div @click="fill('0.5')" class="item">50%</div>
+						<div @click="fill('0.75')" class="item">75%</div>
+						<div @click="fill('1')" class="item">100%</div>
+					</div>
+				</div>
+				<div class="number" v-else>
+					<div class="jump">
+						<div @click="fill('0.25')" class="item">25%</div>
+						<div @click="fill('0.5')" class="item">50%</div>
+						<div @click="fill('0.75')" class="item">75%</div>
+						<div @click="fill('1')" class="item">100%</div>
+					</div>
+				</div> -->
 
 
 			<el-form-item>

@@ -1,22 +1,45 @@
+@import '../../assets/public.less';
 .bb_order_wrapper{
 	.order_container {
 		width: 1200px;
 		margin:0 auto;
 		border-radius:8px;
 		.tab_top{
-				.el-tabs__header{margin:0;
-						.el-tabs__nav-wrap{
-								padding:0 20px;
-								.el-tabs__item{
-										// font-size:14px;
-								}
-						}
+			.el-tabs__header{
+				margin:0;
+			}
+			.el-tabs__content{
+				padding:0 20px 20px;
+				min-height:300px;
+				background: @common-color;
+				.el-table::before{
+					display:none;
 				}
-				.el-tabs__content{
-						padding:0 20px 20px;
-						min-height:300px;
-						.el-table::before{display:none;}
+				.el-table__header {
+					border: 0;
 				}
+				.el-table__header-wrapper{
+					th{
+						background: @common-color;
+						color:@common-color3;
+						border: 0;
+					}
+				}
+				.el-table__body-wrapper{
+					td{
+						background:@common-color;
+						border-bottom-color:@YeDorderColor1;
+						color:#fff;
+					}
+				}
+			}
+			.el-tabs__item {
+				padding: 0 20px;
+				color: #fff;
+				&.is-active {
+					background: @main;
+				}
+			}
 		}
 		.cancel_order{
 			padding:3px 10px;
@@ -29,36 +52,48 @@
 	}
 }
 
-
-
-
 .bb_order_all_wrapper{
 		width:100%;
 		padding:10px 0 45px 0;
+		background: @common-color4;
 		.order_container{
 			position: relative;
 			width: 1280px;
 			margin:0 auto;
 			.tab_top{
-				.el-tabs__header{margin:0;
+				.el-tabs__header{
+					margin:0;
+					height:60px;
+					.el-tabs__nav-wrap{
+						padding:0 20px;
 						height:60px;
-						.el-tabs__nav-wrap{
-								padding:0 20px;
-								height:60px;
-								.el-tabs__nav-scroll{
-									margin-top:20px;
-								}
-								.el-tabs__item{
-										// font-size:14px;
-								}
+						background: @common-color;
+						.el-tabs__nav-scroll{
+							margin-top:20px;
 						}
+					}
+					.el-tabs__item {
+						color: #fff;
+						padding:0 20px;
+						font-size: 16px;
+						&.is-active {
+							color: @main;
+						}
+					}
+					.el-tabs__active-bar {
+						width: 30px!important;
+						background-color: @main;
+						left: 10%;
+						margin-left: -15px;
+					}
 				}
-				.el-tabs__content{
-						padding:0 20px 20px;
-						min-height:600px;
-						.el-table::before{display:none;}
+				.el-table {
+					th.is-leaf, tr td {
+						background: @common-color4;
+						border-color: @YeDorderColor1;
+					}
 				}
-		}
+			}
 		}
 		.cancel_order{
 			padding:3px 10px;

@@ -6,118 +6,160 @@
 	<div class="bb_order_all_wrapper">
 		<div class="order_container">
 			<el-tabs v-model="activeName" @tab-click="handleClick" class="tab_top">
-				<!-- 充币记录 -->
-				<el-tab-pane :label='$t("Gic.bbOrderAll[0]")' name="first">
-						<el-table :data="tranListData" style="width: 100%">
-								<el-table-column prop="add_time" :label='$t("Gic.bbOrderAll[2]")' width="150">
-									<template slot-scope="scope">
-										<span>{{$public.timestampToTime(scope.row.add_time)}}</span>
-									</template>
-								</el-table-column>
-								<el-table-column prop="pname" :label='$t("Gic.bbOrderAll[3]")'>
-								</el-table-column>
-								<el-table-column prop="type" :label='$t("Gic.bbOrderAll[4]")'>
-									<template slot-scope="scope">
-										<span v-if="scope.row.type == '1'" style="color:#24d985;">{{$t("Gic.bbOrderAll[16]")}}</span>
-										<span v-if="scope.row.type == '2'" style="color:#f33939;">{{$t("Gic.bbOrderAll[17]")}}</span>
-									</template>
-								</el-table-column>
-								<el-table-column prop="otype" :label='$t("Gic.bbOrderAll[5]")'>
-									<template slot-scope="scope">
-										<span v-if="scope.row.otype == '1'">{{$t("Gic.bbOrderAll[18]")}}</span>
-										<span v-if="scope.row.otype == '2'">{{$t("Gic.bbOrderAll[19]")}}</span>
-									</template>
-								</el-table-column>
-								<el-table-column prop="wtnum" :label='$t("Gic.bbOrderAll[6]")'>
-								</el-table-column>
-								<el-table-column prop="wtprice" :label='$t("Gic.bbOrderAll[7]")'>
-									
-								</el-table-column>
-								<el-table-column prop="wtnum" :label='$t("Gic.bbOrderAll[8]")'>
-									<template slot-scope="scope">
-										<span>
-											{{$public.Multiplication(Number(scope.row.wtprice),Number(scope.row.wtnum)).toFixed($public.SavePoint('else'))}}
-										</span>
-									</template>
-								</el-table-column>
-								<el-table-column prop="cjnum" :label='$t("Gic.bbOrderAll[9]")'>
-								</el-table-column>
-								<el-table-column prop="wtnum" :label='$t("Gic.bbOrderAll[10]")'>
-									<template slot-scope="scope">
-										<span>
-												{{$public.Subtraction(Number(scope.row.wtnum),Number(scope.row.cjnum)).toFixed($public.SavePoint('else'))}}
-										</span>
-									</template>
-								</el-table-column>
-								<el-table-column prop="status" :label='$t("Gic.bbOrderAll[11]")'>
-									<template slot-scope="scope">
-										<span class="cancel_order" @click="cancel_order(scope.row.type,scope.row.wtprice,scope.row.wtnum,scope.row.cjnum,scope.row.orders_id)" v-if="scope.row.status == '0' || scope.row.status == '1'">{{$t("Gic.bbOrderAll[20]")}}</span>
-									</template>
-								</el-table-column>
-							</el-table>
+				<el-tab-pane label='当前委托' name="first">
+					<el-table :data="tranListData" empty-text="暂无数据" style="width: 100%">
+							<el-table-column prop="add_time" :label='$t("Gic.bbOrderAll[2]")' width="150">
+								<template slot-scope="scope">
+									<span>{{$public.timestampToTime(scope.row.add_time)}}</span>
+								</template>
+							</el-table-column>
+							<el-table-column prop="pname" :label='$t("Gic.bbOrderAll[3]")'>
+							</el-table-column>
+							<el-table-column prop="type" :label='$t("Gic.bbOrderAll[4]")'>
+								<template slot-scope="scope">
+									<span v-if="scope.row.type == '1'" style="color:#24d985;">{{$t("Gic.bbOrderAll[16]")}}</span>
+									<span v-if="scope.row.type == '2'" style="color:#f33939;">{{$t("Gic.bbOrderAll[17]")}}</span>
+								</template>
+							</el-table-column>
+							<el-table-column prop="otype" :label='$t("Gic.bbOrderAll[5]")'>
+								<template slot-scope="scope">
+									<span v-if="scope.row.otype == '1'">{{$t("Gic.bbOrderAll[18]")}}</span>
+									<span v-if="scope.row.otype == '2'">{{$t("Gic.bbOrderAll[19]")}}</span>
+								</template>
+							</el-table-column>
+							<el-table-column prop="wtnum" :label='$t("Gic.bbOrderAll[6]")'>
+							</el-table-column>
+							<el-table-column prop="wtprice" :label='$t("Gic.bbOrderAll[7]")'>
+								
+							</el-table-column>
+							<el-table-column prop="wtnum" :label='$t("Gic.bbOrderAll[8]")'>
+								<template slot-scope="scope">
+									<span>
+										{{$public.Multiplication(Number(scope.row.wtprice),Number(scope.row.wtnum)).toFixed($public.SavePoint('else'))}}
+									</span>
+								</template>
+							</el-table-column>
+							<el-table-column prop="cjnum" :label='$t("Gic.bbOrderAll[9]")'>
+							</el-table-column>
+							<el-table-column prop="wtnum" :label='$t("Gic.bbOrderAll[10]")'>
+								<template slot-scope="scope">
+									<span>
+											{{$public.Subtraction(Number(scope.row.wtnum),Number(scope.row.cjnum)).toFixed($public.SavePoint('else'))}}
+									</span>
+								</template>
+							</el-table-column>
+							<el-table-column prop="status" :label='$t("Gic.bbOrderAll[11]")'>
+								<template slot-scope="scope">
+									<span class="cancel_order" @click="cancel_order(scope.row.type,scope.row.wtprice,scope.row.wtnum,scope.row.cjnum,scope.row.orders_id)" v-if="scope.row.status == '0' || scope.row.status == '1'">{{$t("Gic.bbOrderAll[20]")}}</span>
+								</template>
+							</el-table-column>
+						</el-table>
 				</el-tab-pane>
-				<!-- 提币记录 -->
-				<el-tab-pane :label='$t("Gic.bbOrderAll[1]")' name="second">
-						<el-table :data="tranListData" style="width: 100%">
-								<el-table-column prop="add_time" :label='$t("Gic.bbOrderAll[2]")' width="150">
+				<el-tab-pane label='历史委托' name="second">
+					<el-table :data="tranListData" empty-text="暂无数据" style="width: 100%">
+							<el-table-column prop="add_time" :label='$t("Gic.bbOrderAll[2]")' width="150">
+								<template slot-scope="scope">
+									<span>{{$public.timestampToTime(scope.row.add_time)}}</span>
+								</template>
+							</el-table-column>
+							<el-table-column prop="pname" :label='$t("Gic.bbOrderAll[3]")'>
+							</el-table-column>
+							<el-table-column prop="type" :label='$t("Gic.bbOrderAll[4]")'>
+								<template slot-scope="scope">
+									<span v-if="scope.row.type == '1'" style="color:#24d985;">{{$t("Gic.bbOrderAll[16]")}}</span>
+									<span v-if="scope.row.type == '2'" style="color:#f33939;">{{$t("Gic.bbOrderAll[17]")}}</span>
+								</template>
+							</el-table-column>
+							<el-table-column prop="otype" :label='$t("Gic.bbOrderAll[5]")'>
+								<template slot-scope="scope">
+									<span v-if="scope.row.otype == '1'">{{$t("Gic.bbOrderAll[18]")}}</span>
+									<span v-if="scope.row.otype == '2'">{{$t("Gic.bbOrderAll[19]")}}</span>
+								</template>
+							</el-table-column>
+							<el-table-column prop="wtnum" :label='$t("Gic.bbOrderAll[6]")'>
+							</el-table-column>
+							<el-table-column prop="wtprice" :label='$t("Gic.bbOrderAll[7]")'>
 									<template slot-scope="scope">
-										<span>{{$public.timestampToTime(scope.row.add_time)}}</span>
-									</template>
-								</el-table-column>
-								<el-table-column prop="pname" :label='$t("Gic.bbOrderAll[3]")'>
-								</el-table-column>
-								<el-table-column prop="type" :label='$t("Gic.bbOrderAll[4]")'>
-									<template slot-scope="scope">
-										<span v-if="scope.row.type == '1'" style="color:#24d985;">{{$t("Gic.bbOrderAll[16]")}}</span>
-										<span v-if="scope.row.type == '2'" style="color:#f33939;">{{$t("Gic.bbOrderAll[17]")}}</span>
-									</template>
-								</el-table-column>
-								<el-table-column prop="otype" :label='$t("Gic.bbOrderAll[5]")'>
-									<template slot-scope="scope">
-										<span v-if="scope.row.otype == '1'">{{$t("Gic.bbOrderAll[18]")}}</span>
-										<span v-if="scope.row.otype == '2'">{{$t("Gic.bbOrderAll[19]")}}</span>
-									</template>
-								</el-table-column>
-								<el-table-column prop="wtnum" :label='$t("Gic.bbOrderAll[6]")'>
-								</el-table-column>
-								<el-table-column prop="wtprice" :label='$t("Gic.bbOrderAll[7]")'>
-										<template slot-scope="scope">
-												<span v-if="scope.row.wtprice == '市价'">{{$t("Gic.bbOrderAll[19]")}}</span>
-												<span v-else>{{scope.row.wtprice}}</span>
-											</template>
-								</el-table-column>
-								<el-table-column prop="cjnum" :label='$t("Gic.bbOrderAll[12]")'>
-								</el-table-column>
-								<el-table-column prop="totalprice" :label='$t("Gic.bbOrderAll[13]")'>
-		
-								</el-table-column>
-								<el-table-column prop="fee" :label='$t("Gic.Placeorder[8]")'>
+											<span v-if="scope.row.wtprice == '市价'">{{$t("Gic.bbOrderAll[19]")}}</span>
+											<span v-else>{{scope.row.wtprice}}</span>
+										</template>
+							</el-table-column>
+							<el-table-column prop="cjnum" :label='$t("Gic.bbOrderAll[12]")'>
+							</el-table-column>
+							<el-table-column prop="totalprice" :label='$t("Gic.bbOrderAll[13]")'>
+	
+							</el-table-column>
+							<el-table-column prop="fee" :label='$t("Gic.Placeorder[8]")'>
 
-									</el-table-column>
-								<el-table-column prop="cjprice" :label='$t("Gic.bbOrderAll[14]")'>
 								</el-table-column>
-								<el-table-column prop="status" :label='$t("Gic.bbOrderAll[15]")'>
-									<template slot-scope="scope">
-										<span v-if="scope.row.status == '-1'">{{$t("Gic.bbOrderAll[21]")}}</span>
-										<span v-if="scope.row.status == '2'">{{$t("Gic.bbOrderAll[22]")}}</span>
-									</template>
-								</el-table-column>
-							</el-table>
+							<el-table-column prop="cjprice" :label='$t("Gic.bbOrderAll[14]")'>
+							</el-table-column>
+							<el-table-column prop="status" :label='$t("Gic.bbOrderAll[15]")'>
+								<template slot-scope="scope">
+									<span v-if="scope.row.status == '-1'">{{$t("Gic.bbOrderAll[21]")}}</span>
+									<span v-if="scope.row.status == '2'">{{$t("Gic.bbOrderAll[22]")}}</span>
+								</template>
+							</el-table-column>
+						</el-table>
 				</el-tab-pane>
+				<el-tab-pane label='成交明细' name="three">
+					<el-table :data="tranListData" empty-text="暂无数据" style="width: 100%">
+							<el-table-column prop="add_time" :label='$t("Gic.bbOrderAll[2]")' width="150">
+								<template slot-scope="scope">
+									<span>{{$public.timestampToTime(scope.row.add_time)}}</span>
+								</template>
+							</el-table-column>
+							<el-table-column prop="pname" :label='$t("Gic.bbOrderAll[3]")'>
+							</el-table-column>
+							<el-table-column prop="type" :label='$t("Gic.bbOrderAll[4]")'>
+								<template slot-scope="scope">
+									<span v-if="scope.row.type == '1'" style="color:#24d985;">{{$t("Gic.bbOrderAll[16]")}}</span>
+									<span v-if="scope.row.type == '2'" style="color:#f33939;">{{$t("Gic.bbOrderAll[17]")}}</span>
+								</template>
+							</el-table-column>
+							<el-table-column prop="otype" :label='$t("Gic.bbOrderAll[5]")'>
+								<template slot-scope="scope">
+									<span v-if="scope.row.otype == '1'">{{$t("Gic.bbOrderAll[18]")}}</span>
+									<span v-if="scope.row.otype == '2'">{{$t("Gic.bbOrderAll[19]")}}</span>
+								</template>
+							</el-table-column>
+							<el-table-column prop="wtnum" :label='$t("Gic.bbOrderAll[6]")'>
+							</el-table-column>
+							<el-table-column prop="wtprice" :label='$t("Gic.bbOrderAll[7]")'>
+									<template slot-scope="scope">
+											<span v-if="scope.row.wtprice == '市价'">{{$t("Gic.bbOrderAll[19]")}}</span>
+											<span v-else>{{scope.row.wtprice}}</span>
+										</template>
+							</el-table-column>
+							<el-table-column prop="cjnum" :label='$t("Gic.bbOrderAll[12]")'>
+							</el-table-column>
+							<el-table-column prop="totalprice" :label='$t("Gic.bbOrderAll[13]")'>
+	
+							</el-table-column>
+							<el-table-column prop="fee" :label='$t("Gic.Placeorder[8]")'>
 
+								</el-table-column>
+							<el-table-column prop="cjprice" :label='$t("Gic.bbOrderAll[14]")'>
+							</el-table-column>
+							<el-table-column prop="status" :label='$t("Gic.bbOrderAll[15]")'>
+								<template slot-scope="scope">
+									<span v-if="scope.row.status == '-1'">{{$t("Gic.bbOrderAll[21]")}}</span>
+									<span v-if="scope.row.status == '2'">{{$t("Gic.bbOrderAll[22]")}}</span>
+								</template>
+							</el-table-column>
+						</el-table>
+				</el-tab-pane>
 			</el-tabs>
 
-
-			<div class="shaixuan">
+			<!-- <div class="shaixuan">
 				<el-select v-model="form.type"  @change="orgSelectClick" :placeholder='$t("Gic.bbOrderAll[23]")'>
 					<el-option :label='$t("Gic.bbOrderAll[16]")' value="1"></el-option>
 					<el-option :label='$t("Gic.bbOrderAll[17]")' value="2"></el-option>
 				</el-select>
 				<el-select v-model="form.dizhi"  @change="orgSelectClick1" :placeholder='$t("Gic.bbOrderAll[23]")'>
-						<el-option :value="item.mark" :label="item.pname" v-for='(item,key) in currency' :key='key'>
-							</el-option>
+					<el-option :value="item.mark" :label="item.pname" v-for='(item,key) in currency' :key='key'></el-option>
 				</el-select>
-			</div>
+			</div> -->
 
 		</div>
 	</div>

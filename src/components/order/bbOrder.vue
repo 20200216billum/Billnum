@@ -1,14 +1,12 @@
-<style lang=less>
-	@import '../../assets/public.less';
+<style lang="less">
 	@import './bbOrder.less';
 </style>
 <template>
 	<div class="bb_order_wrapper">
 		<div class="order_container">
 			<el-tabs v-model="activeName" @tab-click="handleClick" class="tab_top">
-				<!-- 充币记录 -->
-				<el-tab-pane :label='$t("Gic.bbOrderAll[0]")' name="first">
-					<el-table :data="tranListData" style="width: 100%">
+				<el-tab-pane label='当前委托' name="first">
+					<el-table :data="tranListData" empty-text="暂无数据" style="width: 100%">
 						<el-table-column prop="add_time" :label='$t("Gic.bbOrderAll[2]")'>
 							<template slot-scope="scope">
 								<span>{{$public.timestampToTime(scope.row.add_time)}}</span>
@@ -55,9 +53,8 @@
 						</el-table-column>
 					</el-table>
 				</el-tab-pane>
-				<!-- 提币记录 -->
-				<el-tab-pane :label='$t("Gic.bbOrderAll[1]")' name="second">
-					<el-table :data="tranListData" style="width: 100%">
+				<el-tab-pane label='历史委托' name="second">
+					<el-table :data="tranListData" empty-text="暂无数据" style="width: 100%">
 						<el-table-column prop="add_time" :label='$t("Gic.bbOrderAll[2]")'>
 							<template slot-scope="scope">
 								<span>{{$public.timestampToTime(scope.row.add_time)}}</span>
@@ -106,7 +103,6 @@
 						</el-table-column>
 					</el-table>
 				</el-tab-pane>
-
 			</el-tabs>
 		</div>
 	</div>
@@ -116,11 +112,10 @@
 		data() {
 			return {
 				activeName: 'first',
-				tranListData: [],    //当前委托
-				withdrawLogData: [], //提币明细
-
-				page: null,
-				total: null,
+				tranListData: [], 
+				withdrawLogData: [],
+				page: 1,
+				total: 0,
 				size: 10,
 			}
 		},

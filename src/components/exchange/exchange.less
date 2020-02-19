@@ -614,7 +614,6 @@
                         border-radius: 7px;
                     }
                     .number{
-                        padding:30px 0;
                         .jump{
                             width: 100%;
                             height: 30px;
@@ -627,10 +626,15 @@
                                 font-size:14px;
                                 line-height:28px;
                                 height:28px;
-                                border:1px solid #999999;
+                                border:1px solid #2D3346;
+                                border-top: 0;
+                                border-right: 0;
                                 cursor: pointer;
                                 &.active{
                                     background: @YeDackGroundColor3;
+                                }
+                                &:last-child {
+                                    border-right: 1px solid #2D3346;
                                 }
                             }
 
@@ -711,7 +715,6 @@
                                     flex-basis: calc(98%/4);
                                     color: #ffffff;
                                     text-align: center;
-                                    background: @YeDackGroundColor1;
                                     cursor: pointer;
                                     &.active{
                                         background: @YeDackGroundColor3;
@@ -1052,7 +1055,7 @@
                     }
                 }
                 .transaction_mainConnent {
-                    height: 908px;
+                    height: 857px;
                     .PurchaseData_name {
                         font-size: 14px;
                     }

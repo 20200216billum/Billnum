@@ -28,7 +28,7 @@
           <!-- <template slot="append">{{ Data.code | normal }}</template> -->
           <span slot="suffix">{{Data.code | normal}}</span>
         </el-input>
-        <!-- <div class="number" v-if="isLogin && form.maximum>=0">
+        <div class="number" v-if="isLogin && form.maximum>=0">
 
           <div class="jump">
             <div @click="fill('0.25')" class="item">25%</div>
@@ -46,7 +46,7 @@
             <div @click="fill('0.75')" class="item">75%</div>
             <div @click="fill('1')" class="item">100%</div>
           </div>
-        </div> -->
+        </div>
       </el-form-item>
       <div class="jiaoyiAll jiaoyiSell">
 
@@ -62,7 +62,7 @@
         </p>
       </div>
 
-      <div class="number" v-if="isLogin && form.maximum>=0">
+      <!-- <div class="number" v-if="isLogin && form.maximum>=0">
         <div class="jump">
           <div @click="fill('0.25')" class="item">25%</div>
           <div @click="fill('0.5')" class="item">50%</div>
@@ -77,7 +77,7 @@
           <div @click="fill('0.75')" class="item">75%</div>
           <div @click="fill('1')" class="item">100%</div>
         </div>
-      </div>
+      </div> -->
 
 
       <el-form-item>

@@ -654,35 +654,6 @@
         }
 
     }
-    .bb_order_all_wrapper {
-        background:#030609;
-        .order_container{
-            background:#252536;
-            .tab_top{
-                .el-tabs__header{
-                    .el-tabs__item{
-                        color:#999999;
-                        padding:0 20px;
-                    }
-                    .is-active{
-                        color:#ffffff;
-                        font-size:16px;
-                    }
-                    .el-tabs__active-bar{
-                        background-color:#fff;
-                    }
-                }
-                .el-tabs__content{
-                    .el-table__header-wrapper{
-                        th{background:#262637;border-bottom-color:#1b1b29;color:#999;}
-                    }
-                    .el-table__body-wrapper{
-                        td{background:#262637;border-bottom-color:#1b1b29;color:#fff;}
-                    }
-                }
-            }
-        }
-    }
     .el-button--primary.is-plain{
         color: #fff;
         border: none;
@@ -2783,27 +2754,15 @@
     }
     // 币币订单->订单
     .bb_order_wrapper {
-        background:#262637;
+        background: @common-color2;
         .order_container{
+            .el-tabs__nav-wrap::after {
+                display: none;
+            }
             .tab_top{
                 .el-tabs__header{
-                    .el-tabs__item{
-                        color:#999999;
-                    }
-                    .is-active{
-                        color:#ffffff;
-                        font-size:16px;
-                    }
                     .el-tabs__active-bar{
-                        background-color:#fff;
-                    }
-                }
-                .el-tabs__content{
-                    .el-table__header-wrapper{
-                        th{background:#262637;border-bottom-color:#1b1b29;color:#999;}
-                    }
-                    .el-table__body-wrapper{
-                        td{background:#262637;border-bottom-color:#1b1b29;color:#fff;}
+                        display: none;
                     }
                 }
             }
@@ -2852,7 +2811,6 @@
                         background: @YeDackGroundColor2;
                         border: 1px solid @YeDackGroundColor2;
                     }
-                    .el-button {}
                 }
             }
         }
@@ -2881,45 +2839,6 @@
                 .red {
                     color: @YeOtherColor2;
                 }
-                .nowDeal {
-                    .el-table__expanded-cell {
-                        .drop_down {
-                            .el-form-item {
-                                &:first-child {}
-                                .el-form-item__label {}
-                                .el-form-item__content {}
-                            }
-                        }
-                    }
-                }
-                .historyWt {
-                    .el-table__expanded-cell {
-                        .drop_down {
-                            .el-form-item {
-                                &:first-child {}
-                                .el-form-item__label {}
-                                .el-form-item__content {}
-                            }
-                        }
-                    }
-                }
-                #pane-first .el-table {
-                    th:nth-of-type(10) {}
-                }
-                #pane-second {
-                    .el-table:last-child {
-                        th:nth-of-type(11) {}
-                    }
-                }
-                #pane-third .el-table {
-                    th:nth-of-type(10),
-                    td:nth-of-type(10),
-                    th:nth-of-type(12) {}
-                }
-                .el-table__row {
-                    td:last-child {}
-                }
-                .el-form-item {}
                 .right {
                     .bitType {
                         background: @YeDackGroundColor19;
