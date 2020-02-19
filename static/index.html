@@ -9,7 +9,7 @@
             padding:0px;
         }
         #loading{
-            position: absolute;
+            /* position: absolute;
             width: 200px;
             height: 200px;
             left: 50%;
@@ -19,6 +19,18 @@
             z-index: 99999999;
             background: url('./img/loading.gif') center center no-repeat;
             background-size:30% 30%;
+            display: none; */
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            /* margin-left: -100px; */
+            top: 0;
+            /* margin-top: -100px; */
+            z-index: 99999999;
+            background: url('./img/loading.gif') center center no-repeat;
+            background-size: 10% 10%;
+            background-color: #182330;
             display: none;
         }
     </style>
@@ -88,11 +100,11 @@
  if(getCookie("changeBg") == 'night' || !getCookie("changeBg")) {
      localStorage.clear();
      var _bgColor = {
-         mainBg: '#262637', //主要背景颜色
-         asideBg: '#262637', //工具边框颜色
+         mainBg: '#141625', //主要背景颜色
+         asideBg: '#131725', //工具边框颜色
          hengline: '#344568', //横线
          shuline: '#344568', //竖线
-         backgroundColor:'#161633',
+         backgroundColor:'#182330',
          foregroundColor:'#161633',              
      }
  } else {
@@ -227,7 +239,7 @@
                         "paneProperties.legendProperties.showSeriesOHLC": true,
                         "scalesProperties.showLeftScale": false,
                         "scalesProperties.showRightScale": true,
-                        "scalesProperties.backgroundColor": "#1b1b40",
+                        "scalesProperties.backgroundColor": "#182330",
                         "scalesProperties.lineColor": "#46587b",
                         "scalesProperties.textColor": "#8f98ad",
                         "scalesProperties.scaleSeriesOnly": false,

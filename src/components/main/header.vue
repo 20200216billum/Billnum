@@ -45,8 +45,11 @@
 							</el-dropdown-menu>
 						</el-dropdown>
 					</li> -->
-					<!-- 订单 -->
-					<li class="personal_list" v-if="orderUrl" @click="$router.push({path:orderUrl})">
+					<!-- 资产 -->
+					<li class="personal_list" @click="$router.push({path:'/addCoin'})">
+						<span>资产</span>
+					</li>
+					<li class="personal_list" v-if="orderUrl" @click="$router.push({path:'/bbOrder'})">
 						<!-- <img style="vertical-align: middle" src="../../assets/img/order.png"> -->
 						<span>{{$t("Gic.header[20]")}}</span>
 					</li>
@@ -584,16 +587,16 @@
 				// 	status: true,
 				// 	hot:true
 				// },
-				{
-					name: _this.$t("Gic.header[2]"), //资讯
-					url: '/zixunList',
-					status: true
-				},
-				{
-					name: _this.$t("Gic.header[3]"), //资产
-					url: '/addCoin',
-					status: true
-				},
+				// {
+				// 	name: _this.$t("Gic.header[2]"), //资讯
+				// 	url: '/zixunList',
+				// 	status: true
+				// },
+				// {
+				// 	name: _this.$t("Gic.header[3]"), //资产
+				// 	url: '/addCoin',
+				// 	status: true
+				// },
 			];
 			this.viewCtrl(this.$route.path)
 		},

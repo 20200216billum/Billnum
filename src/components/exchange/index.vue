@@ -58,8 +58,11 @@
           <div class="exchange_mian_box">
             <!-- 切换k线 -->
             <Quotationheader :Marketheader="Marketdataheader"></Quotationheader>
-  
-            <section v-if="klinetab== $t('bibi.other[11]')" class="kine" id="kk">
+            <el-radio-group class="radiogroups" v-model="klinetab">
+							<el-radio-button class="klinesbtn" label="K线图"></el-radio-button>
+							<el-radio-button class="shendubtn" label="深度图"></el-radio-button>
+						</el-radio-group>
+            <section v-if="klinetab== 'K线图'" class="kine" id="kk">
               <iframe
                 style="height:570px"
                 :src="'./static/index.html?timers=15&code=' + marketPurchase.code + '&last_price='+marketPurchase.PriceData"
@@ -68,6 +71,10 @@
                 id="fram"
               ></iframe>
             </section>
+            <section class="kine" v-else>
+							<iframe id="fram" :src="'./static/indexsd.html?timers=15&code=' + marketPurchase.code + '&last_price='+urlPrice" width="100%"
+								height="100%"></iframe>
+						</section>
   
             <!-- 下单box -->
             <div style="overflow: hidden;padding-top: 10px;">
@@ -325,7 +332,7 @@ export default {
   data() {
     return {
       isPankou: true,
-      // klinetab:"K线图",
+      klinetab:"K线图",
       // 深度合并
       DeepMerger: "",
       // 深度挡位
@@ -1184,7 +1191,7 @@ export default {
       return [];
     },
     klinetab() {
-      return this.$t("bibi.other[11]");
+      return 'K线图';
     },
     // 交易对需要保留的小数位
     savePoint() {

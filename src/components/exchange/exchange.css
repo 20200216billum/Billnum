@@ -764,13 +764,14 @@ a {
 .exchange .klinAndTring .exchange_mian_box .radiogroups {
   z-index: 999;
   position: absolute;
-  right: 40px;
-  top: 56px;
+  right: 15px;
+  top: 66px;
   display: flex;
 }
 .exchange .klinAndTring .exchange_mian_box .radiogroups .is-active .el-radio-button__inner {
   background: #30D5D8;
   color: #ffffff;
+  border-color: #30D5D8;
 }
 .exchange .klinAndTring .exchange_mian_box .radiogroups .el-radio-button__inner {
   width: 74px;
@@ -779,10 +780,12 @@ a {
   line-height: 28px;
   text-align: center;
   padding: 0;
-  color: #30D5D8;
+  color: #828EA1;
   font-size: 14px;
   background: #181b2a;
-  border-color: #30D5D8;
+  border: 1px solid #828EA1;
+  border-radius: 0;
+  margin-left: 10px;
 }
 .exchange .klinAndTring .HistoricalEntrustment {
   height: 100%;
@@ -916,8 +919,8 @@ a {
   background: #182330;
 }
 .exchange .klinAndTring .exchange_mian .exchange_box .Placeanorder_header_box {
-  height: 50px;
-  line-height: 50px;
+  height: 60px;
+  line-height: 60px;
   padding-left: 20px;
   overflow: hidden;
   zoom: 1;
@@ -926,6 +929,10 @@ a {
 .exchange .klinAndTring .exchange_mian .exchange_box .Placeanorder_header_box .Placeanorder_list_header {
   font-size: 18px;
   padding-right: 10px;
+}
+.exchange .klinAndTring .exchange_mian .exchange_box .Placeanorder_header_box .Placeanorder_list_header p {
+  color: #828EA1;
+  font-size: 25px;
 }
 .exchange .klinAndTring .exchange_mian .exchange_box .Placeanorder_header_box .Placeanorder_list_conent {
   width: 70%;
@@ -937,16 +944,36 @@ a {
 }
 .exchange .klinAndTring .exchange_mian .exchange_box .Placeanorder_header_box .Placeanorder_list_conent .newPrice .price {
   font-size: 18px;
+  color: #fff;
+  line-height: 1;
+  margin-top: 13px;
+  margin-left: 5px;
+}
+.exchange .klinAndTring .exchange_mian .exchange_box .Placeanorder_header_box .Placeanorder_list_conent .newPrice .price .two {
+  color: #828EA1;
+  font-size: 14px;
 }
 .exchange .klinAndTring .exchange_mian .exchange_box .Placeanorder_header_box .Placeanorder_list_conent .newPrice .cny {
   font-size: 12px;
 }
 .exchange .klinAndTring .exchange_mian .exchange_box .Placeanorder_header_box .Placeanorder_list_conent p {
-  color: #BBBBBB;
-  margin-right: 3%;
+  color: #828EA1;
+  line-height: 1;
+  margin-left: 30px;
+  margin-top: 13px;
+  text-align: right;
 }
 .exchange .klinAndTring .exchange_mian .exchange_box .Placeanorder_header_box .Placeanorder_list_conent p span {
   color: #ffffff;
+  font-size: 16px;
+  display: inline-block;
+  margin-top: 8px;
+}
+.exchange .klinAndTring .exchange_mian .exchange_box .Placeanorder_header_box .Placeanorder_list_conent p.price {
+  text-align: left;
+}
+.exchange .klinAndTring .exchange_mian .exchange_box .Placeanorder_header_box .Placeanorder_list_conent p.price span {
+  margin-top: 1px;
 }
 .exchange .klinAndTring .exchange_mian .exchange_box .Placeanorder_header_box li,
 .exchange .klinAndTring .exchange_mian .exchange_box .Placeanorder_header_box p {

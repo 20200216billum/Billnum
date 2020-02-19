@@ -257,14 +257,21 @@
 .el-breadcrumb__item:last-child .el-breadcrumb__inner:hover {
   color: #fff;
 }
+#app .el-form-item .el-input__inner {
+  border: 0;
+  background: #202D3C;
+}
 #app .el-form-item.is-error .el-input__inner {
-  border-color: #30D5D8;
+  border: 1px solid #30D5D8;
+}
+#app .custom-dialog .el-form-item .el-input__inner {
+  background: #EFEFF4;
 }
 .el-form-item__error {
   color: #30D5D8;
 }
 .el-pagination {
-  text-align: right;
+  text-align: center;
 }
 .el-pagination.is-background .btn-next,
 .el-pagination.is-background .btn-prev,
@@ -310,7 +317,6 @@
 .center .centercontain .top-title {
   font-size: 36px;
   color: #ffffff;
-  margin-top: 40px;
 }
 .center .centercontain .router-list {
   margin-top: 40px;

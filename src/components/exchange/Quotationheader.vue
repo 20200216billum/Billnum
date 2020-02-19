@@ -2,27 +2,39 @@
 	<section class="exchange_box">
 		<ul class="Placeanorder_header_box">
 			<li class="Placeanorder_list_header">
-				<p v-if='Marketheader.name'>{{$public.changeInterceptingAdd(Marketheader.name)}}<span></span></p>
+				<p v-if='Marketheader.name'>{{ Marketheader.code }}<span></span></p>
 			</li>
 			<li class="Placeanorder_list_conent">
-				<p class="newPrice">
-					<span class="price">
-						{{Number(Marketheader.price).toFixed($public.SavePoint(Marketheader.code))}}
-					</span>
-					&nbsp; ≈
+				<div class="newPrice">
+					<p class="price">
+						<span class="one">{{Number(Marketheader.price).toFixed($public.SavePoint(Marketheader.code))}}</span><br/>
+						<span class="two">≈{{$public.Division(Number(Marketheader.cnyPrice),Number(7)).toFixed($public.SavePoint(Marketheader.code))}} USD</span>
+					</p>
+					
 					
 					<!-- <span class="cny">{{$public.toDecimal2(Marketheader.cnyPrice)}}CNY</span> -->
-
 					<!-- <span v-if="language == 'zh-CN'">{{$public.toDecimal2(Marketheader.cnyPrice)}} CNY</span> -->
-					<span>
+					<!-- <p>
 						{{$public.Division(Number(Marketheader.cnyPrice),Number(7)).toFixed($public.SavePoint(Marketheader.code))}} USD
-					</span>
-				</p>
+					</p> -->
+				</div>
 
-				<p>{{$t("Gic.coincoin[12]")}} <span>{{Marketheader.changeRate}}</span></p>
-				<p>{{$t("Gic.coincoin[13]")}} <span>{{$public.toDecimal2(Marketheader.high)}}</span></p>
-				<p>{{$t("Gic.coincoin[14]")}} <span>{{$public.toDecimal2(Marketheader.low)}}</span></p>
-				<p>{{$t("Gic.coincoin[15]")}} <span>{{$public.toDecimal2(Marketheader.volume)}}</span></p>
+				<p>
+					涨跌幅<br/>
+					<span>{{ Marketheader.changeRate }}</span>
+				</p>
+				<p>
+					最高价<br/> 
+					<span>{{$public.toDecimal2(Marketheader.high)}}</span>
+				</p>
+				<p>
+					最低价<br/>
+					<span>{{$public.toDecimal2(Marketheader.low)}}</span>
+				</p>
+				<p>
+					24H成交量<br/>
+					<span>{{$public.toDecimal2(Marketheader.volume)}}</span>
+				</p>
 			</li>
 
 		</ul>
