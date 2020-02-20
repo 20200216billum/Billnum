@@ -98,13 +98,14 @@
 					_this.$public.msg(_this.$t('Gic.securityChangePerson2[7]'), 'warning', _this);
 					return ;
 				}
+
 				_this.$http.post(_this.$http.advancedCertification, _this.userForm).then(function(res) {
 				  if(res.data.code == '200') {
-					  _this.$public.msg(_this.$t('Gic.securityChangeopwd[9]'), 'success', _this);
-					_this.$router.go(-1); //返回上一层
-				 }else{
-					_this.$public.msg(res.data.msg, 'warning', _this);
-				 }
+					  	_this.$public.msg(_this.$t('Gic.securityChangeopwd[9]'), 'success', _this);
+						_this.$router.go(-1); //返回上一层
+					}else{
+						_this.$public.msg(res.data.msg, 'warning', _this);
+					}
 				})
 			},
 		},
@@ -182,7 +183,3 @@
 		}
 	}
 </script>
-
-<style scoped="scoped">
-
-</style>

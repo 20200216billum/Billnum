@@ -30,7 +30,7 @@
 
             <div class="saoma">
                 <div class="cont">
-                    <img />
+                    <img :src="downloadUrl" />
                     <div>
                         <p>Billum数字资产交易平台</p>
                         <p>随时随地 便捷交易</p>
@@ -161,6 +161,7 @@
                         trigger: 'blur'
                     }],
                 },
+                downloadUrl: ""
             }
         },
         methods: {
@@ -297,6 +298,14 @@
                     return;
                 }
             },
+            // 获取下载地址
+            obtainLink() {
+                this.$http.get(this.$http.download_link, {params:{}}).then(res => {
+                    if (res.data.code == 200) {
+                        this.downloadUrl = res.data.data.qrcode;
+                    }
+                })
+            }
         },
         watch: {
             password() {
@@ -311,5 +320,8 @@
                 }
             },
         },
+        mounted() {
+            this.obtainLink();
+        }
     };
 </script>

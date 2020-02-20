@@ -62,7 +62,7 @@
 			};
 			return {
 				userData: {
-					type: 1,
+					// type: 1,
 					name: '', 
 					card_id: '' 
 				},
