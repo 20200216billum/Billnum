@@ -437,8 +437,9 @@ Axios.login = `${second}/api/user/login`   //登录
 Axios.logout= `${second}/api/user/logout`; // 退出登录
 
 
-// GIC资产
+// 资产
 Axios.assetInfo = `${second}/api/user/assetInfo`  //资产信息
+Axios.asset_list = `${second}/api/user/assetlist`  // 充币提币币种列表
 Axios.walletRecharge = `${second}/api/recharge/walletRecharge`  //用户钱包充值
 Axios.createWithdrawAddress = `${second}/api/withdraw/createWithdrawAddress`  //添加提币地址
 Axios.getWithdrawAddress= `${second}/api/withdraw/getWithdrawAddress`; // 提币地址列表

@@ -124,12 +124,15 @@
 						return;  
 				}
 
+				// console.log(e.target.files)
+
 				//获取并记录图片的base64编码
 				var reader = new FileReader();
 				reader.readAsDataURL(e.target.files[0]); // 读出 base64
 				reader.onloadend = function () {
 						// 图片的 base64 格式, 可以直接当成 img 的 src 属性值   
-						_this.userForm.front_img    = reader.result
+						// _this.userForm.front_img = reader.result
+						_this.userForm.front_img = e.target.files[0]
 
 					var dataURL = reader.result;//base64
 					// 显示图片
@@ -151,7 +154,8 @@
 				reader.readAsDataURL(e.target.files[0]); // 读出 base64
 				reader.onloadend = function () {
 						// 图片的 base64 格式, 可以直接当成 img 的 src 属性值   
-						_this.userForm.back_img    = reader.result
+						// _this.userForm.back_img    = reader.result
+						_this.userForm.back_img = e.target.files[0]
 
 					var dataURL = reader.result;//base64
 					// 显示图片
@@ -173,7 +177,8 @@
 				reader.readAsDataURL(e.target.files[0]); // 读出 base64
 				reader.onloadend = function () {
 						// 图片的 base64 格式, 可以直接当成 img 的 src 属性值   
-						_this.userForm.handheld_img    = reader.result
+						// _this.userForm.handheld_img    = reader.result
+						_this.userForm.handheld_img = e.target.files[0]
 
 					var dataURL = reader.result;//base64
 					// 显示图片

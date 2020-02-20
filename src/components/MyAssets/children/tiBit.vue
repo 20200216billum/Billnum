@@ -25,11 +25,11 @@
 						<el-form-item label="数量" prop="money">
 							<el-input v-model="formData.money" :placeholder="$t('Gic.tibit[13]')"></el-input>
 						</el-form-item>
-						<p>{{$t('Gic.tibit[10]')}}：{{ Number(BalanceData.balance).toFixed($public.SavePoint('else'))}} {{code}}</p>
+						<p>{{$t('Gic.tibit[10]')}}：{{ Number(BalanceData.max_tibi).toFixed($public.SavePoint('else'))}} {{code}}</p>
 					</div>
 					<div class="service">
 						<span>手续费</span>
-						<span>5 USDT/次</span>
+						<span>{{ BalanceData.sxf }} {{ $route.query.code }}/次</span>
 					</div>
 					<!-- 资金密码 -->
 					<div class="across">
@@ -70,7 +70,6 @@
 	</div>
 </template>
 <script>
-
 	export default {
 		data() {
 			var _this = this;
@@ -121,8 +120,7 @@
 					time: this.$t("changetpwd.list[4]"), //倒计时
 					disabled: false
 				},
-				userData: '',    //获取登录的邮箱
-
+				userData: '',    
 				rules1: {
 					address: [{
 						validator: address,
@@ -143,11 +141,7 @@
 				},
 			}
 		},
-		watch: {
-
-		},
 		methods: {
-
 			// 获取手续费
 			getShou() {
 				var _this = this;
@@ -157,8 +151,6 @@
 					}
 				});
 			},
-
-
 			getDizhi() {
 				var _this = this;
 				_this.$http.post(_this.$http.getWithdrawAddress, { type: _this.formData.pid }).then((res) => {
@@ -167,14 +159,20 @@
 					}
 				});
 			},
-			//验证码
+			// 获取验证码
 			getCode() {
 				var _this = this;
 				_this.btnCode.disabled = true;
-				//获取验证码
-				_this.$http.post(_this.$http.sendEmail, {
-					email: _this.userData,
-				}).then(function (response) {
+				let _data = {};
+				let url = "";
+				if (_this.$public.email(_this.userData)) {
+					_data.email = _this.userData;
+					url = _this.$http.send_email
+				} else {
+					_data.phone = _this.userData;
+					url = _this.$http.send_sms
+				}
+				_this.$http.post(url, _data).then(function (response) {
 					if (response.data.code == "200") {
 						_this.$public.setTime(_this); //倒计时函数封装
 					} else {
@@ -186,7 +184,6 @@
 
 			applyWithdraw() {
 				var _this = this;
-			
 				_this.$refs.formData.validate(valid => {
 					if (valid) {
 						_this.formData.payment_password = _this.$public.$md5(_this.formData.payment_password);
@@ -218,21 +215,15 @@
 				// }).catch(function (error) { });
 			},
 		},
-		mounted: function () {
-
-		},
-		created() {
+		mounted() {
 			var _this = this;
 			_this.code = _this.$route.query.code;
 			_this.formData.pid = _this.$route.query.pid;
 			_this.userData = sessionStorage.userData;
-			_this.getShou();
+			_this.BalanceData = JSON.parse(_this.$route.query.objInfo);
+			// _this.getShou();
 			_this.getDizhi();
 
 		},
-		computed: {
-
-		},
-
 	}
 </script>

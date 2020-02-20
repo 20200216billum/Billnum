@@ -151,7 +151,7 @@
 			},
 			// 其他明细
 			get_userMoneyLog() {
-				this.$http.post(this.$http.userMoneyLog, { pid: this.$route.query.id ,page:this.page, size:this.size}).then((r) => {
+				this.$http.post(this.$http.userMoneyLog, {page:this.page, size:this.size}).then((r) => {
 					if (r.data.code == 200) {
 						this.userMoneyLogData = r.data.data.data;
 						this.page = r.data.data.current_page

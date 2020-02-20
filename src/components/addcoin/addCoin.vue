@@ -26,38 +26,37 @@
                     </ul>
                     <ul class="list_list">
                         <li v-for="(item,index) in assetsList" :key="index">
-                            <p><img :src="coinImg(item.code)">{{item.code}}</p>
-                            <p>{{ Number(item.balance).toFixed($public.SavePoint('else'))}}</p>
-                            <p>{{ Number(item.frost).toFixed($public.SavePoint('else'))}}</p>
+                            <p><img :src="item.icon">{{item.pname}}</p>
+                            <p>{{ Number(item.asset.balance).toFixed($public.SavePoint('else'))}}</p>
+                            <p>{{ Number(item.asset.frost).toFixed($public.SavePoint('else'))}}</p>
                             <div class="btn">
-                                <el-button class="btn_1" v-if="item.code == 'USDT'" @click="changeUrl('/chongbit',1, 'USDT')"
+                                <!-- <el-button class="btn_1" v-if="item.pname == 'USDT'" @click="changeUrl('/chongbit',1, 'USDT')"
                                     type="primary">{{$t('Gic.addCoin[6]')}}</el-button>
-                                <el-button class="btn_1" v-if="item.code == 'BTC'" @click="changeUrl('/chongbit',1, 'BTC')"
+                                <el-button class="btn_1" v-if="item.pname == 'BTC'" @click="changeUrl('/chongbit',1, 'BTC')"
                                     type="primary">{{$t('Gic.addCoin[6]')}}</el-button>
-                                <el-button class="btn_1" v-if="item.code == 'ETH'" @click="changeUrl('/chongbit',2, 'ETH')"
+                                <el-button class="btn_1" v-if="item.pname == 'ETH'" @click="changeUrl('/chongbit',2, 'ETH')"
+                                    type="primary">{{$t('Gic.addCoin[6]')}}</el-button> -->
+
+                                <el-button class="btn_1" v-if="item.recharges == 1" @click="changeUrl('/chongbit', item, item.pname)"
                                     type="primary">{{$t('Gic.addCoin[6]')}}</el-button>
 
-                                <el-button class="btn_2" v-if="item.code == 'USDT'"
-                                    @click="changeUrl('/tibit',1,item.code,item.pid)" type="primary">
+                                <!-- <el-button class="btn_2" v-if="item.pname == 'USDT'"
+                                    @click="changeUrl('/tibit',1,item.pname,item.pid)" type="primary">
                                     {{$t('Gic.addCoin[7]')}}
                                 </el-button>
-                                <el-button class="btn_2" v-else-if="item.code == 'BTC'"
-                                    @click="changeUrl('/tibit',1,item.code,item.pid)" type="primary">
+                                <el-button class="btn_2" v-else-if="item.pname == 'BTC'"
+                                    @click="changeUrl('/tibit',1,item.pname,item.pid)" type="primary">
                                     {{$t('Gic.addCoin[7]')}}
                                 </el-button>
                                 <el-button class="btn_2" v-else
-                                    @click="changeUrl('/tibit',2,item.code,item.pid)" type="primary">
-                                    {{$t('Gic.addCoin[7]')}}
-                                </el-button>
-
-                                <!-- <el-button class="btn_2" v-if="item.code == 'DAI'"
-                                    @click="changeUrl('/tibit',2,item.code,item.pid)" type="primary">
-                                    {{$t('Gic.addCoin[7]')}}
-                                </el-button>
-                                <el-button class="btn_2" v-if="item.code == 'BI'"
-                                    @click="changeUrl('/tibit',2,item.code,item.pid)" type="primary">
+                                    @click="changeUrl('/tibit',2,item.pname,item.pid)" type="primary">
                                     {{$t('Gic.addCoin[7]')}}
                                 </el-button> -->
+
+                                <el-button class="btn_2" v-if="item.withdrawal == 1"
+                                    @click="changeUrl('/tibit', item, item.pname, item.pid)" type="primary">
+                                    {{$t('Gic.addCoin[7]')}}
+                                </el-button>
 
 
                                 <el-button class="btn_3" @click="changeUrl('/moneyRecord',item.pid)" type="primary">
@@ -73,7 +72,7 @@
             <div class="Assets_gic_bot_cen">
                 <div class="cen_top">
                     <h5>{{$t('Gic.addCoin[9]')}}</h5>
-                    <span class="more">更多</span>
+                    <span class="more" @click="changeUrl('/moneyRecord')">更多</span>
                 </div>
                 <div class="Record_list">
                     <el-table :data="MoneyLogData">
@@ -114,8 +113,8 @@
                 ttl_usdt: '', //总资产
                 assetsList: {}, //币种列表
                 MoneyLogData: [],
-                page: null,
-                total: null,
+                page: 1,
+                total: 0,
                 size: 10,
                 language:'',
             }
@@ -168,23 +167,30 @@
                     }
 
 
-                    this.$router.push({ path, query: { id: query, code: code, pid: pid } })
+                    this.$router.push({ path, query: { id: query, objInfo: JSON.stringify(query), code: code, pid: pid } })
 
                 } else {
-                    this.$router.push({ path, query: { id: query, code: code } })
+                    this.$router.push({ path, query: { id: query, objInfo: JSON.stringify(query), code: code } })
                 }
 
             },
-
             //获取用户资产
-            getAsstes(type) {
-                this.$http.get(this.$http.assetInfo, {}).then((r) => {
+            getAsstes() {
+                this.$http.get(this.$http.assetInfo, {params:{}}).then((r) => {
                     if (r.data.code == 200) {
-                        this.ttl_rmb = r.data.data.ttl_rmb
-                        this.ttl_usdt = r.data.data.ttl_usdt
-                        this.assetsList = r.data.data.list
+                        this.ttl_rmb = r.data.data.ttl_usd;
+                        this.ttl_usdt = r.data.data.ttl_btc;
+                        // this.assetsList = r.data.data.list;
                     } else {
                         // this.public.msg(r.data.msg,'error',this)
+                    }
+                })
+            },
+            //获取充/提币币种列表
+            getList() {
+                this.$http.post(this.$http.asset_list, {}).then((r) => {
+                    if (r.data.code == 200) {
+                        this.assetsList = r.data.data;
                     }
                 })
             },
@@ -206,13 +212,14 @@
             }
 
         },
-        created() {
+        mounted() {
             if (this.$cookies.get('language') == 'Chinese') {
                 this.language = 'zh-CN';
             } else {
                 this.language = 'en';
             }
             this.getAsstes();
+            this.getList();
             this.getMoneyLog();
         },
     }

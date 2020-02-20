@@ -260,18 +260,24 @@
 #app .el-form-item .el-input__inner {
   border: 0;
   background: #202D3C;
+  color: #fff;
 }
 #app .el-form-item.is-error .el-input__inner {
   border: 1px solid #30D5D8;
+  color: #fff;
 }
 #app .custom-dialog .el-form-item .el-input__inner {
   background: #EFEFF4;
+  color: #606266;
+}
+#app .custom-dialog .el-form-item .btn_code .el-input__inner {
+  color: #30D5D8;
 }
 .el-form-item__error {
   color: #30D5D8;
 }
 .el-pagination {
-  text-align: right;
+  text-align: center;
 }
 .el-pagination.is-background .btn-next,
 .el-pagination.is-background .btn-prev,
@@ -408,6 +414,7 @@
 .money_addre_wrapper .money_addre_container .addre_list /deep/ .el-card__body .el-table__body-wrapper td {
   background: #182330;
   color: #fff;
+  border: 0;
 }
 .money_addre_wrapper .money_addre_container .addre_list /deep/ .el-card__body .el-table__body-wrapper td .el-button {
   color: #fff;

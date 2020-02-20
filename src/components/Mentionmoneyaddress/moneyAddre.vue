@@ -17,7 +17,7 @@
 							<!--钱包提币地址类型-->
 							<el-select v-model="ruleForm.type" :placeholder='$t("moneyAddre.list[1]")'>
 								<!--请选择钱包地址类型-->
-								<el-option :value="item.type" :label="item.val" v-for='(item,key) in addrList' :key='key'>
+								<el-option :value="item.pid" :label="item.pname" v-for='(item,key) in addrList' :key='key'>
 								</el-option>
 							</el-select>
 						</el-form-item>
@@ -92,15 +92,14 @@
 				routeData: {}, // 接受传递的路由参数
 				labelPosition: 'right', // form 文字排版
 				addrList: [
-					{ val: 'BTC', type: '1' },
-					{ val: 'ETH', type: '2' },
+					// { val: 'BTC', type: '1' },
+					// { val: 'ETH', type: '2' },
 				], // 地址列表数据
 				ruleForm: { // 规则接收值
 					type: '',
 					address: '',
 					notes: '',
 				},
-
 				addressList: [],
 				page: 1,
 				total: 0,
@@ -158,12 +157,19 @@
 			}
 		},
 		methods: {
+			//获取提币币种列表
+            getList() {
+                this.$http.post(this.$http.asset_list, {withdrawal: 1}).then((r) => {
+                    if (r.data.code == 200) {
+                        this.addrList = r.data.data;
+                    }
+                })
+            },
 			//添加提币地址
 			submitForm(formName) {
 				var _this = this;
 				_this.$refs[formName].validate((valid) => {
 					if (valid) {
-						console.log(_this.ruleForm);
 						_this.addLoading = true;
 						_this.$http.post(_this.$http.createWithdrawAddress, _this.ruleForm).then((res) => {
 							_this.addLoading = false;
@@ -183,46 +189,6 @@
 						return false;
 					}
 				});
-			},
-
-
-			addRow: function () { // 添加请求
-				let Dat = { ...this.ruleForm }
-				switch (this.ruleForm.type) {
-					case "USDT":
-						Dat.type = 1;
-						break;
-					case "ETH":
-						Dat.type = 2;
-						break;
-					case "BTC":
-						Dat.type = 6;
-						break;
-					case "EOS":
-						Dat.type = 8;
-						break;
-					case "LTC":
-						Dat.type = 9;
-						break;
-					case "BCH":
-						Dat.type = 10;
-						break;
-				}
-				var _this = this;
-				_this.addLoading = true;
-				_this.$http.post(_this.$http.addAddre, Dat).then((res) => {
-					_this.addLoading = false;
-					if (res.data.code == 200) {
-						_this.$public.msg(res.data.msg, 'success', _this);
-					} else {
-						_this.$public.msg(res.data.msg, 'warning', _this);
-					}
-					_this.$refs.ruleForm.resetFields();
-					// _this.ruleForm.addUrl = '';
-					// _this.ruleForm.beizhu = '';
-				}).catch(err => {
-					_this.addLoading = false;
-				})
 			},
 			deleteRow(scope, rows) { // 删除请求
 				var _this = this;
@@ -298,12 +264,9 @@
 			_this.routeData = this.$route.query;
 			_this.value = this.$route.query.code;
 			_this.pname = this.$route.query.pname;
-
+			
+			_this.getList();
 			_this.requestData();
 		},
-		// components: {
-		// 	"HeaDer": Header,
-		// 	"FooTer": Footer,
-		// }
 	}
 </script>

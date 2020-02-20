@@ -34,7 +34,7 @@
 				<!-- 充币地址 -->
 				<div class="address">
 					<p>{{$t('Gic.chongbit[1]')}}</p>
-					<input class="left" :value="requestData.address" id="addInput" readonly
+					<input class="left" :value="requestData.addres" id="addInput" readonly
 						:placeholder='$t("chongBit.list[14]")' />
 
 					<!-- <p class="right">
@@ -74,7 +74,7 @@
 				pname: '',
 				coin_type: '',
 				codeList: [],
-				code: ""
+				code: "",
 			}
 		},
 		watch: {
@@ -83,7 +83,7 @@
 			// }
 		},
 		methods: {
-			//获取充币地址信息
+			//获取充币地址信息 
 			getAdress(pid) {
 				this.$http.post(this.$http.walletRecharge, { type: pid }).then((r) => {
 					if (r.data.code == 200) {
@@ -142,10 +142,11 @@
 				});
 			}
 		},
-		created: function () {
+		mounted() {
 			var _this = this;
+			_this.requestData = JSON.parse(_this.$route.query.objInfo);
 			_this.pid = _this.$route.query.id;
-			_this.getAdress(_this.pid);
+			// _this.getAdress(_this.pid);
 			$(".chong_bit_block .chong_toggle").click(() => {
 				$(this).addClass("on").siblings().removeClass("on");
 			})
