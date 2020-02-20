@@ -74,7 +74,7 @@
               <el-input
                 auto-complete="off"
                 style="width:450px;margin-left:0;"
-                :placeholder="$t('Gic.securityGoogleverify[10]')"
+                placeholder="请输入6位数谷歌验证码"
                 v-model="userData.googleCode"
               ></el-input>
             </el-form-item>

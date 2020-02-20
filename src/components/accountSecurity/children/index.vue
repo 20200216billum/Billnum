@@ -89,7 +89,7 @@
 			<el-table :data="tableData" empty-text="暂无数据" class="login_table">
 				<el-table-column prop="created_at" label="登录时间" min-width="150"></el-table-column>
 				<el-table-column prop="log_ip" label="登录IP" min-width="150"></el-table-column>
-				<el-table-column prop="date" label="登录地区" min-width="150"></el-table-column>
+				<el-table-column prop="area" label="登录地区" min-width="150"></el-table-column>
 				<el-table-column prop="agent_info" label="登录设备" min-width="150"></el-table-column>
 			</el-table>
 		</div>

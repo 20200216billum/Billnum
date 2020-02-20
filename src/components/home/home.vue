@@ -345,28 +345,39 @@
 			},
       //轮播图
       getBanner() {
-        const _this = this;
-        $.ajax({
-          type:"get",
-          url:_this.$http.slides,
-          data:{
-            type:'2',
-            position:'1'
-          },
-          headers: {
-            'locale': _this.language,
-            'from':'pc'
-          },
-          dataType:"json",  
-          success:function(res){
-            if (res.code == '200') {
-              _this.bannerList = res.data
-            }
-          },
-          error:function(error){
-             console.log(error)
-          }
-      });
+        this.$http.get(this.$http.slides, {
+          params: {
+            type: 2,
+            position: 1
+          }
+        }).then(res => {
+          if (res.data.code == 200) {
+            this.bannerList = res.data
+          }
+        })
+        
+  //       const _this = this;
+  //       $.ajax({
+  //         type:"get",
+  //         url:_this.$http.slides,
+  //         data:{
+  //           type:'2',
+  //           position:'1'
+  //         },
+  //         headers: {
+  //           'locale': _this.language,
+  //           'from':'pc'
+  //         },
+  //         dataType:"json",  
+  //         success:function(res){
+  //           if (res.code == '200') {
+  //             _this.bannerList = res.data
+  //           }
+  //         },
+  //         error:function(error){
+  //            console.log(error)
+  //         }
+  //     });
     },
     //获取公告
     getSystemPosts() {

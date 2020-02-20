@@ -264,11 +264,14 @@
 #app .el-form-item.is-error .el-input__inner {
   border: 1px solid #30D5D8;
 }
+#app .custom-dialog .el-form-item .el-input__inner {
+  background: #EFEFF4;
+}
 .el-form-item__error {
   color: #30D5D8;
 }
 .el-pagination {
-  text-align: right;
+  text-align: center;
 }
 .el-pagination.is-background .btn-next,
 .el-pagination.is-background .btn-prev,
@@ -452,10 +455,11 @@
   margin-left: 25px;
   cursor: pointer;
 }
-.google_verify .form_warp .inner .tips .step2 .el-input__inner {
-  color: #ababac;
+.google_verify .form_warp .inner .tips .step2 /deep/ .el-input__inner {
+  color: #fff;
   border: none;
-  background: transparent;
+  background: #182330;
+  padding-left: 0;
 }
 .google_verify .form_warp .inner .tips .step2 .step2_copy {
   color: #30D5D8;

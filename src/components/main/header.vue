@@ -73,7 +73,7 @@
 											Hi, {{ transPhone }}
 										</p>
 										<p class="uid">
-											UID: 2235439890
+											UID: {{ userInfo.account }}
 										</p>
 									</div>
 								</el-dropdown-item>
@@ -240,6 +240,7 @@
 				ggShow: true,
 				mySwiper: "",
 				userData: {},
+				userInfo: {},
 				islange: 'Chinese', //语言标志
 				DackGround: false,
 				DackGround1: true,
@@ -353,6 +354,7 @@
 					if(res.data.code == '200') {
 						sessionStorage.payment_password_set = res.data.data.config.payment_password_set;
 						sessionStorage.authentication = res.data.data.authentication;
+						this.userInfo = res.data.data;
 						// this.userData = res.data.data;
 					}
 				})
