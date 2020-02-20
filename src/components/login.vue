@@ -178,13 +178,13 @@
                 _this.$refs.userData.validate(valid => {
                     if (valid) {
                         _this.loading = true;
-                        if (this.$public.email(_this.userData.username)) {
-                            let _data = {
-                                username: _this.userData.username,
-                                password: this.$public.$md5(this.userData.password)
-                            }
-                            this.specialLogin(_data);
-                        } else {
+                        // if (this.$public.email(_this.userData.username)) {
+                        //     let _data = {
+                        //         username: _this.userData.username,
+                        //         password: this.$public.$md5(this.userData.password)
+                        //     }
+                        //     this.specialLogin(_data);
+                        // } else {
                             let _data = {
                                 username: _this.userData.username,
                                 password: this.$public.$md5(this.userData.password)
@@ -206,7 +206,7 @@
                                 }
                             })
                             // _this.getCode();
-                        }
+                        // }
                     }
                 })
             },
@@ -239,7 +239,7 @@
                 //     }
                 // })
             },
-            // 手机账户登录
+            // 未开启谷歌验证登录
             submitForm() {
                 this.loading = true;
                 let _data = {

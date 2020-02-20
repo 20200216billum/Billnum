@@ -1,5 +1,17 @@
 <style lang="less" scoped>
 	@import './index.less';
+	.guge_code {
+		.btn_code {
+			position: absolute;
+			right: 0;
+			top: 0;
+			/deep/.el-input {
+				.el-input__inner {
+					color: @main;
+				}
+			}
+		}
+	}
 </style>
 <template>
 	<div class="security_main" style="overflow:hidden;">
@@ -116,7 +128,7 @@
 		</el-dialog>
 		<!-- 开启/关闭谷歌验证 -->
 		<el-dialog
-			title="开启/关闭谷歌验证"
+			:title="changeGugeTile"
 			:visible.sync="modal2"
 			width="490px"
 			custom-class="custom-dialog"
@@ -125,9 +137,15 @@
 				<el-form-item label="谷歌验证码" prop="google_code">
 					<el-input v-model="gugeForm.google_code" placeholder="请输入6位数谷歌验证码"></el-input>
 				</el-form-item>
-				<el-form-item label="资金密码" prop="code">
-					<el-input v-model="gugeForm.code" placeholder="请输入资金密码"></el-input>
+				<el-form-item label="验证码" class="guge_code" prop="code">
+					<el-input auto-complete="off" placeholder="请输入验证码" v-model="gugeForm.code"></el-input>
+					<div class="btn_code" @click="getCode()">
+						<el-input type="button" :value='$public.integerDecimal(btnCode.time) ? btnCode.time +" s" : btnCode.time' :disabled='btnCode.disabled' ></el-input>
+					</div>
 				</el-form-item>
+				<!-- <el-form-item label="验证码" prop="code">
+					<el-input v-model="gugeForm.code" placeholder="请输入验证码"></el-input>
+				</el-form-item> -->
 			</el-form>
 
 			<span slot="footer" class="dialog-footer">
@@ -150,6 +168,13 @@
 			var validateGugeCode = (rule, value, callback) => {
 				if (!value) {
 					callback(new Error('请输入6位数谷歌验证码'));
+				} else {
+					callback();
+				}
+			};
+			var validateCode = (rule, value, callback) => {
+				if (!value) {
+					callback(new Error('请输入验证码'));
 				} else {
 					callback();
 				}
@@ -178,6 +203,7 @@
 				],
 				tableData: [],
 				modal2: false,
+				changeGugeTile: "",
 				gugeForm: {
 					key: "",
 					google_code: "",
@@ -188,8 +214,12 @@
 						{ validator: validateGugeCode, trigger: "blur" }
 					],
 					code: [
-						{ validator: validatePwd, trigger: "blur" }
+						{ validator: validateCode, trigger: "blur" }
 					]
+				},
+				btnCode: {
+					time: this.$t("changetpwd.list[4]"), //倒计时
+					disabled: false
 				},
 			}
 		},
@@ -230,17 +260,67 @@
 					}
 				})
 			},
+			//获取验证码
+			getCode() {
+				var _this = this;
+				var email = sessionStorage.userData;
+				_this.btnCode.disabled = true;
+				if(_this.$public.email(email)){//邮箱登录
+					_this.$http.post(_this.$http.send_email, {
+						email: email
+					}).then(function(response) {
+						if(response.data.code == "200") {
+							// _this.$public.msg(response.data.msg, 'success', _this);
+							_this.$public.setTime(_this); //倒计时函数封装
+						} else {
+							_this.btnCode.disabled = false;
+							_this.$public.msg(response.data.msg, 'warning', _this);
+						}
+					}).catch(function(error) {
+						_this.btnCode.disabled = false;
+					});
+				} else {
+					_this.$http.post(_this.$http.sendSms, {
+						phone: email
+					}).then(function(response) {
+						if(response.data.code == "200") {
+							// _this.$public.msg(response.data.msg, 'success', _this);
+							_this.$public.setTime(_this); //倒计时函数封装
+						} else {
+							_this.btnCode.disabled = false;
+							_this.$public.msg(response.data.msg, 'warning', _this);
+						}
+					}).catch(function(error) {
+						_this.btnCode.disabled = false;
+					});
+				}
+			},
 			// 开启/关闭谷歌验证
 			showGuge(key) {
 				this.gugeForm.key = key;
 				this.gugeForm.google_code = "";
 				this.gugeForm.code = "";
-				this.model2 = true;
+				if (key == "start") {
+					this.changeGugeTile = "开启谷歌验证";
+				} else {
+					this.changeGugeTile = "关闭谷歌验证";
+				}
+				this.modal2 = true;
 			},
 			settingGuge() {
 				this.$refs.gugeForm.validate(valid => {
 					if (valid) {
-
+						this.$http.post(this.$http.googleVerifyStart, this.gugeForm).then(res => {
+							if (res.data.code == 200) {
+								this.$public.msg("设置成功", "success", this);
+								this.getUserInfo();
+							} else {
+								this.$public.msg(res.data.msg, "warning", this);
+							}
+							this.modal2 = false;
+						}).catch(err => {
+							this.modal2 = false;
+						})
 					}
 				})
 			},

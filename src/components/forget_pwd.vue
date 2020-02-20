@@ -13,12 +13,12 @@
 						</div>
 						<div class="form_warp">
 							<div class="content_warp">
-								<el-form :label-position="labelPosition" :model="userData" :rules="rules2" ref="userData" label-width="100px" class="demo-ruleForm">
-									<el-form-item label="账号" prop="mobile"><!-- 账号 -->
-										<el-input v-model="userData.mobile" auto-complete="off" placeholder="请输入登录账号"></el-input>
+								<el-form :label-position="labelPosition" :model="userData" label-width="100px" class="demo-ruleForm">
+									<el-form-item label="账号" prop="account"><!-- 账号 -->
+										<el-input v-model="userData.account" auto-complete="off" placeholder="请输入登录账号"></el-input>
 									</el-form-item>
 									<div class="primary_btn">
-										<el-button type="primary" @click="submitmobile()" :loading="loading">{{$t("forgetpwd.titleThree[3]")}}</el-button><!-- 提交 -->
+										<el-button type="primary" @click="submitmobile()">{{$t("forgetpwd.titleThree[3]")}}</el-button><!-- 提交 -->
 									</div>
 								</el-form>
 							</div>
@@ -50,7 +50,7 @@
 										<el-input type="password" v-model="userData.password_confirmation" auto-complete="off" placeholder='请输入确认密码'></el-input>
 									</el-form-item>
 									<el-form-item class="int-code">
-										请输入{{ userData.mobile }}收到的验证码
+										请输入{{ $public.phoneEncryption(userData.account) }}收到的验证码
 									</el-form-item>
 									<!-- 验证码 -->
 									<el-form-item label='验证码' prop="code">
@@ -119,13 +119,13 @@
 				verifyCode:'', //图片验证码
 				verify:'',
 				userData: {
-					mobile: '', //手机号
+					account: '', //手机号
 					code: '', //短信验证码
 					password: '', //密码1
 					password_confirmation: '' //密码2
 				},
 				rules2: {
-					mobile: [{
+					account: [{
 						validator: validatormobile,
 						trigger: 'blur'
 					}],
@@ -173,30 +173,14 @@
 				$('.verify-msg').css('color', '#333');
 				this.valdationed();
 			},
-			//手机号验证提交函数
+			// 账号验证
 			submitmobile() {
-				var _this = this;
-				if(!_this.$public.checkMobile(_this.userData.mobile)) {
-					_this.$public.msg(_this.$t("Verification.phone[0]"), 'warning', _this);//请输入有效的手机号
+				if(!this.$public.checkMobile(this.userData.account) && !this.$public.email(this.userData.account)) {
+					this.$public.msg("请输入有效的账号", 'warning', this); 
+					return
 				} else {
-					setTimeout(function() {
-						_this.whitchShow = 2;
-					}, 300)
-				}
-			},
-			//验证码验证
-			submitCode() {
-				var _this = this;
-				//验证验证码的正确性
-				// if(!this.verifyCode.validate(this.verify)){
-				// 	_this.$public.msg(_this.$t("login.submitForm[1]"), 'warning', _this);//图片验证码有误
-				// 	return false;
-				// }else 
-				if(!_this.$public.code(_this.userData.code)) {
-					_this.$public.msg(_this.$t("Verification.Code[1]"), 'warning', _this);//验证码格式有误
-				} else {
-					// _this.whitchShow = 3;
-					_this.submitPwd();
+					this.whitchShow = 2;
+					this.getCode();
 				}
 			},
 			submitPwd() {
@@ -206,17 +190,17 @@
 						_this.loading = true;
 						_this.userData.password=_this.$md5(_this.userData.password);
 						_this.userData.password_confirmation=_this.$md5(_this.userData.password_confirmation);
-						_this.$http.post(_this.$http.find_opwd, _this.userData).then(function(response) {
+						_this.$http.post(_this.$http.forgetPassword, _this.userData).then(function(response) {
 							_this.loading = false;
 							if(response.data.status == "200") {
 								sessionStorage.clear();
 								_this.$public.msg(response.data.msg, 'success', _this);
-								_this.$public.go('login', 10, _this);
 								_this.loading = false;
+								_this.$router.push("/login");
 							} else {
 								_this.$public.msg(response.data.msg, 'warning', _this);
 								_this.userData = {
-									mobile: '',
+									account: '',
 									code: '',
 									password: '',
 									password_confirmation: ''
@@ -231,47 +215,37 @@
 			},
 			// 获取验证码执行函数
 			getCode() {
-                var _this = this;
-                if(!_this.regData.area_code){
-                    return _this.$public.msg("请先选择区号", 'warning', _this);
-                }
-                if (_this.regData.phone.indexOf('@') == -1) {
-					if (!_this.$public.checkMobile(_this.regData.phone)) {
-						return _this.$public.msg("手机号输入错误", 'warning', _this);
-					} else {
+				var _this = this;
+				
+                // if(!_this.regData.area_code){
+                //     return _this.$public.msg("请先选择区号", 'warning', _this);
+                // }
+                if (_this.$public.checkMobile(_this.userData.account)) {
 					_this.btnCode.disabled = true;
-					//获取验证码
-                        _this.$http.post(_this.$http.sendSms, {
-                            phone: _this.regData.phone,
-                            area_code: _this.regData.area_code
-                        }).then(function(response) {
-                            if(response.data.code == "200") {
-                                _this.$public.setTime(_this); //倒计时函数封装
-                                _this.phone = _this.userData.phone //手机号保存
-                            } else {
-                                _this.$public.msg(response.data.msg, 'warning', _this);
-                                _this.btnCode.disabled = false;
-                            }
-                        }).catch(function(error) {});
-					}
+					_this.$http.post(_this.$http.sendSms, {
+						phone: _this.userData.account
+					}).then(function(response) {
+						if(response.data.code == "200") {
+							_this.$public.setTime(_this); //倒计时函数封装
+							_this.phone = _this.userData.account //手机号保存
+						} else {
+							_this.$public.msg(response.data.msg, 'warning', _this);
+							_this.btnCode.disabled = false;
+						}
+					}).catch(function(error) {});
 				} else {
-					if (!_this.$public.email(_this.regData.phone)) {
-						return _this.$public.msg("邮箱账号输入错误", 'warning', _this);
-					} else {
-						_this.btnCode.disabled = true;
-					    //获取验证码
-                        _this.$http.post(_this.$http.send_mail, {
-                            email: _this.userData.mobile,
-                        }).then(function(response) {
-                            if(response.data.status == "200") {
-                                _this.$public.setTime(_this); //倒计时函数封装
-                                _this.phone = _this.userData.mobile //手机号保存
-                            } else {
-                                _this.$public.msg(response.data.msg, 'warning', _this);
-                                _this.btnCode.disabled = false;
-                            }
-                        }).catch(function(error) {});
-					}
+					_this.btnCode.disabled = true;
+					_this.$http.post(_this.$http.send_email, {
+						email: _this.userData.account,
+					}).then(function(response) {
+						if(response.data.status == "200") {
+							_this.$public.setTime(_this); //倒计时函数封装
+							_this.phone = _this.userData.account //手机号保存
+						} else {
+							_this.$public.msg(response.data.msg, 'warning', _this);
+							_this.btnCode.disabled = false;
+						}
+					}).catch(function(error) {});
 				}
 			},
 		},

@@ -84,11 +84,12 @@
           <p class="info">
             <span>4</span>
             <!-- 输入邮箱验证码 -->
-            <span>{{$t('Gic.securityGoogleverify[11]')}}</span>
+            <span v-if="isEmail">{{$t('Gic.securityGoogleverify[11]')}}</span>
+            <!-- 输入手机验证码 -->
+            <span v-else>输入手机验证码</span>
           </p>
           <el-form
             :model="userData"
-            statu
             ref="userData"
             label-width="100px"
             class="demo-ruleForm tips_google"
@@ -96,7 +97,19 @@
             style="width:450px;"
           >
             <!-- 邮箱验证码 -->
-            <el-form-item :label="$t('Gic.securityGoogleverify[12]')" prop="realname">
+            <el-form-item v-if="isEmail" :label="$t('Gic.securityGoogleverify[12]')">
+              <el-input
+                auto-complete="off"
+                :placeholder="$t('Gic.securityGoogleverify[12]')"
+                style="width:325px;margin-left:0;"
+                v-model="userData.code"
+              ></el-input>
+              <div class="btn_code" @click="getCode()">
+                <el-input type="button" :value='$public.integerDecimal(btnCode.time) ? btnCode.time +" s" : btnCode.time' :disabled='btnCode.disabled' ></el-input>
+              </div>
+            </el-form-item>
+            <!-- 手机验证码 -->
+            <el-form-item v-else  label="验证码">
               <el-input
                 auto-complete="off"
                 :placeholder="$t('Gic.securityGoogleverify[12]')"
@@ -110,11 +123,6 @@
           </el-form>
         </div>
         <div class="tips">
-          <!-- <p class="info"> -->
-          <!-- <span>4</span> -->
-          <!-- 输入手机验证码 -->
-          <!-- <span>{{$t('googleverify.titlelist[4]')}}</span> -->
-          <!-- </p> -->
           <el-form
             :model="userData"
             status-icon
@@ -172,7 +180,8 @@ export default {
         disabled: false
       },
       type: "",
-      dialogFormVisible: false
+      dialogFormVisible: false,
+      isEmail: false
     };
   },
   methods: {
@@ -187,7 +196,7 @@ export default {
       }
       if (_this.userData.code == "") {
         // 邮箱验证码不能为空
-        _this.$public.msg(_this.$t('Gic.securityGoogleverify[15]'), "warning", _this);
+        _this.$public.msg("验证码不能为空", "warning", _this);
         return false;
       }
       // if(_this.userData.smsCode==''){
@@ -213,13 +222,9 @@ export default {
     //获取验证码
     getCode() {
       var _this = this;
-      var email = sessionStorage.userData
+      var email = sessionStorage.userData;
+      _this.btnCode.disabled = true;
       if(_this.$public.email(email)){//邮箱登录
-        if(!_this.$public.pwd(_this.userData.password_confirmation)) {
-          // _this.$public.msg(_this.$t("changetpwd.getCode"), 'warning', _this);//请输入有效的密码
-          // return false;
-        }
-        _this.btnCode.disabled = true;
         _this.$http.post(_this.$http.send_email, {
           email: email
         }).then(function(response) {
@@ -233,7 +238,20 @@ export default {
         }).catch(function(error) {
           _this.btnCode.disabled = false;
         });
-
+      } else {
+        _this.$http.post(_this.$http.sendSms, {
+          phone: email
+        }).then(function(response) {
+          if(response.data.code == "200") {
+            // _this.$public.msg(response.data.msg, 'success', _this);
+            _this.$public.setTime(_this); //倒计时函数封装
+          } else {
+            _this.btnCode.disabled = false;
+            _this.$public.msg(response.data.msg, 'warning', _this);
+          }
+        }).catch(function(error) {
+          _this.btnCode.disabled = false;
+        });
       }
     },
     getQrCode() {
@@ -285,7 +303,12 @@ export default {
       ele.removeAttribute("disabled");
     }
   },
-  created() {
+  mounted() {
+    if (this.$public.email(sessionStorage.userData)) {
+      this.isEmail = true;
+    } else {
+      this.isEmail = false;
+    }
     this.getQrCode()
     // var _this = this;
     // let user = JSON.parse(sessionStorage.getItem("userData"));

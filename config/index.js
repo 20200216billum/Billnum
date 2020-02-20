@@ -11,7 +11,8 @@ module.exports = {
 		assetsPublicPath: '/',
 		proxyTable: {
 			'/apid': {
-				target:'https://www.billumpro.com',
+				// target:'https://www.billumpro.com',
+				target:'http://149.129.80.147/',
 				changeOrigin: true,
 				// secure: true, 
 				pathRewrite: { 

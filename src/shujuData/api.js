@@ -165,8 +165,8 @@ Axios.tongji = `${second}/Home/Order/tongji`;  //订单信息统计
 //Fbtrans
 Axios.user_info = `${second}/api/user/details`;  //账户安全 基本信息
 Axios.xiugai_pwd = `${second}/Home/qbw/xiugai_pwd`;  //修改登录密码 account	oldpwd	opwd	opwd1
-Axios.binding_email = `${second}/Home/Qbw/binding_email`;  //绑定邮箱
-Axios.binding_mobile = `${second}/Home/Qbw/binding_mobile`;  //设置手机号
+Axios.binding_email = `${second}/api/user/emailBind`;  //绑定邮箱
+Axios.binding_mobile = `${second}/api/user/phoneBind`;  //设置手机号
 Axios.reset_tpwd = `${second}/home/qbw/reset_tpwd`;  //修改资金密码
 Axios.user_aq = `${second}/home/qbw/user_aq`;   //登录历史安全历史接口
 

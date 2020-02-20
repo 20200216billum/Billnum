@@ -1,8 +1,23 @@
-<style lang=less>
+<style lang="less" scoped>
 	@import '../../../assets/public.less';
 	@import '../security.less';
 	@import './change_pwd.less';
 	@import './change_email.less';
+
+	.change_opwd_main.comEmail .form_warp .btn_code {
+		margin-top: 33px;
+		.email_code_button {
+			/deep/.el-input__inner {
+				background: @main;
+				color: #fff;
+				border: 0;
+				&[disabled="disabled"] {
+					background: @common-color2;
+				}
+			}
+		}
+	}
+	
 </style>
 <template>
 	<div class="change_opwd_main comEmail">
@@ -24,9 +39,6 @@
 							<el-input class="email_code_button" type="button" :value='btnCode.time' :disabled='btnCode.disabled'></el-input>
 						</div>
 					</div>
-					<el-form-item :label='$t("changeemail.tip[6]")' prop="tpwd">
-						<el-input type="text" v-model="userData.tpwd" auto-complete="off" placeholder='请输入资金密码'></el-input>
-					</el-form-item>
 
 					<el-form-item>
 						<el-button class="largeBtn" type="primary" @click="submitForm('userData')" :loading="loading">{{$t("changeemail.list[2]")}}</el-button>
@@ -56,18 +68,11 @@
 					callback();
 				}
 			};
-			var validatetpwd = (rule, value, callback) => {
-				if(!value) {
-					callback(new Error(this.$t("changeemail.tips[1]")));
-				} else {
-					callback();
-				}
-			};
+
 			return {
 				userData: {
 					code: '', 
-					email: '', 
-					tpwd: ''
+					email: '',
 				},
 				btnCode: {
 					time: this.$t("changetpwd.list[4]"), //倒计时
@@ -81,10 +86,6 @@
 					email: [{
 						validator: validateemail,
 						trigger: 'blur'
-					}],
-					tpwd: [{
-						validator: validatetpwd,
-						trigger: 'blur'
 					}]
 				},
 				labelPosition: 'top', //插件自带
@@ -92,7 +93,6 @@
 			};
 		},
 		methods: {
-			//注册执行函数
 			submitForm(formName) {
 				var _this = this;
 				_this.$refs[formName].validate((valid) => {
@@ -100,7 +100,7 @@
 						_this.loading = true; //防止表单重复提交标志
 						_this.$http.post(_this.$http.binding_email, _this.userData).then(function(response) {
 							_this.loading = false; //防止表单重复提交标志
-							if(response.data.status == "200") {
+							if(response.data.code == "200") {
 								_this.$public.msg(response.data.msg, 'success', _this);
 								setTimeout(function() {
 									_this.$router.go(-1); //返回上一层
@@ -126,7 +126,7 @@
 				_this.$http.post(_this.$http.send_email, {
 					email: _this.userData.email,
 				}).then(function(response) {
-					if(response.data.status == "200") {
+					if(response.data.code == "200") {
 						_this.$public.msg(response.data.msg, 'success', _this);
 						_this.$public.setTime(_this); //倒计时函数封装
 					} else {
@@ -136,9 +136,8 @@
 				}).catch(function(error) {});		
 			}
 		},
-		created: function() {
-			var _this = this;
-			_this.$public.scrollTop(); //返回但最顶部函数
+		mounted() {
+			this.$public.scrollTop(); //返回但最顶部函数
 		}
 	}
 </script>
