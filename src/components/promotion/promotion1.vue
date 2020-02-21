@@ -55,24 +55,24 @@
 				<div class="cont">
 					<div class="left">
 						<div class="team">
-							<p class="num">12</p>
+							<p class="num">{{ teamObj.recommends }}</p>
 							<p class="name">我的团队</p>
 						</div>
 						<div class="commission">
-							<p class="num">256426</p>
+							<p class="num">{{ teamObj.commission }}</p>
 							<p class="name">累计佣金</p>
 						</div>
 					</div>
 					<div class="right">
-						<img :src="linkObj.qrc">
+						<img :src="linkObj.qrcode">
 						<div class="extension">
 							<p class="name">推广二维码</p>
 							<p class="tips">复制二维码邀请好友获得更多奖励</p>
-							<el-button type="primary">保存专属海报</el-button>
+							<el-button type="primary" @click="downloadFile('extension', linkObj.qrcode)">保存专属海报</el-button>
 						</div>
 						<div class="invitation">
 							<p class="link_text">邀请链接</p>
-							<el-input id="link" v-model="linkObj.url"/>
+							<el-input id="link" v-model="linkObj.account"/>
 							<p class="copy_invitation" @click="copy('link')">复制链接</p> 
 						</div>
 					</div>
@@ -86,33 +86,39 @@
 				<!-- 我的好友 -->
 				<div class="table_custom" v-if="isLeft">
 					<el-table :data="tableData" empty-text="暂无数据" cell-class-name="cell_custom" header-row-class-name="header_custom" style="width: 100%">
-						<el-table-column prop="realname" :label='$t("promotion.list[4]")' width="300"></el-table-column> <!-- 姓名 -->
-						<el-table-column prop="mobile" label='手机号/邮箱' width="300">
+						<el-table-column prop="account" label='账户' min-width="300"></el-table-column>
+						<el-table-column prop="type" label='关系' min-width="300">
 							<template slot-scope="scope">
-								<span v-if="scope.row.mobile">{{ scope.row.mobile }}</span>
-								<span v-else>{{ scope.row.mail }}</span>
+								<span v-if="scope.row.type == 1">直推</span>
+								<span v-else>间推</span>
 							</template>
 						</el-table-column>
-						<el-table-column prop="reg_time" label='时间'  align="right"> <!-- 注册时间 -->
-							<template slot-scope="scope">
-								<span>{{ $public.timestampToTime(scope.row.reg_time) }}</span>
-							</template>
+						<el-table-column prop="created_at" label='注册时间'  align="right"> <!-- 时间 -->
+							<!-- <template slot-scope="scope">
+								<span>{{ $public.timestampToTime(scope.row.created_at) }}</span>
+							</template> -->
 						</el-table-column>
 					</el-table>
 				</div>
 				<!-- 获得佣金 -->
 				<div class="table_custom" v-else>
 					<el-table :data="tableData2" empty-text="暂无数据" cell-class-name="cell_custom" header-row-class-name="header_custom" style="width: 100%">
-						<el-table-column prop="realname" :label='$t("promotion.list[4]")' width="300"></el-table-column>
-						<el-table-column prop="price" :label='$t("promotion.list[7]")' width="300"> <!-- 数量 -->
+						<el-table-column prop="account" label='账户' min-width="300"></el-table-column>
+						<el-table-column prop="type" label='关系' min-width="300">
 							<template slot-scope="scope">
-								<span>{{ $public.toLowFixed(scope.row.price,4,0)}}</span>
+								<span v-if="scope.row.type == 1">直推</span>
+								<span v-else>间推</span>
 							</template>
 						</el-table-column>
-						<el-table-column prop="addtime" :label='$t("promotion.list[8]")' align="right"> <!-- 时间 -->
+						<el-table-column prop="num" label='佣金(USDT)' width="300"> 
 							<template slot-scope="scope">
-								<span>{{ $public.timestampToTime(scope.row.addtime) }}</span>
+								<span>{{ $public.toLowFixed(scope.row.num,4,0)}}</span>
 							</template>
+						</el-table-column>
+						<el-table-column prop="created_at" label='注册时间' align="right"> <!-- 时间 -->
+							<!-- <template slot-scope="scope">
+								<span>{{ $public.timestampToTime(scope.row.addtime) }}</span>
+							</template> -->
 						</el-table-column>
 					</el-table>
 				</div>
@@ -210,14 +216,32 @@
 					total_sum: 0
 				},
 				linkObj: {
-					qrc: '',
-					url: ''
+					qrcode: '',
+					account: ''
 				},
 				tableData: [],
 				tableData2: [],
+				teamObj: {
+					recommends: 0,
+					commission: 0
+				}
 			};
 		},
 		methods: {
+			getDataInfo() {
+				this.$http.get(this.$http.recommend_info, {params:{}}).then(res => {
+					if (res.data.code == 200) {
+						this.teamObj = res.data.data;
+					}
+				})
+			},
+			// 保存二维码
+			downloadFile(content, fileName) { //下载base64图片
+				var alink = document.createElement("a");
+				alink.href = fileName;
+				alink.download = content;
+				alink.click();
+			},
 			//复制信息
 			copy(whitch) {
 				var _this = this;
@@ -228,8 +252,8 @@
 			},
 			// 推广二维码
 			postLink() {
-				this.$http.post(this.$http.link, {}).then(res => {
-					if (res.data.status == "200") {
+				this.$http.get(this.$http.registerLink, {params:{}}).then(res => {
+					if (res.data.code == "200") {
 						this.linkObj = res.data.data;
 					} else {
 						this.$public.msg(res.data.msg, 'error', this);
@@ -250,25 +274,25 @@
 			// 我的好友
 			getMyFriend() {
 				let data = {
-					p: this.pageObj.current,
+					page: this.pageObj.current,
 					size: this.pageObj.size
 				};
-				this.$http.get(this.$http.myFriend, {
+				this.$http.get(this.$http.my_team, {
 					params: data
 				}).then(res => {
-					if (res.data.status == "200") {
-						this.userData.ttl = res.data.data.ttl;
-						this.userData.total_sum = res.data.data.total_sum;
-						if (res.data.data && res.data.data.list.length) {
-							this.tableData = res.data.data.list;
-							this.pageObj.current = Number(res.data.data.p);
-							this.pageObj.total = Number(res.data.data.count);
+					if (res.data.code == "200") {
+						// this.userData.ttl = res.data.data.ttl;
+						// this.userData.total_sum = res.data.data.total_sum;
+						if (res.data.data && res.data.data.data.length) {
+							this.tableData = res.data.data.data;
+							this.pageObj.current = Number(res.data.data.current_page);
+							this.pageObj.total = Number(res.data.data.total);
 						}
 					} else {
-						this.userData = {
-							ttl: 0,
-							total_sum: 0
-						};
+						// this.userData = {
+						// 	ttl: 0,
+						// 	total_sum: 0
+						// };
 						this.tableData = [];
 						this.pageObj.current = 1;
 						this.pageObj.total = 0;
@@ -279,17 +303,17 @@
 			// 获得佣金
 			getCommission() {
 				let data = {
-					p: this.pageObj.current,
+					page: this.pageObj.current,
 					size: this.pageObj.size
 				};
-				this.$http.get(this.$http.commission, {
+				this.$http.get(this.$http.commission_etails, {
 					params: data
 				}).then(res => {
-					if (res.data.status == "200") {
-						if (res.data.data && res.data.data.res.length) {
-							this.tableData2 = res.data.data.res;
-							this.pageObj.current = Number(res.data.data.p);
-							this.pageObj.total = Number(res.data.data.count);
+					if (res.data.code == "200") {
+						if (res.data.data && res.data.data.data.length) {
+							this.tableData2 = res.data.data.data;
+							this.pageObj.current = Number(res.data.data.current_page);
+							this.pageObj.total = Number(res.data.data.total);
 						}
 					} else {
 						this.tableData2 = [];
@@ -383,6 +407,7 @@
 			// this.getDataList(this.sendData);
 			// this.getAllNum();
 			this.isshow = this.$cookies.get('language') == 'Chinese' ? true : false;
+			this.getDataInfo();
 			this.postLink();
 			this.getMyFriend();
 		},

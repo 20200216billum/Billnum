@@ -3,7 +3,7 @@
         <div class="my_reward_container">
             <div class="top_title">
                 <span class="name">我的奖励</span>
-                <span><router-link to="/reward-record" class="more">奖励记录</router-link></span>
+                <!-- <span><router-link to="/reward-record" class="more">奖励记录</router-link></span> -->
             </div>
             <div class="reward_box">
                 <div class="left">
@@ -16,7 +16,7 @@
                         <p class="num">{{ dataObj.consume + " " + dataObj.code }}</p>
                     </div>
                 </div>
-                <div class="right">
+                <!-- <div class="right">
                     <div class="yesterday">
                         <p class="name">昨日新增</p>
                         <p class="num">85.0000</p>
@@ -25,7 +25,7 @@
                         <p class="name">本周新增</p>
                         <p class="num">85.0000</p>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="reward_bg"></div>
             <el-table :data="dataObj.ranking" empty-text="暂无数据" class="reward_table">
