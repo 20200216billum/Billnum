@@ -350,9 +350,9 @@ import { truncate } from 'fs';
         let zh_en = this.$cookies.get('language');
         this.$http.post(this.$http.borrowRule, {}).then(res => {
           if (res.data.status == '200') {
-            if (zh_en == 'Chinese') {
+            if (zh_en == 'zh') {
               this.ruleContent = res.data.data.rule;
-            } else if (zh_en == 'English') {
+            } else if (zh_en == 'en') {
               this.ruleContent = res.data.data.rule_en;
             } else {
               this.ruleContent = ""

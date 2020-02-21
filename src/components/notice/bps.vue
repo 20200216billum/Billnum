@@ -24,7 +24,7 @@
 			<div class="hd">
 			<el-header class="top">
 				<el-card class="box-card">
-					<div class="title" v-if="$cookies.get('language') == 'Chinese'">{{ routerData.name_cn }}</div>
+					<div class="title" v-if="$cookies.get('language') == 'zh'">{{ routerData.name_cn }}</div>
 					<div class="title" v-else>{{ routerData.name_en }}</div>
 				</el-card>
 			</el-header>

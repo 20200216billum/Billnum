@@ -108,7 +108,7 @@
 						<el-dropdown @command="handleCommand" trigger="click">
 							<p class="changeLange">
 								<!-- 简体中文 -->
-								<span class="el-dropdown-link linkBorder" v-if="islange == 'Chinese'">
+								<span class="el-dropdown-link linkBorder" v-if="islange == 'zh'">
 									<!-- <img style="vertical-align: middle" src="../../assets/img/chinese.png" alt=""> -->
 									中文简体
 									<i class="el-icon-arrow-down el-icon--right"></i>
@@ -118,7 +118,7 @@
 									</i> -->
 								</span>
 								<!-- 中文简体 -->
-								<span class="el-dropdown-link linkBorder" v-else-if="islange == 'TwChinese'">
+								<span class="el-dropdown-link linkBorder" v-else-if="islange == 'ft'">
 									<!-- <img style="vertical-align: middle" src="../../assets/img/chinese.png" alt=""> -->
 									中文繁體
 									<i class="el-icon-arrow-down el-icon--right"></i>
@@ -140,11 +140,11 @@
 							</p>
 							<el-dropdown-menu class="el-menu" slot="dropdown">
 								<!-- 简体中文 -->
-								<el-dropdown-item command="Chinese">中文简体</el-dropdown-item>
+								<el-dropdown-item command="zh">中文简体</el-dropdown-item>
 								<!-- 中文繁体 -->
-								<el-dropdown-item command="TwChinese">中文繁體</el-dropdown-item>
+								<el-dropdown-item command="ft">中文繁體</el-dropdown-item>
 								<!-- English -->
-								<el-dropdown-item command="English">English</el-dropdown-item>
+								<el-dropdown-item command="en">English</el-dropdown-item>
 							</el-dropdown-menu>
 						</el-dropdown>
 					</li>
@@ -188,13 +188,13 @@
 						<el-dropdown @command="handleCommand">
 							<p class="changeLange">
 								<!-- 简体中文 -->
-								<span class="el-dropdown-link linkBorder" v-if="islange == 'Chinese'">
+								<span class="el-dropdown-link linkBorder" v-if="islange == 'zh'">
 									<!-- <img src="../../assets/img/login/zh.png" class="lang-img"> -->
 									中文简体
 									<i class="el-icon-arrow-down el-icon--right"></i>
 								</span>
 								<!-- 中文简体 -->
-								<span class="el-dropdown-link linkBorder" v-else-if="islange == 'TwChinese'">
+								<span class="el-dropdown-link linkBorder" v-else-if="islange == 'ft'">
 									<!-- <img src="../../assets/img/login/zh.png" class="lang-img"> -->
 									中文繁體
 									<i class="el-icon-arrow-down el-icon--right"></i>
@@ -208,15 +208,15 @@
 							</p>
 							<el-dropdown-menu class="el-menu" slot="dropdown">
 								<!-- 简体中文 -->
-								<el-dropdown-item command="Chinese">
+								<el-dropdown-item command="zh">
 									中文简体
 								</el-dropdown-item>
 								<!-- 简体中文 -->
-								<el-dropdown-item command="TwChinese">
+								<el-dropdown-item command="ft">
 									中文繁體
 								</el-dropdown-item>
 								<!-- English -->
-								<el-dropdown-item command="English">
+								<el-dropdown-item command="en">
 									English
 								</el-dropdown-item>
 							</el-dropdown-menu>
@@ -241,7 +241,7 @@
 				mySwiper: "",
 				userData: {},
 				userInfo: {},
-				islange: 'Chinese', //语言标志
+				islange: 'zh', //语言标志
 				DackGround: false,
 				DackGround1: true,
 				list: '',
@@ -538,7 +538,7 @@
 					this.$i18n.locale = this.$cookies.get('language');
 					this.islange = this.$cookies.get('language');
 				} else {
-					this.$cookies.set("language", 'Chinese', 60 * 60 * 24 * 30);
+					this.$cookies.set("language", 'zh', 60 * 60 * 24 * 30);
 				}
 
 			},

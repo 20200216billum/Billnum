@@ -15,11 +15,11 @@
 			</el-card>
 			<!-- <el-header class="top">
 				<el-card class="box-card">
-					<div class="title" v-if="$cookies.get('language') == 'Chinese'">{{ routerData.name_cn }}</div>
+					<div class="title" v-if="$cookies.get('language') == 'zh'">{{ routerData.name_cn }}</div>
 					<div class="title" v-else>{{ routerData.name_en }}</div>
 				</el-card>
 			</el-header> -->
-			<!-- <div class="img" v-if="$cookies.get('language') == 'Chinese'">
+			<!-- <div class="img" v-if="$cookies.get('language') == 'zh'">
 				<img src="../../assets/image/yhxy.jpg" v-show="routerData.type=='reg_agree'"/>用户协议
 				<img src="../../assets/image/ystk.jpg" v-show="routerData.type=='trans_agree'"/>隐私条款
 				<img src="../../assets/image/yhxy.jpg" v-show="routerData.type=='jygz'"/>交易规则
@@ -76,7 +76,7 @@ export default {
 				// 	_this.isshow = 'jygz'
 				// 	return false;
 				// }
-				let types=_this.$cookies.get('language') == 'Chinese'?'zh':'en';
+				let types=_this.$cookies.get('language') == 'zh'?'zh':'en';
 				let _data={
 					key:'aboutuscn' ,
 				}

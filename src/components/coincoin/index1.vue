@@ -6,7 +6,7 @@
 		<div class="coincoin_nav">
 			<section class="nav_list">
 			  	<section class="Assets_type_box">
-			  		<div class="img" v-if="islang == 'Chinese' "></div>
+			  		<div class="img" v-if="islang == 'zh' "></div>
 			  		<div class="img2" v-else></div>
 			  	</section>
 			  	<el-tabs v-model="activeName3" @tab-click="handleClick1">
@@ -199,7 +199,7 @@
 				SwitchingData1:0,//第一个
 				SwitchingData2:0,//第二个
 				SwitchingData3:0,//第三个
-				islang :'Chinese',  //中英文标识
+				islang :'zh',  //中英文标识
 				allCode:{
 					usdtCode:'',
 					btcCode:'',

@@ -52,7 +52,7 @@
                     title:[],
                     content:[],
                 },
-                islange: "Chinese",
+                islange: "zh",
             }
         },
         methods: {
@@ -65,9 +65,9 @@
                     _this.$i18n.locale = _this.$cookies.get("language");
                     _this.islange = _this.$cookies.get("language");
                 } else {
-                    _this.$cookies.set("language", "Chinese", 60 * 60 * 24 * 30);
+                    _this.$cookies.set("language", "zh", 60 * 60 * 24 * 30);
                 }
-                if (_this.islange == "Chinese") {
+                if (_this.islange == "zh") {
                     var _type = 1;
                 } else {
                     var _type = 2;
@@ -97,7 +97,7 @@
                 _this.$i18n.locale = _this.$cookies.get("language");
                 _this.islange = _this.$cookies.get("language");
             } else {
-                _this.$cookies.set("language", "Chinese", 60 * 60 * 24 * 30);
+                _this.$cookies.set("language", "zh", 60 * 60 * 24 * 30);
             }
         },
         components: {

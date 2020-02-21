@@ -23,7 +23,9 @@
     "vue-cookies": "^1.5.6",
     "vue-i18n": "^8.0.0",
     "vue-router": "^2.5.1",
-    "vue2-verify": "^1.0.2"
+    "vue2-verify": "^1.0.2",
+    "vuex": "^3.1.2",
+    "vuex-along": "^1.2.10"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

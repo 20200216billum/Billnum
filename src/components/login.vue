@@ -5,7 +5,7 @@
 <template>
     <div class="main">
         <div class="reg">
-            <h1>{{$t('Gic.login[0]')}}</h1>
+            <h1>{{ $LangFn("欢迎登录", $cookies.get("language")) }}</h1>
             <el-form :model="userData" class="login_form" ref="userData" :label-position="labelPosition" :rules="rules1">
                 <!-- 账号 -->
                 <el-form-item label="账号" prop="username">

@@ -14,8 +14,8 @@ Axios.interceptors.request.use((config) => {
 	let account =  sessionStorage.account;
   let token = sessionStorage.token;
   let locale = ''
-  // let locale = VueCookies.get('language') =='Chinese' ? 'zh-CN' : 'en'
-  if(VueCookies.get('language') == 'Chinese'){
+  // let locale = VueCookies.get('language') =='zh' ? 'zh' : 'en'
+  if(VueCookies.get('language') == 'zh'){
     locale = 'zh'
   }else if(VueCookies.get('language') == 'English'){
     locale = 'en'
@@ -99,6 +99,7 @@ Axios.onLine = secondlogin;
 Axios.basess = `${basess}/`;
 Axios.bases = `${second}/`;
 // Axios.getNewInfo = `${second}/sexp/stock/getNewInfo`; 
+Axios.translates = `${second}/api/translates`;  // 翻译
 Axios.get_area = `${second}/api/user/areacode`;  //获取区号
 Axios.login_record = `${second}/api/user/loginHistory`;  //登录日志
 Axios.download_link = `${second}/api/software/downloadLink`;  //下载地址

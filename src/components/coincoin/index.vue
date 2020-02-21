@@ -6,7 +6,7 @@
 		<div class="coincoin_nav">
 			<section class="nav_list">
 				<section class="Assets_type_box">
-					<div class="img" v-if="islange == 'Chinese' "></div>
+					<div class="img" v-if="islange == 'zh' "></div>
 			  		<div class="img2" v-else></div>
 				</section>
 				<el-tabs class='coin_list_table' v-model="activeName3" @tab-click="handleClick1">
@@ -437,7 +437,7 @@
 	export default {
 		data() {
 			return {
-				islange:'Chinese',
+				islange:'zh',
 				activeName: 'second',
 				activeName2: "first",
 				activeName3: "first",

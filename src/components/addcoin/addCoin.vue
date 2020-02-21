@@ -213,8 +213,8 @@
 
         },
         mounted() {
-            if (this.$cookies.get('language') == 'Chinese') {
-                this.language = 'zh-CN';
+            if (this.$cookies.get('language') == 'zh') {
+                this.language = 'zh';
             } else {
                 this.language = 'en';
             }

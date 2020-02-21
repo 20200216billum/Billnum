@@ -1144,8 +1144,8 @@ export default {
     _this.getdatamain();
     window.scrollTo(0, 0); //回到顶部
     // _this.language = _this.$cookies.get("language");
-    if(_this.$cookies.get('language') == 'Chinese'){
-      	_this.language = 'zh-CN';
+    if(_this.$cookies.get('language') == 'zh'){
+      	_this.language = 'zh';
       }else{
         _this.language = 'en';
       }

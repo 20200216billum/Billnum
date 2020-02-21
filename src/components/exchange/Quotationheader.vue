@@ -55,8 +55,8 @@
 		beforeRouteLeave(to, from, next) { },
 		created: function () {
 			var _this = this;
-			if(_this.$cookies.get('language') == 'Chinese'){
-      	_this.language = 'zh-CN';
+			if(_this.$cookies.get('language') == 'zh'){
+      	_this.language = 'zh';
       }else{
         _this.language = 'en';
       }

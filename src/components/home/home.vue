@@ -1,13 +1,13 @@
 <style lang="less">
   @import "./home.less";
 
-  .el-dialog__body {
-    text-align: center;
-  }
+  // .el-dialog__body {
+  //   text-align: center;
+  // }
 
-  .el-dialog__title {
-    color: #fff;
-  }
+  // .el-dialog__title {
+  //   color: #fff;
+  // }
 
   .fenge {
     width: 100%;
@@ -437,7 +437,7 @@
           })
           .then(res => {
             let lang = _this.$cookies.get("language");
-            if (lang == "Chinese") {
+            if (lang == "zh") {
               _this.alertData = res.data.data.tpgg;
             } else {
               _this.alertData = res.data.data.tpgg_en;
@@ -481,7 +481,7 @@
     },
     created: function () {
       var _this = this;
-      if(_this.$cookies.get('language') == 'Chinese'){
+      if(_this.$cookies.get('language') == 'zh'){
         _this.language = 'zh';
         _this.pc_img = require('../../assets/Gicimg/home/home_pc1.png');
       } else if(_this.$cookies.get('language') == 'English'){
@@ -496,7 +496,7 @@
       _this.getBanner();
       _this.getSystemPosts();
 
-      // _this.$cookies.get('language')=='Chinese'?'zh-CN':'en'
+      // _this.$cookies.get('language')=='zh'?'zh':'en'
 
       // console.log(_this.$cookies.get('language'));
 

@@ -478,7 +478,7 @@
                 //     type: "post",
                 //     data: this.regData,
                 //     headers: {
-                //         'locale': this.$cookies.get('language') == 'Chinese' ? 'zh-CN' : 'en',
+                //         'locale': this.$cookies.get('language') == 'zh' ? 'zh' : 'en',
                 //         'from': 'pc'
                 //     },
                 //     dataType: "json",

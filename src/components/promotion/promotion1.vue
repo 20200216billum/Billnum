@@ -406,7 +406,7 @@
 		created() {
 			// this.getDataList(this.sendData);
 			// this.getAllNum();
-			this.isshow = this.$cookies.get('language') == 'Chinese' ? true : false;
+			this.isshow = this.$cookies.get('language') == 'zh' ? true : false;
 			this.getDataInfo();
 			this.postLink();
 			this.getMyFriend();

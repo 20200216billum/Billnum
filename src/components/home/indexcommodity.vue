@@ -4,7 +4,7 @@
 	<section class="two_hang">
 		<div class="btclist">
 			<ul class="mainList">
-				<li v-for="(item,index) in listt" :key="index" v-if="index < 5"
+				<li v-for="(item,index) in listt" :key="index" v-if="index < 6"
 					:data_code='item.code' class="btclist_box wow animate fadeInDown " :data-wow-delay="(index)*(0.25)+'s'">
           <div class="trend trend-red" v-if="item.change < 0">
 					  <div class="name">{{ item.code }}</div>
@@ -19,7 +19,7 @@
             <div class="col col_one" :class="'changeRate_'+item.code">{{ "-" + item.changeRate + "%" }}</div>
             <!-- 价格 -->
             <div class="price price-red">
-              {{ item.price }}
+              {{ item.close }}
             </div>
             <!-- 成交量 -->
             <!-- <div class="chengjiao">
@@ -40,7 +40,7 @@
             <div class="col col_two" :class="'changeRate_'+item.code">{{ "+" + item.changeRate + "%" }}</div>
             <!-- 价格 -->
             <div class="price price-lv">
-              {{ item.price }}
+              {{ item.close }}
             </div>
             <!-- 成交量 -->
             <!-- <div class="chengjiao">
@@ -132,7 +132,7 @@
 						<div class="hang_2">
 							<p class="priceone" :class="'price_'+item.code">
                 <!-- {{$public.toLowFixed(item.price,$public.SavePoint(item.code),true)}} -->
-                {{Number(item.price).toFixed($public.SavePoint(item.code))}}
+                {{Number(item.close).toFixed($public.SavePoint(item.code))}}
                 <!-- {{$public.SavePoint(item.price,item.code)}} -->
               </p>
             </div>
@@ -174,7 +174,7 @@
 								<!-- <span class="numWarp" :class="'volume_'+item.code">{{$public.toLowFixed(item.volume,6)}}</span> -->
                 <span class="numWarp" :class="'volume_'+item.code">
                   <!-- {{$public.toLowFixed(item.volume,$public.SavePoint(item.code),0)}} -->
-                  {{$public.toDecimal2(item.volume) +" USDT"}}
+                  {{$public.toDecimal2(item.amount) +" USDT"}}
                 </span>
 							</p>
 						</aside>
@@ -433,8 +433,8 @@ export default {
 
   created: function() {
     var _this = this;
-    if(_this.$cookies.get('language') == 'Chinese'){
-      	_this.language = 'zh-CN';
+    if(_this.$cookies.get('language') == 'zh'){
+      	_this.language = 'zh';
       }else{
         _this.language = 'en';
       }

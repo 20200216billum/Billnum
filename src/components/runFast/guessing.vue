@@ -17,7 +17,7 @@
             <div class="zuozhuang">
                 <!-- 点我坐庄 -->
                 <!-- <div class="signimg" @click="zuozhuangFn">
-                    <img src="../../assets/img/zuozhuang.png" v-if="islange == 'Chinese'" alt="">
+                    <img src="../../assets/img/zuozhuang.png" v-if="islange == 'zh'" alt="">
                     <img src="../../assets/img/zzen.png" v-else alt="">
                 </div> -->
                 <p class="jiangchi">{{$t("runFast.guess[0]")}}：{{Number(currencynum).toFixed(2)}}{{code.toUpperCase()}}</p>
@@ -430,7 +430,7 @@
                 youmoney: "",
                 gufen: "",
                 MultipletypeS: null,
-                islange: "Chinese",
+                islange: "zh",
                 pageNum: 1,
                 size: 10,
                 totalPage: null,
@@ -1693,7 +1693,7 @@
                 _this.$i18n.locale = _this.$cookies.get("language");
                 _this.islange = _this.$cookies.get("language");
             } else {
-                _this.$cookies.set("language", "Chinese", 60 * 60 * 24 * 30);
+                _this.$cookies.set("language", "zh", 60 * 60 * 24 * 30);
             }
             // window.addEventListener("visibilitychange",function(){
 			//     if (document.hidden) {
