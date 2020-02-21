@@ -27,11 +27,13 @@
 					<img class="img-b" src="../../../assets/image/GIC/img_2-b.png" alt="">
 					<div class="info">
 						<!-- 高级认证 -->
-						<h2>{{$t('Gic.securityIdentity[4]')}}<span v-if="userData.refuse_reason">{{userData.refuse_reason?userData.refuse_reason:''}}</span></h2>
+						<h2>{{$t('Gic.securityIdentity[4]')}}</h2>
 						<!-- 认证成功 -->
 						<p v-if="userData.authentication == 3" class="green">{{$t('Gic.securityIdentity[5]')}}</p>
 						<!-- 认证失败 -->
 						<p v-if="userData.authentication == 4" class="red">{{$t('Gic.securityIdentity[6]')}}</p>
+						<!-- 失败原因 -->
+						<p v-if="userData.refuse_reason && userData.authentication == 4">{{userData.refuse_reason?userData.refuse_reason:''}}</p>
 					</div>
 					<!-- 已认证 -->
 					<span class="right" v-if="userData.authentication == 3">{{$t('Gic.securityIdentity[7]')}}</span>

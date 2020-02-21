@@ -45,7 +45,12 @@ Axios.interceptors.request.use((config) => {
     config.headers['Accept'] =  'application/x-www-form-urlencoded';
    }else{
     if(config.method  === 'post'){
-        config.data = qs.stringify(config.data);
+        if (config.url.indexOf("authentication/advancedCertification") != -1) { // 高级认证直接放行
+          config.data = config.data;
+        } else {
+          config.data = qs.stringify(config.data);
+        }
+        
         // config.data = config.data+"&account=" + account;
     }
    }

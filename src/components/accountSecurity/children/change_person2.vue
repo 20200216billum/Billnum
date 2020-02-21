@@ -20,7 +20,7 @@
 							</div>
 							<div class="zhengmian right">
 								<input type="file" name="" id="chooseImage1" accept=".jpg,.jpeg,.png">
-								<img v-if="userForm.front_img" :src="userForm.front_img" class="avatar" style="position: relative">
+								<img v-if="userForm.front_img" :src="showimg1" class="avatar" style="position: relative">
 								<!-- 请上传身份证正面照片 -->
 								<p>{{$t('Gic.securityChangePerson2[3]')}}</p>
 							</div>
@@ -34,7 +34,7 @@
 							</div>
 							<div class="beimian right">
 								<input type="file" name="" id="chooseImage2" accept=".jpg,.jpeg,.png">
-								<img v-if="userForm.back_img" :src="userForm.back_img" class="avatar">
+								<img v-if="userForm.back_img" :src="showimg2" class="avatar">
 								<!-- 请上传身份证背面照片 -->
 								<p>{{$t('Gic.securityChangePerson2[5]')}}</p>
 							</div>
@@ -48,7 +48,7 @@
 							</div>
 							<div class="shouchi right">
 								<input type="file" name="" id="chooseImage3" accept=".jpg,.jpeg,.png">
-								<img v-if="userForm.handheld_img" :src="userForm.handheld_img" class="avatar">
+								<img v-if="userForm.handheld_img" :src="showimg3" class="avatar">
 								<!-- 请上传手持身份证件照片 -->
 								<p>{{$t('Gic.securityChangePerson2[7]')}}</p>
 							</div>
@@ -81,6 +81,9 @@
 					back_img:'',
 					handheld_img:'',
 				},
+				showimg1: "",
+				showimg2: "",
+				showimg3: "",
 			};
 		},
 		methods: {
@@ -99,7 +102,14 @@
 					return ;
 				}
 
-				_this.$http.post(_this.$http.advancedCertification, _this.userForm).then(function(res) {
+				var formData = new FormData();
+				formData.append("front_img", _this.userForm.front_img)
+				formData.append("back_img", _this.userForm.back_img)
+				formData.append("handheld_img", _this.userForm.handheld_img)
+
+				_this.$http.post(_this.$http.advancedCertification, formData, {
+					headers: { "Content-Type": "multipart/form-data" }
+				}).then(function(res) {
 				  if(res.data.code == '200') {
 					  	_this.$public.msg(_this.$t('Gic.securityChangeopwd[9]'), 'success', _this);
 						_this.$router.go(-1); //返回上一层
@@ -124,19 +134,14 @@
 						return;  
 				}
 
-				// console.log(e.target.files)
-
 				//获取并记录图片的base64编码
 				var reader = new FileReader();
 				reader.readAsDataURL(e.target.files[0]); // 读出 base64
 				reader.onloadend = function () {
-						// 图片的 base64 格式, 可以直接当成 img 的 src 属性值   
-						// _this.userForm.front_img = reader.result
-						_this.userForm.front_img = e.target.files[0]
-
-					var dataURL = reader.result;//base64
-					// 显示图片
-					$('#showImg').attr('src',dataURL);
+					// 图片的 base64 格式, 可以直接当成 img 的 src 属性值   
+					// _this.userForm.front_img = reader.result
+					_this.userForm.front_img = e.target.files[0]
+					_this.showimg1 = reader.result
 				};
 			});
 			$('#chooseImage2').on('change',function(e){
@@ -153,13 +158,10 @@
 				var reader = new FileReader();
 				reader.readAsDataURL(e.target.files[0]); // 读出 base64
 				reader.onloadend = function () {
-						// 图片的 base64 格式, 可以直接当成 img 的 src 属性值   
-						// _this.userForm.back_img    = reader.result
-						_this.userForm.back_img = e.target.files[0]
-
-					var dataURL = reader.result;//base64
-					// 显示图片
-					$('#showImg').attr('src',dataURL);
+					// 图片的 base64 格式, 可以直接当成 img 的 src 属性值   
+					// _this.userForm.back_img    = reader.result
+					_this.userForm.back_img = e.target.files[0]
+					_this.showimg2 = reader.result
 				};
 			});
 			$('#chooseImage3').on('change',function(e){
@@ -176,13 +178,10 @@
 				var reader = new FileReader();
 				reader.readAsDataURL(e.target.files[0]); // 读出 base64
 				reader.onloadend = function () {
-						// 图片的 base64 格式, 可以直接当成 img 的 src 属性值   
-						// _this.userForm.handheld_img    = reader.result
-						_this.userForm.handheld_img = e.target.files[0]
-
-					var dataURL = reader.result;//base64
-					// 显示图片
-					$('#showImg').attr('src',dataURL);
+					// 图片的 base64 格式, 可以直接当成 img 的 src 属性值   
+					// _this.userForm.handheld_img    = reader.result
+					_this.userForm.handheld_img = e.target.files[0]
+					_this.showimg3 = reader.result
 				};
 			});
 		}
