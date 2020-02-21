@@ -73,7 +73,7 @@
 .el-carousel__indicators--outside {
     position: relative;
     left: 0;
-    bottom: 90px;
+    bottom: 75px;
     z-index: 9999;
   .el-carousel__indicator {
     .el-carousel__button {
@@ -240,7 +240,7 @@
               <img src="../../assets/img/home/iphone.png" class="iphone">
             </div>
             <div class="qr_code">
-              <img>
+              <img :src="downloadUrl">
               <p>扫码下载BILLUM</p>
             </div>
           </div>
@@ -334,8 +334,9 @@
         isshow: "",
         bannerList:[], // 轮播
         SystemPosts:[],  //公告
-        language:'zh-CN',
-        noLogin: false
+        language:'zh',
+        noLogin: false,
+        downloadUrl: ""
       };
     },
     methods: {
@@ -345,39 +346,39 @@
 			},
       //轮播图
       getBanner() {
-        this.$http.get(this.$http.slides, {
-          params: {
-            type: 2,
-            position: 1
-          }
-        }).then(res => {
-          if (res.data.code == 200) {
-            this.bannerList = res.data
-          }
-        })
+        // this.$http.get(this.$http.slides, {
+        //   params: {
+        //     type: 2,
+        //     position: 1
+        //   }
+        // }).then(res => {
+        //   if (res.data.code == 200) {
+        //     this.bannerList = res.data.data;
+        //     console.log(this.bannerList)
+        //   }
+        // })
         
-  //       const _this = this;
-  //       $.ajax({
-  //         type:"get",
-  //         url:_this.$http.slides,
-  //         data:{
-  //           type:'2',
-  //           position:'1'
-  //         },
-  //         headers: {
-  //           'locale': _this.language,
-  //           'from':'pc'
-  //         },
-  //         dataType:"json",  
-  //         success:function(res){
-  //           if (res.code == '200') {
-  //             _this.bannerList = res.data
-  //           }
-  //         },
-  //         error:function(error){
-  //            console.log(error)
-  //         }
-  //     });
+        const _this = this;
+        $.ajax({
+          type:"get",
+          url:_this.$http.slides,
+          data:{
+            type:'2',
+            position:'1'
+          },
+          headers: {
+            'Lang': _this.language,
+            'From':'pc'
+          },
+          dataType:"json",  
+          success:function(res){
+            if (res.code == '200') {
+              _this.bannerList = res.data
+            }
+          },
+          error:function(error){
+          }
+      });
     },
     //获取公告
     getSystemPosts() {
@@ -389,8 +390,8 @@
             type:'2',
           },
           headers: {
-            'locale': _this.language,
-            'from':'pc'
+            'Lang': _this.language,
+            'From':'pc'
           },
           dataType:"json",  
           success:function(res){
@@ -468,12 +469,20 @@
           var box = document.getElementsByClassName("el-carousel__container");
           _this.height = _this.$refs.bannerImg[0].height + "px";
         });
+      },
+      // 获取下载地址
+      obtainLink() {
+          this.$http.get(this.$http.download_link, {params:{}}).then(res => {
+              if (res.data.code == 200) {
+                  this.downloadUrl = res.data.data.qrcode;
+              }
+          })
       }
     },
     created: function () {
       var _this = this;
       if(_this.$cookies.get('language') == 'Chinese'){
-        _this.language = 'zh-CN';
+        _this.language = 'zh';
         _this.pc_img = require('../../assets/Gicimg/home/home_pc1.png');
       } else if(_this.$cookies.get('language') == 'English'){
         _this.language = 'en';
@@ -482,6 +491,8 @@
         _this.language = 'ft';
         _this.pc_img = require('../../assets/Gicimg/home/home_pc3.png');
       }
+
+      _this.obtainLink();
       _this.getBanner();
       _this.getSystemPosts();
 
