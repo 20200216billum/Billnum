@@ -5,16 +5,16 @@
 <template>
     <div class="main">
         <div class="reg">
-            <h1>{{ $LangFn("欢迎登录", $cookies.get("language")) }}</h1>
+            <h1>{{ $LangFn("欢迎登录") }}</h1>
             <el-form :model="userData" class="login_form" ref="userData" :label-position="labelPosition" :rules="rules1">
                 <!-- 账号 -->
-                <el-form-item label="账号" prop="username">
-                    <el-input class="mobile" v-model="userData.username" auto-complete="off" placeholder="请输入登陆账号">
+                <el-form-item :label="$LangFn('账号')" prop="username">
+                    <el-input class="mobile" v-model="userData.username" auto-complete="off" :placeholder="$LangFn('请输入登陆账号')">
                     </el-input>
                 </el-form-item>
                 <!-- 登录密码 -->
-                <el-form-item :label="$t('Gic.login[5]')" prop="password">
-                    <el-input class="mobile" v-model="userData.password" auto-complete="off" placeholder="请输入8-20位数字与字母组合登录密码" type="password">
+                <el-form-item :label="$LangFn('登录密码')" prop="password">
+                    <el-input class="mobile" v-model="userData.password" auto-complete="off" :placeholder="$LangFn('请输入8-20位数字与字母组合登录密码')" type="password">
                     </el-input>
                 </el-form-item>
                 <el-form-item label="" class="forget-pwd">

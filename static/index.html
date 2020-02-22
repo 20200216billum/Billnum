@@ -47,12 +47,12 @@
     var currency1='USDT',currency2='BTC',saved_chart=null,chart=null,feed=null,timer=30000,pushtimer=null,last_price,bars=[],chart=null,MainData=null,CodeName='',timers=null,status=1,timer_kline=null;
     var loading=document.getElementById('loading');
     // var dataurl="http://"+window.location.host+"/home/Ajax/index?pageSize=2000&page=1&goodsType=";
-    var dataurl="https://"+"www.billumpro.com"+"/api/ticket?pageSize=2000&page=1&goodsType=";
+    var dataurl="http://149.129.80.147"+"/api/ticket?size=2000&page=1&goodsType=";
 //  var dataurl="http://"+window.location.host+"/home/Ajax/index?pageSize=1000&page=1&goodsType=";
        // var dataurl="http://www.comhub.vip/home/Ajax/index?type=2&pageSize=1500&page=1&timeCycle=";
 
     //  var wsurl = "ws://"+window.location.host+":7272";
-    var wsurl = "wss://"+"billumpro.com/wss";
+    var wsurl = "wss://wss.billumpro.com";
     function GetQueryString(name){ //截取url
         var reg = new RegExp("(^|&|)" + name + "=([^&?]*)(&|$|)", "i");  
         var r = window.location.search.substr(1).match(reg);  //获取url中"?"符后的字符串并正则匹配

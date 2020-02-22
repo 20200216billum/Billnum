@@ -47,7 +47,7 @@
 					</li> -->
 					<!-- 资产 -->
 					<li class="personal_list" @click="$router.push({path:'/addCoin'})">
-						<span>资产</span>
+						<span>{{ $LangFn("资产") }}</span>
 					</li>
 					<li class="personal_list" v-if="orderUrl" @click="$router.push({path:'/bbOrder'})">
 						<!-- <img style="vertical-align: middle" src="../../assets/img/order.png"> -->
@@ -154,13 +154,13 @@
 					<li class="personal_list log">
 						<router-link to="/Login">
 							<!-- 登录 -->
-							<i class="iconfont icon-zhuanhuan1"></i>{{$t("Gic.header[4]")}}
+							<i class="iconfont icon-zhuanhuan1"></i>{{ $LangFn("登录") }}
 						</router-link>
 					</li>
 					<li class="personal_list reg">
 						<router-link to="/Register">
 							<!-- 注册 -->
-							<i class="iconfont icon-zhuanhuan1"></i>{{$t("Gic.header[5]")}}
+							<i class="iconfont icon-zhuanhuan1"></i>{{ $LangFn("注册") }}
 						</router-link>
 					</li>
 					<!-- 黑白夜间 -->
@@ -559,7 +559,7 @@
 			_this.ckLange(); //语言选择
 			_this.headerNav = [
 				{
-					name: _this.$t("Gic.header[0]"), //首页
+					name: _this.$LangFn("首页"), //首页
 					url: '/home',
 					status: true
 				},
@@ -569,7 +569,7 @@
 				// 	status: true
 				// }, 
 				{
-					name: _this.$t("Gic.header[1]"), //币币交易
+					name: _this.$LangFn("币币交易"), //币币交易
 					url: '/coincoin',
 					status: true
 				},

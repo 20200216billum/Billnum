@@ -6,7 +6,7 @@
 			<ul class="mainList">
 				<li v-for="(item,index) in listt" :key="index" v-if="index < 6"
 					:data_code='item.code' class="btclist_box wow animate fadeInDown " :data-wow-delay="(index)*(0.25)+'s'">
-          <div class="trend trend-red" v-if="item.change < 0">
+          <div class="trend trend-red" v-if="item.range < 0">
 					  <div class="name">{{ item.code }}</div>
 					  <!-- <div class="name">{{$public.changeInterceptingAdd(item.name)}}</div> -->
 						<!-- <div class="money one" :class="'price_'+item.code">
@@ -16,7 +16,7 @@
                 ≈ {{$public.Division(Number(item.cnyPrice),Number(7)).toFixed($public.SavePoint(item.code))}} USD
               </span>
             </div> -->
-            <div class="col col_one" :class="'changeRate_'+item.code">{{ "-" + item.changeRate + "%" }}</div>
+            <div class="col col_one" :class="'changeRate_'+item.code">{{ "-" + item.range + "%" }}</div>
             <!-- 价格 -->
             <div class="price price-red">
               {{ item.close }}
@@ -37,7 +37,7 @@
                     ≈ {{$public.Division(Number(item.cnyPrice),Number(7)).toFixed($public.SavePoint(item.code))}} USD
                 </span>
             </div> -->
-            <div class="col col_two" :class="'changeRate_'+item.code">{{ "+" + item.changeRate + "%" }}</div>
+            <div class="col col_two" :class="'changeRate_'+item.code">{{ "+" + item.range + "%" }}</div>
             <!-- 价格 -->
             <div class="price price-lv">
               {{ item.close }}
@@ -140,12 +140,12 @@
 						<aside>
 							<p class="title">
 								<!-- {{$public.InterceptingAdd(item.name)}} / USDT -->
-								<span v-if="item.change > 0" class="changeRate">
-									<span class="fall" style="color: #00bc80 !important;" :class="'changeRate_'+item.code">{{"+" + item.changeRate + "%"}}</span>
+								<span v-if="item.range > 0" class="changeRate">
+									<span class="fall" style="color: #00bc80 !important;" :class="'changeRate_'+item.code">{{"+" + item.range + "%"}}</span>
 									<!-- <i class="el-icon-caret-top fall"></i> -->
 								</span>
 								<span v-else class="changeRate">
-									<span class="rise" style="color: #fe5955 !important;" :class="'changeRate_'+item.code">{{"-" + item.changeRate + "%"}}</span>
+									<span class="rise" style="color: #fe5955 !important;" :class="'changeRate_'+item.code">{{"-" + item.range + "%"}}</span>
 									<!-- <i class="el-icon-caret-bottom rise"></i> -->
 								</span>
 							</p>
