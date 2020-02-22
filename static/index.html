@@ -47,7 +47,7 @@
     var currency1='USDT',currency2='BTC',saved_chart=null,chart=null,feed=null,timer=30000,pushtimer=null,last_price,bars=[],chart=null,MainData=null,CodeName='',timers=null,status=1,timer_kline=null;
     var loading=document.getElementById('loading');
     // var dataurl="http://"+window.location.host+"/home/Ajax/index?pageSize=2000&page=1&goodsType=";
-    var dataurl="http://149.129.80.147"+"/api/ticket?size=2000&page=1&goodsType=";
+    var dataurl="https://www.billumpro.com"+"/api/ticket"; // ?size=2000&page=1&period=
 //  var dataurl="http://"+window.location.host+"/home/Ajax/index?pageSize=1000&page=1&goodsType=";
        // var dataurl="http://www.comhub.vip/home/Ajax/index?type=2&pageSize=1500&page=1&timeCycle=";
 
@@ -66,22 +66,25 @@
     CodeName=GetQueryString('code');
     timers=GetQueryString('timers');
     label=GetQueryString('label')
+    symbol=GetQueryString('symbol')
+
+    alert(symbol)
 
     last_price=GetQueryString('last_price');
-    if(timers=='1' ){
-        getChartData(dataurl+'minute&code='+CodeName);
+    if(timers=='1'){
+        getChartData(dataurl, '1min');//+'minute&code='+CodeName
     }if(timers!='1'&&timers!='1D'){
-        getChartData(dataurl+'minute'+timers+'&code='+CodeName);
+        getChartData(dataurl, timers+'min'); //+timers+'min'+'&code='+CodeName+'&symbol='+symbol
     }if(timers=='1D'){
-        getChartData(dataurl+'day&code='+CodeName);
+        getChartData(dataurl, '1day');//+'day&code='+CodeName
     }if(timers == '1W'){
-        getChartData(dataurl+'week&code='+CodeName);
+        getChartData(dataurl, '1week');//+'week&code='+CodeName
     }if(timers == '240'){
-        getChartData(dataurl+'hour4&code='+CodeName);
+        getChartData(dataurl, '4hour');//+'hour4&code='+CodeName
     }if(timers == '1M'){
-        getChartData(dataurl+'month&code='+CodeName);
+        getChartData(dataurl, '1mon');//+'month&code='+CodeName
     }
-    if(getCookie('language')=='English'){
+    if(getCookie('language')=='en'){
         local="en";
     }else{
         local="zh";
@@ -407,11 +410,7 @@
                 // 无用代码
                 chart.chart().setResolution(item.resolution);
                 // window.location.href='https://'+window.location.host+'/web/static/index.html?code='+CodeName+'&timers='+item.resolution+'&last_price='+last_price+'&label='+item.label;
-                window.location.href='/static/index.html?code='+CodeName+'&timers='+item.resolution+'&last_price='+last_price+'&label='+item.label;
-                // alert('http://'+'113.52.135.113'+'/wap/static/index.html?code='+CodeName+'&timers='+item.resolution+'&last_price='+last_price)
-                // alert(
-                // window.location.href='http://'+'113.52.135.113'+'/wap/static/index.html?code='+CodeName+'&timers='+item.resolution+'&last_price='+last_price
-                // )
+                window.location.href='/static/index.html?code='+CodeName+'&timers='+item.resolution+'&symbol='+symbol+'&last_price='+last_price+'&label='+item.label;
               }
 
               if (chart.chart().chartType() !== chartType) {
@@ -421,9 +420,9 @@
               // }
             }).append(item.label);
           });
-          // widget.chart().createStudy('Moving Average', false, true, [5, "close", 0], null, {'Plot.color': "#7D53A8"});
-          // widget.chart().createStudy('Moving Average', false, true, [10, "close", 0], null, {'Plot.color': "#7699C2"});
-          // widget.chart().createStudy('Moving Average', false, true, [30, "close", 0], null, {'Plot.color': "#A0D75B"});
+          // widget.chart().createStudy('Moving Average', false, false, [5, "close", 0], null, {'Plot.color': "#7D53A8"});
+          // widget.chart().createStudy('Moving Average', false, false, [10, "close", 0], null, {'Plot.color': "#7699C2"});
+          // widget.chart().createStudy('Moving Average', false, false, [30, "close", 0], null, {'Plot.color': "#A0D75B"});
           function updateSelectedIntervalButton(button) {
             chart.selectedIntervalButton && chart.selectedIntervalButton.removeClass("selected");
             button.addClass("selected");
@@ -441,9 +440,9 @@
                 }
             }else{
                 chart.chart().setChartType(1);
-                chart.chart().createStudy('Moving Average',true,false,[5,'close',0],null,{'Plot.color':'red'});
-                chart.chart().createStudy('Moving Average',true,false,[10,'close',0],null,{'Plot.color':'green'});
-                chart.chart().createStudy('Moving Average',true,false,[30,'close',0],null,{'Plot.color':'blue'})
+                chart.chart().createStudy('Moving Average',false,false,[5,'close',0],null,{'Plot.color':'red'});
+                chart.chart().createStudy('Moving Average',false,false,[10,'close',0],null,{'Plot.color':'green'});
+                chart.chart().createStudy('Moving Average',false,false,[30,'close',0],null,{'Plot.color':'blue'})
             }
             // chart.chart().onIntervalChanged().subscribe(null, function(interval, obj) {
             //     window.location.href='http://127.0.0.1/tradingview/index.html?code='+CodeName+'&timers='+interval;
@@ -451,33 +450,45 @@
             
         })
     });
-    function getChartData(url) {
+    function getChartData(url, period) {
         $.ajax({
             url:url,
-            method:'GET',
+            method:'post',
+            // headers: {
+            //     Accept: "application/json",
+            //     From: "pc",
+            //     Lang: getCookie('language')
+            // },
             dataType:'json',
             async:true,
+            data: {
+                size: 100,
+                symbol: symbol,
+                period: period,
+                // code: CodeName
+            },
+            
             success:function(response){
                 if(response.code==200){
                     bars=[];
                     for (var i = 0; i < response.data.length; i++) {
                         if(timers=='1D'){
                             bars.unshift({
-                                close: Number(response.data[i].closingPrice),
-                                open: Number(response.data[i].openingPrice),
-                                high: Number(response.data[i].highestPrice),
-                                low: Number(response.data[i].lowestPrice),
-                                volume: Number(response.data[i].volume),
-                                time: (Number(response.data[i].timestamp)+8*3600)*1000,
+                                close: Number(response.data[i].close),
+                                open: Number(response.data[i].open),
+                                high: Number(response.data[i].high),
+                                low: Number(response.data[i].low),
+                                volume: Number(response.data[i].amount),
+                                time: (Number(response.data[i].id)+8*3600)*1000,
                             })
                         }else{
                              bars.unshift({
-                                close: Number(response.data[i].closingPrice),
-                                open: Number(response.data[i].openingPrice),
-                                high: Number(response.data[i].highestPrice),
-                                low: Number(response.data[i].lowestPrice),
-                                volume: Number(response.data[i].volume),
-                                time: Number(response.data[i].timestamp)*1000,
+                                close: Number(response.data[i].close),
+                                open: Number(response.data[i].open),
+                                high: Number(response.data[i].high),
+                                low: Number(response.data[i].low),
+                                volume: Number(response.data[i].amount),
+                                time: Number(response.data[i].id)*1000,
                             })
                          }
                     }
@@ -819,19 +830,19 @@
                             pushtimer=setInterval(function(){
                                 switch(resolution){
                                     case '1':
-                                       getChartData(dataurl+'minute&code='+CodeName);
+                                       getChartData(dataurl, '1min'); //+'minute&code='+CodeName
                                         break;
                                     case '5':
-                                       getChartData(dataurl+'minute5&code='+CodeName);
+                                       getChartData(dataurl, '5min'); //+'minute5&code='+CodeName
                                         break;
                                     case '15':
-                                       getChartData(dataurl+'minute15&code='+CodeName);
+                                       getChartData(dataurl, '15min');//+'15min&code='+CodeName
                                         break;
                                     case '30':
-                                       getChartData(dataurl+'minute30&code='+CodeName);
+                                       getChartData(dataurl, '30min'); //+'minute30&code='+CodeName
                                        break;
                                     case '60':
-                                       getChartData(dataurl+'minute60&code='+CodeName);
+                                       getChartData(dataurl, '60min');//+'minute60&code='+CodeName
                                         break;
                                 }
                             },timer)
