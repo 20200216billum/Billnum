@@ -91,7 +91,7 @@
 			<div class="set_item">
 				<span class="name">折算货币</span>
 				<span class="info">设置后，在资产、最新价、买入价、卖出价等字段，会同时折合为当前折算货币展示</span>
-				<span class="coin">USD</span>
+				<span class="coin">{{ userData.zcode }}</span>
 				<span class="button" @click="converted">设置</span>
 			</div>
 		</div>
@@ -262,7 +262,15 @@
 			settingConver() {
 				this.$refs.conversionForm.validate(valid => {
 					if (valid) {
-
+						this.$http.get(this.$http.mcode_list, {params:this.conversionForm}).then(res => {
+							if (res.data.code == 200) {
+								this.modal1 = false;
+								this.$public.msg(this.$LangFn("设置成功"), "warning", this);
+								this.getUserInfo();
+							} else {
+								this.$public.msg(res.data.msg, "warning", this);
+							}
+						}).catch(err => {})
 					}
 				})
 			},
