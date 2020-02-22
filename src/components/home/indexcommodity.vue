@@ -16,7 +16,7 @@
                 ≈ {{$public.Division(Number(item.cnyPrice),Number(7)).toFixed($public.SavePoint(item.code))}} USD
               </span>
             </div> -->
-            <div class="col col_one" :class="'changeRate_'+item.code">{{ "-" + item.range + "%" }}</div>
+            <div class="col col_one" :class="'changeRate_'+item.code">{{ item.range + "%" }}</div>
             <!-- 价格 -->
             <div class="price price-red">
               {{ item.close }}
@@ -145,7 +145,7 @@
 									<!-- <i class="el-icon-caret-top fall"></i> -->
 								</span>
 								<span v-else class="changeRate">
-									<span class="rise" style="color: #fe5955 !important;" :class="'changeRate_'+item.code">{{"-" + item.range + "%"}}</span>
+									<span class="rise" style="color: #fe5955 !important;" :class="'changeRate_'+item.code">{{ item.range + "%"}}</span>
 									<!-- <i class="el-icon-caret-bottom rise"></i> -->
 								</span>
 							</p>
@@ -242,7 +242,7 @@ export default {
         let arr = this.list;
         for (var i = 0; i < arr.length; i++) {
           for (var j = i; j < arr.length; j++) {
-            if (parseFloat(arr[i].changeRate) < parseFloat(arr[j].changeRate)) {
+            if (parseFloat(arr[i].range) < parseFloat(arr[j].range)) {
               max = arr[j];
               arr[j] = arr[i];
               arr[i] = max;
@@ -253,6 +253,7 @@ export default {
       } else if (this.zID == 2) {
         return this.ZX;
       }
+
       return this.list;
     }
   },

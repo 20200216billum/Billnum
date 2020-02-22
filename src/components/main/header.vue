@@ -51,7 +51,7 @@
 					</li>
 					<li class="personal_list" v-if="orderUrl" @click="$router.push({path:'/bbOrder'})">
 						<!-- <img style="vertical-align: middle" src="../../assets/img/order.png"> -->
-						<span>{{$t("Gic.header[20]")}}</span>
+						<span>{{ $LangFn("订单") }}</span>
 					</li>
 					<li class="personal_list personCenter">
 						<!--  个人中心	 -->
@@ -309,19 +309,19 @@
 			personList() {
 				var arr = [
 					//我的资产
-					{ name: this.$t('Gic.header[7]'), path: '/addCoin', class: '', img: require("../../assets/img/wdzc-icon.png") },
+					{ name: this.$LangFn("我的资产"), path: '/addCoin', class: '', img: require("../../assets/img/wdzc-icon.png") },
 					// 账号安全
-					{ name: this.$t('Gic.header[8]'), path: '/security', class: '', img: require("../../assets/img/zhaq-icon.png") },
+					{ name: this.$LangFn("账号安全"), path: '/security', class: '', img: require("../../assets/img/zhaq-icon.png") },
 					// 身份认证
-					{ name: this.$t('Gic.header[9]'), path: '/security/identity', class: '', img: require("../../assets/img/sfrz-icon.png") },
+					{ name: this.$LangFn("身份认证"), path: '/security/identity', class: '', img: require("../../assets/img/sfrz-icon.png") },
 					// 提币地址
-					{ name: this.$t('Gic.header[10]'), path: '/Mentionmoneyaddress', class: '', img: require("../../assets/img/tbdz-icon.png") },
+					{ name: this.$LangFn("提币地址"), path: '/Mentionmoneyaddress', class: '', img: require("../../assets/img/tbdz-icon.png") },
 					// 我的奖励
-					{name:"我的奖励",path:'/my-reward',class:'',img:require("../../assets/img/wdjl-icon.png")},
+					{name:this.$LangFn("我的奖励"),path:'/my-reward',class:'',img:require("../../assets/img/wdjl-icon.png")},
 					// 我的推广
-					{name:"我的推广",path:'/promotion',class:'',img:require("../../assets/image/bibi/wdtg.png")},
+					{name:this.$LangFn("我的推广"),path:'/promotion',class:'',img:require("../../assets/image/bibi/wdtg.png")},
 					// 退出登录
-					{ name: this.$t('Gic.header[11]'), path: '/logout', class: '', img: require("../../assets/img/tc-icon.png") },
+					{ name: this.$LangFn("退出"), path: '/logout', class: '', img: require("../../assets/img/tc-icon.png") },
 				]
 				return arr
 			},

@@ -16,16 +16,16 @@
 <template>
 	<div class="security_main" style="overflow:hidden;">
 		<div class="contain">
-			<p class="tip">请不要透露短信给任何人，包括平台客服</p>.
+			<p class="tip">请不要透露短信给任何人，包括平台客服</p>
 			<ul class="container" style="overflow:hidden;">
 				<li>
 					<!-- 登录密码 -->
-					<span class="left">{{$t('Gic.securityIndex[1]')}}</span>
+					<span class="left">{{ $LangFn("登录密码") }}</span>
 					<img class="icon-img" src="../../../assets/img/wancheng-icon.png" v-if="userData.config && userData.config.security_level > 1">
 					<img class="icon-img" src="../../../assets/img/wei-wancheng.png" v-else>
 					<!-- 安全级别 -->
 					<span class="describe">
-						{{$t('Gic.securityIndex[2]')}}
+						{{ $LangFn("安全级别") }}
 						<span class="securityLevel">
 							<span :class="{active: userData.config && userData.config.security_level == 1}">低</span>
 							<span :class="{active: userData.config && userData.config.security_level == 2}">中</span>
@@ -35,7 +35,7 @@
 					<!-- <span class="result">{{userData_security_level_text}}</span> -->
 					
 					<!-- 修改 -->
-					<span class="operation" @click="routerGo('/security/index/changeopwd')">{{$t('Gic.securityIndex[3]')}}</span>
+					<span class="operation" @click="routerGo('/security/index/changeopwd')">{{ $LangFn("修改") }}</span>
 				</li>
 				<!-- 手机验证 -->
 				<li>
@@ -49,7 +49,7 @@
 				</li>
 				<!-- 资金密码 -->
 				<li>
-					<span class="left">{{$t('Gic.securityIndex[4]')}}</span>
+					<span class="left">{{ $LangFn("资金密码") }}</span>
 					<img class="icon-img" src="../../../assets/img/wancheng-icon.png" v-if="userData.config && userData.config.payment_password_set!=0">
 					<img class="icon-img" src="../../../assets/img/wei-wancheng.png" v-else>
 					<!-- 交易，提现时使用设置资金密码前请先绑定手机或邮箱 -->
@@ -71,7 +71,7 @@
 				</li>
 				<!-- 谷歌验证 -->
 				<li>
-					<span class="left">{{$t('Gic.securityIndex[10]')}}</span>
+					<span class="left">{{ $LangFn("谷歌验证") }}</span>
 					<img class="icon-img" src="../../../assets/img/wancheng-icon.png" v-if="userData.config && userData.google_verify==1">
 					<img class="icon-img" src="../../../assets/img/wei-wancheng.png" v-else>
 					<!-- 登录，提现，修改密码及安全设置时用以输入谷歌验证码。 详细信息阅读交易指南； 下载：Andriod/ios -->
@@ -115,8 +115,8 @@
 			<el-form ref="conversionForm" :model="conversionForm" label-width="150px" :rules="rules" label-position="top">
 				<el-form-item label="选择折算货币" prop="code" class="zhesuan_form">
 					<el-input v-model="conversionForm.code" readonly></el-input>
-					<el-select v-model="conversionForm.code">
-						<el-option v-for="(item, index) in conversionArr" :key="index" :label="item.name" :value="item.code"></el-option>
+					<el-select v-model="conversionForm.code" :placeholder="$LangFn('请选择')">
+						<el-option v-for="(item, index) in conversionArr" :key="index" :label="item" :value="item"></el-option>
 					</el-select>
 				</el-form-item>
 			</el-form>
@@ -198,9 +198,7 @@
 						{ validator: validateZhesuan, trigger: "blur" }
 					]
 				},
-				conversionArr: [
-					{ name: "美元", code: "USD" }
-				],
+				conversionArr: [],
 				tableData: [],
 				modal2: false,
 				changeGugeTile: "",
@@ -244,6 +242,14 @@
 					if(res.data.code == '200') {
 						sessionStorage.userInfo = JSON.stringify(res.data.data);
 						this.userData = res.data.data;
+					}
+				})
+			},
+			// 获取折算货币列表
+			getMcodeList() {
+				this.$http.get(this.$http.mcode_list, {params:{}}).then(res => {
+					if (res.data.code == 200) {
+						this.conversionArr = res.data.data;
 					}
 				})
 			},
@@ -337,6 +343,7 @@
 		},
 		mounted() {
 			this.getUserInfo();
+			this.getMcodeList();
 			this.loginRecord();
 		},
 	};

@@ -260,12 +260,18 @@
 #app .el-form-item .el-input__inner {
   border: 0;
   background: #202D3C;
+  color: #fff;
 }
 #app .el-form-item.is-error .el-input__inner {
   border: 1px solid #30D5D8;
+  color: #fff;
 }
 #app .custom-dialog .el-form-item .el-input__inner {
   background: #EFEFF4;
+  color: #606266;
+}
+#app .custom-dialog .el-form-item .btn_code .el-input__inner {
+  color: #30D5D8;
 }
 .el-form-item__error {
   color: #30D5D8;
@@ -968,6 +974,12 @@ a {
   font-size: 16px;
   display: inline-block;
   margin-top: 8px;
+}
+.exchange .klinAndTring .exchange_mian .exchange_box .Placeanorder_header_box .Placeanorder_list_conent p span.greenColor {
+  color: #00bd82;
+}
+.exchange .klinAndTring .exchange_mian .exchange_box .Placeanorder_header_box .Placeanorder_list_conent p span.redColor {
+  color: #ff5855;
 }
 .exchange .klinAndTring .exchange_mian .exchange_box .Placeanorder_header_box .Placeanorder_list_conent p.price {
   text-align: left;

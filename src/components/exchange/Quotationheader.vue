@@ -2,12 +2,12 @@
 	<section class="exchange_box">
 		<ul class="Placeanorder_header_box">
 			<li class="Placeanorder_list_header">
-				<p v-if='Marketheader.name'>{{ Marketheader.code }}<span></span></p>
+				<p v-if='Marketheader.code'>{{ Marketheader.code }}<span></span></p>
 			</li>
 			<li class="Placeanorder_list_conent">
 				<div class="newPrice">
 					<p class="price">
-						<span class="one">{{Number(Marketheader.price).toFixed($public.SavePoint(Marketheader.code))}}</span><br/>
+						<span class="one">{{Number(Marketheader.close).toFixed($public.SavePoint(Marketheader.code))}}</span><br/>
 						<span class="two">≈{{$public.Division(Number(Marketheader.cnyPrice),Number(7)).toFixed($public.SavePoint(Marketheader.code))}} USD</span>
 					</p>
 					
@@ -21,7 +21,7 @@
 
 				<p>
 					涨跌幅<br/>
-					<span>{{ Marketheader.changeRate }}</span>
+					<span :class="{greenColor: Marketheader.range >=0, redColor: Marketheader.range <0 }">{{ Marketheader.range }}%</span>
 				</p>
 				<p>
 					最高价<br/> 
@@ -33,7 +33,7 @@
 				</p>
 				<p>
 					24H成交量<br/>
-					<span>{{$public.toDecimal2(Marketheader.volume)}}</span>
+					<span>{{$public.toDecimal2(Marketheader.amount)}}</span>
 				</p>
 			</li>
 
@@ -49,18 +49,13 @@
 				language:''
 			}
 		},
-		watch: {},
-		methods: {},
-		// 路由改变时
-		beforeRouteLeave(to, from, next) { },
-		created: function () {
-			var _this = this;
-			if(_this.$cookies.get('language') == 'zh'){
-      	_this.language = 'zh';
-      }else{
-        _this.language = 'en';
-      }
+		created () {
+			this.language = this.$cookies.get('language');
+			// if(this.$cookies.get('language') == 'zh'){
+			// 	this.language = 'zh';
+			// }else{
+			// 	this.language = 'en';
+			// }
 		},
-		components: {}
 	}
 </script>

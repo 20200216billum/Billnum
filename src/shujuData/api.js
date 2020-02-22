@@ -103,6 +103,7 @@ Axios.translates = `${second}/api/translates`;  // 翻译
 Axios.get_area = `${second}/api/user/areacode`;  //获取区号
 Axios.login_record = `${second}/api/user/loginHistory`;  //登录日志
 Axios.download_link = `${second}/api/software/downloadLink`;  //下载地址
+Axios.mcode_list = `${second}/api/mcode`;  //折算货币列表
 Axios.my_reward = `${second}/api/user/myreward`;  //我的奖励
 Axios.recommend_info = `${second}/api/user/recommendInfo`;  //我的推广
 Axios.my_team = `${second}/api/user/recommends`;  //我的团队
@@ -182,20 +183,16 @@ Axios.reset_tpwd = `${second}/home/qbw/reset_tpwd`;  //修改资金密码
 Axios.user_aq = `${second}/home/qbw/user_aq`;   //登录历史安全历史接口
 
 Axios.SecondwsUrl = `${Secondwsurl}:7272/`;   //创新区长链接
-// Axios.MainwsUrl = "ws://www.mobidiex.com:7272";  //主要数据推送
 
 
-// Axios.MainwsUrl = "ws://"+"113.52.135.113"+":7272";  //主要数据推送
 // Axios.SecondSalewsUrl = "ws://"+"113.52.135.113"+":7273";   //买卖价格推送(hub)http://www.bituneex.com
 // Axios.RealTime = "ws://"+"113.52.135.113"+":7275";   //买卖价格推送(hub)
 // 7272实时价格  7273盘口  7274深度图  7275实时成交
-Axios.MainwsUrl = process.env.NODE_ENV === 'production' ? "wss://"+ 'gicgold.in/' + 'wss': "wss://"+"www.billumpro.com/wss";
+Axios.MainwsUrl = process.env.NODE_ENV === 'production' ? "wss://"+ 'gicgold.in/' + 'wss': "wss://wss.billumpro.com";
 
 Axios.SecondSalewsUrl = process.env.NODE_ENV === 'production' ? "ws://"+window.location.host+":7273" : "ws://"+"www.billumpro.com"+":7273";
 Axios.RealTime = process.env.NODE_ENV === 'production' ? "ws://"+window.location.host+":7275" : "ws://"+"www.billumpro.com"+":7275";
 
-
-// Axios.MainwsUrl = "ws://"+window.location.host+":7272";  //主要数据推送
 // Axios.RealTime = "ws://"+window.location.host+":7275";  //买卖价格推送(hub)
 // Axios.SecondSalewsUrl = "ws://"+window.location.host+":7273";   //买卖价格推送(hub)
 

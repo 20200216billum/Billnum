@@ -36,7 +36,7 @@
           <!-- 行情列表 -->
           <section class="nav_list">
             <p class="nav_list_title">
-              <span>资产行情</span>
+              <span>{{ $LangFn("资产行情") }}</span>
             </p>
             <h2 class="currency_header">
               <!-- // 行情 -->
@@ -65,7 +65,7 @@
             <section v-if="klinetab== 'K线图'" class="kine" id="kk">
               <iframe
                 style="height:570px"
-                :src="'./static/index.html?timers=15&code=' + marketPurchase.code + '&last_price='+marketPurchase.PriceData"
+                :src="'./static/index.html?timers=15&code=' + marketPurchase.code + '&symbol=' + Marketdataheader.pid + '&last_price='+marketPurchase.PriceData"
                 width="100%"
                 height="460px;"
                 id="fram"
@@ -272,7 +272,7 @@
               </div>
               <div class="transaction_mainConnent loading" v-else>
                 <img src="../../assets/image/timg.gif" width="80">
-                <p style="color:#999;font-size: 12px; text-align: center;">{{$t("bibi.loading")}}</p>
+                <p style="color:#999;font-size: 12px; text-align: center;">{{ $LangFn("加载中") }}</p>
               </div>
             </section>
           </div>
@@ -421,7 +421,6 @@ export default {
       this.amount(); //个人资产数据
       this.$refs.offTime.offTime();
     },
-    onSubmit: function () { },
     modifyshuju: function (envent) {
       //nav点击时修改
       var _this = this;
@@ -512,26 +511,32 @@ export default {
       //获取数据
       var _this = this;
       $.get(_this.$http.getNewInfo, {}, function (result) {
+        let arr = [];
         if (result.code == "200") {
+          for (var i in result.data) {
+            arr.push(result.data[i])
+          }
+          _this.Marketdatamain = arr;
+          
           if (!_this.marketPurchase.code) {
-            _this.marketPurchase.code = result.data[0].code;
+            _this.marketPurchase.code = arr[0].code;
             _this.refresdata();
             _this.marketPurchase.cnyPrice = _this.$public.Division(
-              result.data[0].cnyPrice,
-              result.data[0].price
+              arr[0].cnyPrice,
+              arr[0].price
             );
           }
-          _this.Marketdatamain = result.data;
+          
           var _codeArr = [];
-          for (var i = 0; i < result.data.length; i++) {
-            _this.Marketdatamainbox.push(result.data[i]);
-            _codeArr.push(result.data[i].code);
-            if (_this.marketPurchase.code == result.data[i].code) {
-              _this.Marketdataheader = result.data[i];
-              _this.marketPurchase.PriceData = Number(result.data[i].price);
-              //								_this.Obtain(result.data[i].code);
+          for (var i = 0; i < arr.length; i++) {
+            _this.Marketdatamainbox.push(arr[i]);
+            _codeArr.push(arr[i].code);
+            if (_this.marketPurchase.code == arr[i].code) {
+              _this.Marketdataheader = arr[i];
+              _this.marketPurchase.PriceData = Number(arr[i].price);
+              //								_this.Obtain(arr[i].code);
               if (sessionStorage.token) {
-                _this.amount(result.data[i].code);
+                _this.amount(arr[i].code);
               }
             }
           }
@@ -540,7 +545,7 @@ export default {
           // _this.getdatamain1();
           _this.SalePriceDatapush(_this.marketPurchase.code); //买卖价 盘口
           window.setTimeout(function () {
-            _this.MainDatapush();
+            // _this.MainDatapush(); 解开
           }, 1500);
         }
       });
@@ -556,7 +561,7 @@ export default {
       });
     },
     //切换
-    changeAct(id) {
+    /* changeAct(id) {
       if (id == 3) {
         if (!sessionStorage.token) {
           this.$public.go("login", 10, this);
@@ -596,7 +601,7 @@ export default {
         }, 1500);
       }
       this.active = id;
-    },
+    }, */
     // 改变行情交易对
     changeActive(index) {
       const _this = this;
@@ -1133,7 +1138,6 @@ export default {
   },
 
   created: function () {
-    // console.log(this.$parent.$refs)
     var _this = this;
     if (sessionStorage.token) {
       // _this.getAssets();
@@ -1143,12 +1147,12 @@ export default {
     _this.refresdata();
     _this.getdatamain();
     window.scrollTo(0, 0); //回到顶部
-    // _this.language = _this.$cookies.get("language");
-    if(_this.$cookies.get('language') == 'zh'){
-      	_this.language = 'zh';
-      }else{
-        _this.language = 'en';
-      }
+    _this.language = _this.$cookies.get("language");
+    // if(_this.$cookies.get('language') == 'zh'){
+    //   	_this.language = 'zh';
+    //   }else{
+    //     _this.language = 'en';
+    //   }
   },
   destroyed() {
     var _this = this
@@ -1190,9 +1194,9 @@ export default {
       }
       return [];
     },
-    klinetab() {
-      return 'K线图';
-    },
+    // klinetab() {
+    //   return 'K线图';
+    // },
     // 交易对需要保留的小数位
     savePoint() {
       switch (true) {
@@ -1231,13 +1235,18 @@ export default {
     },
 
     isDown() {
-        if(!this.Marketdataheader.changeRate) return false 
-        var index =this.Marketdataheader.changeRate.indexOf('-')
-        if(index > -1) {
-          return false
-        }else{
+        if(!this.Marketdataheader.range) return false 
+        if(this.Marketdataheader.range > 0) {
           return true
+        } else {
+          return false
         }
+        // var index =this.Marketdataheader.range.indexOf('-')
+        // if(index > -1) {
+        //   return false
+        // }else{
+        //   return true
+        // }
       },
   },
   components: {

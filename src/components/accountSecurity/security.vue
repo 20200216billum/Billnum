@@ -22,8 +22,8 @@
 		data() {
 			return {
 				routerList:[//个人中心左侧列表路由 如果页面中存在跳转 则在上一层路由后加/ 例如/center/baseInfo/666  需要跟router.js中相对应 不可点击的url设置为空即可
-					{name:"安全设置", url:'/security/index', active: true},//账号安全
-					{name:"身份认证", url:'/security/identity', active: false},//身份认证
+					{name: this.$LangFn("安全设置"), url:'/security/index', active: true},//账号安全
+					{name: this.$LangFn("身份认证"), url:'/security/identity', active: false},//身份认证
 				]
 			}
 		},
