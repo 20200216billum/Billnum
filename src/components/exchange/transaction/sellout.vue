@@ -6,7 +6,7 @@
       <el-form-item label="卖出价格">
         <!--以当前最优价格交易-->
         <!-- ModifyState为true时为市价交易 -->
-        <el-input v-if="ModifyState" :value="$t('Gic.Placeorder[4]')" :disabled="ModifyState"></el-input>
+        <el-input v-if="ModifyState" :value="$LangFn('以当前最优价格交易')" :disabled="ModifyState"></el-input>
         <el-input @change="transValue('price')" v-else v-model="sendData.buyprice" :disabled="ModifyState"></el-input>
         <div class="opreation" v-if="!ModifyState">
           <div @click="changeValue('-')" class="reduce">
@@ -52,12 +52,12 @@
 
         <p v-if="ModifyState">
           <!-- <span>{{$t('bibi.other[1]')}}：{{$public.toLowFixed(sendData.buynum,6,'',false)}}{{Data.code | normal}}</span> -->
-          <span>{{$t('Gic.Placeorder[5]')}}</span>
+          <span>{{ $LangFn("可用") }}</span>
           <span>{{$public.toLowFixed(form.maximum,6,'',false)}} {{Data.code | normal}}</span>
         </p>
         <p v-else>
           <!-- <span>{{$t('bibi.other[0]')}}：{{$public.toLowFixed(form.turnover,6,'',false)}}{{Data.code | normal1}}</span> -->
-          <span>{{$t('Gic.Placeorder[5]')}}</span>
+          <span>{{ $LangFn("可用") }}</span>
           <span>{{$public.toLowFixed(form.maximum,6,'',false)}} {{Data.code | normal}}</span>
         </p>
       </div>
@@ -88,8 +88,7 @@
                 <el-button v-else type="" size="small" :loading="loadingsellout" @click="onSubmit">
                     {{$t('Gic.Placeorder[3]')}}</el-button>
         </div>
-        <el-button v-else type="" size="small" :loading="loadingsellout" @click="onSubmit" disabled>
-            {{$t('Gic.Placeorder[7]')}}</el-button>
+        <el-button v-else type="" size="small" :loading="loadingsellout" @click="onSubmit" disabled>{{$LangFn("请登录")}}</el-button>
       </el-form-item>
     </el-form>
   </div>

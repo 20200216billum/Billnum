@@ -86,7 +86,7 @@
                   </span>-->
                   <el-tabs v-model="activeName">
 
-                    <el-tab-pane :label="$t('Gic.Placeorder[0]')" name="second">
+                    <el-tab-pane :label="$LangFn('市价交易')" name="second">
                       <!-- <Purchase @changeData="listenToMyBoy" :ModifyState='true' v-if='marketPurchase && Marketdataheader.cnyPrice' :Data='marketPurchase' :nowCny='Marketdataheader.cnyPrice'></Purchase>
                       <Sellout @changeData="listenToMyBoy" :ModifyState='true' v-if='marketPurchase && Marketdataheader.cnyPrice' :Data='marketPurchase'  :nowCny='Marketdataheader.cnyPrice' style="float: right;"></Sellout>-->
                       <Purchase
@@ -104,7 +104,7 @@
                       ></Sellout>
                     </el-tab-pane>
 
-                    <el-tab-pane :label="$t('Gic.Placeorder[1]')" name="first">
+                    <el-tab-pane :label="$LangFn('限价交易')" name="first">
                         <!-- <Purchase @changeData="listenToMyBoy"  :ModifyState='false' v-if='marketPurchase && Marketdataheader.price  && Marketdataheader.cnyPrice ' :Data='marketPurchase' :nowPrice='Marketdataheader.price' :nowCny='Marketdataheader.cnyPrice' ></Purchase>
                         <Sellout @changeData="listenToMyBoy" :ModifyState='false' v-if='marketPurchase  && Marketdataheader.price  && Marketdataheader.cnyPrice ' :Data='marketPurchase'   :nowPrice='Marketdataheader.price' :nowCny='Marketdataheader.cnyPrice' style="float: right;"></Sellout>-->
                         <Purchase
@@ -146,39 +146,39 @@
               <div class="tabs_fen">
                   <div class="tabs">
                       <div @click="mouthType='all'" :class="['item', {active:mouthType=='all'}]">
-                        <img src="../../assets/image/bibi/all.png" alt>
+                        <img src="../../assets/image/bibi/all.png">
                       </div>
                       <div @click="mouthType='red'" :class="['item',{active:mouthType=='red'}]">
-                        <img src="../../assets/image/bibi/red.png" alt>
+                        <img src="../../assets/image/bibi/red.png">
                       </div>
                       <div @click="mouthType='green'" :class="['item',{active: mouthType=='green'}]">
-                        <img src="../../assets/image/bibi/green.png" alt>
+                        <img src="../../assets/image/bibi/green.png">
                       </div>
                     </div>
                 <!-- 深度 -->
                 
-                <div class="transaction_deep" v-show="mouthType=='all'">
-                  <span>{{$t("Gic.coincoin[4]")}}</span>
+                <!-- <div class="transaction_deep" v-show="mouthType=='all'">
+                  <span>深度</span>
                   
                   <el-select
-                  size="small"
-                  @change="changeConcat"
-                  v-model="DeepConcat"
-                  :placeholder="$t('bibi.other[16]')"
-                >
-                  <el-option label="5" value="5"></el-option>
-                  <el-option label="10" value="10"></el-option>
-                  <el-option label="20" value="20"></el-option>
-                </el-select>
-                </div>
+                    size="small"
+                    @change="changeConcat"
+                    v-model="DeepConcat"
+                    :placeholder="$t('bibi.other[16]')"
+                  >
+                    <el-option label="5" value="5"></el-option>
+                    <el-option label="10" value="10"></el-option>
+                    <el-option label="20" value="20"></el-option>
+                  </el-select>
+                </div> -->
               </div>
 
   
               <div class="transaction_mainConnent" v-if="PurchaseData">
                 <h3 class="transaction_nav">
-                  <p class="PurchaseData_name">{{$t("Gic.coincoin[5]")}}</p>
-                  <p class="PurchaseData_name">{{$t("Gic.coincoin[6]")}}</p>
-                  <p class="PurchaseData_name">{{$t("Gic.coincoin[7]")}}</p>
+                  <p class="PurchaseData_name">{{ $LangFn("价格") }}</p>
+                  <p class="PurchaseData_name">{{ $LangFn("数量") + "(" + Marketdataheader.pname + ")" }}</p>
+                  <p class="PurchaseData_name">{{ $LangFn("累计") + "(" + Marketdataheader.pname + ")" }}</p>
                 </h3>
                 <div
                   class="Purchase_wrap"
@@ -282,9 +282,9 @@
                 <h2>实时成交</h2>
               </div> -->
               <div class="title">
-                <span>{{$t("Gic.coincoin[5]")}}</span>
-                <span class="num">{{$t("Gic.coincoin[6]")}}</span>
-                <span class="dt">{{$t("Gic.coincoin[9]")}}</span>
+                <span>{{ $LangFn("价格") + "(USDT)" }}</span>
+                <span class="num">{{ $LangFn("数量") }}</span>
+                <span class="dt">{{ $LangFn("时间") }}</span>
               </div>
               <ul v-if="RealDataLoad">
                 <li class="vloumeData_li" v-for="(item,index) in realData" :key="index">
@@ -301,7 +301,7 @@
                 <p
                   v-show="realData.length == 0"
                   style="color:#8E94A3;text-align: center;padding-top: 50px;"
-                >{{$t("Gic.coincoin[10]")}}</p>
+                >{{ $LangFn("暂无数据") }}</p>
               </ul>
               <div v-else class="loading" style="text-align:center">
                 <img src="../../assets/image/timg.gif" width="80px">
@@ -1099,6 +1099,7 @@ export default {
       // 	_this.$refs.offTime.offTime();
       // 	;
       // },3000)
+      console.log("aaaa", _this.marketPurchase)
       _this.getRealData(_this.marketPurchase.code);
       _this.getDepth_url(_this.marketPurchase.code);
       // if(_this.RealData ===null){

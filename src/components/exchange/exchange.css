@@ -1317,9 +1317,9 @@ a {
 .exchange .klinAndTring .exchange_mouth {
   flex-shrink: 0;
   color: wheat;
-  margin: 0 10px;
   background: #4c4c4c;
   width: 290px;
+  margin-left: 10px;
 }
 .exchange .klinAndTring .exchange_mouth .tabs_tab {
   height: 40px;

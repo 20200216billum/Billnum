@@ -72,12 +72,10 @@
       }
     },
     mounted(){
-      // console.log("bbb", this.Marketmain)
-      console.log("SS", this.ss)
+      // console.log(this.Marketmain)
     },
     computed: {
       MARK() {
-        console.log("bbb", this.Marketmain)
         // if (this.SS == 2) {
         //   var max;
         //   let arr = this.Marketmain;
