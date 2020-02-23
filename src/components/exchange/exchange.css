@@ -565,8 +565,16 @@ a {
 .exchange .exchange_nav .topWarp .nav_list .MainArea_box .MainArea_main .MainArea_list .MainArea_two,
 .exchange .exchange_nav .topWarp .nav_list .MainArea_box .Innovate_main .MainArea_list .MainArea_two {
   width: 33%;
-  text-align: center;
+  text-align: right;
+  font-size: 16px;
+  padding-top: 20px;
+}
+.exchange .exchange_nav .topWarp .nav_list .MainArea_box .MainArea_main .MainArea_list .MainArea_two .zhesuan,
+.exchange .exchange_nav .topWarp .nav_list .MainArea_box .Innovate_main .MainArea_list .MainArea_two .zhesuan {
+  display: inline-block;
+  color: #828EA1;
   font-size: 14px;
+  margin-top: 5px;
 }
 .exchange .exchange_nav .topWarp .nav_list .MainArea_box .MainArea_main .MainArea_list .MainArea_three,
 .exchange .exchange_nav .topWarp .nav_list .MainArea_box .Innovate_main .MainArea_list .MainArea_three {

@@ -253,7 +253,7 @@ Axios.createGoogleCommand = `${second}/home/google/createGoogleCommand`;//开启
 Axios.checkGoogleCommand = `${second}/home/google/checkGoogleCommand`;//绑定谷歌验证
 Axios.set_google_state = `${second}/home/google/set_google_state`;//设置谷歌开关
 Axios.check_google_code = `${second}/home/google/check_google_code`;//登录谷歌验证
-Axios.RealTimeDeal = `${second}/api/RealTimeDeal`;//币币实时成交
+Axios.RealTimeDeal = `${second}/api/tradehistory`;//币币实时成交
 
 Axios.yaoqing = `${second}/home/ajax/yaoqing`;//默认邀请码
 
@@ -462,7 +462,7 @@ Axios.software_con= `${second}/api/software/content`; // 获取邮箱
 
 Axios.checkBalance= `${second}/api/withdraw/checkBalance`; // 提币手续费
 
-Axios.getDepth= `${second}/api/getDepth`; // 盘口数据
+Axios.getDepth= `${second}/api/depth`; // 盘口数据
 
 // GIC -币币交易
 Axios.tranList= `${second}/api/BbTrade/tranList`; // 交易记录

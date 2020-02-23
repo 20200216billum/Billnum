@@ -33,6 +33,7 @@ Vue.prototype.$LangFn = LangFn;
 Axios.get(Axios.translates, {params:{}}).then(res => {
   if (res.data.code == 200) {
       store.commit("setLangArr", res.data.data)
+      sessionStorage.setItem("langArr", JSON.stringify(res.data.data))
   }
 })
 

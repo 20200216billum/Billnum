@@ -1,8 +1,16 @@
 import store from "../store/index.js";
 import VueCookies from 'vue-cookies'
 
-let langArr = store.state.langArr;
+let langArr = [];
 let text = "";
+
+if (store.state.langArr.length) {
+    langArr = store.state.langArr;
+} else if (JSON.parse(sessionStorage.getItem("langArr")).length) {
+    langArr = JSON.parse(sessionStorage.getItem("langArr"))
+} else {
+    langArr = [];
+}
 
 let showLang = (name, locale) => {
     let locale2 = VueCookies.get("language");

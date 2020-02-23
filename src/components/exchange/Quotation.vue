@@ -10,7 +10,8 @@
           <span class="name">{{ item.pname }}</span>
         </div>
         <div class="MainArea_two">
-          <span class="nums">{{Number(item.close).toFixed($public.SavePoint(item.code))}}</span>
+          <span class="nums">{{Number(item.close).toFixed($public.SavePoint(item.code))}}</span><br/>
+          <span class="zhesuan">≈{{ item.aboute }}</span>
         </div>
         <div class="MainArea_three">
           <span

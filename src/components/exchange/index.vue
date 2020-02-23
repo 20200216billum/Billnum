@@ -157,20 +157,20 @@
                     </div>
                 <!-- 深度 -->
                 
-                <!-- <div class="transaction_deep" v-show="mouthType=='all'">
+                <div class="transaction_deep" v-show="mouthType=='all'">
                   <span>深度</span>
                   
                   <el-select
                     size="small"
                     @change="changeConcat"
                     v-model="DeepConcat"
-                    :placeholder="$t('bibi.other[16]')"
+                    :placeholder="$LangFn('请选择')"
                   >
-                    <el-option label="5" value="5"></el-option>
-                    <el-option label="10" value="10"></el-option>
-                    <el-option label="20" value="20"></el-option>
+                    <el-option label="1" value="1"></el-option>
+                    <el-option label="2" value="2"></el-option>
+                    <el-option label="3" value="3"></el-option>
                   </el-select>
-                </div> -->
+                </div>
               </div>
 
   
@@ -336,7 +336,7 @@ export default {
       // 深度合并
       DeepMerger: "",
       // 深度挡位
-      DeepConcat: "",
+      DeepConcat: "1",
       deepHeight: "",
       bbAccount: "",
       isLogin: false,
@@ -408,11 +408,12 @@ export default {
   methods: {
     changeConcat() {
       var obj = {
-        "5": "175px",
-        "10": "365px",
-        "20": "743px"
+        "1": "175px",
+        "2": "365px",
+        "3": "743px"
       };
       this.deepHeight = obj[this.DeepConcat];
+      this.getDepth_url(this.marketPurchase.pid);
     },
     //要刷新的数据放在这个函数里面
     listenToMyBoy() {
@@ -517,9 +518,10 @@ export default {
             arr.push(result.data[i])
           }
           _this.Marketdatamain = arr;
-          
+
           if (!_this.marketPurchase.code) {
             _this.marketPurchase.code = arr[0].code;
+            _this.marketPurchase.pid = arr[0].pid;
             _this.refresdata();
             _this.marketPurchase.cnyPrice = _this.$public.Division(
               arr[0].cnyPrice,
@@ -542,8 +544,9 @@ export default {
           }
           _this.allCode = _codeArr.join("|");
 
+
           // _this.getdatamain1();
-          _this.SalePriceDatapush(_this.marketPurchase.code); //买卖价 盘口
+          // _this.SalePriceDatapush(_this.marketPurchase.code); //买卖价 盘口  解开
           window.setTimeout(function () {
             // _this.MainDatapush(); 解开
           }, 1500);
@@ -941,7 +944,7 @@ export default {
         connet.SalePriceData.send(JSON.stringify(msg));
         connet.timer2 = setInterval(function () {
           // connet.SalePriceData.send('xtb');
-          var mm = { pong: new Date().getTime() };
+          var mm = { ping: new Date().getTime() };
           connet.SalePriceData.send(JSON.stringify(mm));
         }, 20000);
       };
@@ -1056,14 +1059,12 @@ export default {
       }
     },
 
-    getRealData(code) {
+    getRealData(pid) {
       const _this = this;
-      let data = {
-        code: code
+      let _data = {
+        symbol: pid
       };
-      _this.$http
-        .get(_this.$http.RealTimeDeal, { params: data })
-        .then(function (res) {
+      _this.$http.post(_this.$http.RealTimeDeal, _data).then(function (res) {
           _this.RealDataLoad = true;
           if (res.data.code == "200") {
             _this.realData = res.data.data.data;
@@ -1071,15 +1072,15 @@ export default {
         });
     },
 
-    getDepth_url(code){
+    getDepth_url(pid){
       const _this = this;
-      let data = {
-        code: code,
-        type:'depth'
+      let _data = {
+        // code: code,
+        // type:'depth'
+        symbol: pid,
+        step: _this.DeepConcat
       };
-      _this.$http
-        .get(_this.$http.getDepth, { params: data })
-        .then(function (res) {
+      _this.$http.post(_this.$http.getDepth, _data).then(function (res) {
           _this.RealDataLoad = true;
           if (res.data.code == "200") {
 
@@ -1092,21 +1093,20 @@ export default {
         });
     },
 
-
     refresdata() {
       const _this = this;
       // _this.timer=setInterval(function(){
       // 	_this.$refs.offTime.offTime();
       // 	;
       // },3000)
-      console.log("aaaa", _this.marketPurchase)
-      _this.getRealData(_this.marketPurchase.code);
-      _this.getDepth_url(_this.marketPurchase.code);
+
+      _this.getRealData(_this.marketPurchase.pid); 
+      _this.getDepth_url(_this.marketPurchase.pid);
       // if(_this.RealData ===null){
       // 	alert('关闭')
       // 	_this.RealData.close();
       // }
-      _this.DeepConcat = "10";
+      _this.DeepConcat = "1";
       _this.changeConcat();
       // _this.DeepMerger = ""
       _this.RealDataPush();

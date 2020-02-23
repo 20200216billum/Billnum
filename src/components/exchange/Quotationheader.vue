@@ -8,7 +8,8 @@
 				<div class="newPrice">
 					<p class="price">
 						<span class="one">{{Number(Marketheader.close).toFixed($public.SavePoint(Marketheader.code))}}</span><br/>
-						<span class="two">≈{{$public.Division(Number(Marketheader.cnyPrice),Number(7)).toFixed($public.SavePoint(Marketheader.code))}} USD</span>
+						<!-- <span class="two">≈{{$public.Division(Number(Marketheader.cnyPrice),Number(7)).toFixed($public.SavePoint(Marketheader.code))}} USD</span> -->
+						<span class="two">≈{{ Marketheader.aboute }}</span>
 					</p>
 					
 					

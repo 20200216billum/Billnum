@@ -29,7 +29,7 @@
             /* margin-top: -100px; */
             z-index: 99999999;
             background: url('./img/loading.gif') center center no-repeat;
-            background-size: 10% 10%;
+            background-size: 10% 13%;
             background-color: #182330;
             display: none;
         }
@@ -65,8 +65,47 @@
     };
     CodeName=GetQueryString('code');
     timers=GetQueryString('timers');
-    label=GetQueryString('label')
-    symbol=GetQueryString('symbol')
+    label=GetQueryString('label');
+    symbol=GetQueryString('symbol');
+
+    // 处理CodeName 
+    function handleCodeName(name) {
+        let a, b;
+        a = name.split("/")[0].toLowerCase();
+        b = name.split("/")[1].toLowerCase();
+        return a + b
+    }
+
+    var handle_code_name = handleCodeName(CodeName);
+
+    // 处理k线类型
+    function handleperiodType(timers) {
+        let type;
+        switch (timers) {
+            case '1': 
+                type = '1min';
+                break;
+            case '1D': 
+                type = '1day';
+                break;
+            case '1W': 
+                type = '1week';
+                break;
+            case '240': 
+                type = '4hour';
+                break;
+            case '1M': 
+                type = '1mon';
+                break;
+            default: 
+                type = timers + 'min';
+                break;
+        };
+
+        return type
+    }   
+
+    var handle_period_type = handleperiodType(timers)
 
     last_price=GetQueryString('last_price');
     if(timers=='1'){
@@ -789,11 +828,15 @@
                             // 打开时
                             MainData.onopen = function(evnt) {
                                 var msg = {
-                                    sub: 'ticker@'+CodeName
+                                    sub: 'market.' + handle_code_name + ".kline." + handle_period_type,
+                                    id: "id" + symbol
                                 };
                                 MainData.send(JSON.stringify(msg)); // 发送消息
                                 timer = setInterval(function() {
-                                    MainData.send('xtb');
+                                    let _data = {
+                                        ping: new Date().getTime()
+                                    }
+                                    MainData.send(JSON.stringify(_data));
                                 },20000)
                             };
                             // 处理消息时
@@ -801,20 +844,21 @@
                                 // 监听页面变化，清除定时器，关掉推送
                                 window.onunload = function(){
                                     clearInterval(timer)
-                                    this.MainData.close()
+                                    MainData.close()
                                 }
-                                var datanum = JSON.parse(evnt.data);
-                                if(datanum.code==CodeName){
+                                
+                                var datanum = JSON.parse(evnt.data).tick;
+                                // if(datanum.code==CodeName){
                                     let newdata={
-                                        close: Number(datanum.price),
+                                        close: Number(datanum.close),
                                         open: bars[bars.length-1].open,
                                         high: bars[bars.length-1].high,
                                         low: bars[bars.length-1].low,
-                                        volume: bars[bars.length-1].volume,
-                                        time:bars[bars.length-1].time,
+                                        volume: bars[bars.length-1].vol,
+                                        time:bars[bars.length-1].time
                                     }
                                     onRealtimeCallback(newdata);
-                                }
+                                // }
                             };
                            MainData.onerror = function(evnt) {
                                 console.log("  websocket.onerror");

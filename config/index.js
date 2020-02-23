@@ -12,7 +12,7 @@ module.exports = {
 		proxyTable: {
 			'/apid': {
 				// target:'https://www.billumpro.com',
-				target:'http://149.129.80.147/',
+				target:'http://47.240.111.27/',
 				changeOrigin: true,
 				// secure: true, 
 				pathRewrite: { 

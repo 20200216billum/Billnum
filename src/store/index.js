@@ -28,7 +28,8 @@ const store = new Vuex.Store({
     plugins: [
         createVuexAlong({
             // 设置保存的集合名字，避免同站点下的多项目数据冲突
-            name: "Billum-vuex-along"
+            name: "Billum-vuex-along",
+            // justSession: true
         }),
     ]
 })
