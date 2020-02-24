@@ -6,7 +6,7 @@ let text = "";
 
 if (store.state.langArr.length) {
     langArr = store.state.langArr;
-} else if (JSON.parse(sessionStorage.getItem("langArr")).length) {
+} else if (sessionStorage.getItem("langArr") && JSON.parse(sessionStorage.getItem("langArr")).length) {
     langArr = JSON.parse(sessionStorage.getItem("langArr"))
 } else {
     langArr = [];

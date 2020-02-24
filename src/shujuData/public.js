@@ -83,49 +83,49 @@ Public.Division = function (a, b) {
   return c = Number(a.toString().replace('.', '')), d = Number(b.toString().replace('.', '')), mul(c / d, Math.pow(10, f - e))
 };
 Public.SavePoint = function (code) {
-  // switch (true){
-  //   case code == 'BTC/USDT'
-	// 	||	 code == 'ETH/USDT'
-  //     :
-  //     return 2
-  //   case code == 'OMG/USDT'
-	// 	||	 code == 'GNT/USDT'
-	// 	||	 code == 'PST/USDT'
-	// 	||	 code == 'ZRX/USDT'
-	// 	||	 code == 'MANA/USDT'
-	// 	||	 code == 'CQTF/USDT'
-	// 	||	 code == 'USDT/USDT'
-  //     :
-  //     return 4
-  //   case code == 'OMG/BTC'
-	// 	||	 code == 'OMG/ETH'
-	// 	||	 code == 'PST/ETH'
-  //     :
-  //     return 6
-  //   case code == 'ZRX/BTC'
-	// 	||	 code == 'BAT/BTC'
-	// 	||	 code == 'GNT/BTC'
-	// 	||	 code == 'PST/BTC'
-	// 	||	 code == 'MANA/BTC'
-	// 	||	 code == 'ZRX/ETH'
-	// 	||	 code == 'BAT/ETH'
-	// 	||	 code == 'GNT/ETH'
-	// 	||	 code == 'MANA/ETH'
-  //     :
-  //     return 8
+  switch (code){
+    case code == 'BTC/USDT'
+		||	 code == 'ETH/USDT'
+      :
+      return 2
+    case code == 'OMG/USDT'
+		||	 code == 'GNT/USDT'
+		||	 code == 'PST/USDT'
+		||	 code == 'ZRX/USDT'
+		||	 code == 'MANA/USDT'
+		||	 code == 'CQTF/USDT'
+		||	 code == 'USDT/USDT'
+      :
+      return 4
+    case code == 'OMG/BTC'
+		||	 code == 'OMG/ETH'
+		||	 code == 'PST/ETH'
+      :
+      return 6
+    case code == 'ZRX/BTC'
+		||	 code == 'BAT/BTC'
+		||	 code == 'GNT/BTC'
+		||	 code == 'PST/BTC'
+		||	 code == 'MANA/BTC'
+		||	 code == 'ZRX/ETH'
+		||	 code == 'BAT/ETH'
+		||	 code == 'GNT/ETH'
+		||	 code == 'MANA/ETH'
+      :
+      return 8
 
-  //     default:
-  //      return 6
-  // }
-  if (code == 'btc_usdt' || code == 'eth_usdt' || code == 'ltc_usdt' || code == 'bch_usdt') {
-    return 2
-  } else if (code == 'eos_usdt') {
-    return 4
-  } else if (code == 'erc20_usdt') {
-    return 6
-  } else {
-    return 6
+      default:
+       return 6
   }
+  // if (code == 'btc_usdt' || code == 'eth_usdt' || code == 'ltc_usdt' || code == 'bch_usdt') {
+  //   return 2
+  // } else if (code == 'eos_usdt') {
+  //   return 4
+  // } else if (code == 'erc20_usdt') {
+  //   return 6
+  // } else {
+  //   return 6
+  // }
 }
 // 加密
 Public.$md5 = function (val) { 

@@ -77,13 +77,11 @@
 
 			<el-form-item>
 				<div v-if='isLogin'>
-						<el-button v-if="Data.buy_state == '1'" type="" size="small" :loading="loadingsellout" @click="onSubmit">
-								{{$t('Gic.Placeorder[2]')}}</el-button>
-								<el-button v-else type="" size="small" :loading="loadingsellout" @click="onSubmit" disabled>
-										{{$t('Gic.Placeorder[2]')}}</el-button>
+						<el-button v-if="Data.buy_state == '1'" type="" size="small" :loading="loadingsellout" @click="onSubmit">{{ $LangFn("买入") }}</el-button>
+						<el-button v-else type="" size="small" :loading="loadingsellout" @click="onSubmit" disabled>{{ $LangFn("买入") }}</el-button>
 				</div>
 				
-				<el-button v-else type="" size="small" :loading="loadingsellout" @click="onSubmit" disabled>{{$LangFn("请登录")}}</el-button>
+				<el-button v-else type="" size="small" :loading="loadingsellout" @click="$router.push('/login')">{{$LangFn("请登录")}}</el-button>
 			</el-form-item>
 		</el-form>
 	</div>
@@ -398,11 +396,11 @@
 					_this.sendData.otype = 2;
 					//市价
 					if(_this.sendData.buynum == ''){
-						_this.$public.msg(this.$t('Gic.Placeorder[6]'), 'warning', _this);
+						_this.$public.msg(this.$LangFn('请输入委托数量'), 'warning', _this);
 						return false
 					}
 
-					dis = this.$t("Gic.bbOrderAll[19]")
+					dis = this.$LangFn("市价")
 
 				} else if (!_this.ModifyState) {
 					_this.sendData.otype = 1;
@@ -411,13 +409,13 @@
 						return false
 					}
 					if(_this.sendData.buynum == ''){
-						_this.$public.msg(this.$t('Gic.Placeorder[6]'), 'warning', _this);
+						_this.$public.msg(this.$LangFn('请输入委托数量'), 'warning', _this);
 						return false
 					}
 
 
 					//限价
-					dis = this.$t("Gic.bbOrderAll[18]")
+					dis = this.$LangFn("限价")
 				}
 				// _this.sendData.mobile = _this.userData.phone; //手机号
 
@@ -463,16 +461,16 @@
 							h('p', {
 								style: 'float:left;width:140px;'
 							}, [
-								h('span', null, this.$t("Gic.bbOrderAll[4]") + '：'),
+								h('span', null, this.$LangFn("限价") + '：'),
 								h('span', {
 									style: 'color:#03C087'
-								},  this.$t("Gic.bbOrderAll[16]")),
+								},  this.$LangFn("买入")),
 							]),
 
 							h('p', {
 								style: 'float:left;marginLeft:30px;'
 							}, [
-								h('span', null, this.$t("Gic.bbOrderTan[7]") + "："),
+								h('span', null, this.$LangFn("类型") + "："),
 								h('span', null, dis),
 							])
 
@@ -483,13 +481,13 @@
 							h('p', {
 								style: 'float:left;width:140px;'
 							}, [
-								h('span', null, this.$t("Gic.bbOrderTan[8]") + "："),
+								h('span', null, this.$LangFn("价格") + "："),
 								h('span', null, _this.sendData.newprice),
 							]),
 							h('p', {
 								style: 'float:left;marginLeft:30px;'
 							}, [
-								h('span', null, this.$t("Gic.bbOrderTan[9]") + "："),
+								h('span', null, this.$LangFn("数量") + "："),
 								h('span', null, _this.sendData.buynum),
 							])
 						]),
@@ -508,8 +506,8 @@
 
 					]),
 					showCancelButton: true,
-					confirmButtonText: this.$t("Gic.bbOrderTan[11]"),
-					cancelButtonText: this.$t("Gic.bbOrderTan[10]"),
+					confirmButtonText: this.$LangFn("确定"),
+					cancelButtonText: this.$LangFn("取消"),
 					beforeClose: (action, instance, done) => {
 						if (action === 'confirm') {
 							instance.confirmButtonLoading = true;

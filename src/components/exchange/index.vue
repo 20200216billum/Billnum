@@ -178,7 +178,7 @@
                 <h3 class="transaction_nav">
                   <p class="PurchaseData_name">{{ $LangFn("价格") }}</p>
                   <p class="PurchaseData_name">{{ $LangFn("数量") + "(" + Marketdataheader.pname + ")" }}</p>
-                  <p class="PurchaseData_name">{{ $LangFn("累计") + "(" + Marketdataheader.pname + ")" }}</p>
+                  <!-- <p class="PurchaseData_name">{{ $LangFn("累计") + "(" + Marketdataheader.pname + ")" }}</p> -->
                 </h3>
                 <div
                   class="Purchase_wrap"
@@ -186,14 +186,22 @@
                   v-show="mouthType=='red' || mouthType=='all'"
                   id="ele"
                 >
-                  <ul class="PurchaseData" :style="'max-height:'+deepHeight">
+                  <ul class="PurchaseData" :style="computedHeight">
                     <li
                       class="PurchaseData_list"
                       v-for="(item, index) in PurchaseData.sell"
                       :key="index"
-                      @click="updatePrice(item.price)"
                     >
+                    <!-- @click="updatePrice(item.price)" -->
+                   
                       <p class="PurchaseData_name" style="color: #ff5855; cursor: pointer;">
+                          {{Number(item[0]).toFixed($public.SavePoint(Marketdataheader.code))}}
+                      </p>
+                      <p class="PurchaseData_name">
+                          {{Number(item[1]).toFixed($public.SavePoint(Marketdataheader.code))}}
+                      </p>
+                      
+                      <!-- <p class="PurchaseData_name" style="color: #ff5855; cursor: pointer;">
                           {{Number(item.price).toFixed($public.SavePoint(Marketdataheader.code))}}
                       </p>
                       <p class="PurchaseData_name">
@@ -205,47 +213,46 @@
                       <div
                         :style="{width:$public.toPercent( $public.Division(item.totalSize, mouthRenderBg.sellMax ) ) }"
                         class="lineBg red"
-                      ></div>
+                      ></div> -->
                     </li>
-                    <!-- 调试 -->
-                    <!-- <li class="PurchaseData_list" v-for="i in 30" :key="index">
-                        <p class="PurchaseData_name" style="color: #ff5855;">{{i}}</p>
-                        <p class="PurchaseData_name">{{i}}</p>
-                        <p class="PurchaseData_name" >{{i}}</p>
-                        <div style="width: 100%" class="lineBg red"></div>
-                    </li>-->
                   </ul>
                 </div>
   
                 <!-- 最新价 -->
-                
                 <div class="transaction_mainHeader" v-show="mouthType=='all'">
                   <span
                     class="newPrice"
                     :class="{newPrice:true, down:!isDown, up:isDown}"
-                  >{{Number(Marketdataheader.price).toFixed($public.SavePoint(Marketdataheader.code))}}</span>
+                  >{{Number(Marketdataheader.close).toFixed($public.SavePoint(Marketdataheader.code))}}</span>
                   <span :class="{river:true, down:!isDown, up:isDown}">{{ !isDown ?"↓":"↑" }}</span>
 
-                  <!-- <span class="changeCny" v-if="language == 'zh-CN'">≈ {{$public.toDecimal2(Marketdataheader.cnyPrice)}} CNY</span> -->
-                  <span class="changeCny">
+                  <!-- <span class="changeCny">
                       ≈ {{$public.Division(Number(Marketdataheader.cnyPrice),Number(7)).toFixed($public.SavePoint(Marketdataheader.code))}} USD
-                  </span>
-                  <!-- <span class="changeCny">≈ {{$public.toDecimal2(Marketdataheader.cnyPrice)}} CNY</span> -->
+                  </span> -->
+                  <span class="changeCny">≈ {{ Marketdataheader.aboute }}</span>
                 </div>
                 <div
                   class="Purchase_wrap"
                   :class="{green: mouthType=='green'}"
                   v-show="mouthType=='green' || mouthType=='all'"
                 >
-                  <ul class="SelloutData" :style="'max-height:'+deepHeight">
+                  <ul class="SelloutData" :style="computedHeight">
                     <li
                       class="PurchaseData_list"
                       v-for="(item, index) in PurchaseData.buy"
                       :key="index"
-                      @click="updatePrice(item.price)"
+                      
                     >
+                    <!-- @click="updatePrice(item.price)" -->
+
                       <p class="PurchaseData_name" style="color: #00bd82; cursor: pointer;">
-                          <!-- {{transDeepMerger(item.price)}} -->
+                          {{Number(item[0]).toFixed($public.SavePoint(Marketdataheader.code))}}
+                      </p>
+                      <p class="PurchaseData_name">
+                          {{Number(item[1]).toFixed($public.SavePoint(Marketdataheader.code))}}
+                      </p>
+
+                      <!-- <p class="PurchaseData_name" style="color: #00bd82; cursor: pointer;">
                           {{Number(item.price).toFixed($public.SavePoint(Marketdataheader.code))}}
                       </p>
                       <p class="PurchaseData_name">
@@ -257,15 +264,8 @@
                       <div
                         :style="{width:$public.toPercent( $public.Division(item.totalSize, mouthRenderBg.buyMax ) ) }"
                         class="lineBg green"
-                      ></div>
+                      ></div> -->
                     </li>
-                    <!-- 调试 -->
-                    <!-- <li class="PurchaseData_list" v-for="i in 30"  :key="index">
-                        <p class="PurchaseData_name" style="color: #00bd82;">{{i}}</p>
-                        <p class="PurchaseData_name">{{i}}</p>
-                        <p class="PurchaseData_name " >{{i}}</p>
-                        <div style="width:100%" class="lineBg green"></div>
-                    </li>-->
                   </ul>
                 </div>
 
@@ -288,14 +288,14 @@
               </div>
               <ul v-if="RealDataLoad">
                 <li class="vloumeData_li" v-for="(item,index) in realData" :key="index">
-                  <span :class="{price:true, true: item.dc =='sell', false: item.dc != 'sell'}">
+                  <span :class="{price:true, true: item.direction =='sell', false: item.direction != 'sell'}">
                     {{Number(item.price).toFixed($public.SavePoint(Marketdataheader.code))}}
                   </span>
 
                   <span>
-                      {{Number(item.amount).toFixed($public.SavePoint('btc_usdt'))}}
+                      {{Number(item.amount).toFixed($public.SavePoint(Marketdataheader.code))}}
                   </span>
-                  <span>{{$public.timestampToTimeshian1(item.dt)}}</span>
+                  <span>{{$public.timestampToTimeshian1(item.ts)}}</span>
 
                 </li>
                 <p
@@ -399,7 +399,6 @@ export default {
       price: "" // 盘口价格
     };
   },
-  watch: {},
   mounted() {
     if (sessionStorage.token) {
       this.isLogin = true;
@@ -407,12 +406,6 @@ export default {
   },
   methods: {
     changeConcat() {
-      var obj = {
-        "1": "175px",
-        "2": "365px",
-        "3": "743px"
-      };
-      this.deepHeight = obj[this.DeepConcat];
       this.getDepth_url(this.marketPurchase.pid);
     },
     //要刷新的数据放在这个函数里面
@@ -737,7 +730,7 @@ export default {
               htmlArry +
               `
 							<li class="vloumeData_li">
-                <span class="price ${data.data[i].dc == "sell"}">
+                <span class="price ${data.data[i].direction == "sell"}">
                   ${Number(data.data[i].price).toFixed(_this.$public.SavePoint(data.code))}
                 </span>
 								<span>${Number(data.data[i].amount).toFixed(_this.$public.SavePoint('btc_usdt'))}</span>
@@ -807,7 +800,7 @@ export default {
       // 			var tansDate = _this.$public.getLocalTime(data.data[i].dt)
       // 			htmlArry=htmlArry+ `
       // 			<li class="vloumeData_li">
-      // 				<span class="price ${data.data[i].dc =='sell'}">${data.data[i].price}</span>
+      // 				<span class="price ${data.data[i].direction =='sell'}">${data.data[i].price}</span>
       // 				<span>${Number(data.data[i].amount).toFixed(4)}</span>
       // 				<span>${tansDate}</span>
       // 				<!-- <span v-if="item.cj_type=='1'" style="color:#ff5855">买入</span>
@@ -1067,7 +1060,7 @@ export default {
       _this.$http.post(_this.$http.RealTimeDeal, _data).then(function (res) {
           _this.RealDataLoad = true;
           if (res.data.code == "200") {
-            _this.realData = res.data.data.data;
+            _this.realData = res.data.data;
           }
         });
     },
@@ -1083,11 +1076,11 @@ export default {
       _this.$http.post(_this.$http.getDepth, _data).then(function (res) {
           _this.RealDataLoad = true;
           if (res.data.code == "200") {
+            var sellArr = res.data.data.tick.asks;
+            var buyArr = res.data.data.tick.bids;
 
-            var sellArr = res.data.data[0].asks;
-            var buyArr = res.data.data[0].bids;
-
-            _this.PurchaseData.sell = sellArr.reverse();
+            // _this.PurchaseData.sell = sellArr.reverse();
+            _this.PurchaseData.sell = sellArr;
             _this.PurchaseData.buy = buyArr;
           }
         });
@@ -1180,20 +1173,17 @@ export default {
   },
 
   computed: {
-    PKD() {
-      if (this.DeepConcat && this.PurchaseData.sell.length) {
-        let Deep = parseFloat(this.DeepConcat);
-        let sele = this.PurchaseData.sell;
-        sele.splice(0, this.PurchaseData.sell.length - Deep);
-        if(Deep>10){
-          var ele = document.getElementById("ele");
-          if(ele.scrollHeight){
-            ele.scrollTop = ele.scrollHeight;
-          }
+    // 计算盘口列表高度
+    computedHeight() {
+      if (this.mouthType == "all") {
+        return {
+          height: "410px"
         }
-        return sele;
+      } else if (this.mouthType == "red" || this.mouthType == "green") {
+        return {
+          height: "832px"
+        }
       }
-      return [];
     },
     // klinetab() {
     //   return 'K线图';

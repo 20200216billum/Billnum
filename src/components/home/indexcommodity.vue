@@ -4,7 +4,7 @@
 	<section class="two_hang">
 		<div class="btclist">
 			<ul class="mainList">
-				<li v-for="(item,index) in listt" :key="index" v-if="index < 6"
+				<li v-for="(item,index) in listt" :key="index" v-if="index < 5"
 					:data_code='item.code' class="btclist_box wow animate fadeInDown " :data-wow-delay="(index)*(0.25)+'s'">
           <div class="trend trend-red" v-if="item.range < 0">
 					  <div class="name">{{ item.code }}</div>
