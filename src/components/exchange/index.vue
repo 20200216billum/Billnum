@@ -72,7 +72,7 @@
               ></iframe>
             </section>
             <section class="kine" v-else>
-							<iframe id="fram" :src="'./static/indexsd.html?timers=15&code=' + marketPurchase.code + '&last_price='+urlPrice" width="100%"
+							<iframe id="fram" :src="'./static/indexsd.html?timers=15&code=' + marketPurchase.code + '&symbol=' + Marketdataheader.pid + '&last_price='" width="100%"
 								height="100%"></iframe>
 						</section>
   
@@ -415,8 +415,8 @@ export default {
       this.amount(); //个人资产数据
       this.$refs.offTime.offTime();
     },
+    // 点击行情列表
     modifyshuju: function (envent) {
-      //nav点击时修改
       var _this = this;
       _this.DeepMerger = "";
       clearInterval(this.timer2);
@@ -428,17 +428,18 @@ export default {
       for (var i = 0; i < _this.Marketdatamainbox.length; i++) {
         if (_this.Marketdatamainbox[i].code == envent) {
           _this.Marketdataheader = _this.Marketdatamainbox[i];
-          _this.marketPurchase.PriceData = Number(_this.Marketdatamainbox[i].price).toFixed(_this.$public.SavePoint(_this.marketPurchase.code));
-          _this.marketPurchase.cnyPrice = _this.$public.Division(
-            _this.Marketdatamainbox[i].cnyPrice,
-            _this.Marketdatamainbox[i].price
-          );
+          _this.marketPurchase = _this.Marketdatamainbox[i];
+          // _this.marketPurchase.PriceData = Number(_this.Marketdatamainbox[i].price).toFixed(_this.$public.SavePoint(_this.marketPurchase.code));
+          // _this.marketPurchase.cnyPrice = _this.$public.Division(
+          //   _this.Marketdatamainbox[i].cnyPrice,
+          //   _this.Marketdatamainbox[i].price
+          // );
         }
         
       }
       _this.amount(envent);
       //				_this.Obtain(envent);
-      _this.SalePriceDatapush(envent);
+      _this.SalePriceDatapush(_this.$public.codeToLowercase(envent));
       _this.realData = [];
       if (_this.timer) {
         clearInterval(_this.timer);
@@ -504,7 +505,8 @@ export default {
     getdatamain() {
       //获取数据
       var _this = this;
-      $.get(_this.$http.getNewInfo, {}, function (result) {
+      _this.$http.get(_this.$http.getNewInfo, {params:{}}).then(res => {
+        let result = res.data;
         let arr = [];
         if (result.code == "200") {
           for (var i in result.data) {
@@ -537,155 +539,14 @@ export default {
           }
           _this.allCode = _codeArr.join("|");
 
-
-          // _this.getdatamain1();
-          // _this.SalePriceDatapush(_this.marketPurchase.code); //买卖价 盘口  解开
           window.setTimeout(function () {
             // _this.MainDatapush(); 解开
           }, 1500);
         }
-      });
+      })
     },
-    // 获取资产 币币账户
-    getAssets() {
-      this.$http.get(this.$http.getAssets, { params: { type: 2 } }).then(r => {
-        if (r.data.code == 200) {
-          this.bbAccount = r.data.data;
-        } else {
-          this.public.msg(r.data.msg, "error", this);
-        }
-      });
-    },
-    //切换
-    /* changeAct(id) {
-      if (id == 3) {
-        if (!sessionStorage.token) {
-          this.$public.go("login", 10, this);
-          return;
-        }
-        window.setTimeout(function () {
-          _this.MainDatapush();
-        }, 1500);
-        this.$http.post(this.$http.optionalList, {}).then(res => {
-          switch (res.data.code) {
-            case 200:
-              if (res.data.data.length == 0) {
-                this.$public.msg(
-                  this.$t("hub3drecord.tableconent[6]"),
-                  "warning",
-                  this
-                );
-                return;
-              }
-              this.active = id;
-              this.marketPurchase.code = res.data.data[0].code;
-              this.Marketdatamain = res.data.data;
-              this.$public.msg(res.data.msg, "success", this);
-              this.changeActive(1);
-              break;
-            default:
-              this.$public.msg(res.data.msg, "warning", this);
-              break;
-          }
-        });
-        return;
-      } else {
-        this.getdatamain();
-        this.changeActive(id);
-        window.setTimeout(function () {
-          this.MainDatapush();
-        }, 1500);
-      }
-      this.active = id;
-    }, */
-    // 改变行情交易对
-    changeActive(index) {
-      const _this = this;
-      switch (index) {
-        case 1:
-          //   _this.active = index;
-          _this.marketPurchase.code = _this.Marketdatamain[0].code;
-          break;
-        // case 2:
-        //   _this.marketPurchase.code = _this.Marketdatamain1[0].code;
-        //   break;
-        // case 3:
-        //   _this.marketPurchase.code = _this.Marketdatamain2[0].code;
-        //   break;
-        default:
-          break;
-      }
-      var envent = _this.marketPurchase.code;
-      for (var i = 0; i < _this.Marketdatamainbox.length; i++) {
-        if (_this.Marketdatamainbox[i].code == envent) {
-          _this.Marketdataheader = _this.Marketdatamainbox[i];
-          _this.marketPurchase.PriceData = Number(
-            _this.Marketdatamainbox[i].price
-          );
-          _this.marketPurchase.cnyPrice = _this.$public.Division(
-            _this.Marketdatamainbox[i].cnyPrice,
-            _this.Marketdatamainbox[i].price
-          );
-        }
-      }
-      _this.amount(envent);
-      //				_this.Obtain(envent);
-      _this.SalePriceDatapush(envent);
-      _this.realData = [];
-      if (_this.timer) {
-        clearInterval(_this.timer);
-      }
-      // _this.RealData = null
-      _this.refresdata();
-      // _this.PurchaseData = null;
-    },
-    getdatamain1() {
-      //获取数据
-      var _this = this;
-      $.get(_this.$http.getNewInfo, { qu: 2 }, function (result) {
-        if (result.status == "200") {
-          _this.Marketdatamain1 = result.data;
-          // _this.Marketdatamainbox = result.data;
-          for (var i = 0; i < result.data.length; i++) {
-            _this.Marketdatamainbox.push(result.data[i]);
-            if (_this.marketPurchase.code == result.data[i].code) {
-              _this.Marketdataheader = result.data[i];
-              _this.marketPurchase.PriceData = Number(result.data[i].price);
-              _this.amount(result.data[i].code);
-            }
-          }
-          _this.getdatamain2();
-          // _this.SalePriceDatapush(_this.marketPurchase.code); //买卖价
-          // window.setTimeout(function() {
-          // 	_this.MainDatapush();
-          // }, 1500);
-        }
-      });
-    },
-    getdatamain2() {
-      //获取数据
-      var _this = this;
-      $.get(_this.$http.getNewInfo, { qu: 3 }, function (result) {
-        if (result.status == "200") {
-          _this.Marketdatamain2 = result.data;
-          for (var i = 0; i < result.data.length; i++) {
-            _this.Marketdatamainbox.push(result.data[i]);
-            if (_this.marketPurchase.code == result.data[i].code) {
-              _this.Marketdataheader = result.data[i];
-              _this.marketPurchase.PriceData = Number(result.data[i].price);
-              _this.amount(result.data[i].code);
-            }
-          }
-          // _this.SalePriceDatapush(_this.marketPurchase.code); //买卖价
-          // window.setTimeout(function() {
-          // 	_this.MainDatapush();
-          // }, 1500);
-        }
-      });
-    },
-
+    // 实时成交推送
     RealDataPush() {
-      // 实时成交推送
       var _this = this;
       _this.RealDataLoad = false;
       if (_this.RealData) {
@@ -702,14 +563,14 @@ export default {
       _this.RealData.onopen = function (evnt) {
         _this.RealDataLoad = true;
         var msg = {
-          sub: "trader@" + _this.marketPurchase.code
+          sub: "market." + _this.$public.codeToLowercase(_this.marketPurchase.code) + ".trader.detail"
         };
         _this.RealData.send(JSON.stringify(msg)); // 发送消息
         _this.timer1 = setInterval(function () {
-          var mm = { pong: new Date().getTime() };
+          var mm = { ping: new Date().getTime() };
           _this.RealData.send(JSON.stringify(mm));
           // _this.RealData.send('xtb');
-        }, 20000); 
+        }, 10000); 
       };
       _this.RealData.onmessage = function (evnt) {
         if (_this.$route.path != "/coincoin") {
@@ -746,9 +607,8 @@ export default {
       _this.RealData.onerror = function (evnt) { };
       _this.RealData.onclose = function (evnt) { };
     },
-
+    // 主区数据推送
     MainDatapush() {
-      // 主区数据推送
       var _this = this;
       var dommain = document.getElementsByClassName("MainArea_list"),
         codedata = [],
@@ -912,8 +772,8 @@ export default {
       // 	dom.innerHTML = '<span style="">' + num + '</span>';
       // }, 1500)
     },
-    SalePriceDatapush(type) {
-      // 买卖价推送
+    // 买卖价推送 (深度)
+    SalePriceDatapush(code) {
       var connet = this,
         sellbuytype = true;
       if (connet.SalePriceData) {
@@ -929,17 +789,15 @@ export default {
       }
       // 打开时
       connet.SalePriceData.onopen = function (evnt) {
-        //					var msg = type;
         var msg = {
-          sub: "depth@" + type
+          sub: "market." + code + ".depth.step1"
         };
         // 发送消息
         connet.SalePriceData.send(JSON.stringify(msg));
         connet.timer2 = setInterval(function () {
-          // connet.SalePriceData.send('xtb');
           var mm = { ping: new Date().getTime() };
           connet.SalePriceData.send(JSON.stringify(mm));
-        }, 20000);
+        }, 10000);
       };
 
       // 处理消息时
@@ -948,16 +806,22 @@ export default {
           clearInterval(connet.timer2);
           connet.SalePriceData.close();
         }
-        var datanum = JSON.parse(evnt.data);
+        var datanum = JSON.parse(evnt.data).tick;
         if(datanum.code !== connet.marketPurchase.code){
           clearInterval(connet.timer2);
           return
         }
         connet.PurchaseData = datanum; //join
+        var sellArr = datanum.asks;
+        var buyArr = datanum.bids;
+        // connet.PurchaseData.sell = sellArr.reverse();
+        // connet.PurchaseData.buy = buyArr;
+        connet.$set(connet.PurchaseData, "sell", sellArr)
+        connet.$set(connet.PurchaseData, "buy", buyArr)
 
         // 获得最大买价
         connet.mouthRenderBg.buyMax = datanum.bids.map(item => {
-          return item.totalSize;
+          return item[1];
         });
         connet.mouthRenderBg.buyMax = connet.mouthRenderBg.buyMax.sort(
           (x, y) => y - x
@@ -965,13 +829,12 @@ export default {
 
         // 获得最大卖价
         connet.mouthRenderBg.sellMax = datanum.asks.map(item => {
-          return item.totalSize;
+          return item[1];
         });
         connet.mouthRenderBg.sellMax = connet.mouthRenderBg.sellMax.sort(
           (x, y) => y - x
         )[0];
-        var sellArr = datanum.asks;
-        var buyArr = datanum.bids;
+        
         // var min;
         // for(var i=0; i<sellArr.length; i++){
         // for(var j=i; j<sellArr.length;j++){
@@ -982,8 +845,7 @@ export default {
         //   }
         // }
         // }
-        connet.PurchaseData.sell = sellArr.reverse();
-        connet.PurchaseData.buy = buyArr;
+        
       };
       connet.SalePriceData.onerror = function (evnt) { };
       connet.SalePriceData.onclose = function (evnt) { };
@@ -1051,7 +913,7 @@ export default {
         }
       }
     },
-
+    // 实时成交历史数据
     getRealData(pid) {
       const _this = this;
       let _data = {
@@ -1064,7 +926,7 @@ export default {
           }
         });
     },
-
+    // 深度（盘口）历史数据
     getDepth_url(pid){
       const _this = this;
       let _data = {
@@ -1082,6 +944,7 @@ export default {
             // _this.PurchaseData.sell = sellArr.reverse();
             _this.PurchaseData.sell = sellArr;
             _this.PurchaseData.buy = buyArr;
+            _this.SalePriceDatapush(_this.$public.codeToLowercase(_this.marketPurchase.code));
           }
         });
     },
@@ -1133,9 +996,6 @@ export default {
 
   created: function () {
     var _this = this;
-    if (sessionStorage.token) {
-      // _this.getAssets();
-    }
     _this.marketPurchase.code = _this.$route.query.code;
     // alert(_this.marketPurchase.code)
     _this.refresdata();

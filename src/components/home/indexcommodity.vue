@@ -40,7 +40,7 @@
             <div class="col col_two" :class="'changeRate_'+item.code">{{ "+" + item.range + "%" }}</div>
             <!-- 价格 -->
             <div class="price price-lv">
-              {{ item.close }}
+              {{ Number(item.close).toFixed(item["price-precision"]) }}
             </div>
             <!-- 成交量 -->
             <!-- <div class="chengjiao">
@@ -119,7 +119,7 @@
 			</ul>
 			<ul class="hangqwingul wow animate bounceInUp" data-wow-delay="1s" v-if='listt'>
 				<!-- // <router-link v-for="(item,index) in list" :to="{path:'/exchange',query:{account:item.code}}" :key="index"> -->
-				<a href="javascript:;" v-for="(item,index) in listt"
+				<a href="javascript:;" v-for="(item,index) in listt" v-if="item.indexdisplay == 1"
 					:data_code='item.code' @click="gourl(item.code,index)" class="indexcommodity_box renderBg" :key="index">
 					<li >
             <!-- 1 -->
@@ -132,7 +132,7 @@
 						<div class="hang_2">
 							<p class="priceone" :class="'price_'+item.code">
                 <!-- {{$public.toLowFixed(item.price,$public.SavePoint(item.code),true)}} -->
-                {{Number(item.close).toFixed($public.SavePoint(item.code))}}
+                {{Number(item.close).toFixed(item["price-precision"])}}
                 <!-- {{$public.SavePoint(item.price,item.code)}} -->
               </p>
             </div>

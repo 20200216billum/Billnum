@@ -82,6 +82,14 @@ Public.Division = function (a, b) {
   } catch (g) {}
   return c = Number(a.toString().replace('.', '')), d = Number(b.toString().replace('.', '')), mul(c / d, Math.pow(10, f - e))
 };
+// 将交易对转成小写
+Public.codeToLowercase = function(code) {
+  let front, back;
+  front = code.split("/")[0].toLowerCase();
+  back = code.split("/")[1].toLowerCase();
+  return front + back;
+}
+
 Public.SavePoint = function (code) {
   switch (code){
     case code == 'BTC/USDT'

@@ -46,8 +46,8 @@
     }
         var currency1 = 'USDT', currency2 = 'BTC', saved_chart = null, chart = null, feed = null, timer = 30000, pushtimer = null, last_price = null, bars = [], chart = null, MainData = null, CodeName = '', timers = null, status = 1, timer_kline = null, asks = [], bids = [];
         var loading = document.getElementById('loading');
-        // var dataurl = 'http://' + '113.52.135.113' + "/Home/Ajax/get_shendu?pageSize=2000&page=1&goodsType=";
-        var dataurl = 'http://' + window.location.host + "/Home/Ajax/get_shendu?pageSize=2000&page=1&goodsType=";
+        var dataurl = 'https://www.billumpro.com' + "/api/depth";
+        // var dataurl = 'http://' + window.location.host + "/Home/Ajax/get_shendu?pageSize=2000&page=1&goodsType=";
         // var wsurl = "ws://47.244.186.201:7274";
         // var wsurl = "ws://113.52.135.113"+":7274";
         var wsurl = "ws://"+window.location.host+":7274";
@@ -63,6 +63,7 @@
         };
         CodeName = GetQueryString('code');
         timers = GetQueryString('timers');
+        symbol=GetQueryString('symbol');
         // console.log(CodeName,timers)
         // CodeName = "ltc_usdt";
         // timers = '30';
@@ -81,7 +82,7 @@
         var _this = this;
          // 首先判断是否 支持 WebSocket
 
-        if ('WebSocket' in window) {
+        /* if ('WebSocket' in window) {
             MainData = new WebSocket(wsurl);
         } else if ('MozWebSocket' in window) {
             MainData = new MozWebSocket(wsurl);
@@ -93,7 +94,7 @@
             var msg = {
                 code: CodeName,
             };
-            MainData.send(JSON.stringify(msg)); // 发送消息
+            // MainData.send(JSON.stringify(msg)); // 发送消息
         };
         // 处理消息时
         MainData.onmessage = function (evnt) {
@@ -132,27 +133,31 @@
         };
         MainData.onclose = function (evnt) {
             console.log("  websocket.onclose");
-        };
+        }; */
         getChartData(dataurl + 'minute&code=' + CodeName);
         function getChartData(url) {
             $.ajax({
-                url: url,
-                method: 'GET',
+                url: dataurl,
+                method: 'post',
                 dataType: 'json',
                 async: true,
+                data: {
+                    symbol: symbol,
+                    step: "1",
+                },
                 success: function (response) {
-                    if (response.status == 200) {
+                    if (response.code == 200) {
                         asks = [];//卖出
                         bids = [];//买入
-                        for (var i = 0; i < response.data[0].asks.length; i++) {
+                        for (var i = 0; i < response.data.tick.asks.length; i++) {
                             asks[i]=[];
-                            asks[i].push(response.data[0].asks[i].price);
-                            asks[i].push(response.data[0].asks[i].totalSize);
+                            asks[i].push(response.data.tick.asks[i][0]);
+                            asks[i].push(response.data.tick.asks[i][1]);
                         }
-                        for (var i = 0; i < response.data[0].bids.length; i++) {
+                        for (var i = 0; i < response.data.tick.bids.length; i++) {
                             bids[i]=[];
-                            bids[i].push(response.data[0].bids[i].price);
-                            bids[i].push(response.data[0].bids[i].totalSize);
+                            bids[i].push(response.data.tick.bids[i][0]);
+                            bids[i].push(response.data.tick.bids[i][1]);
                         }
                         getData();
                         status = 0;

@@ -117,9 +117,9 @@
 		watch: {
 			'cg': function (val, oval) {
 				this.sendData.buynum = val;
-
 			},
 			'Data.code': function (val, oval) {
+				// console.log("aaa", this.Data)
 				this.sendData.newprice = this.Data.PriceData;
 				this.sendData.buynum = "";
 			},
